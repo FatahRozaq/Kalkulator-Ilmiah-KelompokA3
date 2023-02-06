@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include "gavrila.h"
+#include "Nisrina.h"
 
 //operasi pengurangan
-float Pengurangan(float angka1, float angka2){
-	float pengurangan;
+float Pengurangan(){
+	float pengurangan, bil1, bil2;
+	InputBilFloat(&bil1,&bil2);
 	
-	pengurangan = (angka1-angka2);
+	pengurangan = (bil1-bil2);
 	return pengurangan;
 }
 

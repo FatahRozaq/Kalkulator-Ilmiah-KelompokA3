@@ -3,6 +3,6 @@
 
 //spesifikasi
 
-float Pengurangan(float angka1, float angka2);
+float Pengurangan();
 
 #endif
