@@ -3,7 +3,7 @@
 
 #include<stdio.h>
 
-float Perkalian (float bilangan1, float bilangan2);
+float Perkalian ();
 
 #endif
 
