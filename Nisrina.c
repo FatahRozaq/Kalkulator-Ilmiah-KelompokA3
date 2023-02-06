@@ -9,7 +9,7 @@ float Penjumlahan (float bil1, float bil2)
 	return hasil;
 }
 
-void InputBil(float *bil1, float *bil2)
+void InputBilFloat(float *bil1, float *bil2)
 {
 	printf("Masukkan Bilangan pertama :");
 	scanf("%f", &*bil1);
@@ -17,7 +17,20 @@ void InputBil(float *bil1, float *bil2)
 	scanf("%f", &*bil2);
 }
 
-void TampilHasil (float hasil)
+void InputBilInt(int *bil1, int *bil2)
 {
-	printf("Hasil : %.3f", hasil);
+	printf("Masukkan Bilangan pertama :");
+	scanf("%d", &*bil1);
+	printf("Masukkan Bilangan kedua :");
+	scanf("%d", &*bil2);
+}
+
+void TampilHasilFloat(float hasil, char nama[])
+{
+	printf("%s : %.3f", nama,hasil);
+}
+
+void TampilHasilInt(int hasil, char nama[])
+{
+	printf("%s : %d", nama,hasil);
 }
