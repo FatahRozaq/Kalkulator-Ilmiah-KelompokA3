@@ -7,7 +7,7 @@ int Modulus()
 {
 	
 	int Hasil,bil1,bil2;	
-	InputBilFloat(&bil1,&bil2);
+	InputBilInt(&bil1,&bil2);
 	Hasil = bil1 % bil2;
 	return Hasil;
 }

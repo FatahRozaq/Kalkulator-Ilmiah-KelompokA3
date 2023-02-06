@@ -1,7 +1,7 @@
 #ifndef NISRINA_H
 #define NISRINA_H
 
-float Penjumlahan (float bil1, float bil2);
+float Penjumlahan ();
 
 void InputBil(float *bil1, float *bil2);
 
