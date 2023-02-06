@@ -3,5 +3,7 @@
 
 float Penjumlahan (float bil1, float bil2);
 
+void InputBil(float *bil1, float *bil2);
+
 void TampilHasil (float hasil);
 #endif
