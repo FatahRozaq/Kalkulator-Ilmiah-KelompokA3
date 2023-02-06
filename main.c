@@ -15,16 +15,18 @@ int main()
 	
 	InputBilFloat(&bil1,&bil2);
 	penjumlahan = Penjumlahan (bil1, bil2);
-	TampilHasilFloat (penjumlahan, "penjumlahan");
+	
+	
+	TampilHasilFloat (penjumlahan, "Penjumlahan");
 	pembagian = Bagi(bil1,bil2);
-	TampilHasilFloat (pembagian, "pembagian");
+	TampilHasilFloat (pembagian, "Pembagian");
 	perkalian = Perkalian (bil1, bil2);
-	TampilHasilFloat (perkalian, "perkalian");
+	TampilHasilFloat (perkalian, "Perkalian");
 	pengurangan = Pengurangan (bil1, bil2);
-	TampilHasilFloat (pengurangan, "pengurangan");
+	TampilHasilFloat (pengurangan, "Pengurangan");
 	InputBilInt(&angka1,&angka2);
 	modulus = Modulus(angka1, angka2);
-	TampilHasilInt (modulus, "modulus");
+	TampilHasilInt (modulus, "Modulus");
 	
 	return 0;
 }
