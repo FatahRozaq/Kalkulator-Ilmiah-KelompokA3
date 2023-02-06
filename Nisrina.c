@@ -27,7 +27,7 @@ void InputBilInt(int *bil1, int *bil2)
 
 void TampilHasilFloat(float hasil, char nama[])
 {
-	printf("\n%s : %.3f", nama,hasil);
+	printf("\n%s : %g", nama,hasil);
 }
 
 void TampilHasilInt(int hasil, char nama[])
