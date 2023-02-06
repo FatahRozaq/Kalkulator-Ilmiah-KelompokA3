@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "jojo.h"
+#include "Nisrina.h"
 
-int Modulus(int bil1, int bil2)
+int Modulus()
 {
 	
-	int Hasil;	
+	int Hasil,bil1,bil2;	
+	InputBilFloat(&bil1,&bil2);
 	Hasil = bil1 % bil2;
 	return Hasil;
 }
