@@ -18,3 +18,4 @@ float Bagi(float bil1, float bil2){
 	hasil = (bil1/bil2);
 	return hasil;
 }
+
