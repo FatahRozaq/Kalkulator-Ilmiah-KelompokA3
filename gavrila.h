@@ -3,6 +3,10 @@
 
 //spesifikasi
 
-float Pengurangan(float angka1, float angka2);
+float Pengurangan();
+int logaritmanatural()
+int faktorial()
+int turunan();
+float convertdaya();
 
 #endif

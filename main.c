@@ -10,23 +10,45 @@
 
 int main()
 {
-	float bil1,bil2, penjumlahan, pengurangan, pembagian, perkalian;
-	int angka1, angka2, modulus;
+	float penjumlahan, pengurangan, pembagian, perkalian;
+	int modulus, pilih;
 	
-	InputBilFloat(&bil1,&bil2);
-	penjumlahan = Penjumlahan (bil1, bil2);
-	
-	
-	TampilHasilFloat (penjumlahan, "Penjumlahan");
-	pembagian = Bagi(bil1,bil2);
-	TampilHasilFloat (pembagian, "Pembagian");
-	perkalian = Perkalian (bil1, bil2);
-	TampilHasilFloat (perkalian, "Perkalian");
-	pengurangan = Pengurangan (bil1, bil2);
-	TampilHasilFloat (pengurangan, "Pengurangan");
-	InputBilInt(&angka1,&angka2);
-	modulus = Modulus(angka1, angka2);
-	TampilHasilInt (modulus, "Modulus");
+	printf("================================ SCIENTIFIC CALCULATOR ===============================");
+	printf("\n \n");
+	printf("================================ 1. Penjumlahan        ==============================\n");
+	printf("================================ 2. Pengurangan        ==============================\n");
+	printf("================================ 3. Pembagian          ==============================\n");
+	printf("================================ 4. Perkalian          ==============================\n");
+	printf("================================ 5. Modulus            ==============================\n");
+	printf("Masukkan pilihan menu yang anda pilih :");
+	scanf("%d", &pilih);
+	switch (pilih)
+	{
+		case 1:
+			penjumlahan = Penjumlahan ();
+			TampilHasilFloat (penjumlahan, "Penjumlahan");
+			break;
+		
+		case 2:
+			pengurangan = Pengurangan ();
+			TampilHasilFloat (pengurangan, "Pengurangan");
+			break;
+		
+		case 3:
+			pembagian = Bagi();
+			TampilHasilFloat (pembagian, "Pembagian");
+			break;
+			
+		case 4:
+			perkalian = Perkalian ();
+			TampilHasilFloat (perkalian, "Perkalian");
+			break;
+			
+		case 5:
+			modulus = Modulus();
+			TampilHasilInt (modulus, "Modulus");
+			break;
+	}
 	
 	return 0;
 }

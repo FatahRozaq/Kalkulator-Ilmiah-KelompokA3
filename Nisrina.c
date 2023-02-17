@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include "Nisrina.h"
 
-float Penjumlahan (float bil1, float bil2)
+float Penjumlahan ()
 {
-	float hasil;
+	float hasil, bil1, bil2;
+	
+	InputBilFloat(&bil1, &bil2);
 	hasil = bil1 + bil2;
 	
 	return hasil;

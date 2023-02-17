@@ -1,0 +1,43 @@
+# Project: KalkulatorIlmiah
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o Aurora.o fatah.o gavrila.o jojo.o Nisrina.o
+LINKOBJ  = main.o Aurora.o fatah.o gavrila.o jojo.o Nisrina.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = KalkulatorIlmiah.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+Aurora.o: Aurora.c
+	$(CC) -c Aurora.c -o Aurora.o $(CFLAGS)
+
+fatah.o: fatah.c
+	$(CC) -c fatah.c -o fatah.o $(CFLAGS)
+
+gavrila.o: gavrila.c
+	$(CC) -c gavrila.c -o gavrila.o $(CFLAGS)
+
+jojo.o: jojo.c
+	$(CC) -c jojo.c -o jojo.o $(CFLAGS)
+
+Nisrina.o: Nisrina.c
+	$(CC) -c Nisrina.c -o Nisrina.o $(CFLAGS)

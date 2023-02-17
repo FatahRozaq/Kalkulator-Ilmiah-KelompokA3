@@ -1,9 +1,11 @@
 #include "fatah.h"
+#include "Nisrina.h"
 
-float Perkalian (float bilangan1, float bilangan2){
-	float total;
+float Perkalian (){
+	float total, bil1, bil2;
 	
-	total = bilangan1 * bilangan2;
+	InputBilFloat(&bil1,&bil2);
+	total = bil1 * bil2;
 	
 	return total;
 }
