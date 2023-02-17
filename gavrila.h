@@ -4,5 +4,9 @@
 //spesifikasi
 
 float Pengurangan();
+int logaritmanatural()
+int faktorial()
+int turunan();
+float convertdaya();
 
 #endif
