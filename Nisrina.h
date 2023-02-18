@@ -23,4 +23,20 @@ void CaraCalStd();
 
 void Credit();
 
+float *HitungConvertBerat(int levelAsal, int levelTujuan, int berat);
+
+float deteksiTrigono(char *input);
+
+float TriSin(float value);
+
+float TriCos(float value);
+
+float TriTan(float value);
+
+float TriCot(float value);
+
+float TriSec(float value);
+
+float TriCsc(float value);
+
 #endif
