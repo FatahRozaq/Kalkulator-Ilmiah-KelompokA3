@@ -7,7 +7,7 @@ Author			: Athalie Aurora Puspanegara
 
 /* ========== Header File ========== */
 
-#include "calcprog.h"
+#include "Aurora.h"
 
 #include <stdio.h>
 #include <stdlib.h>
