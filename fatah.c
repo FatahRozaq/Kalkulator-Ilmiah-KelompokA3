@@ -348,3 +348,88 @@ float array_mean(int *array, float ukuran) {
 
     return mean;
 }
+
+//========================================================
+//						Modul
+//					  Integral
+//========================================================
+void integral(){ // panggil modul ini ke main
+	
+	float a, p, b, q, c, bawah, atas, hitungBawah, hitungAtas,hasil;
+	
+	printf("Format fungsi : ax^p + bx^q + c");
+	printf("\nMasukan angka A : ");
+	scanf("%f", &a);
+	printf("Masukan angka P : ");
+	scanf("%f", &p);
+	printf("Masukan angka B : ");
+	scanf("%f", &b);
+	printf("Masukan angka Q : ");
+	scanf("%f", &q);
+	printf("Masukan angka C : ");
+	scanf("%f", &c);
+	
+	p = p+1;
+	q = q+1;
+	
+	if ( a == p && b == q ){
+		
+		if(c == 0){
+			printf("Hasil Integral : x^%g + x^%g ", p, q);
+		}else{
+			printf("Hasil Integral : x^%g + x^%g + %gx", p, q, c);
+		}
+		a = 1;
+		b = 1;
+	} 
+	else if ( a == p){
+		
+		if(c == 0){
+			printf("Hasil Integral : x^%g + (%g/%g x^%g) ", p, b, q, q);
+		}else{
+			printf("Hasil Integral : x^%g + (%g/%g x^%g) + %gx", p, b, q, q, c);
+		}
+		a = 1;
+		b = b/q;
+	} 
+	else if ( b == q){
+		
+		if(c == 0){
+			printf("Hasil Integral : (%g/%g x^%g) + x^%g ", a, p, p, q);
+		}else{
+			printf("Hasil Integral : (%g/%g x^%g) + x^%g + %gx", a, p, p, q, c);
+		}
+		a = a/p;
+		b = 1;
+	}
+	else{
+		
+		if (c == 0){
+			printf("Hasil Integral : (%g/%g x^%g) + (%g/%g x^%g) ", a, p, p, b, q, q);
+		}else{
+			printf("Hasil Integral : (%g/%g x^%g) + (%g/%g x^%g) + %gx", a, p, p, b, q, q, c);
+		}
+		a = a/p;
+		b = b/q;
+	}
+	
+	printf("\nMasukan batas bawah : ");
+	scanf("%f", &bawah);
+	printf("Masukan batas atas : ");
+	scanf("%f", &atas);
+	
+	hasil = luasIntegral(a, b, p, q, c, bawah, atas);
+	
+	
+	printf("Hasil ketika dimasukan batas bawah (%g) dan batas atas (%g) : %g", bawah, atas, hasil);
+}
+
+float luasIntegral(float a, float b, float p, float q, float c, float bawah, float atas){
+	float hitungBawah, hitungAtas, hasil;
+	
+	hitungBawah = a*pow(bawah, p) + b*pow(bawah, q) + (bawah*c);
+	hitungAtas = a*pow(atas, p) + b*pow(atas, q) + (atas*c);
+	hasil = hitungAtas - hitungBawah;
+	
+	return hasil;
+}

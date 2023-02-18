@@ -24,5 +24,9 @@ void array_sort(int *array, int ukuran);
 float array_median(int *array, int ukuran);
 float array_mean(int *array, float ukuran);
 
+// Modul Integral
+void integral(); // panggil modul ini ke main
+float luasIntegral(float a, float b, float p, float q, float c, float bawah, float atas);
+
 #endif
 
