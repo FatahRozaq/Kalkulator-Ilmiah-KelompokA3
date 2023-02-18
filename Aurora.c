@@ -63,24 +63,28 @@ void eksponen() {
     printf("Akar pangkat %d dari %.2f adalah %.2f\n", ap, bil, hasil);
 }
 
-void deretAritmatika()
-{
-    int a, d, n, an;
 
-    printf("Masukkan nilai suku pertama (a) = ");
-    scanf("%d", &a);
+void deretAritmatika() {
+    int sukuPertama, beda, jumlahSuku, i;
+    int hasil = 0;
 
-    printf("Masukkan nilai beda (d) = ");
-    scanf("%d", &d);
+    printf("Masukkan nilai suku pertama: ");
+    scanf("%d", &sukuPertama);
 
-    printf("Masukkan urutan suku (n) = ");
-    scanf("%d", &n);
+    printf("Masukkan nilai beda: ");
+    scanf("%d", &beda);
 
-    an = a + (n - 1) * d;
+    printf("Masukkan jumlah suku: ");
+    scanf("%d", &jumlahSuku);
 
-    printf("Suku ke-%d dalam deret aritmatika adalah %d\n", n, an);
+    for(i = 0; i < jumlahSuku; i++) {
+        hasil += sukuPertama + (i * beda);
+        printf("%d ", sukuPertama + (i * beda));
+    }
 
+    printf("\nJumlah deret aritmatika: %d\n", hasil);
 }
+
 
 
 
