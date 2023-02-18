@@ -63,6 +63,25 @@ void eksponen() {
     printf("Akar pangkat %d dari %.2f adalah %.2f\n", ap, bil, hasil);
 }
 
+void deretAritmatika()
+{
+    int a, d, n, an;
+
+    printf("Masukkan nilai suku pertama (a) = ");
+    scanf("%d", &a);
+
+    printf("Masukkan nilai beda (d) = ");
+    scanf("%d", &d);
+
+    printf("Masukkan urutan suku (n) = ");
+    scanf("%d", &n);
+
+    an = a + (n - 1) * d;
+
+    printf("Suku ke-%d dalam deret aritmatika adalah %d\n", n, an);
+
+}
+
 
 
 void header()
@@ -134,8 +153,7 @@ void Fullmode()
 	system("color 0e");
 		
 	/*Color attributes are specified by TWO hex digits -- the first
-	corresponds to the background; the second the foreground.  Each digit
-	can be any of the following values:
+	corresponds to the background; the second the foreground.
 
     0 = Black       8 = Gray
     1 = Blue        9 = Light Blue
