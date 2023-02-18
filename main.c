@@ -18,8 +18,9 @@ int main()
 	printf("\n \n");
 	printf("================================ 1. Kalkulator Standar       ==============================\n");
 	printf("================================ 2. Kalkulator Scientific    ==============================\n");
-	printf("================================ 3. Tata Cara Penggunaan     ==============================\n");
-	printf("================================ 4. Credit		             ==============================\n");
+	printf("================================ 3. Kalkulator Programmer    ==============================\n");
+	printf("================================ 4. Tata Cara Penggunaan	 ==============================\n");
+	printf("================================ 5. Credit		             ==============================\n");	
 	printf("================================ 0. Keluar			         ==============================\n");
 	PilihMenu(&pilih);
 	getchar();
@@ -34,16 +35,18 @@ int main()
 			break;
 		
 		case 3:
-			TataCara();
+			CalProg();
 			break;
 			
 		case 4:
-			Credit();
+			TataCara();
 			break;
 			
 		case 5:
-			exit(0);
-			break;
+			Credit();
+			
+		default:
+			exit(1);
 	}
 	
 	return 0;
