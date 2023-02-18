@@ -80,22 +80,22 @@ void CalStfc()
 	switch(pilih)
 	{
 		case 1:
-			CaraCalStd();
+			integral();
 			break;
 		case 2:
 			Matriks();
 			break;
 		case 3:
-			CaraCalStd();
+			statistika();
 			break;
 		case 4:
-			CaraCalStd();
+			deretGeometri();
 			break;
 		case 5:
 			CaraCalStd();
 			break;
 		case 6:
-			CaraCalStd();
+			eksponen();
 			break;
 		case 7:
 			Trigonometri();
@@ -128,13 +128,13 @@ void CalStfc()
 			konvertSuhu();
 			break;
 		case 17:
-			CaraCalStd();
+			konvertPanjang();
 			break;
 		case 18:
-			convertBerat();
+			konvertBerat();
 			break;
 		case 19:
-			//convertWaktu();
+			konvertWaktu();
 			break;
 	}
 }
@@ -168,22 +168,55 @@ void MenuCalStfc()
 	printf("|==========================================================================================|\n");
 }
 
+void konvertWaktu()
+{
+	int input;
+	int jam, menit,detik;
+	
+	jam =0;
+	menit = 0;
+	detik=0;
+	
+	printf("Masukkan inputan :");
+	scanf("%d", &input);
+	
+	jam = input/3600;
+	menit = (input%3600)/60;
+	detik = (input%3600)%60;
+	
+	if(jam!=0)
+	{
+		printf("%d jam ", jam);
+	}
+	if(menit!=0)
+	{
+		printf("%d menit ", menit);
+	}
+	if(detik!=0)
+	{
+		printf("%d detik ", detik);
+	}
+}
+
+
 void Trigonometri()
 {
 	char *input;
-	float hasil;
-	int derajat;
+	float radian;
+	float derajat;
 	float value;
 	
 	input = (char *)malloc( 10* sizeof(char));
 	
 	printf("Masukkan Inputan (exp : sin( 30)) :");
 	scanf(" %s", input);
-	hasil = deteksiTrigono(input);
-	printf("%f", hasil);
+	radian = RadianTrigono(input);
+	printf("radian : %f\n", radian);
+	derajat = DerajatTrigono(input);
+	printf("derajat : %f\n", derajat);
 }
 
-float deteksiTrigono(char *input)
+float RadianTrigono(char *input)
 {
 	float value;
 	
@@ -216,6 +249,42 @@ float deteksiTrigono(char *input)
 	{
 		sscanf(input,"csc(%f)",&value);
 		return TriCsc(value);
+	}
+}
+
+float DerajatTrigono(char *input)
+{
+	float value;
+	
+	if(strstr(input,"sin"))
+	{
+		sscanf(input,"sin(%f)",&value);
+		return TriSin(value*3.14159 /180);
+	}
+	else if(strstr(input,"cos"))
+	{
+		sscanf(input,"cos(%f)",&value);
+		return TriCos(value*3.14159 /180);
+	}
+	else if(strstr(input,"tan"))
+	{
+		sscanf(input,"tan(%f)",&value);
+		return TriTan(value*3.14159 /180);
+	}
+	else if(strstr(input,"cot"))
+	{
+		sscanf(input,"cot(%f)",&value);
+		return TriCot(value*3.14159 /180);
+	}
+	else if(strstr(input,"sec"))
+	{
+		sscanf(input,"sec(%f)",&value);
+		return TriSec(value*3.14159 /180);
+	}
+	else if(strstr(input,"csc"))
+	{
+		sscanf(input,"csc(%f)",&value);
+		return TriCsc(value*3.14159 /180);
 	}
 }
 
@@ -443,7 +512,7 @@ void InputBilOrdo(int *bil, char kalimat[50])
 	scanf("%d", &*bil);
 }
 
-void convertBerat()
+void konvertBerat()
 {
 	char *input;
 	char *konvert;
@@ -557,14 +626,15 @@ void TataCara()
 	int pilih;
 	
 	system("cls");
-	printf("1. Kalkulator Standar");
+	printf("SOON");
+	/* printf("1. Kalkulator Standar");
 	PilihMenu(&pilih);
 	switch(pilih)
 	{
 		case 1:
 			CaraCalStd();
 			break;
-	}
+	} */
 }
 
 void CaraCalStd()
@@ -608,3 +678,4 @@ void Credit()
 	printf("|          Copyright(c)2023 Kel.3 rights reserved.           |\n");
 	printf("|============================================================|\n");
 }
+

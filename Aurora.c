@@ -38,7 +38,7 @@ float Bagi(float bil1, float bil2){
 	return hasil;
 } 
 
-void pangkat() {
+void eksponen() {
     double bil, hasil;
     int ap;
     
