@@ -5,4 +5,12 @@
 
 float Bagi();
 
+// Divider
+void header();
+void headcalprog();
+void BarDes();
+void athalie();
+void Fullmode();
+
+
 #endif
