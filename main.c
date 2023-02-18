@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Nisrina.h"
 #include "Aurora.h"
+#include "calcprog.h"
 #include "fatah.h"
 #include "jojo.h"
 #include "gavrila.h"
