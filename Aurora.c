@@ -64,6 +64,29 @@ void eksponen() {
 }
 
 
+void deretAritmatika() {
+    int sukuPertama, beda, jumlahSuku, i;
+    int hasil = 0;
+
+    printf("Masukkan nilai suku pertama: ");
+    scanf("%d", &sukuPertama);
+
+    printf("Masukkan nilai beda: ");
+    scanf("%d", &beda);
+
+    printf("Masukkan jumlah suku: ");
+    scanf("%d", &jumlahSuku);
+
+    for(i = 0; i < jumlahSuku; i++) {
+        hasil += sukuPertama + (i * beda);
+        printf("%d ", sukuPertama + (i * beda));
+    }
+
+    printf("\nJumlah deret aritmatika: %d\n", hasil);
+}
+
+
+
 
 void header()
 {
@@ -134,8 +157,7 @@ void Fullmode()
 	system("color 0e");
 		
 	/*Color attributes are specified by TWO hex digits -- the first
-	corresponds to the background; the second the foreground.  Each digit
-	can be any of the following values:
+	corresponds to the background; the second the foreground.
 
     0 = Black       8 = Gray
     1 = Blue        9 = Light Blue

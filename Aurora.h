@@ -36,7 +36,9 @@ int HexDes(char* hist);
 
 float Bagi(float bil1, float bil2);
 
+
 void eksponen();
+void deretAritmatika();
 
 // Divider
 void header();
