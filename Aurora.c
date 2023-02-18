@@ -1,5 +1,5 @@
 /*         
-File Name		: divider.cpp
+File Name		: Aurora.c
 Description		: Tugas Proyek 2 
 Author			: Athalie Aurora Puspanegara
 */
