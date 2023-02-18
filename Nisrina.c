@@ -186,33 +186,39 @@ void Matriks()
 	switch(pilih)
 	{
 		case 1:
-			InputBilOrdo(&baris, "Masukkan ordo baris yang diinginkan : ");
-			InputBilOrdo(&kolom, "Masukkan ordo kolom yang diinginkan : ");
+			InputBilOrdo(&baris, "Masukkan baris yang diinginkan : ");
+			InputBilOrdo(&kolom, "Masukkan kolom yang diinginkan : ");
 			IsiMatriks(baris, kolom, Matriks1);
 			IsiMatriks(baris, kolom, Matriks2);
 			PenjumlahanMatriks(baris, kolom, Matriks1, Matriks2,Hasil);
-			HasilMatriks(baris,kolom,"Hasil penjumlahan matriks","tambah", Hasil);
+			HasilMatriks(baris,kolom,"Hasil penjumlahan matriks :","tambah", Hasil);
 			break;
 			
 		case 2:
-			InputBilOrdo(&baris, "Masukkan ordo baris yang diinginkan : ");
-			InputBilOrdo(&kolom, "Masukkan ordo kolom yang diinginkan : ");
+			InputBilOrdo(&baris, "Masukkan baris yang diinginkan : ");
+			InputBilOrdo(&kolom, "Masukkan kolom yang diinginkan : ");
 			IsiMatriks(baris, kolom, Matriks1);
 			IsiMatriks(baris, kolom, Matriks2);
 			PenguranganMatriks(baris, kolom, Matriks1, Matriks2,Hasil);
-			HasilMatriks(baris,kolom,"Hasil pengurangan matriks","kurang", Hasil);
+			HasilMatriks(baris,kolom,"Hasil pengurangan matriks :","kurang", Hasil);
 			break;
 			
 		case 3:
+			InputBilOrdo(&baris, "Masukkan baris yang diinginkan : ");
+			InputBilOrdo(&kolom, "Masukkan kolom yang diinginkan : ");
+			IsiMatriks(baris, kolom, Matriks1);
+			IsiMatriks(kolom, baris, Matriks2);
+			PerkalianMatriks(baris, kolom, Matriks1, Matriks2,Hasil);
+			HasilMatriks(baris,baris,"Hasil perkalian matriks :","kali", Hasil);
 			//PerkalianMatriks();
 			break;
 			
 		case 4:
-			InputBilOrdo(&baris, "Masukkan ordo baris yang diinginkan : ");
-			InputBilOrdo(&kolom, "Masukkan ordo kolom yang diinginkan : ");
+			InputBilOrdo(&baris, "Masukkan baris yang diinginkan : ");
+			InputBilOrdo(&kolom, "Masukkan kolom yang diinginkan : ");
 			IsiMatriks(baris, kolom, Matriks1);
 			TransposeMatriks(baris, kolom, Matriks1,Hasil);
-			HasilMatriks(baris,kolom,"Hasil transpose matriks","transpose", Hasil);
+			HasilMatriks(baris,kolom,"Hasil transpose matriks :","transpose", Hasil);
 			break;
 	}
 }
@@ -257,6 +263,27 @@ void PenguranganMatriks(int baris, int kolom, int Matriks1[100][100], int Matrik
 		}
 	}
 }
+
+void PerkalianMatriks(int baris, int kolom, int Matriks1[100][100], int Matriks2[100][100],int Hasil[100][100])
+{
+	int jumlah;
+	int b,k,j;
+	
+	for(b = 0; b < baris; b++)
+	{
+	 	for(j = 0; j < baris; j++)
+		{
+        	for(k = 0; k < kolom; k++)
+			{
+          		jumlah = jumlah + Matriks1[b][k] * Matriks2[k][j];
+       		}
+        	Hasil[b][j] = jumlah;
+        	jumlah = 0;
+      	}
+		printf("\n");
+    }
+}
+
 void TransposeMatriks(int baris, int kolom,int Matriks[100][100], int Hasil[100][100])
 {
 	int b,k;
@@ -286,6 +313,20 @@ void HasilMatriks(int baris, int kolom, char ket[50], char ciri[10], int Hasil[1
 			}
 			printf("\n");
 		}
+	}
+	else if(ciri=="kali")
+	{
+		int jumlah;
+		int b,j;
+		
+		for(b = 0; b < baris; b++)
+		{
+		 	for(j = 0; j < baris; j++)
+			{
+	        	printf("%d \t",Hasil[b][j]);
+	      	}
+			printf("\n");
+	    }
 	}
 	else
 	{

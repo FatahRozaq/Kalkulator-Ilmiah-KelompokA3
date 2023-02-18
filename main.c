@@ -10,43 +10,39 @@
 
 int main()
 {
-	float penjumlahan, pengurangan, pembagian, perkalian;
+	float penjumlahan, pengurangan, pembagian, perkalian, perpangkatan;
 	int modulus, pilih;
+	
 	
 	printf("================================ SCIENTIFIC CALCULATOR ===============================");
 	printf("\n \n");
-	printf("================================ 1. Penjumlahan        ==============================\n");
-	printf("================================ 2. Pengurangan        ==============================\n");
-	printf("================================ 3. Pembagian          ==============================\n");
-	printf("================================ 4. Perkalian          ==============================\n");
-	printf("================================ 5. Modulus            ==============================\n");
-	printf("Masukkan pilihan menu yang anda pilih :");
-	scanf("%d", &pilih);
+	printf("================================ 1. Kalkulator Standar       ==============================\n");
+	printf("================================ 2. Kalkulator Scientific    ==============================\n");
+	printf("================================ 3. Tata Cara Penggunaan     ==============================\n");
+	printf("================================ 4. Credit		             ==============================\n");
+	printf("================================ 0. Keluar			         ==============================\n");
+	PilihMenu(&pilih);
+	getchar();
 	switch (pilih)
 	{
 		case 1:
-			penjumlahan = Penjumlahan ();
-			TampilHasilFloat (penjumlahan, "Penjumlahan");
+			CalStd();
 			break;
 		
 		case 2:
-			pengurangan = Pengurangan ();
-			TampilHasilFloat (pengurangan, "Pengurangan");
+			CalStfc();
 			break;
 		
 		case 3:
-			pembagian = Bagi();
-			TampilHasilFloat (pembagian, "Pembagian");
+			TataCara();
 			break;
 			
 		case 4:
-			perkalian = Perkalian ();
-			TampilHasilFloat (perkalian, "Perkalian");
+			Credit();
 			break;
 			
 		case 5:
-			modulus = Modulus();
-			TampilHasilInt (modulus, "Modulus");
+			exit(0);
 			break;
 	}
 	
