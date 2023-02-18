@@ -338,7 +338,7 @@ void InputDataModulus(int *bilMod1, int *bilMod2, char *kalimat){
 	scanf("%d", *&bilMod1);
 	
 	printf("%s", kalimat);
-	scanf("%d", &bilMod2);
+	scanf("%d", *&bilMod2);
 }	
 		
 	
