@@ -116,7 +116,7 @@ void CalStfc()
 			faktorial();
 			break;
 		case 13:
-			convertdaya();
+			CalProg();
 			break;
 		case 14:
 			convertdaya();

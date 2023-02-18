@@ -40,6 +40,7 @@ int faktorial(){
 //operasi turunan
 int turunan(){
 	int pilih;
+	int b;
 	
 	printf("Masukan banyak variabel X = ");
 	scanf("%d", &pilih);
@@ -47,14 +48,14 @@ int turunan(){
 	int n[pilih], pangkat[pilih];
 	
 	printf("Y = ");
-	for(int b=0; b<pilih; b++){
+	for(b=0; b<pilih; b++){
 		printf("n.X^p ");
 		if((pilih-b)!=1)
 		{
 		printf("+ ");}
 	}
 	
-	for(int b=0; b<pilih; b++){
+	for(b=0; b<pilih; b++){
 		printf("\nMasukan nilai n ke-%d =",b+1);
 		scanf("%d",&n[b]);
 		printf("Masukan nilai p ke-%d =",b+1);
@@ -62,20 +63,20 @@ int turunan(){
 	}
 	
 	printf("nY  = ");
-	for(int b=0; b<pilih; b++){
+	for(b=0; b<pilih; b++){
 		printf ("%d x^ %d", n[b], pangkat[b]);
 		if((pilih-b)!=1)
 		{
 		printf("+ ");}
 	}
 	
-	for(int b=0; b<pilih; b++){
+	for(b=0; b<pilih; b++){
 		n[b] = n[b] * pangkat[b];
 		pangkat[b] = pangkat[b] - 1;
 	}
 	
 	printf("\nnY' = ");
-	for(int b=0; b<pilih; b++){
+	for(b=0; b<pilih; b++){
 		printf("%d X^ %d", n[b], pangkat[b]);
 		if((pilih-b)!=1)
 		{

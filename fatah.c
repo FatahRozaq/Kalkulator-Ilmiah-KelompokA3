@@ -212,6 +212,7 @@ float hasilGeometri(float sukuPertama2, float rasio2, int jumlahElemen2, int i){
 void statistika(){ // panggil modul ini ke main
 	int ukuran, modus;
     float median, mean;
+    int i,j;
 
     printf("Masukan jumlah elemen data : ");
     scanf("%d", &ukuran);
@@ -219,14 +220,14 @@ void statistika(){ // panggil modul ini ke main
     ukuran --;
     int array[ukuran];
 
-    for (int i = 0; i <= ukuran; i ++) {
+    for (i = 0; i <= ukuran; i ++) {
         printf("Masukan Elemen[%d]: ", i+1);
         scanf("%d", &array[i]);
     }
 
     printf("\n\nData yang anda masukan \n");
 	printf("=============================================\n");
-    for (int j = 0; j <= ukuran; j ++) {
+    for (j = 0; j <= ukuran; j ++) {
         printf(" %d ", array[j]);
     }
     printf("\n=============================================\n");
@@ -266,13 +267,14 @@ int array_modus(int *array, int ukuran) {
     int elemen;
     int hitung;
     int max_hitung = 0;
+    int i,j;
 
-    for (int i = 0; i <= ukuran; i ++) {
+    for (i = 0; i <= ukuran; i ++) {
 
         hitung = 0;
         elemen = array[i];
 
-        for (int j = 0; j <= ukuran; j ++) {
+        for (j = 0; j <= ukuran; j ++) {
 
             if (array[j] == elemen) {
 
@@ -291,10 +293,11 @@ int array_modus(int *array, int ukuran) {
 
 
 void array_sort(int *array, int ukuran) {
+	int i,j,aux3;
 
-    for (int i = 0; i <= ukuran; i ++) {
+    for (i = 0; i <= ukuran; i ++) {
 
-        for (int j = 0; j <= ukuran; j ++) {
+        for (j = 0; j <= ukuran; j ++) {
 
             if (array[j] > array[i]) {
 
@@ -305,7 +308,7 @@ void array_sort(int *array, int ukuran) {
         }
     }
 
-    for (int aux3 = 0; aux3 <= ukuran; aux3 ++) {
+    for (aux3 = 0; aux3 <= ukuran; aux3 ++) {
 
         printf(" %d ", array[aux3]);
     }
@@ -338,8 +341,9 @@ float array_mean(int *array, float ukuran) {
 
     float total = 0;
     float mean;
+    int i;
 
-    for (int i = 0; i <= ukuran; i ++) {
+    for (i = 0; i <= ukuran; i ++) {
 
         total = total + array[i];
     }

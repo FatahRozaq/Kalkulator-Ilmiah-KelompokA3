@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "Nisrina.h"
 #include "Aurora.h"
-#include "calcprog.h"
 #include "fatah.h"
 #include "jojo.h"
 #include "gavrila.h"
@@ -19,9 +18,8 @@ int main()
 	printf("\n \n");
 	printf("================================ 1. Kalkulator Standar       ==============================\n");
 	printf("================================ 2. Kalkulator Scientific    ==============================\n");
-	printf("================================ 3. Kalkulator Programmer    ==============================\n");
-	printf("================================ 4. Tata Cara Penggunaan	 ==============================\n");
-	printf("================================ 5. Credit		             ==============================\n");	
+	printf("================================ 3. Tata Cara Penggunaan	 ==============================\n");
+	printf("================================ 4. Credit		             ==============================\n");	
 	printf("================================ 0. Keluar			         ==============================\n");
 	PilihMenu(&pilih);
 	getchar();
@@ -34,16 +32,12 @@ int main()
 		case 2:
 			CalStfc();
 			break;
-		
-		case 3:
-			CalProg();
-			break;
 			
-		case 4:
+		case 3:
 			TataCara();
 			break;
 			
-		case 5:
+		case 4:
 			Credit();
 			
 		default:

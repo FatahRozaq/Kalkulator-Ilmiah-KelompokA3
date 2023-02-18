@@ -2,8 +2,39 @@
 
 #ifndef Aurora_H
 #define Aurora_H
+#define MAX 100
 
-float Bagi();
+#include <stdio.h>
+#include <math.h>
+
+void CalProg();
+
+typedef struct {
+	char tanggal[20];
+	char waktu[12];
+	
+	char desimal[MAX];
+	char biner[MAX];
+	char okta[MAX];
+	char hexa[MAX];
+	char convert;
+}Histori;
+
+void Desimal();
+void DesBin(int des, char* hist);
+void DesOkt(int des, char* hist);
+void DesHex(int dec, char* hist);
+
+void Biner();
+int BinDes(char* hist);
+
+void Okta();
+int OktDes(char* hist);
+
+void Hexa();
+int HexDes(char* hist);
+
+float Bagi(float bil1, float bil2);
 
 // Divider
 void header();
