@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+#include <string.h>
 #include "Nisrina.h"
 #include "Aurora.h"
 #include "fatah.h"
@@ -96,7 +98,7 @@ void CalStfc()
 			CaraCalStd();
 			break;
 		case 7:
-			CaraCalStd();
+			Trigonometri();
 			break;
 		case 8:
 			panggilLogaritma();
@@ -129,10 +131,10 @@ void CalStfc()
 			CaraCalStd();
 			break;
 		case 18:
-			CaraCalStd();
+			convertBerat();
 			break;
 		case 19:
-			CaraCalStd();
+			//convertWaktu();
 			break;
 	}
 }
@@ -160,9 +162,103 @@ void MenuCalStfc()
  	printf("| 16. Konvert Suhu                 								                           |\n");
  	printf("| 17. Konvert Panjang                 							                           |\n");
  	printf("| 18. Konvert Berat                 							                           |\n");
+ 	printf("| 19. Konvert Waktu                 							                           |\n");
  	printf("<==========================================================================================>\n");
 	printf("|                                                                                          |\n");
 	printf("|==========================================================================================|\n");
+}
+
+void Trigonometri()
+{
+	char *input;
+	float hasil;
+	int derajat;
+	float value;
+	
+	input = (char *)malloc( 10* sizeof(char));
+	
+	printf("Masukkan Inputan (exp : sin( 30)) :");
+	scanf(" %s", input);
+	hasil = deteksiTrigono(input);
+	printf("%f", hasil);
+}
+
+float deteksiTrigono(char *input)
+{
+	float value;
+	
+	if(strstr(input,"sin"))
+	{
+		sscanf(input,"sin(%f)",&value);
+		return TriSin(value);
+	}
+	else if(strstr(input,"cos"))
+	{
+		sscanf(input,"cos(%f)",&value);
+		return TriCos(value);
+	}
+	else if(strstr(input,"tan"))
+	{
+		sscanf(input,"tan(%f)",&value);
+		return TriTan(value);
+	}
+	else if(strstr(input,"cot"))
+	{
+		sscanf(input,"cot(%f)",&value);
+		return TriCot(value);
+	}
+	else if(strstr(input,"sec"))
+	{
+		sscanf(input,"sec(%f)",&value);
+		return TriSec(value);
+	}
+	else if(strstr(input,"csc"))
+	{
+		sscanf(input,"csc(%f)",&value);
+		return TriCsc(value);
+	}
+}
+
+float TriSin(float value)
+{
+	
+	return sin(value);
+}
+
+float TriCos(float value)
+{
+	
+	return cos(value);
+}
+float TriTan(float value)
+{
+	
+	return tan(value);
+}
+float TriCot(float value)
+{
+	float cos, sin;
+	
+	cos = TriCos(value);
+	sin = TriSin(value);
+	
+	return (cos/sin);
+}
+float TriSec(float value)
+{
+	float cos;
+	
+	cos = TriCos(value);
+	
+	return (1/cos);
+}
+float TriCsc(float value)
+{
+	float sin;
+	
+	sin = TriSin(value);
+	
+	return (1/sin);
 }
 
 void Matriks()
@@ -346,6 +442,116 @@ void InputBilOrdo(int *bil, char kalimat[50])
 	printf("%s", kalimat);
 	scanf("%d", &*bil);
 }
+
+void convertBerat()
+{
+	char *input;
+	char *konvert;
+	int berat;
+	int levelAsal, levelTujuan;
+	float *hasil;
+	
+	hasil = (float *)malloc(sizeof(float) *10);
+	input = (char *)malloc( 10* sizeof(char));
+	konvert = (char *)malloc( 10* sizeof(char));
+	
+	menuConvertBerat();
+	printf("Masukkan berat dan satuan yang akan di konvert (exp : 23 Kg)");
+	scanf(" %[^\n]", input);
+	printf("Masukkan satuan tujuan (exp : G)");
+	scanf(" %[^\n]", konvert); // sama kaya &*input
+	sscanf(input,"%d ",&berat);
+	levelAsal = deteksiLevel(input);
+	levelTujuan = deteksiLevel(konvert);
+	printf("%d", levelAsal);
+	printf("%d", levelTujuan);
+	printf("%d", berat);
+	hasil = HitungConvertBerat(levelAsal, levelTujuan, berat);
+	if((levelAsal - levelTujuan) > 4)
+	{
+		printf("hasil konvert : %f %s", *hasil, konvert);
+	}
+	else
+	{
+		printf("hasil konvert : %g %s", *hasil, konvert);
+	}
+}
+
+void menuConvertBerat()
+{
+	system("cls");
+	printf("|==========================================================================================|\n");
+	printf("|                                     SATUAN BERAT                                         |\n");
+	printf("<==========================================================================================>\n");
+	printf("|                                                                                          |\n");
+ 	printf("| 1. Kg										   	   5.Dg									   |\n");
+	printf("| 2. Hg										   	   6.Cg									   |\n");
+	printf("| 3. Dag									   	   7.Mg									   |\n");
+	printf("| 4. g																			   	   	   |\n");
+ 	printf("<==========================================================================================>\n");
+	printf("|                                                                                          |\n");
+	printf("|==========================================================================================|\n");
+}
+
+int deteksiLevel(char *input)
+{
+	if(strstr(input,"Kg"))
+	{
+		return 1;
+	}
+	else if(strstr(input,"Hg"))
+	{
+		return 2;
+	}
+	else if(strstr(input,"Dag"))
+	{
+		return 3;
+	}
+	else if(strstr(input,"G"))
+	{
+		return 4;
+	}
+	else if(strstr(input,"Dg"))
+	{
+		return 5;
+	}
+	else if(strstr(input,"Cg"))
+	{
+		return 6;
+	}
+	else if(strstr(input,"Mg"))
+	{
+		return 7;
+	}
+}
+
+float *HitungConvertBerat(int levelAsal, int levelTujuan, int berat)
+{
+	float *hasil;
+	
+	hasil = (float *)malloc(sizeof(float) *10);
+	
+	*hasil = berat;
+	if(levelAsal > levelTujuan)
+	{
+		while(levelAsal > levelTujuan)
+		{
+			*hasil = *hasil / 10;
+			levelAsal--;
+		}
+	}
+	else if(levelAsal < levelTujuan)
+	{
+		while(levelAsal < levelTujuan)
+		{
+			*hasil = *hasil *10;
+			levelAsal++;
+		}	
+	}
+	
+	return hasil;
+}
+
 void TataCara()
 {
 	int pilih;
