@@ -13,20 +13,27 @@ int main()
 	float penjumlahan, pengurangan, pembagian, perkalian, perpangkatan;
 	int modulus, pilih;
 	
+	Fullmode();
+	header();
+	BarmenuUtama();
 	
-	printf("================================ SCIENTIFIC CALCULATOR ===============================");
+	
+//	printf("\n\n\t\t\t\t\t\t\t======================= SCIENTIFIC CALCULATOR =========================");
 	printf("\n \n");
-	printf("================================ 1. Kalkulator Standar       ==============================\n");
-	printf("================================ 2. Kalkulator Scientific    ==============================\n");
-	printf("================================ 3. Tata Cara Penggunaan	 ==============================\n");
-	printf("================================ 4. Credit		             ==============================\n");	
-	printf("================================ 0. Keluar			         ==============================\n");
+	printf("\t\t\t\t\t\t\t\t [1]. Kalkulator Standar    \n\n");
+	printf("\t\t\t\t\t\t\t\t [2]. Kalkulator Scientific \n\n");
+	printf("\t\t\t\t\t\t\t\t [3]. Tata Cara Penggunaan  \n\n");
+	printf("\t\t\t\t\t\t\t\t [4]. Credit   		   \n\n");	
+	printf("\t\t\t\t\t\t\t\t [0]. Keluar                \n");
+	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+
 	PilihMenu(&pilih);
 	getchar();
 	switch (pilih)
 	{
 		case 1:
-			CalStd();
+			//CalStd();
+			CalProg();
 			break;
 		
 		case 2:
