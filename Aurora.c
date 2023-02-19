@@ -857,7 +857,7 @@ int HexDes(char* hist)
 	
 }
 
-int konvertvolume() {
+void konvertvolume() {
 	
 	int menu;
     double value, result;
@@ -883,52 +883,58 @@ int konvertvolume() {
     scanf("%d", &menu);
     printf("Masukkan nilai yang akan dikonversi: ");
     scanf("%lf", &value);
+    
+    result = hitungVolume(value, menu);
+    if (result == 0)
+    {
+    	printf("Pilihan tidak valid!\n");
+	}
+	else
+	{
+		printf("%.4lf cm^3 = %.4lf L\n", value, result);
+	}
 
-    switch(menu) {
+}
+
+double hitungVolume(double value, int menu)
+{
+	double result;
+	
+	switch(menu) {
         case 1: // mL
             result = value / 1000.0;
-            printf("%.4lf mL = %.4lf L\n", value, result);
             break;
         case 2: // L
             result = value * 1000.0;
-            printf("%.4lf L = %.4lf mL\n", value, result);
             break;
         case 3: // in^3
             result = value / 61.024;
-            printf("%.4lf kubik inchi = %.4lf L\n", value, result);
             break;
         case 4: // m^3
             result = value * 1000.0;
-            printf("%.4lf m^3 = %.4lf L\n", value, result);
             break;
         case 5: // km^3
             result = value * 1000000000000.0;
-            printf("%.4lf km^3 = %.4lf L\n", value, result);
             break;
         case 6: // hm^3
             result = value * 1000000000.0;
-            printf("%.4lf hm^3 = %.4lf L\n", value, result);
             break;
         case 7: // dam^3
             result = value * 1000.0;
-            printf("%.4lf dam^3 = %.4lf L\n", value, result);
             break;
         case 8: // mm^3
             result = value / 1000000.0;
-            printf("%.4lf mm^3 = %.4lf L\n", value, result);
             break;
         case 9: // dm^3
             result = value;
-            printf("%.4lf dm^3 = %.4lf L\n", value, result);
             break;
         case 10: // cm^3
             result = value / 1000.0;
-            printf("%.4lf cm^3 = %.4lf L\n", value, result);
             break;
         default:
-            printf("Pilihan tidak valid!\n");
+        	result = 0;
             break;
     }
-
-    return 0;
+	
+	return result;
 }

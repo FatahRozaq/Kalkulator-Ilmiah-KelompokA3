@@ -13,7 +13,7 @@ void Faktorial();
 
 int hitungFaktorial(int angka);
 
-int turunan();
+void turunan();
 
 void konvertDaya();
 

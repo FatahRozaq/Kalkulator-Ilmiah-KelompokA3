@@ -54,10 +54,11 @@ int hitungFaktorial(int angka){
 
 //operasi turunan
 
-int turunan(){
+void turunan(){
 	int pilih;
 	int b;
 	
+	system("cls");
 	printf("Masukan banyak variabel X = ");
 	scanf("%d", &pilih);
 	
@@ -99,7 +100,6 @@ int turunan(){
 		printf("+ ");}
 	}
 
-    return 0;
 }
 
 //operasi convert daya

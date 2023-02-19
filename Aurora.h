@@ -40,7 +40,9 @@ float Pembagian(float bil1, float bil2);
 void eksponen();
 void deretAritmatika();
 
-int konvertvolume();
+void konvertvolume();
+
+double hitungVolume(double value, int menu);
 
 // Divider
 void header();

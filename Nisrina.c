@@ -189,6 +189,8 @@ char *infixToPostfix(char *infix,char *postfix)
     char oneSpace[] = " ", tempInfix[256];
     int  ptr = 0;
     char *temp;
+    
+    
     Stack *s = inisialisasi();
 
     while(infix[ptr] != '\0' )
@@ -416,7 +418,7 @@ void CalStfc()
 			konvertWaktu();
 			break;
 		case 20:
-			//konvertVolume();
+			konvertvolume();
 			break;
 	}
 }
@@ -445,6 +447,7 @@ void MenuCalStfc()
  	printf("\t\t\t\t\t\t\t\t| 17. Konvert Panjang				|\n");
  	printf("\t\t\t\t\t\t\t\t| 18. Konvert Berat				|\n");
  	printf("\t\t\t\t\t\t\t\t| 19. Konvert Waktu				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 20. Konvert Volume				|\n");
  	printf("\t\t\t\t\t\t\t\t<===============================================>\n");
 	printf("\t\t\t\t\t\t\t\t|                                               |\n");
 	printf("\t\t\t\t\t\t\t\t|================================================>\n");
