@@ -32,8 +32,8 @@ int main()
 	switch (pilih)
 	{
 		case 1:
-			//CalStd();
-			CalProg();
+			CalStd();
+			
 			break;
 		
 		case 2:
