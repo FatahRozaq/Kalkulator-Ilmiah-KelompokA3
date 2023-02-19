@@ -5,7 +5,8 @@
 //operasi pengurangan
 float Pengurangan(){
 	float pengurangan, bil1, bil2;
-	InputBilFloat(&bil1,&bil2);
+	InputBilFloat(&bil1);
+	InputBilFloat(&bil2);
 	
 	pengurangan = (bil1-bil2);
 	return pengurangan;
