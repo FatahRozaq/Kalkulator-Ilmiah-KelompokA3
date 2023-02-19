@@ -44,7 +44,7 @@ void InputBilFloat(float *bil)
 
 void PilihMenu(int *pilih)
 {
-	printf("\nMasukkan menu yang anda pilih :");
+	printf("\n\n\t\t\t\t\t\t\tPilih Menu :");
 	scanf("%d", &*pilih);
 }
 
@@ -74,7 +74,8 @@ void CalStfc()
 {
 	int pilih;
 	
-	system("cls");
+	header();
+	//BarMenu();
 	MenuCalStfc();
 	PilihMenu(&pilih);
 	switch(pilih)
@@ -92,7 +93,7 @@ void CalStfc()
 			deretGeometri();
 			break;
 		case 5:
-			CaraCalStd();
+			deretAritmatika();
 			break;
 		case 6:
 			eksponen();
@@ -141,31 +142,31 @@ void CalStfc()
 
 void MenuCalStfc()
 {
-	printf("|==========================================================================================|\n");
-	printf("|                              MENU KALKULATOR SCIENTIFIC                                  |\n");
-	printf("<==========================================================================================>\n");
- 	printf("| 1.  Integral                 									                           |\n");
- 	printf("| 2.  Matriks                 									                           |\n");
- 	printf("| 3.  Statistika                 								                           |\n");
- 	printf("| 4.  Deret Geometri                 							                           |\n");
- 	printf("| 5.  Deret Aritmatika                 							                           |\n");
- 	printf("| 6.  Eksponen                 									                           |\n");
- 	printf("| 7.  Trigonometri                 								                           |\n");
- 	printf("| 8.  Logaritma                 								                           |\n");
- 	printf("| 9.  Logaritma Natural                 						                           |\n");
- 	printf("| 10. Turunan                 									                           |\n");
- 	printf("| 11. Modulus                 									                           |\n");
- 	printf("| 12. Faktorial                 									                       |\n");
- 	printf("| 13. Konvert Sistem Bilangan                 					                           |\n");
- 	printf("| 14. Konvert Daya                 								                           |\n");
- 	printf("| 15. Konvert Luas                 								                           |\n");
- 	printf("| 16. Konvert Suhu                 								                           |\n");
- 	printf("| 17. Konvert Panjang                 							                           |\n");
- 	printf("| 18. Konvert Berat                 							                           |\n");
- 	printf("| 19. Konvert Waktu                 							                           |\n");
- 	printf("<==========================================================================================>\n");
-	printf("|                                                                                          |\n");
-	printf("|==========================================================================================|\n");
+ 	printf("\n\n\t\t\t\t\t\t\t\t<===============================================>\n");
+	printf("\t\t\t\t\t\t\t\t|        MENU \tKALKULATOR \tSCIENTIFIC     |\n");
+ 	printf("\t\t\t\t\t\t\t\t<===============================================>\n");
+ 	printf("\t\t\t\t\t\t\t\t| 1.  Integral					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 2.  Matriks					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 3.  Statistika				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 4.  Deret Geometri				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 5.  Deret Aritmatika				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 6.  Eksponen					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 7.  Trigonometri				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 8.  Logaritma					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 9.  Logaritma Natural				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 10. Turunan					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 11. Modulus					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 12. Faktorial					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 13. Konvert Sistem Bilangan			|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 14. Konvert Daya				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 15. Konvert Luas				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 16. Konvert Suhu				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 17. Konvert Panjang				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 18. Konvert Berat				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 19. Konvert Waktu				|\n");
+ 	printf("\t\t\t\t\t\t\t\t<===============================================>\n");
+	printf("\t\t\t\t\t\t\t\t|                                               |\n");
+	printf("\t\t\t\t\t\t\t\t|================================================>\n");
 }
 
 void konvertWaktu()
@@ -659,23 +660,24 @@ void CaraCalStd()
 void Credit()
 {
 	system("cls");
-	printf("|============================================================|\n");
-	printf("|                   CREDIT KALKULATOR KEL 3                  |\n");
-	printf("<============================================================>\n");
-	printf("|                                                            |\n");
-	printf("|                          AUTHOR                            |\n");
-    printf("|             Athalie Aurora Puspanegara (221511003)         |\n");
-	printf("|             Gavrila Hana Simanjuntak   (221511011)         |\n");
-	printf("|             Jonanda Pantas Aghita      (221511015)         |\n");
-	printf("|             Muhamad Fatah Rozaq        (221511018)         |\n");
-	printf("|             Nisrina Wafa Zakiya        (221511025)         |\n");
-	printf("|                                                            |\n");
-	printf("|          JURUSAN TEKNIK KOMPUTER DAN INFORMATIKA           |\n");
- 	printf("|                PRODI D-III TEKNIK INFORMATIKA              |\n");
-	printf("|                  POLITEKNIK NEGERI BANDUNG                 |\n");
-	printf("|                           2023                             |\n");
- 	printf("<============================================================>\n");
-	printf("|          Copyright(c)2023 Kel.3 rights reserved.           |\n");
-	printf("|============================================================|\n");
+	printf("\n\n\n\n\n\t\t\t\t\t\t\t|============================================================|\n");
+	printf("\t\t\t\t\t\t\t|                   CREDIT KALKULATOR KEL 3                  |\n");
+	printf("\t\t\t\t\t\t\t<============================================================>\n");
+	printf("\t\t\t\t\t\t\t|                                                            |\n");
+	printf("\t\t\t\t\t\t\t|                          AUTHOR                            |\n");
+    printf("\t\t\t\t\t\t\t|             Athalie Aurora Puspanegara (221511003)         |\n");
+	printf("\t\t\t\t\t\t\t|             Gavrila Hana Simanjuntak   (221511011)         |\n");
+	printf("\t\t\t\t\t\t\t|             Jonanda Pantas Aghita      (221511015)         |\n");
+	printf("\t\t\t\t\t\t\t|             Muhamad Fatah Rozaq        (221511018)         |\n");
+	printf("\t\t\t\t\t\t\t|             Nisrina Wafa Zakiya        (221511025)         |\n");
+	printf("\t\t\t\t\t\t\t|                                                            |\n");
+	printf("\t\t\t\t\t\t\t|          JURUSAN TEKNIK KOMPUTER DAN INFORMATIKA           |\n");
+ 	printf("\t\t\t\t\t\t\t|                PRODI D-III TEKNIK INFORMATIKA              |\n");
+	printf("\t\t\t\t\t\t\t|                  POLITEKNIK NEGERI BANDUNG                 |\n");
+	printf("\t\t\t\t\t\t\t|                           2023                             |\n");
+ 	printf("\t\t\t\t\t\t\t<============================================================>\n");
+	printf("\t\t\t\t\t\t\t|          Copyright(c)2023 Kel.3 rights reserved.           |\n");
+	printf("\t\t\t\t\t\t\t|============================================================|\n");
+	BacktoMain();
 }
 

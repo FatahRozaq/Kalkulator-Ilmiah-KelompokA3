@@ -47,6 +47,12 @@ void headcalprog();
 void BarDes();
 void BarBin();
 void BarOkta();
+void BarHexa();
+
+void BarMenu();
+void BarmenuUtama();
+
+void BacktoMain();
 
 void athalie();
 void Fullmode();
