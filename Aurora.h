@@ -43,7 +43,11 @@ void deretAritmatika();
 // Divider
 void header();
 void headcalprog();
+
 void BarDes();
+void BarBin();
+void BarOkta();
+
 void athalie();
 void Fullmode();
 
