@@ -5,7 +5,7 @@
 #include <math.h>
 
 // Modul Perkalian
-float Perkalian ();
+float Perkalian (float bil1, float bil2);
 
 // Modul Konvert Panjang
 void pilihanSatuan(); // panggil modul ini ke main

@@ -3,10 +3,20 @@
 
 //spesifikasi
 
-float Pengurangan();
-int logaritmanatural();
-int faktorial();
+float Pengurangan(float bil1, float bil2);
+
+void LogNatural();
+
+double logaritmanatural(double x);
+
+void Faktorial();
+
+int hitungFaktorial(int angka);
+
 int turunan();
-float convertdaya();
+
+void konvertDaya();
+
+double Hitungdaya(int satuan1, int satuan2, double daya);
 
 #endif

@@ -31,7 +31,7 @@ Author			: Athalie Aurora Puspanegara
 /* ======= End of Header File ====== */
 
 
-float Bagi(float bil1, float bil2){
+float Pembagian(float bil1, float bil2){
 	float hasil;
 	
 	hasil = bil1/bil2;
@@ -227,10 +227,12 @@ void BacktoMain()
 	Sleep(1500);
 	printf("\n\n\t\t\t\t\t\t \tBack to main menu? \t\t\t (Y/N)");
 	
-	scanf("%s", &back);
-	if (back=='y'|back=='Y');
-	system("CLS");
-	main();
+	back =getche();
+	if (back=='y'|back=='Y')
+	{
+		system("CLS");
+		main();
+	}
 }
 
 

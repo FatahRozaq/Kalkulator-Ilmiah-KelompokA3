@@ -11,9 +11,21 @@
 #include "jojo.h"
 #include "gavrila.h"
 
-float Penjumlahan ();
+typedef union
+{
+    float fData;
+    char  cData;
+} Item;
 
-float Pangkat();
+typedef struct
+{
+    Item item[256];
+    int top;
+} Stack;
+
+float Penjumlahan (float bil1, float bil2);
+
+float Pangkat(float bil1, float bil2);
 
 void InputBilFloat(float *bil);
 
@@ -26,6 +38,38 @@ void TampilHasilFloat(float hasil, char nama[]);
 void TampilHasilInt(int hasil, char nama[]);
 
 void CalStd();
+
+Stack* inisialisasi();
+
+int isEmpty(Stack *s);
+
+Item top(Stack *s);
+
+Item pop(Stack *s);
+
+void push(Stack *s, float val);
+
+void pushChar(Stack *s, char c);
+
+int isFull(Stack *s);
+
+int prioritas(char c);
+
+int isOperator(char c);
+
+int negatifInteger(char *infix,char c,int ptr);
+
+int isAfter(Stack *s);
+
+char * hapusSpasi(char * infix);
+
+char *infixToPostfix(char *infix,char *postfix);
+
+void gantiNewLineJadiSpasi(char *s);
+
+int isNumber(char *token);
+
+float hitungPostfix(char postFix[]);
 
 void CalStfc();
 

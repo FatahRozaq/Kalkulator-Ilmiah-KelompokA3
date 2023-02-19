@@ -33,7 +33,6 @@ int main()
 	{
 		case 1:
 			CalStd();
-			
 			break;
 		
 		case 2:

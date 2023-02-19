@@ -3,42 +3,57 @@
 #include "Nisrina.h"
 
 //operasi pengurangan
-float Pengurangan(){
-	float pengurangan, bil1, bil2;
-	InputBilFloat(&bil1);
-	InputBilFloat(&bil2);
+float Pengurangan(float bil1, float bil2){
+	float hasil;
 	
-	pengurangan = (bil1-bil2);
-	return pengurangan;
+	hasil = (bil1-bil2);
+	return hasil;
 }
 
 //operasi logaritma natural
-int logaritmanatural(){
+
+void LogNatural()
+{
 	double x, result;
 	
 	printf("Masukkan sebuah bilangan: ");
 	scanf("%lf", &x);
-	result = log(x);
-	
+	result = logaritmanatural(x);
 	printf("Logaritma natural dari %lf = %lf", x, result);
-	return 0;
+}
+
+double logaritmanatural(double x){
+	
+	return log(x);
 }
 
 //operasi faktorial
-int faktorial(){
+
+void Faktorial()
+{
 	int angka, hasil, i;
+	
 	printf("Input angka: ");
 	scanf("%d", &angka);
+	hasil = hitungFaktorial(angka);
+	printf("faktorial dari %d adalah %d", angka, hasil);
+}
+
+int hitungFaktorial(int angka){
+	
+	int hasil;
+	int i;
 	
 	hasil = 1;
 	for(i = 1; i<=angka; i++){
 		hasil = hasil * i;
 	}
-	printf("faktorial dari %d adalah %d", angka, hasil);
-	return 0;
+	
+	return hasil;
 }
 
 //operasi turunan
+
 int turunan(){
 	int pilih;
 	int b;
@@ -88,8 +103,10 @@ int turunan(){
 }
 
 //operasi convert daya
-float convertdaya(){
-   int satuan1, satuan2;
+
+void konvertDaya()
+{
+	int satuan1, satuan2;
    double daya;
    double hasilconvert;
    
@@ -121,6 +138,14 @@ float convertdaya(){
    	
    printf("\nMasukkan daya dalam satuan %d: ", satuan1);
    scanf("%lf", &daya);
+	
+	hasilconvert =Hitungdaya(satuan1, satuan2, daya); 
+	printf("Hasil convert adalah %f", hasilconvert);
+}
+
+double Hitungdaya(int satuan1, int satuan2, double daya){
+   
+   double hasilconvert;
  
 	switch (satuan1) {
         case 1:
@@ -255,7 +280,7 @@ float convertdaya(){
         		}
         		break;
         	}
-        printf("Hasil convert adalah %f", hasilconvert);
-        return 0;
+        
+        return hasilconvert;
     }
     

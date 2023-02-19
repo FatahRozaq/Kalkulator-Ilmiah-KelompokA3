@@ -34,7 +34,7 @@ int OktDes(char* hist);
 void Hexa();
 int HexDes(char* hist);
 
-float Bagi(float bil1, float bil2);
+float Pembagian(float bil1, float bil2);
 
 
 void eksponen();

@@ -6,14 +6,12 @@
 //						Modul
 //					  Perkalian
 //========================================================
-float Perkalian (){
-	float total, bil1, bil2;
+float Perkalian (float bil1, float bil2){
+	float hasil; 
 	
-	InputBilFloat(&bil1);
-	InputBilFloat(&bil2);
-	total = bil1 * bil2;
+	hasil = bil1 * bil2;
 	
-	return total;
+	return hasil;
 }
 
 //========================================================
