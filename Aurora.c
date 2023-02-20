@@ -38,7 +38,7 @@ float Pembagian(float bil1, float bil2){
 	return hasil;
 } 
 
-void eksponen() {
+void pngt() {
     double bil, hasil;
     int ap;
     
@@ -61,6 +61,26 @@ void eksponen() {
     
     // Menampilkan hasil akar pangkat tertentu
     printf("Akar pangkat %d dari %.2f adalah %.2f\n", ap, bil, hasil);
+}
+
+int eksponen()
+{
+
+
+    double base, exponent, result;
+
+    printf("Masukkan basis: ");
+    scanf("%lf", &base);
+
+    printf("Masukkan pangkat: ");
+    scanf("%lf", &exponent);
+
+    result = pow(base, exponent);
+
+    printf("Hasil %lf pangkat %lf adalah %lf", base, exponent, result);
+
+    return 0;
+
 }
 
 
