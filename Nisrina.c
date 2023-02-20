@@ -61,22 +61,38 @@ void CalStd()
 	char pilih;
 	float hasil;
 	
+	header();
+	//Barwal();
+	
     do
     {
     	char postfixExpr[256] = "";
         char*x;
-        
-        system("cls");
-    	printf("Masukkan inputan : ");
-        scanf(" %[^\n]", infixExpr);
+    	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+		//printf("\n\t=============================================================== \n");	
+  		//printf("\n\n\t\t\t\t\t\t\t\t\tPosfix : %s\n ",infixToPostfix(x, postfixExpr));
+  	    //hasil = hitungPostfix(postfixExpr);
+        //printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan: %g\n\n", hasil);	
+		printf("\t 														 \n");
+		printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+	    printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan : ");
+		scanf(" %[^\n]", infixExpr);	
+ 
         gantiNewLineJadiSpasi(infixExpr);
         x=hapusSpasi(infixExpr);
-        printf("Postfix : %s\n",infixToPostfix(x, postfixExpr));
-        hasil = hitungPostfix(postfixExpr);
-        printf("Hasil perhitungan: %g\n\n", hasil);
-        
-        printf("masukkan iputan lagi?");
+        header();
+    	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+		//printf("\n\t=============================================================== \n");	
+  		printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : %s\n ",infixToPostfix(x, postfixExpr));
+  	    hasil = hitungPostfix(postfixExpr);
+        printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);	
+		printf("\t 														 \n");
+		printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+	   
+        printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan lagi? (Y/N) ");
         pilih = getche();
+        system("CLS");
+        header();
         
 	}while(pilih == 'y' || pilih == 'Y');
 	BacktoMain();
