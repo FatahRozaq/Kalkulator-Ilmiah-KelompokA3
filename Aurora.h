@@ -36,8 +36,8 @@ int HexDes(char* hist);
 
 float Pembagian(float bil1, float bil2);
 
-void pngt();
-int eksponen();
+void akar();
+
 void deretAritmatika();
 
 void konvertvolume();

@@ -7,9 +7,10 @@ int Modulus(int bil1, int bil2);
 void panggilModulus();
 
 // Operasi Akar
-float Akar(float bil1);
 
 void panggilAkar();
+
+float Akar2(float bil1);
 
 // Operasi Logaritma
 float Logaritma(float bil1);

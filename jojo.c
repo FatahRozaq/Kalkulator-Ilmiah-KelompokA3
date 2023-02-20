@@ -13,7 +13,7 @@ void panggilAkar(){ // Panggil modul ini di main
 	float bil1, akar;
 	printf("Memasukkan angka: ");
 	scanf("%f",&bil1);
-	akar = Akar(bil1);
+	akar = Akar2(bil1);
 	printf("Hasil=%g\n", akar);
 }
 void konvertLuas(){ // Panggil modul ini di main
@@ -40,7 +40,7 @@ int Modulus(int bil1, int bil2)
 	return Hasil;
 }
 
-float Akar(float bil1){
+float Akar2(float bil1){
 	float Hasil;
 	
 	Hasil = sqrt(bil1);

@@ -317,7 +317,7 @@ float hitungPostfix(char postFix[])
         else if(isOperator(*token) && *token == '$')
         {
         	a = pop(stack).fData;
-        	hasil= Akar(a);
+        	hasil= Akar2(a);
             push(stack, hasil );
 		}
         // mengecek apakah operator, jika TRUE nilai 2 teratas akan di POP untuk dilakukan perhitungan
@@ -383,48 +383,45 @@ void CalStfc()
 			deretAritmatika();
 			break;
 		case 6:
-			eksponen();
-			break;
-		case 7:
 			Trigonometri();
 			break;
-		case 8:
+		case 7:
 			panggilLogaritma();
 			break;
-		case 9:
+		case 8:
 			LogNatural();
 			break;
-		case 10:
+		case 9:
 			turunan();
 			break;
-		case 11:
+		case 10:
 			panggilModulus();
 			break;
-		case 12:
+		case 11:
 			Faktorial();
 			break;
-		case 13:
+		case 12:
 			CalProg();
 			break;
-		case 14:
+		case 13:
 			konvertDaya();
 			break;
-		case 15:
+		case 14:
 			konvertLuas();
 			break;
-		case 16:
+		case 15:
 			konvertSuhu();
 			break;
-		case 17:
+		case 16:
 			konvertPanjang();
 			break;
-		case 18:
+		case 17:
 			konvertBerat();
 			break;
-		case 19:
+		case 18:
 			konvertWaktu();
 			break;
-		case 20:
+		case 19:
 			konvertvolume();
 			break;
 	}
@@ -440,21 +437,20 @@ void MenuCalStfc()
  	printf("\t\t\t\t\t\t\t\t| 3.  Statistika				|\n");
  	printf("\t\t\t\t\t\t\t\t| 4.  Deret Geometri				|\n");
  	printf("\t\t\t\t\t\t\t\t| 5.  Deret Aritmatika				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 6.  Eksponen					|\n");
- 	printf("\t\t\t\t\t\t\t\t| 7.  Trigonometri				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 8.  Logaritma					|\n");
- 	printf("\t\t\t\t\t\t\t\t| 9.  Logaritma Natural				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 10. Turunan					|\n");
- 	printf("\t\t\t\t\t\t\t\t| 11. Modulus					|\n");
- 	printf("\t\t\t\t\t\t\t\t| 12. Faktorial					|\n");
- 	printf("\t\t\t\t\t\t\t\t| 13. Konvert Sistem Bilangan			|\n");
- 	printf("\t\t\t\t\t\t\t\t| 14. Konvert Daya				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 15. Konvert Luas				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 16. Konvert Suhu				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 17. Konvert Panjang				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 18. Konvert Berat				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 19. Konvert Waktu				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 20. Konvert Volume				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 6.  Trigonometri				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 7.  Logaritma					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 8.  Logaritma Natural				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 9. Turunan					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 10. Modulus					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 11. Faktorial					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 12. Konvert Sistem Bilangan			|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 13. Konvert Daya				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 14. Konvert Luas				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 15. Konvert Suhu				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 16. Konvert Panjang				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 17. Konvert Berat				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 18. Konvert Waktu				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 19. Konvert Volume				|\n");
  	printf("\t\t\t\t\t\t\t\t<===============================================>\n");
 	printf("\t\t\t\t\t\t\t\t|                                               |\n");
 	printf("\t\t\t\t\t\t\t\t|================================================>\n");
