@@ -53,6 +53,8 @@ void BarBin();
 void BarOkta();
 void BarHexa();
 
+void Barwal();
+
 void BarMenu();
 void BarmenuUtama();
 
