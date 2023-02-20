@@ -42,10 +42,9 @@ int Modulus(int bil1, int bil2)
 
 float Akar(float bil1){
 	float Hasil;
-	printf("Memasukkan angka:");
-	scanf("%f",&bil1);
+	
 	Hasil = sqrt(bil1);
-	printf("Hasil=%g\n",Hasil);
+	
 	return Hasil;
 }
 

@@ -137,7 +137,7 @@ int prioritas(char c)
 {
     if (c=='+' || c=='-') return 1;
     else if (c=='*' || c=='/') return 2;
-    else if (c=='^') return 3 ;
+    else if (c=='^' || c=='$') return 3 ;
     return 0;
 }
 /*
@@ -145,7 +145,7 @@ int prioritas(char c)
 */
 int isOperator(char c)
 {
-    if( c=='(' || c=='+' || c=='-' || c=='/' || c=='*' || c=='^') return 1;
+    if( c=='(' || c=='+' || c=='-' || c=='/' || c=='*' || c=='^' || c=='$') return 1;
     else return 0;
 }
 /*
@@ -313,6 +313,13 @@ float hitungPostfix(char postFix[])
         {
             push(stack, atof(token));
         }
+        
+        else if(isOperator(*token) && *token == '$')
+        {
+        	a = pop(stack).fData;
+        	hasil= Akar(a);
+            push(stack, hasil );
+		}
         // mengecek apakah operator, jika TRUE nilai 2 teratas akan di POP untuk dilakukan perhitungan
         // hasilnya akan di PUSH kembali ke stack
         else if(isOperator(*token))
