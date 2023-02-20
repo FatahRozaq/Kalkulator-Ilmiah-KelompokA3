@@ -360,16 +360,16 @@ void integral(){ // panggil modul ini ke main
 	
 	float a, p, b, q, c, bawah, atas, hitungBawah, hitungAtas,hasil;
 	
-	printf("Format fungsi : ax^p + bx^q + c");
-	printf("\nMasukan angka A : ");
+	printf("\t\t\t\t\t\t\tFormat fungsi : ax^p + bx^q + c");
+	printf("\n\t\t\t\t\t\t\tMasukan angka A : ");
 	scanf("%f", &a);
-	printf("Masukan angka P : ");
+	printf("\t\t\t\t\t\t\tMasukan angka P : ");
 	scanf("%f", &p);
-	printf("Masukan angka B : ");
+	printf("\t\t\t\t\t\t\tMasukan angka B : ");
 	scanf("%f", &b);
-	printf("Masukan angka Q : ");
+	printf("\t\t\t\t\t\t\tMasukan angka Q : ");
 	scanf("%f", &q);
-	printf("Masukan angka C : ");
+	printf("\t\t\t\t\t\t\tMasukan angka C : ");
 	scanf("%f", &c);
 	
 	p = p+1;
@@ -378,9 +378,9 @@ void integral(){ // panggil modul ini ke main
 	if ( a == p && b == q ){
 		
 		if(c == 0){
-			printf("Hasil Integral : x^%g + x^%g ", p, q);
+			printf("\t\t\t\t\t\t\tHasil Integral : x^%g + x^%g ", p, q);
 		}else{
-			printf("Hasil Integral : x^%g + x^%g + %gx", p, q, c);
+			printf("\t\t\t\t\t\t\tHasil Integral : x^%g + x^%g + %gx", p, q, c);
 		}
 		a = 1;
 		b = 1;
@@ -388,9 +388,9 @@ void integral(){ // panggil modul ini ke main
 	else if ( a == p){
 		
 		if(c == 0){
-			printf("Hasil Integral : x^%g + (%g/%g x^%g) ", p, b, q, q);
+			printf("\t\t\t\t\t\t\tHasil Integral : x^%g + (%g/%g x^%g) ", p, b, q, q);
 		}else{
-			printf("Hasil Integral : x^%g + (%g/%g x^%g) + %gx", p, b, q, q, c);
+			printf("\t\t\t\t\t\t\tHasil Integral : x^%g + (%g/%g x^%g) + %gx", p, b, q, q, c);
 		}
 		a = 1;
 		b = b/q;
@@ -398,9 +398,9 @@ void integral(){ // panggil modul ini ke main
 	else if ( b == q){
 		
 		if(c == 0){
-			printf("Hasil Integral : (%g/%g x^%g) + x^%g ", a, p, p, q);
+			printf("\t\t\t\t\t\t\tHasil Integral : (%g/%g x^%g) + x^%g ", a, p, p, q);
 		}else{
-			printf("Hasil Integral : (%g/%g x^%g) + x^%g + %gx", a, p, p, q, c);
+			printf("\t\t\t\t\t\t\tHasil Integral : (%g/%g x^%g) + x^%g + %gx", a, p, p, q, c);
 		}
 		a = a/p;
 		b = 1;
@@ -408,23 +408,23 @@ void integral(){ // panggil modul ini ke main
 	else{
 		
 		if (c == 0){
-			printf("Hasil Integral : (%g/%g x^%g) + (%g/%g x^%g) ", a, p, p, b, q, q);
+			printf("\t\t\t\t\t\t\tHasil Integral : (%g/%g x^%g) + (%g/%g x^%g) ", a, p, p, b, q, q);
 		}else{
-			printf("Hasil Integral : (%g/%g x^%g) + (%g/%g x^%g) + %gx", a, p, p, b, q, q, c);
+			printf("\t\t\t\t\t\t\tHasil Integral : (%g/%g x^%g) + (%g/%g x^%g) + %gx", a, p, p, b, q, q, c);
 		}
 		a = a/p;
 		b = b/q;
 	}
 	
-	printf("\nMasukan batas bawah : ");
+	printf("\n\t\t\t\t\t\t\tMasukan batas bawah : ");
 	scanf("%f", &bawah);
-	printf("Masukan batas atas : ");
+	printf("\t\t\t\t\t\t\tMasukan batas atas : ");
 	scanf("%f", &atas);
 	
 	hasil = luasIntegral(a, b, p, q, c, bawah, atas);
 	
 	
-	printf("Hasil ketika dimasukan batas bawah (%g) dan batas atas (%g) : %g", bawah, atas, hasil);
+	printf("\t\t\t\t\t\t\tHasil ketika dimasukan batas bawah (%g) dan batas atas (%g) : %g", bawah, atas, hasil);
 }
 
 float luasIntegral(float a, float b, float p, float q, float c, float bawah, float atas){

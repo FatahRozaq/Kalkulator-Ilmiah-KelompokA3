@@ -3,7 +3,8 @@
 #include "Nisrina.h"
 
 //operasi pengurangan
-float Pengurangan(float bil1, float bil2){
+float Pengurangan(float bil1, float bil2)
+{
 	float hasil;
 	
 	hasil = (bil1-bil2);
@@ -22,7 +23,8 @@ void LogNatural()
 	printf("Logaritma natural dari %lf = %lf", x, result);
 }
 
-double logaritmanatural(double x){
+double logaritmanatural(double x)
+{
 	
 	return log(x);
 }
@@ -39,13 +41,15 @@ void Faktorial()
 	printf("faktorial dari %d adalah %d", angka, hasil);
 }
 
-int hitungFaktorial(int angka){
+int hitungFaktorial(int angka)
+{
 	
 	int hasil;
 	int i;
 	
 	hasil = 1;
-	for(i = 1; i<=angka; i++){
+	for(i = 1; i<=angka; i++)
+	{
 		hasil = hasil * i;
 	}
 	
@@ -54,7 +58,8 @@ int hitungFaktorial(int angka){
 
 //operasi turunan
 
-void turunan(){
+void turunan()
+{
 	int pilih;
 	int b;
 	
@@ -65,11 +70,13 @@ void turunan(){
 	int n[pilih], pangkat[pilih];
 	
 	printf("Y = ");
-	for(b=0; b<pilih; b++){
+	for(b=0; b<pilih; b++)
+	{
 		printf("n.X^p ");
 		if((pilih-b)!=1)
 		{
-		printf("+ ");}
+		printf("+ ");
+		}
 	}
 	
 	for(b=0; b<pilih; b++){
@@ -80,11 +87,13 @@ void turunan(){
 	}
 	
 	printf("nY  = ");
-	for(b=0; b<pilih; b++){
+	for(b=0; b<pilih; b++)
+	{
 		printf ("%d x^ %d", n[b], pangkat[b]);
 		if((pilih-b)!=1)
 		{
-		printf("+ ");}
+		printf("+ ");
+		}
 	}
 	
 	for(b=0; b<pilih; b++){
@@ -93,11 +102,13 @@ void turunan(){
 	}
 	
 	printf("\nnY' = ");
-	for(b=0; b<pilih; b++){
+	for(b=0; b<pilih; b++)
+	{
 		printf("%d X^ %d", n[b], pangkat[b]);
 		if((pilih-b)!=1)
 		{
-		printf("+ ");}
+		printf("+ ");
+		}
 	}
 
 }
@@ -118,7 +129,8 @@ void konvertDaya()
    printf("\n6. Kilogram-meter/detik (kg.m/s)");
    printf("\n\tPilih satuan awal daya= ");
    scanf("%d", &satuan1);
-   while (satuan1 < 0 || satuan1 > 6) {
+   while (satuan1 < 0 || satuan1 > 6) 
+   {
        printf("\nPilihan invalid, ketik ulang: ");
        scanf("%d", &satuan1);
    }
@@ -131,7 +143,8 @@ void konvertDaya()
    printf("\n6. Kilogram-meter/detik (kg.m/s)");
    printf("\n\tPilih satuan akhir daya= ");
    scanf("%d", &satuan2);
-   while (satuan2 < 0 || satuan2 > 6) {
+   while (satuan2 < 0 || satuan2 > 6) 
+   {
        printf("\nPilihan invalid, ketik ulang: ");
        scanf("%d", &satuan2);
    }
@@ -147,9 +160,11 @@ double Hitungdaya(int satuan1, int satuan2, double daya){
    
    double hasilconvert;
  
-	switch (satuan1) {
+	switch (satuan1) 
+	{
         case 1:
-        	switch (satuan2){
+        	switch (satuan2)
+			{
         		case 1: 
         			hasilconvert=daya;
         			break;
@@ -171,7 +186,8 @@ double Hitungdaya(int satuan1, int satuan2, double daya){
 			}
 			break;
         case 2:
-        	switch (satuan2){
+        	switch (satuan2)
+			{
         		case 1:
         			hasilconvert=(daya*1000);
         			break;
@@ -193,7 +209,8 @@ double Hitungdaya(int satuan1, int satuan2, double daya){
         		}
         		break;
         case 3:
-        	switch (satuan2){
+        	switch (satuan2)
+			{
         		case 1:
         			hasilconvert=(daya*4184.100418410041841);
         			break;
@@ -214,7 +231,8 @@ double Hitungdaya(int satuan1, int satuan2, double daya){
         		}
         		break;
         case 4:
-        	switch(satuan2){
+        	switch(satuan2)
+			{
         		case 1:
         			hasilconvert=daya;
         			break;
@@ -236,7 +254,8 @@ double Hitungdaya(int satuan1, int satuan2, double daya){
         		}
         		break;
         case 5:
-        	switch (satuan2){
+        	switch (satuan2)
+			{
         		case 1:
         			hasilconvert=daya;
         			break;
@@ -258,7 +277,8 @@ double Hitungdaya(int satuan1, int satuan2, double daya){
         		}
         		break;
         case 6:
-        	switch (satuan2){
+        	switch (satuan2)
+			{
         		case 1:
         			hasilconvert=(daya*9.806649999787735);
         			break;
