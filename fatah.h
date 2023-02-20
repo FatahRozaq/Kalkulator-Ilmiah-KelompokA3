@@ -11,7 +11,7 @@ float Perkalian (float bil1, float bil2);
 void pilihanSatuan(); // panggil modul ini ke main
 float nilaiSatuan(int opsi, float nilai);
 float convertPanjang(int opsi, float nilaiTetap);
-void tampilHasilKonvert(int opsi, float *hasil);
+void tampilHasilConvert(int opsi, float *hasil);
 
 // Modul Deret Geometri
 void deretGeometri(); // panggil modul ini ke main
