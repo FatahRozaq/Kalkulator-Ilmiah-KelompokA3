@@ -45,9 +45,12 @@ int main()
 			
 		case 4:
 			Credit();
-			
+			break;
+		case 5:
+			exit(0);
+			break;
 		default:
-			exit(1);
+			printf("Inputan tidak valid");
 	}
 	
 	return 0;
