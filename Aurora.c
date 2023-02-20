@@ -237,7 +237,7 @@ void BacktoMain()
 {
 	char back;
 	
-	Sleep(1500);
+	Sleep(500);
 	printf("\n\n\t\t\t\t\t\t \tBack to main menu? \t\t\t (Y/N)");
 	
 	back =getche();

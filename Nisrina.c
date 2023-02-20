@@ -523,7 +523,7 @@ void Trigonometri()
 	radian = RadianTrigono(input);
 	printf("radian : %f\n", radian);
 	derajat = DerajatTrigono(input);
-	printf("derajat : %f\n", derajat);
+	printf("derajat : %g\n", derajat);
 }
 
 float RadianTrigono(char *input)
