@@ -933,15 +933,14 @@ void TataCara()
 	int pilih;
 	
 	system("cls");
-	printf("SOON");
-	/* printf("1. Kalkulator Standar");
+	printf("1. Kalkulator Standar");
 	PilihMenu(&pilih);
 	switch(pilih)
 	{
 		case 1:
 			CaraCalStd();
 			break;
-	} */
+	} 
 }
 
 void CaraCalStd()
