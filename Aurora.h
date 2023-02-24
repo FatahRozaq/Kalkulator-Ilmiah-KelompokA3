@@ -36,7 +36,7 @@ int HexDes(char* hist);
 
 float Pembagian(float bil1, float bil2);
 
-void akar();
+float akar(float bil, float pangkat);
 
 void deretAritmatika();
 

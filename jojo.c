@@ -33,10 +33,15 @@ void panggilLogaritma(){ // Panggil modul ini di main
 	printf("Hasil Logaritma : %g", log1);
 }
 
-int Modulus(int bil1, int bil2)
+int Modulus(float bil1, float bil2)
 {
 	int Hasil;	
-	Hasil = bil1 % bil2;
+	int angka1;
+	int angka2;
+	
+	angka1 = (int)bil1;
+	angka2 = (int)bil2;
+	Hasil = angka1 % angka2;
 	return Hasil;
 }
 

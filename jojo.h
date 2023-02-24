@@ -2,7 +2,7 @@
 #define jojo_h
 
 // Operasi Modulus
-int Modulus(int bil1, int bil2);
+int Modulus(float bil1, float bil2);
 
 void panggilModulus();
 
