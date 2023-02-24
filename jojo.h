@@ -28,4 +28,8 @@ float Luas(float bil2);
 void konvertLuas();
 
 void InputDataModulus(int *bilMod1,int *bilMod2, char kalimat[]);
+
+// Logaritma Bebas
+void LogaritmaBebas();
+double HitungLogBebas(float basis2, float angka2);
 #endif

@@ -83,7 +83,7 @@ float Suhu(float bil2)
 				case 3:
 							printf("Memasukkan suhu:");
 							scanf("%f",&bil4);
-							Diubah=bil4 * 4./5.0;
+							Diubah=bil4 * 4/5.0;
 							printf("%g R",Diubah);break;		
 			}break;
 		case 2:
@@ -107,9 +107,9 @@ float Suhu(float bil2)
 							printf("%g K",Diubah);break;
 				case 3:
 							printf("Memasukkan suhu:");
-							scanf("%d",&bil6);
-							Diubah=( bil6 - 32) * 5.0/9.0 + 273;
-							printf("%d K",Diubah);break;
+							scanf("%f",&bil6);
+							Diubah=( bil6 - 32) * 4/9.0;
+							printf("%g K",Diubah);break;
 				}break;
 		case 3:
 		printf("Diubah menjadi:\n");
@@ -122,17 +122,17 @@ float Suhu(float bil2)
 			switch(lagi2){
 				case 1:
 							printf("Memasukkan suhu:");
-							scanf("%d",&bil7);
-							Diubah=bil7 * 5/4;
+							scanf("%f",&bil7);
+							Diubah=bil7 * 5.0/4;
 							printf("%g C",Diubah);break;					
 				case 2:
 							printf("Memasukkan suhu:");
-							scanf("%d",&bil8);
+							scanf("%f",&bil8);
 							Diubah=(bil8 * 9/4)+32;
 							printf("%g F",Diubah);break;
 				case 3:
 							printf("Memasukkan suhu:");
-							scanf("%d",&bil9);
+							scanf("%f",&bil9);
 							Diubah=(bil9 * 5/4)+273;
 							printf("%g K",Diubah);break;		
 			}break;
@@ -198,7 +198,7 @@ float Luas(float bil2){
 					Hasil= bil2 * 10000000000;
 					printf("%.0f cm\n",Hasil);
 					Hasil= bil2 * 1000000000000;
-					printf("%.0f mm\n",Hasil);
+					printf("%.12f mm\n",Hasil);
 			
 					}break;
 			case 2 :
@@ -326,7 +326,7 @@ float Logaritma(float bil1){
 	float Hasil,bil2;
 	
 	
-	Hasil= log10(bil1);
+	Hasil= log(bil1);
 //	printf("%g",Hasil);
 
 	return Hasil;
@@ -339,7 +339,26 @@ void InputDataModulus(int *bilMod1, int *bilMod2, char *kalimat){
 	printf("%s", kalimat);
 	scanf("%d", *&bilMod2);
 }	
+
+void LogaritmaBebas(){
+	float basis, angka, Hasil;
+   
+    printf("Masukkan basis : ");
+    scanf("%lf", &basis);
+    printf("Masukkan angka : ");
+    scanf("%lf", &angka);
+    
+    Hasil = HitungLogBebas(basis, angka);
+    
+    printf("Hasil= %g", Hasil);
+
+}
 		
+double HitungLogBebas(float basis2, float angka2){
+	float Hasil;
 	
+	Hasil = log10(basis2) / log10(angka2);
+	return Hasil;
+}	
 	
 
