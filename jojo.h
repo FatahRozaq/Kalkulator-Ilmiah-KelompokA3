@@ -2,7 +2,7 @@
 #define jojo_h
 
 // Operasi Modulus
-int Modulus(float bil1, float bil2);
+double Modulus(double bil1, double bil2);
 
 void panggilModulus();
 
@@ -31,5 +31,6 @@ void InputDataModulus(int *bilMod1,int *bilMod2, char kalimat[]);
 
 // Logaritma Bebas
 void LogaritmaBebas();
-double HitungLogBebas(float basis2, float angka2);
+
+double HitungLogBebas(double basis2, double angka2);
 #endif

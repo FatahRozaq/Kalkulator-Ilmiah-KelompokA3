@@ -7,19 +7,21 @@
 #include "fatah.h"
 #include "jojo.h"
 #include "gavrila.h"
+#define eksponen 2.718281828
+#define phi 3.14
 
-float Penjumlahan (float bil1, float bil2)
+double Penjumlahan (double bil1, double bil2)
 {
-	float hasil;
+	double hasil;
 	
 	hasil = bil1 + bil2;
 	
 	return hasil;
 }
 
-float Pangkat(float bil1, float bil2)
+double Pangkat(double bil1, double bil2)
 {
-	float hasil;
+	double hasil;
 	
 	hasil = pow(bil1, bil2);
 	
@@ -59,7 +61,7 @@ void CalStd()
 	char *infixExpr;
     infixExpr=malloc(266*sizeof(char));
 	char pilih;
-	float hasil;
+	double hasil;
 	
 	header();
 	//Barwal();
@@ -85,7 +87,7 @@ void CalStd()
 		//printf("\n\t=============================================================== \n");	
   		printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : %s\n ",infixToPostfix(x, postfixExpr));
   	    hasil = hitungPostfix(postfixExpr);
-        printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);	
+        printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %lf\n\n", hasil);	
 		printf("\t 														 \n");
 		printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 	   
@@ -98,78 +100,78 @@ void CalStd()
 	BacktoMain();
 }
 
-float DerajatTrigono(char *input)
+double DerajatTrigono(char *input)
 {
-	float value;
+	double value;
 	
 	if(strstr(input,"sin"))
 	{
-		sscanf(input,"sin%f",&value);
+		sscanf(input,"sin%lf",&value);
 		return TriSin(value*3.14159 /180);
 	}
 	else if(strstr(input,"cos"))
 	{
-		sscanf(input,"cos%f",&value);
+		sscanf(input,"cos%lf",&value);
 		return TriCos(value*3.14159 /180);
 	}
 	else if(strstr(input,"tan"))
 	{
-		sscanf(input,"tan%f",&value);
+		sscanf(input,"tan%lf",&value);
 		return TriTan(value*3.14159 /180);
 	}
 	else if(strstr(input,"cot"))
 	{
-		sscanf(input,"cot%f",&value);
+		sscanf(input,"cot%lf",&value);
 		return TriCot(value*3.14159 /180);
 	}
 	else if(strstr(input,"sec"))
 	{
-		sscanf(input,"sec%f",&value);
+		sscanf(input,"sec%lf",&value);
 		return TriSec(value*3.14159 /180);
 	}
 	else if(strstr(input,"csc"))
 	{
-		sscanf(input,"csc%f",&value);
+		sscanf(input,"csc%lf",&value);
 		return TriCsc(value*3.14159 /180);
 	}
 }
 
-float TriSin(float value)
+double TriSin(double value)
 {
 	
 	return sin(value);
 }
 
-float TriCos(float value)
+double TriCos(double value)
 {
 	
 	return cos(value);
 }
-float TriTan(float value)
+double TriTan(double value)
 {
 	
 	return tan(value);
 }
-float TriCot(float value)
+double TriCot(double value)
 {
-	float cos, sin;
+	double cos, sin;
 	
 	cos = TriCos(value);
 	sin = TriSin(value);
 	
 	return (cos/sin);
 }
-float TriSec(float value)
+double TriSec(double value)
 {
-	float cos;
+	double cos;
 	
 	cos = TriCos(value);
 	
 	return (1/cos);
 }
-float TriCsc(float value)
+double TriCsc(double value)
 {
-	float sin;
+	double sin;
 	
 	sin = TriSin(value);
 	
@@ -206,9 +208,9 @@ Item pop(Stack *s)
 /*
 *
 */
-void push(Stack *s, float val)
+void push(Stack *s, double val)
 {
-    s->item[++s->top].fData = val;
+    s->item[++s->top].bData = val;
 }
 /*
 *
@@ -285,7 +287,8 @@ char *infixToPostfix(char *infix,char *postfix)
     int  ptr = 0;
     char *temp;
     Stack *s = inisialisasi();
-    float trigono;
+    double trigono, lon, log;
+    double value,basis;
 
     while(infix[ptr] != '\0' )
     {
@@ -356,21 +359,64 @@ char *infixToPostfix(char *infix,char *postfix)
             }
             else if(!isOperator(infix[ptr]) && !isdigit(infix[ptr]))
             {
-				strcpy(tempInfix,infix);
-                temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
-                ptr+=strlen(temp);
-                trigono = DerajatTrigono(temp);
-                sprintf(temp,"%f", trigono);
-                strcat(postfix, temp);
-                strcat(postfix, oneSpace);
+            	if(infix[ptr] == 'e')
+            	{
+            		strcpy(tempInfix,infix);
+	                temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
+	                ptr+=strlen(temp);
+            		sprintf(temp,"%lf",eksponen);
+	                strcat(postfix, temp);
+	                strcat(postfix, oneSpace);
+				}
+				else
+				{
+					strcpy(tempInfix,infix);
+	                temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
+	                ptr+=strlen(temp);
+	                if(strstr(temp,"phi"))
+	                {
+	                	sprintf(temp,"%lf",phi);
+		                strcat(postfix, temp);
+		                strcat(postfix, oneSpace);
+					}
+					else if(strstr(temp,"ln"))
+					{
+						sscanf(temp,"ln%lf",&value);
+						lon = logaritmanatural(value);
+						sprintf(temp,"%lf",lon);
+		                strcat(postfix, temp);
+		                strcat(postfix, oneSpace);
+					}
+					else
+					{
+						trigono = DerajatTrigono(temp);
+	                	sprintf(temp,"%lf", trigono);
+	                	strcat(postfix, temp);
+	                	strcat(postfix, oneSpace);
+					}
+				}
 			}
             else
             {
-                strcpy(tempInfix,infix);
-                temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
-                ptr+=strlen(temp);
-                strcat(postfix, temp);
-                strcat(postfix, oneSpace);
+            	strcpy(tempInfix,infix);
+	            temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
+	            ptr+=strlen(temp);
+	            printf("%d",strlen(temp));
+            	if(strstr(temp,"log"))
+				{
+					sscanf(temp,"log%lf",&value);
+					sscanf(temp,"%lflog",&basis);
+					log = HitungLogBebas(basis, value);
+					printf("%lf",log);
+					sprintf(temp,"%lf",log);
+		            strcat(postfix, temp);
+		            strcat(postfix, oneSpace);
+				}
+				else
+				{
+	                strcat(postfix, temp);
+	                strcat(postfix, oneSpace);	
+				}
             }
         }
     }
@@ -403,35 +449,33 @@ int isNumber(char *token)
 *
 */
 /// fungsi untuk mengecek postfix dan melakukan perhitungan
-float hitungPostfix(char postFix[])
+double hitungPostfix(char postFix[])
 {
-    float a, b;
+    double a, b;
     Stack *stack = inisialisasi();
     char *token = strtok(postFix," ");
-    int hasil;
-    float modulus, faktorial;
+    double modulus, faktorial;
 
     while(token != NULL)
     {
         // pengecekan apakah angka, jika TRUE maka diubah menjadi float dan di PUSH ke subvar fdata dari subvar item struct Stack
         if(isNumber(token))
         {
-            push(stack, atof(token));
+            push(stack, strtod(token,NULL));
         }
         
         else if(isOperator(*token) && *token == '!')
         {
-        	a = pop(stack).fData;
-        	hasil= hitungFaktorial(a);
-        	faktorial= (float)hasil;
+        	a = pop(stack).bData;
+        	faktorial= hitungFaktorial(a);
             push(stack, faktorial );
 		}
         // mengecek apakah operator, jika TRUE nilai 2 teratas akan di POP untuk dilakukan perhitungan
         // hasilnya akan di PUSH kembali ke stack
         else if(isOperator(*token))
         {
-            a = pop(stack).fData;
-            b = pop(stack).fData;
+            a = pop(stack).bData;
+            b = pop(stack).bData;
             switch(*token)
             {
             case '+':
@@ -453,8 +497,7 @@ float hitungPostfix(char postFix[])
                 push(stack, akar(b,a) );
                 break;
             case '%':
-            	hasil = Modulus(b,a);
-            	modulus = (float)hasil;
+            	modulus = Modulus(b,a);
                 push(stack, modulus );
                 break;
             default:
@@ -463,7 +506,7 @@ float hitungPostfix(char postFix[])
         }
         token = strtok(NULL, " "); // proses pemisahan
     }
-    return pop(stack).fData;
+    return pop(stack).bData;
 }
 
 void CalStfc()
@@ -492,48 +535,30 @@ void CalStfc()
 			deretAritmatika();
 			break;
 		case 6:
-			Trigonometri();
-			break;
-		case 7:
-			Trigonometri();
-			break;
-		case 8:
-			panggilLogaritma();
-			break;
-		case 9:
-			LogNatural();
-			break;
-		case 10:
 			turunan();
 			break;
-		case 11:
-			panggilModulus();
-			break;
-		case 12:
-			Faktorial();
-			break;
-		case 13:
+		case 7:
 			CalProg();
 			break;
-		case 14:
+		case 8:
 			konvertDaya();
 			break;
-		case 15:
+		case 9:
 			konvertLuas();
 			break;
-		case 16:
+		case 10:
 			konvertSuhu();
 			break;
-		case 17:
+		case 11:
 			konvertPanjang();
 			break;
-		case 18:
+		case 12:
 			konvertBerat();
 			break;
-		case 19:
+		case 13:
 			konvertWaktu();
 			break;
-		case 20:
+		case 14:
 			konvertvolume();
 			break;
 	}
@@ -549,21 +574,15 @@ void MenuCalStfc()
  	printf("\t\t\t\t\t\t\t\t| 3.  Statistika				|\n");
  	printf("\t\t\t\t\t\t\t\t| 4.  Deret Geometri				|\n");
  	printf("\t\t\t\t\t\t\t\t| 5.  Deret Aritmatika				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 6.  Trigonometri				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 7.  Akar	(hapus)				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 8.  Logaritma					|\n");
- 	printf("\t\t\t\t\t\t\t\t| 9.  Logaritma Natural				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 10. Turunan					|\n");
- 	printf("\t\t\t\t\t\t\t\t| 11. Modulus					|\n");
- 	printf("\t\t\t\t\t\t\t\t| 12. Faktorial					|\n");
- 	printf("\t\t\t\t\t\t\t\t| 13. Konvert Sistem Bilangan			|\n");
- 	printf("\t\t\t\t\t\t\t\t| 14. Konvert Daya				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 15. Konvert Luas				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 16. Konvert Suhu				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 17. Konvert Panjang				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 18. Konvert Berat				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 19. Konvert Waktu				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 20. Konvert Volume				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 6. Turunan					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 7. Konvert Sistem Bilangan			|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 8. Konvert Daya				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 9. Konvert Luas				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 10. Konvert Suhu				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 11. Konvert Panjang				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 12. Konvert Berat				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 13. Konvert Waktu				|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 14. Konvert Volume				|\n");
  	printf("\t\t\t\t\t\t\t\t<===============================================>\n");
 	printf("\t\t\t\t\t\t\t\t|                                               |\n");
 	printf("\t\t\t\t\t\t\t\t|================================================>\n");

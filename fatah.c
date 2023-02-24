@@ -6,8 +6,8 @@
 //						Modul
 //					  Perkalian
 //========================================================
-float Perkalian (float bil1, float bil2){
-	float hasil; 
+double Perkalian (double bil1, double bil2){
+	double hasil; 
 	
 	hasil = bil1 * bil2;
 	

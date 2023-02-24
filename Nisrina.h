@@ -14,7 +14,7 @@
 
 typedef union
 {
-    float fData;
+    double bData;
     char  cData;
 } Item;
 
@@ -24,9 +24,9 @@ typedef struct
     int top;
 } Stack;
 
-float Penjumlahan (float bil1, float bil2);
+double Penjumlahan (double bil1, double bil2);
 
-float Pangkat(float bil1, float bil2);
+double Pangkat(double bil1, double bil2);
 
 void InputBilFloat(float *bil);
 
@@ -48,7 +48,7 @@ Item top(Stack *s);
 
 Item pop(Stack *s);
 
-void push(Stack *s, float val);
+void push(Stack *s, double val);
 
 void pushChar(Stack *s, char c);
 
@@ -70,7 +70,7 @@ void gantiNewLineJadiSpasi(char *s);
 
 int isNumber(char *token);
 
-float hitungPostfix(char postFix[]);
+double hitungPostfix(char postFix[]);
 
 void CalStfc();
 
@@ -82,19 +82,19 @@ void Trigonometri();
 
 float RadianTrigono(char *input);
 
-float DerajatTrigono(char *input);
+double DerajatTrigono(char *input);
 
-float TriSin(float value);
+double TriSin(double value);
 
-float TriCos(float value);
+double TriCos(double value);
 
-float TriTan(float value);
+double TriTan(double value);
 
-float TriCot(float value);
+double TriCot(double value);
 
-float TriSec(float value);
+double TriSec(double value);
 
-float TriCsc(float value);
+double TriCsc(double value);
 
 void Matriks();
 

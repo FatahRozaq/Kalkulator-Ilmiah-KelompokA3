@@ -41,17 +41,14 @@ void Faktorial()
 	printf("faktorial dari %d adalah %d", angka, hasil);
 }
 
-int hitungFaktorial(float bil)
+double hitungFaktorial(double bil)
 {
 	
-	int hasil;
+	double hasil;
 	int i;
 	
-	int angka;
-	angka = (int)bil;
-	
 	hasil = 1;
-	for(i = 1; i<=angka; i++)
+	for(i = 1; i<=bil; i++)
 	{
 		hasil = hasil * i;
 	}

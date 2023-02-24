@@ -34,9 +34,9 @@ int OktDes(char* hist);
 void Hexa();
 int HexDes(char* hist);
 
-float Pembagian(float bil1, float bil2);
+double Pembagian(double bil1, double bil2);
 
-float akar(float bil, float pangkat);
+double akar(double bil, double pangkat);
 
 void deretAritmatika();
 

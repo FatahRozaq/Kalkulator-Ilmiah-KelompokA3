@@ -31,18 +31,18 @@ Author			: Athalie Aurora Puspanegara
 /* ======= End of Header File ====== */
 
 
-float Pembagian(float bil1, float bil2){
-	float hasil;
+double Pembagian(double bil1, double bil2){
+	double hasil;
 	
 	hasil = bil1/bil2;
 	return hasil;
 } 
 
-float akar(float bil, float pangkat) {
-    float hasil;
+double akar(double bil, double pangkat) {
+    double hasil;
     int ap;
     
-    ap = (float)pangkat;
+    ap = (int)pangkat;
     
     // Menghitung akar pangkat tertentu
     hasil = pow(fabs(bil), 1.0 / ap);
