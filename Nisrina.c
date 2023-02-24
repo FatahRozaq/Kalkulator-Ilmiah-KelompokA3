@@ -404,8 +404,7 @@ char *infixToPostfix(char *infix,char *postfix)
 	            printf("%d",strlen(temp));
             	if(strstr(temp,"log"))
 				{
-					sscanf(temp,"log%lf",&value);
-					sscanf(temp,"%lflog",&basis);
+					sscanf(temp,"%lflog%lf",&basis,&value);
 					log = HitungLogBebas(basis, value);
 					printf("%lf",log);
 					sprintf(temp,"%lf",log);

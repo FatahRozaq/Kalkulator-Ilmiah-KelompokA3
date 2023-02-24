@@ -359,7 +359,7 @@ void LogaritmaBebas(){
 double HitungLogBebas(double basis2, double angka2){
 	double Hasil;
 	
-	Hasil = log10(basis2) / log10(angka2);
+	Hasil = log10(angka2) / log10(basis2);
 	
 	return Hasil;
 }	
