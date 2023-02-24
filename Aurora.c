@@ -38,29 +38,19 @@ float Pembagian(float bil1, float bil2){
 	return hasil;
 } 
 
-void akar() {
-    double bil, hasil;
+float akar(float bil, float pangkat) {
+    float hasil;
     int ap;
     
-    // Meminta pengguna memasukkan bilangan
-    printf("Masukkan bilangan: ");
-    scanf("%lf", &bil);
-    
-    // Meminta pengguna memasukkan pangkat akar
-    printf("Masukkan pangkat akar: ");
-    scanf("%d", &ap);
+    ap = (float)pangkat;
     
     // Menghitung akar pangkat tertentu
-    if (ap % 2 == 0 && bil < 0) {
-        printf("Tidak dapat menghitung akar pangkat genap dari bilangan negatif\n");
-    }
     hasil = pow(fabs(bil), 1.0 / ap);
     if (bil < 0) {
         hasil = -hasil;
     }
     
-    // Menampilkan hasil akar pangkat tertentu
-    printf("Akar pangkat %d dari %.2f adalah %.2f\n", ap, bil, hasil);
+    return hasil;
 }
 
 

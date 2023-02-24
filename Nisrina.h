@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <ctype.h>
 #include "Nisrina.h"
 #include "Aurora.h"
 #include "fatah.h"

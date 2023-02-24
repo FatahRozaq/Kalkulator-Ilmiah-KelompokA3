@@ -11,7 +11,7 @@ double logaritmanatural(double x);
 
 void Faktorial();
 
-int hitungFaktorial(int angka);
+int hitungFaktorial(float bil);
 
 void turunan();
 

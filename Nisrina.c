@@ -98,6 +98,84 @@ void CalStd()
 	BacktoMain();
 }
 
+float DerajatTrigono(char *input)
+{
+	float value;
+	
+	if(strstr(input,"sin"))
+	{
+		sscanf(input,"sin%f",&value);
+		return TriSin(value*3.14159 /180);
+	}
+	else if(strstr(input,"cos"))
+	{
+		sscanf(input,"cos%f",&value);
+		return TriCos(value*3.14159 /180);
+	}
+	else if(strstr(input,"tan"))
+	{
+		sscanf(input,"tan%f",&value);
+		return TriTan(value*3.14159 /180);
+	}
+	else if(strstr(input,"cot"))
+	{
+		sscanf(input,"cot%f",&value);
+		return TriCot(value*3.14159 /180);
+	}
+	else if(strstr(input,"sec"))
+	{
+		sscanf(input,"sec%f",&value);
+		return TriSec(value*3.14159 /180);
+	}
+	else if(strstr(input,"csc"))
+	{
+		sscanf(input,"csc%f",&value);
+		return TriCsc(value*3.14159 /180);
+	}
+}
+
+float TriSin(float value)
+{
+	
+	return sin(value);
+}
+
+float TriCos(float value)
+{
+	
+	return cos(value);
+}
+float TriTan(float value)
+{
+	
+	return tan(value);
+}
+float TriCot(float value)
+{
+	float cos, sin;
+	
+	cos = TriCos(value);
+	sin = TriSin(value);
+	
+	return (cos/sin);
+}
+float TriSec(float value)
+{
+	float cos;
+	
+	cos = TriCos(value);
+	
+	return (1/cos);
+}
+float TriCsc(float value)
+{
+	float sin;
+	
+	sin = TriSin(value);
+	
+	return (1/sin);
+}
+
 Stack* inisialisasi()
 {
     Stack *s = malloc(sizeof(Stack));
@@ -149,11 +227,12 @@ int isFull(Stack *s)
 /*
 *
 */
-int prioritas(char c)
+int priority(char c)
 {
     if (c=='+' || c=='-') return 1;
     else if (c=='*' || c=='/') return 2;
-    else if (c=='^' || c=='$') return 3 ;
+    else if (c=='^' || c == '$') return 3 ;
+    else if (c=='%' || c == '!') return 4;
     return 0;
 }
 /*
@@ -161,7 +240,7 @@ int prioritas(char c)
 */
 int isOperator(char c)
 {
-    if( c=='(' || c=='+' || c=='-' || c=='/' || c=='*' || c=='^' || c=='$') return 1;
+    if( c=='(' || c=='+' || c=='-' || c=='/' || c=='*' || c=='^' || c=='$' || c=='%' || c=='!') return 1;
     else return 0;
 }
 /*
@@ -205,9 +284,8 @@ char *infixToPostfix(char *infix,char *postfix)
     char oneSpace[] = " ", tempInfix[256];
     int  ptr = 0;
     char *temp;
-    
-    
     Stack *s = inisialisasi();
+    float trigono;
 
     while(infix[ptr] != '\0' )
     {
@@ -224,12 +302,12 @@ char *infixToPostfix(char *infix,char *postfix)
                 pushChar(s,infix[ptr]);
                 ptr++;
             }
-            else if(prioritas(infix[ptr]) > prioritas(top(s).cData) || isEmpty(s))
+            else if(priority(infix[ptr]) > priority(top(s).cData) || isEmpty(s))
             {
                 pushChar(s,infix[ptr]);
                 ptr++;
             }
-            else if(prioritas(infix[ptr])==prioritas(top(s).cData))
+            else if(priority(infix[ptr])==priority(top(s).cData))
             {
                 char tempchar=pop(s).cData;
                 strncat(postfix,&tempchar,1);
@@ -237,7 +315,7 @@ char *infixToPostfix(char *infix,char *postfix)
                 ptr++;
                 strcat(postfix,oneSpace);
             }
-            else if(prioritas(infix[ptr]) <prioritas(top(s).cData) && top(s).cData != '(' && top(s).cData != ')')
+            else if(priority(infix[ptr]) <priority(top(s).cData) && top(s).cData != '(' && top(s).cData != ')')
             {
                 while(1)
                 {
@@ -270,16 +348,26 @@ char *infixToPostfix(char *infix,char *postfix)
                 char tempChar3 = '-';
                 strncat(temp2, &tempChar3, 1);
                 strcpy(tempInfix, infix);
-                temp = strtok(tempInfix + ptr, " +-)(*/^");
+                temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
                 ptr += strlen(temp) + 1;
                 strcat(temp2, temp);
                 strcat(postfix, temp2);
                 strcat(postfix, oneSpace);
             }
+            else if(!isOperator(infix[ptr]) && !isdigit(infix[ptr]))
+            {
+				strcpy(tempInfix,infix);
+                temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
+                ptr+=strlen(temp);
+                trigono = DerajatTrigono(temp);
+                sprintf(temp,"%f", trigono);
+                strcat(postfix, temp);
+                strcat(postfix, oneSpace);
+			}
             else
             {
                 strcpy(tempInfix,infix);
-                temp = strtok(tempInfix + ptr, " +-)(*/^");
+                temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
                 ptr+=strlen(temp);
                 strcat(postfix, temp);
                 strcat(postfix, oneSpace);
@@ -320,7 +408,8 @@ float hitungPostfix(char postFix[])
     float a, b;
     Stack *stack = inisialisasi();
     char *token = strtok(postFix," ");
-    float hasil;
+    int hasil;
+    float modulus, faktorial;
 
     while(token != NULL)
     {
@@ -330,11 +419,12 @@ float hitungPostfix(char postFix[])
             push(stack, atof(token));
         }
         
-        else if(isOperator(*token) && *token == '$')
+        else if(isOperator(*token) && *token == '!')
         {
         	a = pop(stack).fData;
-        	hasil= Akar2(a);
-            push(stack, hasil );
+        	hasil= hitungFaktorial(a);
+        	faktorial= (float)hasil;
+            push(stack, faktorial );
 		}
         // mengecek apakah operator, jika TRUE nilai 2 teratas akan di POP untuk dilakukan perhitungan
         // hasilnya akan di PUSH kembali ke stack
@@ -345,24 +435,27 @@ float hitungPostfix(char postFix[])
             switch(*token)
             {
             case '+':
-            	hasil= Penjumlahan(b,a);
-                push(stack, hasil );
+                push(stack, b + a );
                 break;
             case '-':
-            	hasil= Pengurangan(b,a);
-                push(stack, hasil );
+                push(stack, b - a );
                 break;
             case '*':
-            	hasil= Perkalian(b,a);
-                push(stack, hasil );
+                push(stack, b * a );
                 break;
             case '/':
-            	hasil= Pembagian(b,a);
-                push(stack, hasil);
+                push(stack, b / a );
                 break;
             case '^':
-            	hasil= Pangkat(b,a);
-                push(stack, hasil );
+                push(stack, pow(b, a) );
+                break;
+            case '$':
+                push(stack, akar(b,a) );
+                break;
+            case '%':
+            	hasil = Modulus(b,a);
+            	modulus = (float)hasil;
+                push(stack, modulus );
                 break;
             default:
                 break;
@@ -402,7 +495,7 @@ void CalStfc()
 			Trigonometri();
 			break;
 		case 7:
-			akar();
+			Trigonometri();
 			break;
 		case 8:
 			panggilLogaritma();
@@ -457,7 +550,7 @@ void MenuCalStfc()
  	printf("\t\t\t\t\t\t\t\t| 4.  Deret Geometri				|\n");
  	printf("\t\t\t\t\t\t\t\t| 5.  Deret Aritmatika				|\n");
  	printf("\t\t\t\t\t\t\t\t| 6.  Trigonometri				|\n");
- 	printf("\t\t\t\t\t\t\t\t| 7.  Akar					|\n");
+ 	printf("\t\t\t\t\t\t\t\t| 7.  Akar	(hapus)				|\n");
  	printf("\t\t\t\t\t\t\t\t| 8.  Logaritma					|\n");
  	printf("\t\t\t\t\t\t\t\t| 9.  Logaritma Natural				|\n");
  	printf("\t\t\t\t\t\t\t\t| 10. Turunan					|\n");
@@ -560,84 +653,6 @@ float RadianTrigono(char *input)
 		sscanf(input,"csc(%f)",&value);
 		return TriCsc(value);
 	}
-}
-
-float DerajatTrigono(char *input)
-{
-	float value;
-	
-	if(strstr(input,"sin"))
-	{
-		sscanf(input,"sin(%f)",&value);
-		return TriSin(value*3.14159 /180);
-	}
-	else if(strstr(input,"cos"))
-	{
-		sscanf(input,"cos(%f)",&value);
-		return TriCos(value*3.14159 /180);
-	}
-	else if(strstr(input,"tan"))
-	{
-		sscanf(input,"tan(%f)",&value);
-		return TriTan(value*3.14159 /180);
-	}
-	else if(strstr(input,"cot"))
-	{
-		sscanf(input,"cot(%f)",&value);
-		return TriCot(value*3.14159 /180);
-	}
-	else if(strstr(input,"sec"))
-	{
-		sscanf(input,"sec(%f)",&value);
-		return TriSec(value*3.14159 /180);
-	}
-	else if(strstr(input,"csc"))
-	{
-		sscanf(input,"csc(%f)",&value);
-		return TriCsc(value*3.14159 /180);
-	}
-}
-
-float TriSin(float value)
-{
-	
-	return sin(value);
-}
-
-float TriCos(float value)
-{
-	
-	return cos(value);
-}
-float TriTan(float value)
-{
-	
-	return tan(value);
-}
-float TriCot(float value)
-{
-	float cos, sin;
-	
-	cos = TriCos(value);
-	sin = TriSin(value);
-	
-	return (cos/sin);
-}
-float TriSec(float value)
-{
-	float cos;
-	
-	cos = TriCos(value);
-	
-	return (1/cos);
-}
-float TriCsc(float value)
-{
-	float sin;
-	
-	sin = TriSin(value);
-	
-	return (1/sin);
 }
 
 void Matriks()
