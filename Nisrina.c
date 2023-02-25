@@ -471,7 +471,7 @@ char *infixToPostfix(char *infix,char *postfix)
 				else
 				{
 					strcpy(tempInfix,infix);
-					temp = strtok(tempInfix + ptr, " +)(*/^%$!");
+					temp = strtok(tempInfix + ptr, " +)-(*/^%$!");
 	                ptr += strlen(temp) + 1;
 					if(strstr(temp,"e"))
 		            {
