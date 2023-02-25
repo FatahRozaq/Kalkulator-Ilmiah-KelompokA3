@@ -56,12 +56,34 @@ void TampilHasilInt(int hasil, char nama[])
 	printf("\n%s : %d", nama,hasil);
 }
 
+int validasiChar(char postfix[256])
+{
+	int length;
+	int i=0;
+	int asci;
+	int hasil = 0;
+	
+	length = strlen(postfix);
+	while(i < length)
+	{
+		asci = (int)postfix[i];
+		if((asci >=97 && asci <=122) || (asci >=65 && asci <=90) )
+		{
+			hasil = 1;
+			break;
+		}
+		i++;
+	}
+	return hasil;
+	
+}
 void CalStd()
 {
 	char *infixExpr;
     infixExpr=malloc(266*sizeof(char));
 	char pilih;
 	double hasil;
+	int isChar;
 	
 	header();
 	//Barwal();
@@ -86,8 +108,16 @@ void CalStd()
     	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 		//printf("\n\t=============================================================== \n");	
   		printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : %s\n ",infixToPostfix(x, postfixExpr));
-  	    hasil = hitungPostfix(postfixExpr);
-        printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %lf\n\n", hasil);	
+  		isChar = validasiChar(postfixExpr);
+  		if (isChar == 1)
+  		{
+  			printf("tidak valid ada char");
+		}
+		else if(isChar == 0)
+		{
+			hasil = hitungPostfix(postfixExpr);
+        	printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);	
+		}
 		printf("\t 														 \n");
 		printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 	   
@@ -106,32 +136,80 @@ double DerajatTrigono(char *input)
 	
 	if(strstr(input,"sin"))
 	{
-		sscanf(input,"sin%lf",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"sin-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"sin%lf",&value);
+		}
 		return TriSin(value*3.14159 /180);
 	}
 	else if(strstr(input,"cos"))
 	{
-		sscanf(input,"cos%lf",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"cos-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"cos%lf",&value);
+		}
 		return TriCos(value*3.14159 /180);
 	}
 	else if(strstr(input,"tan"))
 	{
-		sscanf(input,"tan%lf",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"tan-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"tan%lf",&value);
+		}
 		return TriTan(value*3.14159 /180);
 	}
 	else if(strstr(input,"cot"))
 	{
-		sscanf(input,"cot%lf",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"cot-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"cot%lf",&value);
+		}
 		return TriCot(value*3.14159 /180);
 	}
 	else if(strstr(input,"sec"))
 	{
-		sscanf(input,"sec%lf",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"sec-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"sec%lf",&value);
+		}
 		return TriSec(value*3.14159 /180);
 	}
 	else if(strstr(input,"csc"))
 	{
-		sscanf(input,"csc%lf",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"csc-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"csc%lf",&value);
+		}
 		return TriCsc(value*3.14159 /180);
 	}
 }
@@ -288,7 +366,13 @@ char *infixToPostfix(char *infix,char *postfix)
     char *temp;
     Stack *s = inisialisasi();
     double trigono, lon, log;
-    double value,basis;
+    double value, basis;
+    char temp3[256] = "";
+            	char temp4[256] = "";
+            	char *temp5;
+                char temp2[256] = "";
+                char tempChar3 = '-';
+                int i,b;
 
     while(infix[ptr] != '\0' )
     {
@@ -347,74 +431,129 @@ char *infixToPostfix(char *infix,char *postfix)
         {
             if(negatifInteger(infix,infix[ptr],ptr))
             {
-                char temp2[256] = "";
-                char tempChar3 = '-';
                 strncat(temp2, &tempChar3, 1);
                 strcpy(tempInfix, infix);
-                temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
-                ptr += strlen(temp) + 1;
-                strcat(temp2, temp);
-                strcat(postfix, temp2);
-                strcat(postfix, oneSpace);
-            }
-            else if(!isOperator(infix[ptr]) && !isdigit(infix[ptr]))
-            {
-            	if(infix[ptr] == 'e')
-            	{
-            		strcpy(tempInfix,infix);
-	                temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
-	                ptr+=strlen(temp);
-            		sprintf(temp,"%lf",eksponen);
-	                strcat(postfix, temp);
-	                strcat(postfix, oneSpace);
+                temp = strtok(tempInfix + ptr, " +)(*/^%$!");
+                if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
+				{
+					i=1;
+					while(!strstr(temp4,"0") && !strstr(temp4,"1") &&  !strstr(temp4,"2") &&  !strstr(temp4,"3")&&  !strstr(temp4,"4")&&  !strstr(temp4,"5")&&  !strstr(temp4,"6")&&  !strstr(temp4,"7")&&  !strstr(temp4,"8")&&  !strstr(temp4,"9") )
+					{
+						strncat(temp4,&temp[i],1);
+						i++;
+					}
+					b=0;
+					while(i>2)
+					{
+						strncat(temp3,&temp4[b],1);
+						b++;
+						i--;
+					}
+					temp5 = strtok(temp + (b+1), " +)-(*/^%$!");
+					strcat(temp3,temp5);
+					ptr += strlen(temp3) +1;
+					trigono = DerajatTrigono(temp3);
+					if(trigono < 0)
+					{
+						trigono = -1 * trigono;
+						sprintf(temp,"%lf",trigono);
+						strcat(postfix, temp);
+	                	strcat(postfix, oneSpace);
+					}
+					else
+					{
+						sprintf(temp,"%lf",trigono);
+						strcat(temp2, temp);
+						strcat(postfix, temp2);
+		                strcat(postfix, oneSpace);
+					}
 				}
 				else
 				{
 					strcpy(tempInfix,infix);
-	                temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
-	                ptr+=strlen(temp);
-	                if(strstr(temp,"phi"))
-	                {
-	                	sprintf(temp,"%lf",phi);
-		                strcat(postfix, temp);
-		                strcat(postfix, oneSpace);
+					temp = strtok(tempInfix + ptr, " +)(*/^%$!");
+	                ptr += strlen(temp) + 1;
+					if(strstr(temp,"e"))
+		            {
+		            	sprintf(temp,"%lf",eksponen);
+					}
+					else if(strstr(temp,"phi"))
+		            {
+		                sprintf(temp,"%lf",phi);
 					}
 					else if(strstr(temp,"ln"))
-					{
-						sscanf(temp,"ln%lf",&value);
+		            {
+		            	sscanf(temp,"ln%lf",&value);
 						lon = logaritmanatural(value);
 						sprintf(temp,"%lf",lon);
-		                strcat(postfix, temp);
-		                strcat(postfix, oneSpace);
 					}
-					else
+					else if(strstr(temp,"log"))
 					{
-						trigono = DerajatTrigono(temp);
-	                	sprintf(temp,"%lf", trigono);
-	                	strcat(postfix, temp);
-	                	strcat(postfix, oneSpace);
+						sscanf(temp,"%lflog%lf",&basis,&value);
+						log = HitungLogBebas(basis, value);
+						sprintf(temp,"%lf",log);
 					}
+	                strcat(temp2, temp);
+	                strcat(postfix, temp2);
+	                strcat(postfix, oneSpace);
 				}
-			}
+                
+            }
             else
             {
-            	strcpy(tempInfix,infix);
-	            temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
-	            ptr+=strlen(temp);
-	            printf("%d",strlen(temp));
-            	if(strstr(temp,"log"))
+	            strcpy(tempInfix, infix);
+                temp = strtok(tempInfix + ptr, " +)(*/^%$!");
+				if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
-					sscanf(temp,"%lflog%lf",&basis,&value);
-					log = HitungLogBebas(basis, value);
-					printf("%lf",log);
-					sprintf(temp,"%lf",log);
-		            strcat(postfix, temp);
-		            strcat(postfix, oneSpace);
+					i=0;
+					while(!strstr(temp4,"0") && !strstr(temp4,"1") &&  !strstr(temp4,"2") &&  !strstr(temp4,"3")&&  !strstr(temp4,"4")&&  !strstr(temp4,"5")&&  !strstr(temp4,"6")&&  !strstr(temp4,"7")&&  !strstr(temp4,"8")&&  !strstr(temp4,"9") )
+					{
+						strncat(temp4,&temp[i],1);
+						i++;
+					}
+					b=0;
+					while(i>1)
+					{
+						strncat(temp3,&temp4[b],1);
+						b++;
+						i--;
+					}
+					temp5 = strtok(temp + (b), " +)-(*/^%$!");
+					strcat(temp3,temp5);
+					ptr += strlen(temp3) +1;
+					trigono = DerajatTrigono(temp3);
+					sprintf(temp,"%lf",trigono);
+					strcat(postfix, temp);
+	                strcat(postfix, oneSpace);
 				}
-				else
+	            else
 				{
+					
+	            	temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
+	            	ptr+=strlen(temp);
+					if(strstr(temp,"e"))
+		            {
+		            	sprintf(temp,"%lf",eksponen);
+					}
+					else if(strstr(temp,"phi"))
+		            {
+		                sprintf(temp,"%lf",phi);
+					}
+					else if(strstr(temp,"ln"))
+		            {
+		            	sscanf(temp,"ln%lf",&value);
+						lon = logaritmanatural(value);
+						sprintf(temp,"%lf",lon);
+					}
+					else if(strstr(temp,"log"))
+					{
+						sscanf(temp,"%lflog%lf",&basis,&value);
+						log = HitungLogBebas(basis, value);
+						printf("%lf",log);
+						sprintf(temp,"%lf",log);
+					}
 	                strcat(postfix, temp);
-	                strcat(postfix, oneSpace);	
+	            	strcat(postfix, oneSpace);
 				}
             }
         }

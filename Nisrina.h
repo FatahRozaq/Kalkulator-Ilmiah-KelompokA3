@@ -5,7 +5,9 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <stdbool.h>
 #include <ctype.h>
+#include "boolean.h"
 #include "Nisrina.h"
 #include "Aurora.h"
 #include "fatah.h"
@@ -71,6 +73,8 @@ void gantiNewLineJadiSpasi(char *s);
 int isNumber(char *token);
 
 double hitungPostfix(char postFix[]);
+
+int validasiChar(char postfix[256]);
 
 void CalStfc();
 
