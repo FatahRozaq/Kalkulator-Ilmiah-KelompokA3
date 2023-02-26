@@ -260,6 +260,46 @@ void Fullmode()
 	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED); 	// Screen mode full
 }
 
+
+
+
+
+void Calculator()
+{
+printf("\n\n\n\t\t\t\t\t\t\t\t\t _____________________________________");	
+printf("\n\t\t\t\t\t\t\t\t\t|  _________________________________  |");
+printf("\n\t\t\t\t\t\t\t\t\t| |                            0.   | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |_________________________________| |");
+printf("\n\t\t\t\t\t\t\t\t\t| |_________________________________| |");
+printf("\n\t\t\t\t\t\t\t\t\t|                                     |");
+printf("\n\t\t\t\t\t\t\t\t\t|  _____   _____ _____ _____   _____  |");
+printf("\n\t\t\t\t\t\t\t\t\t| |  e  | | sec | csc | cot | |  << | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |_____| |_____|_____|_____| |_____| |");
+printf("\n\t\t\t\t\t\t\t\t\t| | phi | | sin | cos | tan | |  %%%' | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |_____| |_____|_____|_____| |_____| |");
+printf("\n\t\t\t\t\t\t\t\t\t| | exp | |  (  |  )  |  !n | |  /  | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |_____| |_____|_____|_____| |_____| |");
+printf("\n\t\t\t\t\t\t\t\t\t| | x$y | |   7 |  8  |  9  | |  *  | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |_____| |_____|_____|_____| |_____| |");
+printf("\n\t\t\t\t\t\t\t\t\t| | x^y | |   4 |  5  |  6  | |  _  | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |_____| |_____|_____|_____| |_____| |");
+printf("\n\t\t\t\t\t\t\t\t\t| | log | |  1  |  2  |  3  | |  +  | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |_____| |_____|_____|_____| |_____| |");
+printf("\n\t\t\t\t\t\t\t\t\t| | ln  | |   . |  0  |  .  | |  =  | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |_____| |_____|_____|_____| |_____| |");
+printf("\n\t\t\t\t\t\t\t\t\t|_____________________________________|");
+	
+}
+
+
+
+
+
+
+
+
+
+
 void CalProg()
 {
 	int pilih;
