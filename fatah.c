@@ -436,3 +436,14 @@ float luasIntegral(float a, float b, float p, float q, float c, float bawah, flo
 	
 	return hasil;
 }
+
+//========================================================
+//						Modul
+//					Eksponensial
+//========================================================
+double Eksponensial(double bil){
+	double hasil;
+	
+	hasil = exp(bil);
+	return hasil;
+}
