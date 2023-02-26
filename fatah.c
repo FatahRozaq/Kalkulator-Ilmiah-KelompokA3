@@ -441,9 +441,19 @@ float luasIntegral(float a, float b, float p, float q, float c, float bawah, flo
 //						Modul
 //					Eksponensial
 //========================================================
-double Eksponensial(double bil){
-	double hasil;
+double Eksponensial(char *input){
+	double hasil, value;
 	
-	hasil = exp(bil);
+	if(strstr(input,"-"))
+	{
+		sscanf(input,"exp-%lf",&value);
+		value = -1*value;
+	}
+	else
+	{
+		sscanf(input,"exp%lf",&value);
+	}
+	
+	hasil = exp(value);
 	return hasil;
 }

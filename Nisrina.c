@@ -365,7 +365,7 @@ char *infixToPostfix(char *infix,char *postfix)
     int  ptr = 0;
     char *temp;
     Stack *s = inisialisasi();
-    double trigono, lon, log;
+    double trigono, lon, log, eksponensial;
     double value, basis;
     
 
@@ -469,6 +469,40 @@ char *infixToPostfix(char *infix,char *postfix)
 		                strcat(postfix, oneSpace);
 					}
 				}
+				else if(strstr(temp,"exp"))
+				{
+					i=1;
+					while(!strstr(temp4,"0") && !strstr(temp4,"1") &&  !strstr(temp4,"2") &&  !strstr(temp4,"3")&&  !strstr(temp4,"4")&&  !strstr(temp4,"5")&&  !strstr(temp4,"6")&&  !strstr(temp4,"7")&&  !strstr(temp4,"8")&&  !strstr(temp4,"9") )
+					{
+						strncat(temp4,&temp[i],1);
+						i++;
+					}
+					b=0;
+					while(i>2)
+					{
+						strncat(temp3,&temp4[b],1);
+						b++;
+						i--;
+					}
+					temp5 = strtok(temp + (b+1), " +)-(*/^%$!");
+					strcat(temp3,temp5);
+					ptr += strlen(temp3) +1;
+					eksponensial = Eksponensial(temp3);
+					if(eksponensial < 0)
+					{
+						eksponensial = -1 * eksponensial;
+						sprintf(temp,"%lf",eksponensial);
+						strcat(postfix, temp);
+	                	strcat(postfix, oneSpace);
+					}
+					else
+					{
+						sprintf(temp,"%lf",eksponensial);
+						strcat(temp2, temp);
+						strcat(postfix, temp2);
+		                strcat(postfix, oneSpace);
+					}
+				}
 				else
 				{
 					strcpy(tempInfix,infix);
@@ -525,6 +559,30 @@ char *infixToPostfix(char *infix,char *postfix)
 					trigono = DerajatTrigono(temp3);
 					sprintf(temp,"%lf",trigono);
 					strcat(postfix, temp);
+	                strcat(postfix, oneSpace);
+				}
+				else if(strstr(temp,"exp"))
+				{
+					i=0;
+					while(!strstr(temp4,"0") && !strstr(temp4,"1") &&  !strstr(temp4,"2") &&  !strstr(temp4,"3")&&  !strstr(temp4,"4")&&  !strstr(temp4,"5")&&  !strstr(temp4,"6")&&  !strstr(temp4,"7")&&  !strstr(temp4,"8")&&  !strstr(temp4,"9") )
+					{
+						strncat(temp4,&temp[i],1);
+						i++;
+					}
+					b=0;
+					while(i>1)
+					{
+						strncat(temp3,&temp4[b],1);
+						b++;
+						i--;
+					}
+					temp5 = strtok(temp + (b), " +)-(*/^%$!");
+					strcat(temp3,temp5);
+					ptr += strlen(temp3);
+					eksponensial = Eksponensial(temp3);
+					sprintf(temp,"%lf",eksponensial);
+					strcat(postfix, temp);
+	                strcat(postfix, oneSpace);
 	                strcat(postfix, oneSpace);
 				}
 	            else
