@@ -3,9 +3,9 @@
 #include "Nisrina.h"
 
 //operasi pengurangan
-float Pengurangan(float bil1, float bil2)
+double Pengurangan(double bil1, double bil2)
 {
-	float hasil;
+	double hasil;
 	
 	hasil = (bil1-bil2);
 	return hasil;

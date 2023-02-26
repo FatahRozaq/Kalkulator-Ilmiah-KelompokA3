@@ -3,7 +3,7 @@
 
 //spesifikasi
 
-float Pengurangan(float bil1, float bil2);
+double Pengurangan(double bil1, double bil2);
 
 void LogNatural();
 
