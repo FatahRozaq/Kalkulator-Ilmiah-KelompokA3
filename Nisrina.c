@@ -550,7 +550,6 @@ char *infixToPostfix(char *infix,char *postfix)
 					{
 						sscanf(temp,"%lflog%lf",&basis,&value);
 						log = HitungLogBebas(basis, value);
-						printf("%lf",log);
 						sprintf(temp,"%lf",log);
 					}
 	                strcat(postfix, temp);
@@ -593,7 +592,7 @@ double hitungPostfix(char postFix[])
     double a, b;
     Stack *stack = inisialisasi();
     char *token = strtok(postFix," ");
-    double modulus, faktorial;
+    double modulus, faktorial, penjumlahan, pengurangan, perkalian, pembagian, Akar, pangkat;
 
     while(token != NULL)
     {
@@ -618,22 +617,28 @@ double hitungPostfix(char postFix[])
             switch(*token)
             {
             case '+':
-                push(stack, b + a );
+            	penjumlahan = Penjumlahan(b, a);
+                push(stack, penjumlahan );
                 break;
             case '-':
-                push(stack, b - a );
+            	pengurangan = Pengurangan(b, a);
+                push(stack, pengurangan );
                 break;
             case '*':
-                push(stack, b * a );
+            	perkalian = Perkalian(b, a);
+                push(stack, perkalian );
                 break;
             case '/':
-                push(stack, b / a );
+            	pembagian = Pembagian(b, a);
+                push(stack, pembagian );
                 break;
             case '^':
-                push(stack, pow(b, a) );
+            	pangkat = Pangkat(b, a);
+                push(stack, pangkat );
                 break;
             case '$':
-                push(stack, akar(b,a) );
+            	Akar = akar(b, a);
+                push(stack, Akar );
                 break;
             case '%':
             	modulus = Modulus(b,a);
@@ -651,56 +656,67 @@ double hitungPostfix(char postFix[])
 void CalStfc()
 {
 	int pilih;
+	char ulang;
 	
-	header();
 	//BarMenu();
-	MenuCalStfc();
-	PilihMenu(&pilih);
-	switch(pilih)
-	{
-		case 1:
-			integral();
-			break;
-		case 2:
-			Matriks();
-			break;
-		case 3:
-			statistika();
-			break;
-		case 4:
-			deretGeometri();
-			break;
-		case 5:
-			deretAritmatika();
-			break;
-		case 6:
-			turunan();
-			break;
-		case 7:
-			CalProg();
-			break;
-		case 8:
-			konvertDaya();
-			break;
-		case 9:
-			konvertLuas();
-			break;
-		case 10:
-			konvertSuhu();
-			break;
-		case 11:
-			konvertPanjang();
-			break;
-		case 12:
-			konvertBerat();
-			break;
-		case 13:
-			konvertWaktu();
-			break;
-		case 14:
-			konvertvolume();
-			break;
-	}
+	do{	
+		system("cls");
+		header();
+		MenuCalStfc();
+		PilihMenu(&pilih);
+		switch(pilih)
+		{
+			case 1:
+				integral();
+				break;
+			case 2:
+				Matriks();
+				break;
+			case 3:
+				statistika();
+				break;
+			case 4:
+				deretGeometri();
+				break;
+			case 5:
+				deretAritmatika();
+				break;
+			case 6:
+				turunan();
+				break;
+			case 7:
+				CalProg();
+				break;
+			case 8:
+				konvertDaya();
+				break;
+			case 9:
+				konvertLuas();
+				break;
+			case 10:
+				konvertSuhu();
+				break;
+			case 11:
+				konvertPanjang();
+				break;
+			case 12:
+				konvertBerat();
+				break;
+			case 13:
+				konvertWaktu();
+				break;
+			case 14:
+				konvertvolume();
+				break;
+		}
+		
+		printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan lagi? (Y/N) ");
+        ulang = getche();
+        system("CLS");
+        header();
+	}while(ulang == 'y' || ulang == 'Y');
+	BacktoMain();
+	
 }
 
 void MenuCalStfc()
