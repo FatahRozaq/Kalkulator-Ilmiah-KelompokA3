@@ -20,8 +20,8 @@ int main()
 	
 //	printf("\n\n\t\t\t\t\t\t\t======================= SCIENTIFIC CALCULATOR =========================");
 	printf("\n \n");
-	printf("\t\t\t\t\t\t\t\t [1]. Kalkulator Standar    \n\n");
-	printf("\t\t\t\t\t\t\t\t [2]. Kalkulator Scientific \n\n");
+	printf("\t\t\t\t\t\t\t\t [1]. Kalkulator Scientific    \n\n");
+	printf("\t\t\t\t\t\t\t\t [2]. Kalkulator Standar \n\n");
 	printf("\t\t\t\t\t\t\t\t [3]. Tata Cara Penggunaan  \n\n");
 	printf("\t\t\t\t\t\t\t\t [4]. Credit   		   \n\n");	
 	printf("\t\t\t\t\t\t\t\t [0]. Keluar                \n");
