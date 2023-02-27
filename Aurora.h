@@ -9,6 +9,76 @@
 
 void CalProg();
 
+double Pembagian(double bil1, double bil2);
+
+double akar(double bil, double pangkat);
+
+void deretAritmatika();
+
+void konvertvolume();
+
+double hitungVolume(double value, int menu);
+
+
+// Divider
+void header();
+void headcalprog();
+
+void BarDes();
+void BarBin();
+void BarOkta();
+void BarHexa();
+
+void Barwal();
+
+void BarMenu();
+void BarmenuUtama();
+
+void BacktoMain();
+
+void athalie();
+void Fullmode();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 typedef struct {
 	char tanggal[20];
 	char waktu[12];
@@ -34,34 +104,8 @@ int OktDes(char* hist);
 void Hexa();
 int HexDes(char* hist);
 
-double Pembagian(double bil1, double bil2);
 
-double akar(double bil, double pangkat);
 
-void deretAritmatika();
-
-void konvertvolume();
-
-double hitungVolume(double value, int menu);
-
-// Divider
-void header();
-void headcalprog();
-
-void BarDes();
-void BarBin();
-void BarOkta();
-void BarHexa();
-
-void Barwal();
-
-void BarMenu();
-void BarmenuUtama();
-
-void BacktoMain();
-
-void athalie();
-void Fullmode();
 
 
 #endif
