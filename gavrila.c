@@ -63,13 +63,12 @@ void turunan()
 	int pilih;
 	int b;
 	
-	system("cls");
-	printf("Masukan banyak variabel X = ");
+	printf("\n\t\t\t\t\t\t\tMasukan banyak variabel X = ");
 	scanf("%d", &pilih);
 	
 	int n[pilih], pangkat[pilih];
 	
-	printf("Y = ");
+	printf("\n\t\t\t\t\t\t\tY = ");
 	for(b=0; b<pilih; b++)
 	{
 		printf("n.X^p ");
@@ -80,13 +79,13 @@ void turunan()
 	}
 	
 	for(b=0; b<pilih; b++){
-		printf("\nMasukan nilai n ke-%d =",b+1);
+		printf("\n\t\t\t\t\t\t\tMasukan nilai n ke-%d =",b+1);
 		scanf("%d",&n[b]);
-		printf("Masukan nilai p ke-%d =",b+1);
+		printf("\n\t\t\t\t\t\t\tMasukan nilai p ke-%d =",b+1);
 		scanf("%d",&pangkat[b]);		
 	}
 	
-	printf("nY  = ");
+	printf("\n\t\t\t\t\t\t\tnY  = ");
 	for(b=0; b<pilih; b++)
 	{
 		printf ("%d x^ %d", n[b], pangkat[b]);
@@ -101,7 +100,7 @@ void turunan()
 		pangkat[b] = pangkat[b] - 1;
 	}
 	
-	printf("\nnY' = ");
+	printf("\n\t\t\t\t\t\t\tnY' = ");
 	for(b=0; b<pilih; b++)
 	{
 		printf("%d X^ %d", n[b], pangkat[b]);
@@ -121,39 +120,39 @@ void konvertDaya()
    double daya;
    double hasilconvert;
    
-   printf("1. Watt (W)");
-   printf("\n2. Kilowatt (kW)");
-   printf("\n3. kilokalori/detik (kcal/s)");
-   printf("\n4. Newton-meter/detik (N.m/s)");
-   printf("\n5. Joule/detik (J/s)");
-   printf("\n6. Kilogram-meter/detik (kg.m/s)");
-   printf("\n\tPilih satuan awal daya= ");
+   printf("\n\t\t\t\t\t\t\t1. Watt (W)");
+   printf("\n\t\t\t\t\t\t\t2. Kilowatt (kW)");
+   printf("\n\t\t\t\t\t\t\t3. kilokalori/detik (kcal/s)");
+   printf("\n\t\t\t\t\t\t\t4. Newton-meter/detik (N.m/s)");
+   printf("\n\t\t\t\t\t\t\t5. Joule/detik (J/s)");
+   printf("\n\t\t\t\t\t\t\t6. Kilogram-meter/detik (kg.m/s)");
+   printf("\n\t\t\t\t\t\t\tPilih satuan awal daya= ");
    scanf("%d", &satuan1);
    while (satuan1 < 0 || satuan1 > 6) 
    {
-       printf("\nPilihan invalid, ketik ulang: ");
+       printf("\n\t\t\t\t\t\t\tPilihan invalid, ketik ulang: ");
        scanf("%d", &satuan1);
    }
    
-   printf("\n1. Watt (W)");
-   printf("\n2. Kilowatt (kW)");
-   printf("\n3. kilokalori/detik (kcal/s)");
-   printf("\n4. Newton-meter/detik (N.m/s)");
-   printf("\n5. Joule/detik (J/s)");
-   printf("\n6. Kilogram-meter/detik (kg.m/s)");
-   printf("\n\tPilih satuan akhir daya= ");
+   printf("\n\t\t\t\t\t\t\t1. Watt (W)");
+   printf("\n\t\t\t\t\t\t\t2. Kilowatt (kW)");
+   printf("\n\t\t\t\t\t\t\t3. kilokalori/detik (kcal/s)");
+   printf("\n\t\t\t\t\t\t\t4. Newton-meter/detik (N.m/s)");
+   printf("\n\t\t\t\t\t\t\t5. Joule/detik (J/s)");
+   printf("\n\t\t\t\t\t\t\t6. Kilogram-meter/detik (kg.m/s)");
+   printf("\n\t\t\t\t\t\t\tPilih satuan akhir daya= ");
    scanf("%d", &satuan2);
    while (satuan2 < 0 || satuan2 > 6) 
    {
-       printf("\nPilihan invalid, ketik ulang: ");
+       printf("\n\t\t\t\t\t\t\tPilihan invalid, ketik ulang: ");
        scanf("%d", &satuan2);
    }
    	
-   printf("\nMasukkan daya dalam satuan %d: ", satuan1);
+   printf("\n\t\t\t\t\t\t\tMasukkan daya dalam satuan %d: ", satuan1);
    scanf("%lf", &daya);
 	
 	hasilconvert =Hitungdaya(satuan1, satuan2, daya); 
-	printf("Hasil convert adalah %f", hasilconvert);
+	printf("\n\t\t\t\t\t\t\tHasil convert adalah %f", hasilconvert);
 }
 
 double Hitungdaya(int satuan1, int satuan2, double daya){

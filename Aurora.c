@@ -307,8 +307,6 @@ void Barwal()
 void BacktoMain()
 {
 	char back;
-	
-	Sleep(500);
 	printf("\n\n\t\t\t\t\t\t \tBack to main menu? \t\t\t (Y/N)");
 	
 	back =getche();
@@ -415,6 +413,24 @@ void CalProg()
 			return CalProg();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 int i, j;
 int des;

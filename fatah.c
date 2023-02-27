@@ -24,14 +24,14 @@ void konvertPanjang(){ // Panggil Modul ini ke main
 	
 	pilihanSatuan();
     opsi1 :
-	printf("Pilih Satuan Panjang : ");
+	printf("\n\t\t\t\t\t\t\tPilih Satuan Panjang : ");
 	scanf("%d", &opsi);
 	if (opsi > 7){
-		printf("Anda salah memasukan angka\n");
+		printf("\n\t\t\t\t\t\t\tAnda salah memasukan angka\n");
 		goto opsi1;
 	}
 	
-	printf("Masukan nilai : ");
+	printf("\n\t\t\t\t\t\t\tMasukan nilai : ");
     scanf("%f", &nilai);
 
 
@@ -40,10 +40,10 @@ void konvertPanjang(){ // Panggil Modul ini ke main
     pilihanSatuan();
     
     opsi2:
-	printf("Pilih satuan tujuan : ");
+	printf("\n\t\t\t\t\t\t\tPilih satuan tujuan : ");
 	scanf("%d", &opsi);
 	if (opsi > 7){
-		printf("Anda salah memasukan angka\n");
+		printf("\n\t\t\t\t\t\t\tAnda salah memasukan angka\n");
 		goto opsi2;
 	}
     
@@ -53,13 +53,13 @@ void konvertPanjang(){ // Panggil Modul ini ke main
 }
 
 void pilihanSatuan(){
-	printf("1-) Kilometer (Km)\n");
-    printf("2-) Hektameter (Hm)\n");
-    printf("3-) Dekameter (Dam)\n");
-    printf("4-) Meter (M)\n");
-    printf("5-) Desimeter (Dm)\n");
-    printf("6-) Centimeter (Cm)\n");
-    printf("7-) Milimeter (Mm)\n");
+	printf("\n\t\t\t\t\t\t\t1-) Kilometer (Km)");
+    printf("\n\t\t\t\t\t\t\t2-) Hektameter (Hm)");
+    printf("\n\t\t\t\t\t\t\t3-) Dekameter (Dam)");
+    printf("\n\t\t\t\t\t\t\t4-) Meter (M)");
+    printf("\n\t\t\t\t\t\t\t5-) Desimeter (Dm)");
+    printf("\n\t\t\t\t\t\t\t6-) Centimeter (Cm)");
+    printf("\n\t\t\t\t\t\t\t7-) Milimeter (Mm)");
 }
 
 float nilaiSatuan(int opsi, float nilai){
@@ -137,31 +137,31 @@ void tampilHasilConvert(int opsi, float *hasil){
 	
 	if (opsi == 1)
     {
-        printf("HASIL : %g Kilometer (Km)\n", *hasil);
+        printf("\n\t\t\t\t\t\t\tHASIL : %g Kilometer (Km)", *hasil);
     }
     else if (opsi == 2)
     {
-        printf("HASIL : %g Hektameter (Hm)\n", *hasil);
+        printf("\n\t\t\t\t\t\t\tHASIL : %g Hektameter (Hm)", *hasil);
     }
     else if (opsi == 3)
     {
-        printf("HASIL : %g Dekameter (Dam)\n", *hasil);
+        printf("\n\t\t\t\t\t\t\tHASIL : %g Dekameter (Dam)", *hasil);
     }
     else if (opsi == 4)
     {
-        printf("HASIL : %g Meter (M)\n", *hasil);
+        printf("\n\t\t\t\t\t\t\tHASIL : %g Meter (M)", *hasil);
     }
     else if (opsi == 5)
     {
-        printf("HASIL : %g Desimeter (Dm)\n", *hasil);
+        printf("\n\t\t\t\t\t\t\tHASIL : %g Desimeter (Dm)", *hasil);
     }
     else if (opsi == 6)
     {
-        printf("HASIL : %g Centimeter (Cm)\n", *hasil);
+        printf("\n\t\t\t\t\t\t\tHASIL : %g Centimeter (Cm)", *hasil);
     }
     else if (opsi == 7)
     {
-        printf("HASIL : %g Milimeter (Mm)\n", *hasil);
+        printf("\n\t\t\t\t\t\t\tHASIL : %g Milimeter (Mm)", *hasil);
     }
     
 }
@@ -174,17 +174,17 @@ void deretGeometri(){ // Panggil Modul ini
 	float sukuPertama, rasio, geometri, isiElemen;
 	int jumlahElemen, j;
 	
-    printf("\nMasukan suku pertama dari deret geometri : ");
+    printf("\n\t\t\t\t\t\t\tMasukan suku pertama dari deret geometri : ");
 	scanf("%f",&sukuPertama);
-	printf("\nMasukan ratio : ");
+	printf("\n\t\t\t\t\t\t\tMasukan ratio : ");
 	scanf("%f",&rasio);
-    printf("\nMasukan jumlah elemen dari deret geometri: ");
+    printf("\n\t\t\t\t\t\t\tMasukan jumlah elemen dari deret geometri: ");
 	scanf("%d",&jumlahElemen);
 	
 	jumlahElemen--;
 	float hasil[jumlahElemen];
 	
-    printf("\nDeret Geometri : ");
+    printf("\n\t\t\t\t\t\t\tDeret Geometri : ");
  
     for(j=0;j<=jumlahElemen;j++)
 	{
@@ -446,12 +446,12 @@ double Eksponensial(char *input){
 	
 	if(strstr(input,"-"))
 	{
-		sscanf(input,"exp-%lf",&value);
+		sscanf(input,"\n\t\t\t\t\t\t\texp-%lf",&value);
 		value = -1*value;
 	}
 	else
 	{
-		sscanf(input,"exp%lf",&value);
+		sscanf(input,"\n\t\t\t\t\t\t\texp%lf",&value);
 	}
 	
 	hasil = exp(value);

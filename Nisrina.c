@@ -1085,9 +1085,9 @@ void konvertBerat()
 	konvert = (char *)malloc( 10* sizeof(char));
 	
 	menuConvertBerat();
-	printf("Masukkan berat dan satuan yang akan di konvert [exp : 23 Kg] : ");
+	printf("\n\t\t\t\t\t\t\tMasukkan berat dan satuan yang akan di konvert [exp : 23 Kg] : ");
 	scanf(" %[^\n]", input);
-	printf("Masukkan satuan tujuan [exp : G] : ");
+	printf("\n\t\t\t\t\t\t\tMasukkan satuan tujuan [exp : G] : ");
 	scanf(" %[^\n]", konvert); // sama kaya &*input
 	sscanf(input,"%d ",&berat);
 	levelAsal = deteksiLevel(input);
@@ -1095,28 +1095,28 @@ void konvertBerat()
 	hasil = HitungConvertBerat(levelAsal, levelTujuan, berat);
 	if((levelAsal - levelTujuan) > 4)
 	{
-		printf("hasil konvert : %f %s", *hasil, konvert);
+		printf("\n\t\t\t\t\t\t\thasil konvert : %f %s", *hasil, konvert);
 	}
 	else
 	{
-		printf("hasil konvert : %g %s", *hasil, konvert);
+		printf("\n\t\t\t\t\t\t\thasil konvert : %g %s", *hasil, konvert);
 	}
 }
 
 void menuConvertBerat()
 {
 	system("cls");
-	printf("|==========================================================================================|\n");
-	printf("|                                     SATUAN BERAT                                         |\n");
-	printf("<==========================================================================================>\n");
-	printf("|                                                                                          |\n");
- 	printf("| 1. Kg										   	   5.Dg									   |\n");
-	printf("| 2. Hg										   	   6.Cg									   |\n");
-	printf("| 3. Dag									   	   7.Mg									   |\n");
-	printf("| 4. G																			   	   	   |\n");
- 	printf("<==========================================================================================>\n");
-	printf("|                                                                                          |\n");
-	printf("|==========================================================================================|\n");
+	printf("\n\t\t\t\t\t\t\t|==========================================================================================|");
+	printf("\n\t\t\t\t\t\t\t|                                     SATUAN BERAT                                         |");
+	printf("\n\t\t\t\t\t\t\t<==========================================================================================>");
+	printf("\n\t\t\t\t\t\t\t|                                                                                          |");
+ 	printf("\n\t\t\t\t\t\t\t| 1. Kg						 5.Dg									   |");
+	printf("\n\t\t\t\t\t\t\t| 2. Hg						 6.Cg									   |");
+	printf("\n\t\t\t\t\t\t\t| 3. Dag					 7.Mg									   |");
+	printf("\n\t\t\t\t\t\t\t| 4. G																			   	   	   |");
+ 	printf("\n\t\t\t\t\t\t\t<==========================================================================================>");
+	printf("\n\t\t\t\t\t\t\t|                                                                                          |");
+	printf("\n\t\t\t\t\t\t\t|==========================================================================================|");
 }
 
 int deteksiLevel(char *input)

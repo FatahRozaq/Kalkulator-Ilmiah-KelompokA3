@@ -5,16 +5,16 @@
 
 void panggilModulus(){ // Panggil modul ini di main
 	int bilMod1, bilMod2, mod;
-	InputDataModulus(&bilMod1, &bilMod2, "Masukan angka : ");
+	InputDataModulus(&bilMod1, &bilMod2, "\n\t\t\t\t\t\t\tMasukan angka : ");
 	mod = Modulus(bilMod1, bilMod2); 
-	printf("Hasil Modulus : %d", mod);
+	printf("\n\t\t\t\t\t\t\tHasil Modulus : %d", mod);
 }
 void panggilAkar(){ // Panggil modul ini di main
 	float bil1, akar;
-	printf("Memasukkan angka: ");
+	printf("\n\t\t\t\t\t\t\tMemasukkan angka: ");
 	scanf("%f",&bil1);
 	akar = Akar2(bil1);
-	printf("Hasil=%g\n", akar);
+	printf("\n\t\t\t\t\t\t\tHasil=%g\n", akar);
 }
 void konvertLuas(){ // Panggil modul ini di main
 	float bil2;
@@ -27,10 +27,10 @@ void konvertSuhu(){ // Panggil modul ini di main
 void panggilLogaritma(){ // Panggil modul ini di main
 	float bil1, log1;
 	
-	printf("\nMasukkan angka=");
+	printf("\n\t\t\t\t\t\t\tMasukkan angka=");
 	scanf("%f", &bil1);
 	log1 = Logaritma(bil1);
-	printf("Hasil Logaritma : %g", log1);
+	printf("\n\t\t\t\t\t\t\tHasil Logaritma : %g", log1);
 }
 
 double Modulus(double bil1, double bil2)
@@ -55,70 +55,70 @@ float Suhu(float bil2)
 
 	int Milih,lagi,lagi1,lagi2,lagi3;
 	float Diubah,bil3,bil4,bil5,bil6,bil7,bil8,bil9,bil10,bil11,bil13;
-	printf("1. C\n");
-	printf("2. F\n");
-	printf("3. R\n");
-	printf("4. K\n");
-	printf("Memilih Suhu:");
+	printf("\n\t\t\t\t\t\t\t1. C\n");
+	printf("\n\t\t\t\t\t\t\t2. F\n");
+	printf("\n\t\t\t\t\t\t\t3. R\n");
+	printf("\n\t\t\t\t\t\t\t4. K\n");
+	printf("\n\t\t\t\t\t\t\tMemilih Suhu:");
 	scanf("%d",&Milih);
-	system("cls");
+	//system("cls");
 	switch(Milih){
 		case 1:
-		printf("Diubah menjadi:\n");
-		printf("1. F\n");
-		printf("2. K\n");
-		printf("3. R\n");
-		printf("Pilih [1-3] : ");
+		printf("\n\t\t\t\t\t\t\tDiubah menjadi:\n");
+		printf("\n\t\t\t\t\t\t\t1. F\n");
+		printf("\n\t\t\t\t\t\t\t2. K\n");
+		printf("\n\t\t\t\t\t\t\t3. R\n");
+		printf("\n\t\t\t\t\t\t\tPilih [1-3] : ");
 		scanf("%d",&lagi);
 		system("cls");
 			switch(lagi){
 				case 1:
-							printf("Memasukkan suhu:");
+							printf("\n\t\t\t\t\t\t\tMemasukkan suhu:");
 							scanf("%f",&bil2);
 							Diubah=(9.0/5.0 * bil2)+32;
 							printf("%g F",Diubah);break;
 				case 2:
-							printf("Memasukkan suhu:");
+							printf("\n\t\t\t\t\t\t\tMemasukkan suhu:");
 							scanf("%f",&bil3);
 							Diubah=bil3 + 273;
 							printf("%g K",Diubah);break;
 				case 3:
-							printf("Memasukkan suhu:");
+							printf("\n\t\t\t\t\t\t\tMemasukkan suhu:");
 							scanf("%f",&bil4);
 							Diubah=bil4 * 4/5.0;
 							printf("%g R",Diubah);break;		
 			}break;
 		case 2:
-		printf("Diubah menjadi:\n");
-		printf("1. C\n");
-		printf("2. K\n");
-		printf("3. R\n");
-		printf("Pilih [1-3] : ");
+		printf("\n\t\t\t\t\t\t\tDiubah menjadi:\n");
+		printf("\n\t\t\t\t\t\t\t1. C\n");
+		printf("\n\t\t\t\t\t\t\t2. K\n");
+		printf("\n\t\t\t\t\t\t\t3. R\n");
+		printf("\n\t\t\t\t\t\t\tPilih [1-3] : ");
 		scanf("%d",&lagi1);
-		system("cls");
+		//system("cls");
 			switch(lagi1){
 				case 1:
-							printf("Memasukkan suhu:");
+							printf("\n\t\t\t\t\t\t\tMemasukkan suhu:");
 							scanf("%d",&bil5);
 							Diubah=(bil5 -32 ) * 5.0/9.0;
 							printf("%g C",Diubah);break;
 				case 2:
-							printf("Memasukkan suhu:");
+							printf("\n\t\t\t\t\t\t\tMemasukkan suhu:");
 							scanf("%f",&bil6);
 							Diubah=( bil6 - 32) * 5.0/9.0 + 273;
 							printf("%g K",Diubah);break;
 				case 3:
-							printf("Memasukkan suhu:");
+							printf("\n\t\t\t\t\t\t\tMemasukkan suhu:");
 							scanf("%f",&bil6);
 							Diubah=( bil6 - 32) * 4/9.0;
 							printf("%g K",Diubah);break;
 				}break;
 		case 3:
-		printf("Diubah menjadi:\n");
-		printf("1. C\n");
-		printf("2. F\n");
-		printf("3. K\n");
-		printf("Pilih [1-3] : ");
+		printf("\n\t\t\t\t\t\t\tDiubah menjadi:\n");
+		printf("\n\t\t\t\t\t\t\t1. C\n");
+		printf("\n\t\t\t\t\t\t\t2. F\n");
+		printf("\n\t\t\t\t\t\t\t3. K\n");
+		printf("\n\t\t\t\t\t\t\tPilih [1-3] : ");
 		scanf("%d",&lagi2);
 		system("cls");
 			switch(lagi2){
@@ -173,19 +173,19 @@ float Luas(float bil2){
 		
 	int milih;
 	float Hasil,bil3,bil4,bil5,bil6,bil7,bil8;	
-		printf("1. km\n");
-		printf("2. hm\n");
-		printf("3. dam\n");
-		printf("4. m  \n");
-		printf("5. dm\n");
-		printf("6. cm\n");
-		printf("7. mm \n");
-		printf("Pilih [1-7] : ");
+		printf("\n\t\t\t\t\t\t\t1. km");
+		printf("\n\t\t\t\t\t\t\t2. hm");
+		printf("\n\t\t\t\t\t\t\t3. dam");
+		printf("\n\t\t\t\t\t\t\t4. m  ");
+		printf("\n\t\t\t\t\t\t\t5. dm");
+		printf("\n\t\t\t\t\t\t\t6. cm");
+		printf("\n\t\t\t\t\t\t\t7. mm ");
+		printf("\n\t\t\t\t\t\t\tPilih [1-7] : ");
 		scanf("%d",&milih);
 		system("cls");
 		switch (milih){
 			case 1 :
-				printf("Memasukkan angka (km): ");
+				printf("\n\t\t\t\t\t\t\tMemasukkan angka (km): ");
 				scanf("%f",&bil2);
 		
 				if(bil2 > -32.768){
@@ -204,7 +204,7 @@ float Luas(float bil2){
 			
 					}break;
 			case 2 :
-				printf("Memasukkan angka (hm): ");
+				printf("\n\t\t\t\t\t\t\tMemasukkan angka (hm): ");
 				scanf("%f",&bil3);
 				
 				if(bil3 > -32.768){
@@ -223,7 +223,7 @@ float Luas(float bil2){
 			
 					}break;
 			case 3 :
-				printf("Memasukkan angka (dam): ");
+				printf("\n\t\t\t\t\t\t\tMemasukkan angka (dam): ");
 				scanf("%f",&bil4);
 				
 				if(bil4 > -32.768){
@@ -242,7 +242,7 @@ float Luas(float bil2){
 			
 					}	break;	
 			case 4 :
-				printf("Memasukkan angka (m): ");
+				printf("\n\t\t\t\t\t\t\tMemasukkan angka (m): ");
 				scanf("%f",&bil5);
 				
 				if(bil5 > -32.768){
@@ -261,7 +261,7 @@ float Luas(float bil2){
 			
 					}	break;			
 			case 5 :
-				printf("Memasukkan angka (dm): ");
+				printf("\n\t\t\t\t\t\t\tMemasukkan angka (dm): ");
 				scanf("%f",&bil6);
 				
 				if(bil6 > -32.768){
@@ -280,7 +280,7 @@ float Luas(float bil2){
 			
 					}	break;			
 			case 6 :
-				printf("Memasukkan angka (cm): ");
+				printf("\n\t\t\t\t\t\t\tMemasukkan angka (cm): ");
 				scanf("%f",&bil7);
 				
 				if(bil7 > -32.768){
@@ -299,7 +299,7 @@ float Luas(float bil2){
 			
 					}	break;
 			case 7 :
-				printf("Memasukkan angka (cm): ");
+				printf("\n\t\t\t\t\t\t\tMemasukkan angka (cm): ");
 				scanf("%f",&bil8);
 				
 				if(bil8 > -32.768){
@@ -345,14 +345,14 @@ void InputDataModulus(int *bilMod1, int *bilMod2, char *kalimat){
 void LogaritmaBebas(){
 	float basis, angka, Hasil;
    
-    printf("Masukkan basis : ");
+    printf("\n\t\t\t\t\t\t\tMasukkan basis : ");
     scanf("%lf", &basis);
-    printf("Masukkan angka : ");
+    printf("\n\t\t\t\t\t\t\tMasukkan angka : ");
     scanf("%lf", &angka);
     
     Hasil = HitungLogBebas(basis, angka);
     
-    printf("Hasil= %g", Hasil);
+    printf("\n\t\t\t\t\t\t\tHasil= %g", Hasil);
 
 }
 		
