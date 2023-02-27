@@ -78,13 +78,13 @@ int validasiChar(char postfix[256]);
 
 void CalStfc();
 
-void MenuCalStfc();
+void MenuCalStd();
 
 void konvertWaktu();
 
 void Trigonometri();
 
-float RadianTrigono(char *input);
+double RadianTrigono(char *input);
 
 double DerajatTrigono(char *input);
 

@@ -77,7 +77,7 @@ int validasiChar(char postfix[256])
 	return hasil;
 	
 }
-void CalStd()
+void CalStfc()
 {
 	char *infixExpr;
     infixExpr=malloc(266*sizeof(char));
@@ -114,7 +114,7 @@ void CalStd()
   		isChar = validasiChar(postfixExpr);
   		if (isChar == 1)
   		{
-  			printf("tidak valid ada char");
+  			printf("\n\n\t\t\t\t\t\t\t\t\tTidak valid ada char\n");
 		}
 		else if(isChar == 0)
 		{
@@ -714,7 +714,7 @@ double hitungPostfix(char postFix[])
     return pop(stack).bData;
 }
 
-void CalStfc()
+void CalStd()
 {
 	int pilih;
 	char ulang;
@@ -723,7 +723,7 @@ void CalStfc()
 	do{	
 		system("cls");
 		header();
-		MenuCalStfc();
+		MenuCalStd();
 		PilihMenu(&pilih);
 		switch(pilih)
 		{
@@ -780,7 +780,7 @@ void CalStfc()
 	
 }
 
-void MenuCalStfc()
+void MenuCalStd()
 {
  	printf("\n\n\t\t\t\t\t\t\t\t<===============================================>\n");
 	printf("\t\t\t\t\t\t\t\t|        MENU \tKALKULATOR \tSCIENTIFIC     |\n");
@@ -854,38 +854,86 @@ void Trigonometri()
 	printf("derajat : %g\n", derajat);
 }
 
-float RadianTrigono(char *input)
+double RadianTrigono(char *input)
 {
-	float value;
+	double value;
 	
 	if(strstr(input,"sin"))
 	{
-		sscanf(input,"sin(%f)",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"sin-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"sin%lf",&value);
+		}
 		return TriSin(value);
 	}
 	else if(strstr(input,"cos"))
 	{
-		sscanf(input,"cos(%f)",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"cos-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"cos%lf",&value);
+		}
 		return TriCos(value);
 	}
 	else if(strstr(input,"tan"))
 	{
-		sscanf(input,"tan(%f)",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"tan-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"tan%lf",&value);
+		}
 		return TriTan(value);
 	}
 	else if(strstr(input,"cot"))
 	{
-		sscanf(input,"cot(%f)",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"cot-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"cot%lf",&value);
+		}
 		return TriCot(value);
 	}
 	else if(strstr(input,"sec"))
 	{
-		sscanf(input,"sec(%f)",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"sec-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"sec%lf",&value);
+		}
 		return TriSec(value);
 	}
 	else if(strstr(input,"csc"))
 	{
-		sscanf(input,"csc(%f)",&value);
+		if(strstr(input,"-"))
+		{
+			sscanf(input,"csc-%lf",&value);
+			value = -1*value;
+		}
+		else
+		{
+			sscanf(input,"csc%lf",&value);
+		}
 		return TriCsc(value);
 	}
 }
