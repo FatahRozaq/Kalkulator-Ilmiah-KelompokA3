@@ -213,52 +213,52 @@ void statistika(){ // panggil modul ini ke main
     float median, mean;
     int i,j;
 
-    printf("Masukan jumlah elemen data : ");
+    printf("\n\t\t\t\t\t\t\Masukan jumlah elemen data : ");
     scanf("%d", &ukuran);
 
     ukuran --;
     int array[ukuran];
 
     for (i = 0; i <= ukuran; i ++) {
-        printf("Masukan Elemen[%d]: ", i+1);
-        scanf("%d", &array[i]);
+        printf("\n\t\t\t\t\t\t\Masukan Elemen[%d]: ", i+1);
+        scanf("\n\t\t\t\t\t\t%d", &array[i]);
     }
 
-    printf("\n\nData yang anda masukan \n");
-	printf("=============================================\n");
+    printf("\n\t\t\t\t\t\t\Data yang anda masukan");
+	printf("\n\t\t\t\t\t\t=============================================\n");
     for (j = 0; j <= ukuran; j ++) {
-        printf(" %d ", array[j]);
+        printf("\n\t\t\t\t\t\t%d ", array[j]);
     }
-    printf("\n=============================================\n");
+    printf("\n\t\t\t\t\t\t=============================================\n");
     
     
-    printf("\nSetelah data disorting");
-    printf("\n=============================================\n");
+    printf("\n\t\t\t\t\t\tSetelah data disorting");
+    printf("\n\t\t\t\t\t\t=============================================\n");
     array_sort(array, ukuran);
-    printf("\n=============================================\n");
+    printf("\n\t\t\t\t\t\t=============================================\n");
     
     modus = array_modus(array, ukuran);
-    printf("\nModus kumpulan data ");
-    printf("\n=============================================\n");
+    printf("\n\t\t\t\t\t\tModus kumpulan data ");
+    printf("\n\t\t\t\t\t\t=============================================\n");
     if (modus == 1) {
-    	printf("\nSemua elemen termasuk modus\n");
+    	printf("\n\t\t\t\t\t\tSemua elemen termasuk modus");
     }else{
-    	printf(" %d ", modus);
+    	printf("\n\t\t\t\t\t\t%d ", modus);
 	}
-    printf("\n=============================================\n");
+    printf("\n\t\t\t\t\t\t=============================================\n");
     
     median = array_median(array, ukuran);
     
-    printf("\nMedian kumpulan data ");
-    printf("\n=============================================\n");
-    printf(" %g ", median);
-    printf("\n=============================================\n");
+    printf("\n\t\t\t\t\t\tMedian kumpulan data ");
+    printf("\n\t\t\t\t\t\t=============================================");
+    printf("\n\t\t\t\t\t\t%g ", median);
+    printf("\n\t\t\t\t\t\t=============================================\n");
     
     mean = array_mean(array, ukuran);
-	printf("\nMean kumpulan data ");
-    printf("\n=============================================\n");
-    printf(" %g ", mean);
-    printf("\n=============================================\n");
+	printf("\n\t\t\t\t\t\tMean kumpulan data ");
+    printf("\n\t\t\t\t\t\t=============================================");
+    printf("\n\t\t\t\t\t\t%g ", mean);
+    printf("\n\t\t\t\t\t\t=============================================\n");
 }
 
 int array_modus(int *array, int ukuran) {
@@ -309,7 +309,7 @@ void array_sort(int *array, int ukuran) {
 
     for (aux3 = 0; aux3 <= ukuran; aux3 ++) {
 
-        printf(" %d ", array[aux3]);
+        printf("\n\t\t\t\t\t\t%d ", array[aux3]);
     }
 }
 

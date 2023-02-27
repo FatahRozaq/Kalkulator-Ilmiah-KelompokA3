@@ -58,13 +58,13 @@ void deretAritmatika() {
     int sukuPertama, beda, jumlahSuku, i;
     int hasil = 0;
 
-    printf("Masukkan nilai suku pertama: ");
+    printf("\n\t\t\t\t\t\t\tMasukkan nilai suku pertama: ");
     scanf("%d", &sukuPertama);
 
-    printf("Masukkan nilai beda: ");
+    printf("\n\t\t\t\t\t\t\tMasukkan nilai beda: ");
     scanf("%d", &beda);
 
-    printf("Masukkan jumlah suku: ");
+    printf("\n\t\t\t\t\t\t\tMasukkan jumlah suku: ");
     scanf("%d", &jumlahSuku);
 
     for(i = 0; i < jumlahSuku; i++) {
@@ -72,7 +72,7 @@ void deretAritmatika() {
         printf("%d ", sukuPertama + (i * beda));
     }
 
-    printf("\nJumlah deret aritmatika: %d\n", hasil);
+    printf("\n\t\t\t\t\t\t\tJumlah deret aritmatika: %d\n", hasil);
 }
 
 
