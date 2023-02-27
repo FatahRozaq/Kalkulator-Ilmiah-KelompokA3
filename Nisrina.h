@@ -26,6 +26,8 @@ typedef struct
     int top;
 } Stack;
 
+
+/* {membuat sendiri */
 double Penjumlahan (double bil1, double bil2);
 
 double Pangkat(double bil1, double bil2);
@@ -41,7 +43,14 @@ void TampilHasilFloat(float hasil, char nama[]);
 void TampilHasilInt(int hasil, char nama[]);
 
 void CalStd();
+/*}*/
 
+
+/* {referensi github : https://github.com/MohamedFarid612/Calculator-infix-to-postfix-/blob/main/main.c 
+- melakukan modifikasi dengan menggunakan function yang sudah dibuat untuk operasi tambah, kali,bagi,kurang, pangkat 
+-menambahkan algoritma untuk phi, e, eksponen, logaritma, logaritma natural, trigonometri dan lain-lain
+-mengubah tipe data menjadi double dari yang sebelumnya float
+dan lain-lain */
 Stack* inisialisasi();
 
 int isEmpty(Stack *s);
@@ -73,7 +82,9 @@ void gantiNewLineJadiSpasi(char *s);
 int isNumber(char *token);
 
 double hitungPostfix(char postFix[]);
+/*}*/
 
+/* {membuat sendiri */
 int validasiChar(char postfix[256]);
 
 void CalStfc();
@@ -129,5 +140,6 @@ void TataCara();
 void CaraCalStd();
 
 void Credit();
+/*}*/
 
 #endif
