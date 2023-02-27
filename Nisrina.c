@@ -86,7 +86,7 @@ void CalStd()
 	int isChar;
 	
 	header();
-	//Barwal();
+	Calculator();
 	
     do
     {
