@@ -32,11 +32,11 @@ int main()
 	switch (pilih)
 	{
 		case 1:
-			CalStd();
+			CalStfc();
 			break;
 		
 		case 2:
-			CalStfc();
+			CalStd();
 			break;
 			
 		case 3:
