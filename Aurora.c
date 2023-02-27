@@ -76,6 +76,87 @@ void deretAritmatika() {
 }
 
 
+void konvertvolume() {
+	
+	int menu;
+    double value, result;
+
+
+    printf("========================================\n");
+    printf("|     Program Konversi Volume       |\n");
+    printf("========================================\n");
+    printf("| Menu:                                |\n");
+    printf("|    1. mL                          |\n");
+    printf("|    2. L                          |\n");
+    printf("|    3. Kubik inchi                |\n");
+    printf("|    4.  m^3                       |\n");
+    printf("|    5. km^3                     |\n");
+    printf("|    6. hm^3                     |\n");
+    printf("|    7. dam^3                     |\n");
+    printf("|   8. mm^3                      |\n");
+    printf("|   9. dm^3                     |\n");
+    printf("|   10. cm^3                      |\n");
+    printf("|                              |\n");
+    printf("========================================\n");
+    printf("Pilih satuan volume yang akan dikonversi: ");                                                                  
+    scanf("%d", &menu);
+    printf("Masukkan nilai yang akan dikonversi: ");
+    scanf("%lf", &value);
+    
+    result = hitungVolume(value, menu);
+    if (result == 0)
+    {
+    	printf("Pilihan tidak valid!\n");
+	}
+	else
+	{
+		printf("%.4lf cm^3 = %.4lf L\n", value, result);
+	}
+
+}
+
+double hitungVolume(double value, int menu)
+{
+	double result;
+	
+	switch(menu) {
+        case 1: // mL
+            result = value / 1000.0;
+            break;
+        case 2: // L
+            result = value * 1000.0;
+            break;
+        case 3: // in^3
+            result = value / 61.024;
+            break;
+        case 4: // m^3
+            result = value * 1000.0;
+            break;
+        case 5: // km^3
+            result = value * 1000000000000.0;
+            break;
+        case 6: // hm^3
+            result = value * 1000000000.0;
+            break;
+        case 7: // dam^3
+            result = value * 1000.0;
+            break;
+        case 8: // mm^3
+            result = value / 1000000.0;
+            break;
+        case 9: // dm^3
+            result = value;
+            break;
+        case 10: // cm^3
+            result = value / 1000.0;
+            break;
+        default:
+        	result = 0;
+            break;
+    }
+	
+	return result;
+}
 
 
 void header()
@@ -290,10 +371,6 @@ printf("\n\t\t\t\t\t\t\t\t\t| |_____| |_____|_____|_____| |_____| |");
 printf("\n\t\t\t\t\t\t\t\t\t|_____________________________________|");
 	
 }
-
-
-
-
 
 
 
@@ -900,84 +977,4 @@ int HexDes(char* hist)
 	
 }
 
-void konvertvolume() {
-	
-	int menu;
-    double value, result;
 
-
-    printf("========================================\n");
-    printf("|     Program Konversi Volume       |\n");
-    printf("========================================\n");
-    printf("| Menu:                                |\n");
-    printf("|    1. mL                          |\n");
-    printf("|    2. L                          |\n");
-    printf("|    3. Kubik inchi                |\n");
-    printf("|    4.  m^3                       |\n");
-    printf("|    5. km^3                     |\n");
-    printf("|    6. hm^3                     |\n");
-    printf("|    7. dam^3                     |\n");
-    printf("|   8. mm^3                      |\n");
-    printf("|   9. dm^3                     |\n");
-    printf("|   10. cm^3                      |\n");
-    printf("|                              |\n");
-    printf("========================================\n");
-    printf("Pilih satuan volume yang akan dikonversi: ");                                                                  
-    scanf("%d", &menu);
-    printf("Masukkan nilai yang akan dikonversi: ");
-    scanf("%lf", &value);
-    
-    result = hitungVolume(value, menu);
-    if (result == 0)
-    {
-    	printf("Pilihan tidak valid!\n");
-	}
-	else
-	{
-		printf("%.4lf cm^3 = %.4lf L\n", value, result);
-	}
-
-}
-
-double hitungVolume(double value, int menu)
-{
-	double result;
-	
-	switch(menu) {
-        case 1: // mL
-            result = value / 1000.0;
-            break;
-        case 2: // L
-            result = value * 1000.0;
-            break;
-        case 3: // in^3
-            result = value / 61.024;
-            break;
-        case 4: // m^3
-            result = value * 1000.0;
-            break;
-        case 5: // km^3
-            result = value * 1000000000000.0;
-            break;
-        case 6: // hm^3
-            result = value * 1000000000.0;
-            break;
-        case 7: // dam^3
-            result = value * 1000.0;
-            break;
-        case 8: // mm^3
-            result = value / 1000000.0;
-            break;
-        case 9: // dm^3
-            result = value;
-            break;
-        case 10: // cm^3
-            result = value / 1000.0;
-            break;
-        default:
-        	result = 0;
-            break;
-    }
-	
-	return result;
-}
