@@ -310,9 +310,9 @@ int isFull(Stack *s)
 int priority(char c)
 {
     if (c=='+' || c=='-') return 1;
-    else if (c=='*' || c=='/') return 2;
-    else if (c=='^' || c == '$') return 3 ;
-    else if (c=='%' || c == '!') return 4;
+    else if (c=='*' || c=='/' || c =='%' ) return 2;
+    else if (c=='^' || c=='$' ) return 3;
+    else if (c== '!' ) return 4;
     return 0;
 }
 /*
@@ -1180,7 +1180,7 @@ void TataCara()
 	int pilih;
 	
 	system("cls");
-	printf("1. Kalkulator Standar");
+	printf("1. Kalkulator Scientific");
 	PilihMenu(&pilih);
 	switch(pilih)
 	{
@@ -1200,9 +1200,11 @@ void CaraCalStd()
 	printf("|                                                                                          |\n");
 	printf("| 1. Berikut adalah karakter yang VALID untuk membuat ekspresi :                           |\n");
 	printf("|    '(' dan ')' untuk memberikan tanda kurung pada operasi                                |\n");
-	printf("|    '$' dan '^' untuk operasi akar kuadrat dan pangkat                                    |\n");
+	printf("|    '$' dan '^' untuk operasi akar  dan pangkat                                           |\n");
 	printf("|    '*' dan '/' untuk operasi perkalian dan pembagian                                     |\n");
 	printf("|    '+' dan '-' untuk operasi penjumlahan dan pengurangan                                 |\n");
+	printf("|    '!' untuk operasi faktorial						                                   |\n");
+	printf("|    '%' untuk operasi modulus							                                   |\n");
 	printf("|    '.' untuk menandakan desimal.                                                         |\n");
  	printf("<==========================================================================================>\n");
 	printf("|                                                                                          |\n");
