@@ -141,12 +141,12 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"sin-%lf",&value);
+			sscanf(input,"sin(-%lf)",&value);
 			value = -1*value;
 		}
 		else
 		{
-			sscanf(input,"sin%lf",&value);
+			sscanf(input,"sin(%lf)",&value);
 		}
 		return TriSin(value*3.14159 /180);
 	}
@@ -154,12 +154,12 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"cos-%lf",&value);
+			sscanf(input,"cos(-%lf)",&value);
 			value = -1*value;
 		}
 		else
 		{
-			sscanf(input,"cos%lf",&value);
+			sscanf(input,"cos(%lf)",&value);
 		}
 		return TriCos(value*3.14159 /180);
 	}
@@ -167,12 +167,12 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"tan-%lf",&value);
+			sscanf(input,"tan(-%lf)",&value);
 			value = -1*value;
 		}
 		else
 		{
-			sscanf(input,"tan%lf",&value);
+			sscanf(input,"tan(%lf)",&value);
 		}
 		return TriTan(value*3.14159 /180);
 	}
@@ -180,12 +180,12 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"cot-%lf",&value);
+			sscanf(input,"cot(-%lf)",&value);
 			value = -1*value;
 		}
 		else
 		{
-			sscanf(input,"cot%lf",&value);
+			sscanf(input,"cot(%lf)",&value);
 		}
 		return TriCot(value*3.14159 /180);
 	}
@@ -193,12 +193,12 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"sec-%lf",&value);
+			sscanf(input,"sec(-%lf)",&value);
 			value = -1*value;
 		}
 		else
 		{
-			sscanf(input,"sec%lf",&value);
+			sscanf(input,"sec(%lf)",&value);
 		}
 		return TriSec(value*3.14159 /180);
 	}
@@ -206,12 +206,12 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"csc-%lf",&value);
+			sscanf(input,"csc(-%lf)",&value);
 			value = -1*value;
 		}
 		else
 		{
-			sscanf(input,"csc%lf",&value);
+			sscanf(input,"csc(%lf)",&value);
 		}
 		return TriCsc(value*3.14159 /180);
 	}
@@ -437,26 +437,11 @@ char *infixToPostfix(char *infix,char *postfix)
             {
                 strncat(temp2, &tempChar3, 1);
                 strcpy(tempInfix, infix);
-                temp = strtok(tempInfix + ptr, " +)(*/^%$!");
+                temp = strtok(tempInfix + ptr, " -+*/^%$!");
                 if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
-					i=1;
-					while(!strstr(temp4,"0") && !strstr(temp4,"1") &&  !strstr(temp4,"2") &&  !strstr(temp4,"3")&&  !strstr(temp4,"4")&&  !strstr(temp4,"5")&&  !strstr(temp4,"6")&&  !strstr(temp4,"7")&&  !strstr(temp4,"8")&&  !strstr(temp4,"9") )
-					{
-						strncat(temp4,&temp[i],1);
-						i++;
-					}
-					b=0;
-					while(i>2)
-					{
-						strncat(temp3,&temp4[b],1);
-						b++;
-						i--;
-					}
-					temp5 = strtok(temp + (b+1), " +)-(*/^%$!");
-					strcat(temp3,temp5);
-					ptr += strlen(temp3) +1;
-					trigono = DerajatTrigono(temp3);
+					ptr += strlen(temp) +1;
+					trigono = DerajatTrigono(temp);
 					if(trigono < 0)
 					{
 						trigono = -1 * trigono;
@@ -540,26 +525,11 @@ char *infixToPostfix(char *infix,char *postfix)
             else
             {
 	            strcpy(tempInfix, infix);
-                temp = strtok(tempInfix + ptr, " +)(*/^%$!");
+                temp = strtok(tempInfix + ptr, " +-*/^%$!");
 				if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
-					i=0;
-					while(!strstr(temp4,"0") && !strstr(temp4,"1") &&  !strstr(temp4,"2") &&  !strstr(temp4,"3")&&  !strstr(temp4,"4")&&  !strstr(temp4,"5")&&  !strstr(temp4,"6")&&  !strstr(temp4,"7")&&  !strstr(temp4,"8")&&  !strstr(temp4,"9") )
-					{
-						strncat(temp4,&temp[i],1);
-						i++;
-					}
-					b=0;
-					while(i>1)
-					{
-						strncat(temp3,&temp4[b],1);
-						b++;
-						i--;
-					}
-					temp5 = strtok(temp + (b), " +)-(*/^%$!");
-					strcat(temp3,temp5);
-					ptr += strlen(temp3);
-					trigono = DerajatTrigono(temp3);
+					ptr += strlen(temp);
+					trigono = DerajatTrigono(temp);
 					sprintf(temp,"%lf",trigono);
 					strcat(postfix, temp);
 	                strcat(postfix, oneSpace);

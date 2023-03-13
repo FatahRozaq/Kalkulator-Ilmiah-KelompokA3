@@ -65,7 +65,7 @@ void pushChar(Stack *s, char c);
 
 int isFull(Stack *s);
 
-int prioritas(char c);
+int priority(char c);
 
 int isOperator(char c);
 
