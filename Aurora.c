@@ -8,6 +8,7 @@ Author			: Athalie Aurora Puspanegara
 /* ========== Header File ========== */
 
 #include "Aurora.h"
+#include "jojo.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,32 +34,37 @@ double Pembagian(double bil1, double bil2){
 } 
 
 double akar(double bil, double pangkat) {
-    double hasil;
-    int ap;
-    
-    ap = (int)pangkat;
-    
-    // Menghitung akar pangkat tertentu
-    hasil = pow(fabs(bil), 1.0 / ap);
-    if (bil < 0) {
-        hasil = -hasil;
+    double result = 1.0;
+    double precision = 0.0001;
+    double diff = 1.0;
+    while (diff > precision) {
+        result = ((pangkat - 1.0) * result + bil / Powku(result, pangkat - 1)) / pangkat;
+        diff = result - (bil / pow(result, pangkat - 1));
+        if (diff < 0) {
+            diff = -diff;
+        }
     }
+    return result;
     
-    return hasil;
+//    double hasil;
+//    int ap;
+//    
+//    ap = (int)pangkat;
+//    
+//    // Menghitung akar pangkat tertentu
+//    hasil = Powku(fabs(bil), 1.0 / ap);
+//    if (bil < 0) {
+//        hasil = -hasil;
+//    }
+//    
+//    return hasil;
 }
 
 double Powku(double base, double exponent) {
     double result = 1.0;
-    if (exponent < 0) {
-        base = 1.0 / base;
-        exponent = -exponent;
-    }
-    while (exponent > 0) {
-        if (exponent % 2 == 1) {
-            result *= base;
-        }
-        base *= base;
-        exponent /= 2;
+    int i;
+    for (i = 0; i < exponent; i++) {
+        result *= base;
     }
     return result;
 }
