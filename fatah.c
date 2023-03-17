@@ -463,10 +463,10 @@ double Eksponensial(char *input){
 //						Modul
 //					  Lowercase
 //========================================================
-void lowerCase(char* str) {
-    while(*str) {
-        *str = tolower(*str);
-        str++;
+void lowerCase(char** str) {
+    while(**str) {
+        **str = tolower(**str);
+        (*str)++;
     }
 }
 
