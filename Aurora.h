@@ -13,7 +13,15 @@ double Pembagian(double bil1, double bil2);
 
 double akar(double bil, double pangkat);
 
-double myPow(double x, int y); 
+double Fabs(double num);
+
+double Powku(double x, double y);
+
+double fabs(double x);
+double floor(double x);
+double fmod(double x, double y);
+
+
 
 void deretAritmatika();
 
