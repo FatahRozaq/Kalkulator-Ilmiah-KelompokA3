@@ -5,13 +5,15 @@
 #define MAX 100
 
 #include <stdio.h>
-#include <math.h>
+
 
 void CalProg();
 
 double Pembagian(double bil1, double bil2);
 
 double akar(double bil, double pangkat);
+
+double myPow(double x, int y); 
 
 void deretAritmatika();
 
