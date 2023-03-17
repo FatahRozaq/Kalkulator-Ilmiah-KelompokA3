@@ -357,11 +357,22 @@ void LogaritmaBebas(){
 }
 		
 double HitungLogBebas(double basis2, double angka2){
-	double Hasil;
-	
-	Hasil = log10(angka2) / log10(basis2);
-	
-	return Hasil;
+//	double Hasil;
+//	
+//	Hasil = log10(angka2) / log10(basis2);
+//	
+//	return Hasil;
+
+	double result = 0;
+    double numerator = angka2;
+    double denominator = basis2;
+
+    while (numerator >= denominator) {
+        result++;
+        numerator /= denominator;
+    }
+
+    return result;
 }	
 	
 
