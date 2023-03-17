@@ -1,8 +1,10 @@
 #ifndef fatah_H
 #define fatah_H
 
-#include<stdio.h>
+#include <stdio.h>
 #include <math.h>
+#include <string.h>
+#include <ctype.h>
 
 // Modul Perkalian
 double Perkalian (double bil1, double bil2);
@@ -33,6 +35,9 @@ float luasIntegral(float a, float b, float p, float q, float c, float bawah, flo
 
 // Modul Eksponensial
 double Eksponensial(char *input);
+
+// Modul Lowercase
+void lowerCase(char* str);
 
 #endif
 

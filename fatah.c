@@ -457,3 +457,16 @@ double Eksponensial(char *input){
 	hasil = exp(value);
 	return hasil;
 }
+
+
+//========================================================
+//						Modul
+//					  Lowercase
+//========================================================
+void lowerCase(char* str) {
+    while(*str) {
+        *str = tolower(*str);
+        str++;
+    }
+}
+
