@@ -35,6 +35,9 @@ float luasIntegral(float a, float b, float p, float q, float c, float bawah, flo
 
 // Modul Eksponensial
 double Eksponensial(char *input);
+double powerEksponensial(double base, int exponent);
+double factorialEksponensial(int n);
+double eksponen(double x);
 
 // Modul Lowercase
 void lowerCase(char** str);

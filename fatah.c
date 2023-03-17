@@ -454,10 +454,45 @@ double Eksponensial(char *input){
 		sscanf(input,"\n\t\t\t\t\t\t\texp%lf",&value);
 	}
 	
-	hasil = exp(value);
+	hasil = eksponen(value);
 	return hasil;
 }
 
+double powerEksponensial(double base, int exponent) {
+    double result = 1.0;
+    int i;
+
+    for(i = 0; i < exponent; i++) {
+        result *= base;
+    }
+
+    return result;
+}
+
+double factorialEksponensial(int n) {
+    double result = 1.0;
+    int i;
+
+    for(i = 1; i <= n; i++) {
+        result *= i;
+    }
+
+    return result;
+}
+
+double eksponen(double x) {
+    double sum = 1.0;
+    double term = 1.0;
+    int n = 1;
+
+    while(term > 1e-10) {
+        term *= (x / n);
+        sum += term;
+        n++;
+    }
+
+    return sum;
+}
 
 //========================================================
 //						Modul
