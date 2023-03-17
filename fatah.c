@@ -446,12 +446,12 @@ double Eksponensial(char *input){
 	
 	if(strstr(input,"-"))
 	{
-		sscanf(input,"\n\t\t\t\t\t\t\texp-%lf",&value);
+		sscanf(input,"\n\t\t\t\t\t\t\texp-(%lf)",&value);
 		value = -1*value;
 	}
 	else
 	{
-		sscanf(input,"\n\t\t\t\t\t\t\texp%lf",&value);
+		sscanf(input,"\n\t\t\t\t\t\t\texp(%lf)",&value);
 	}
 	
 	hasil = eksponen(value);
@@ -498,10 +498,10 @@ double eksponen(double x) {
 //						Modul
 //					  Lowercase
 //========================================================
-void lowerCase(char** str) {
-    while(**str) {
-        **str = tolower(**str);
-        (*str)++;
+void lowerCase(char *str) {
+    while(*str != '\0') {
+        *str = tolower(*str);
+        (str)++;
     }
 }
 

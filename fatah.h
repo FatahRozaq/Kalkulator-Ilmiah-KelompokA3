@@ -40,7 +40,7 @@ double factorialEksponensial(int n);
 double eksponen(double x);
 
 // Modul Lowercase
-void lowerCase(char** str);
+void lowerCase(char *str);
 
 #endif
 
