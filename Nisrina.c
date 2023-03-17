@@ -218,12 +218,26 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"cot(-%lf)",&value);
-			value = -1*value;
+			if (sscanf(input,"cot(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah cot(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+			
 		}
 		else
 		{
-			sscanf(input,"cot(%lf)",&value);
+			if (sscanf(input,"cot(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah cot(100)\n");
+				exit(0);
+			}
 		}
 		return TriCot(value*3.14159 /180);
 	}
@@ -231,12 +245,26 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"sec(-%lf)",&value);
-			value = -1*value;
+			if (sscanf(input,"sec(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah sec(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
 		}
 		else
 		{
-			sscanf(input,"sec(%lf)",&value);
+			if (sscanf(input,"sec(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah sec(100)\n");
+				exit(0);
+			}
+			
 		}
 		return TriSec(value*3.14159 /180);
 	}
@@ -244,12 +272,26 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"csc(-%lf)",&value);
-			value = -1*value;
+			if (sscanf(input,"csc(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah csc(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
 		}
 		else
 		{
-			sscanf(input,"csc(%lf)",&value);
+			if (sscanf(input,"csc(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah csc(100)\n");
+				exit(0);
+			}
+			
 		}
 		return TriCsc(value*3.14159 /180);
 	}
