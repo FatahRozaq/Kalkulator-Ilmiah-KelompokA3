@@ -9,6 +9,8 @@ void LogNatural();
 
 double logaritmanatural(double x);
 
+double ln(double x);
+
 void Faktorial();
 
 double hitungFaktorial(double bil);

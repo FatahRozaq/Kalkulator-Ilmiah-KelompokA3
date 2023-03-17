@@ -26,7 +26,25 @@ void LogNatural()
 double logaritmanatural(double x)
 {
 	
-	return log(x);
+	return ln(x);
+}
+
+double ln(double x) {
+	int i;
+	
+    if (x <= 0) {
+        return 0.0;  // Return an error value
+    }
+
+    double result = 0.0;
+    double term = (x - 1) / x;  // First term of the series
+
+    for (i = 1; i < 1000; i++) {  // Use 1000 terms for accuracy
+        result += term;
+        term *= (x - 1) * i / (double)(i + 1) / x;
+    }
+
+    return result;
 }
 
 //operasi faktorial
