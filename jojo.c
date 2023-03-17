@@ -37,8 +37,7 @@ double Modulus(double bil1, double bil2)
 {
 	double Hasil;	
 	
-
-	Hasil =  fmod(bil1, bil2);
+	Hasil = bil1 - ((int)(bil1 / bil2) * bil2);
 	return Hasil;
 }
 
