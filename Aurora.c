@@ -39,12 +39,25 @@ double akar(double bil, double pangkat) {
     ap = (int)pangkat;
     
     // Menghitung akar pangkat tertentu
-    hasil = pow(fabs(bil), 1.0 / ap);
+    hasil = Powku(Fabs(bil), 1.0 / ap);
     if (bil < 0) {
         hasil = -hasil;
     }
     
     return hasil;
+}
+
+double Powku(double base, double exponent) {
+    double result = 1.0;
+    int i;
+    if (exponent < 0) {
+        base = 1.0 / base;
+        exponent = -exponent;
+    }
+    for (i = 0; i < exponent; i++) {
+        result *= base;
+    }
+    return result;
 }
 
 
@@ -248,53 +261,53 @@ double pow(double x, int y);
 
 
 
-double Powku(double x, double y) {
-    double result = 1.0;
+//double Powku(double x, double y) {
+//    double result = 1.0;
+//
+//    if (x == 0.0) {
+//        if (y == 0.0) {
+//            // 0^0 is undefined
+//            return NAN;
+//        } else if (y < 0.0) {
+//            // 0^(-y) is infinity
+//            return INFINITY;
+//        } else {
+//            // 0^y is 0
+//            return 0.0;
+//        }
+//    }
+//
+//    if (y == 0.0) {
+//        return 1.0;
+//    }
+//
+//    if (y < 0.0) {
+//        x = 1.0 / x;
+//        y = -y;
+//    }
+//
+//    while (y > 1.0) {
+//        if (fmod(y, 2.0) == 0.0) {
+//            x *= x;
+//            y /= 2.0;
+//        } else {
+//            result *= x;
+//            y--;
+//        }
+//    }
+//
+//    result *= x;
+//
+//    if (result == INFINITY) {
+//        // x^y is infinity
+//        return INFINITY;
+//    }
+//
+//    return result;
+//}
 
-    if (x == 0.0) {
-        if (y == 0.0) {
-            // 0^0 is undefined
-            return NAN;
-        } else if (y < 0.0) {
-            // 0^(-y) is infinity
-            return INFINITY;
-        } else {
-            // 0^y is 0
-            return 0.0;
-        }
-    }
 
-    if (y == 0.0) {
-        return 1.0;
-    }
-
-    if (y < 0.0) {
-        x = 1.0 / x;
-        y = -y;
-    }
-
-    while (y > 1.0) {
-        if (fmod(y, 2.0) == 0.0) {
-            x *= x;
-            y /= 2.0;
-        } else {
-            result *= x;
-            y--;
-        }
-    }
-
-    result *= x;
-
-    if (result == INFINITY) {
-        // x^y is infinity
-        return INFINITY;
-    }
-
-    return result;
-}
-
-
-double fabs(double x) {
+double Fabs(double x) {
     if (x < 0.0) {
         return -x;
     } else {

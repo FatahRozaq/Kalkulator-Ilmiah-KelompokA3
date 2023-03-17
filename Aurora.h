@@ -15,7 +15,7 @@ double akar(double bil, double pangkat);
 
 double Fabs(double num);
 
-double Powku(double x, double y);
+double Powku(double base, double exponent);
 
 double fabs(double x);
 double floor(double x);
