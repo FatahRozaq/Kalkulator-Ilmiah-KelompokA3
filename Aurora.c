@@ -39,7 +39,7 @@ double akar(double bil, double pangkat) {
     ap = (int)pangkat;
     
     // Menghitung akar pangkat tertentu
-    hasil = Powku(Fabs(bil), 1.0 / ap);
+    hasil = pow(fabs(bil), 1.0 / ap);
     if (bil < 0) {
         hasil = -hasil;
     }
@@ -49,13 +49,16 @@ double akar(double bil, double pangkat) {
 
 double Powku(double base, double exponent) {
     double result = 1.0;
-    int i;
     if (exponent < 0) {
         base = 1.0 / base;
         exponent = -exponent;
     }
-    for (i = 0; i < exponent; i++) {
-        result *= base;
+    while (exponent > 0) {
+        if (exponent % 2 == 1) {
+            result *= base;
+        }
+        base *= base;
+        exponent /= 2;
     }
     return result;
 }
