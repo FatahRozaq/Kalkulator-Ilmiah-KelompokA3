@@ -37,7 +37,7 @@ float luasIntegral(float a, float b, float p, float q, float c, float bawah, flo
 double Eksponensial(char *input);
 
 // Modul Lowercase
-void lowerCase(char** str);
+void lowerCase(char *str);
 
 #endif
 

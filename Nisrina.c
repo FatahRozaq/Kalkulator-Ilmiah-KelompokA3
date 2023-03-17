@@ -106,6 +106,7 @@ void CalStfc()
  
         gantiNewLineJadiSpasi(infixExpr);
         x=hapusSpasi(infixExpr);
+        lowerCase(x);
         header();
         Calculator();
     	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
@@ -332,6 +333,7 @@ int isOperator(char c)
 int negatifInteger(char *infix,char c,int ptr)
 {
     if (ptr == 0 && c == '-' ) return 1;
+    else  if((infix[ptr-1] == '!' && c == '-' ) )return 0;
     else  if((isOperator(infix[ptr-1]) && c == '-' ) )return 1;
     else return 0;
 }
@@ -466,22 +468,13 @@ char *infixToPostfix(char *infix,char *postfix)
 				else if(strstr(temp,"exp"))
 				{
 					i=1;
-					while(!strstr(temp4,"0") && !strstr(temp4,"1") &&  !strstr(temp4,"2") &&  !strstr(temp4,"3")&&  !strstr(temp4,"4")&&  !strstr(temp4,"5")&&  !strstr(temp4,"6")&&  !strstr(temp4,"7")&&  !strstr(temp4,"8")&&  !strstr(temp4,"9") )
+					while(!strstr(temp4,")"))
 					{
 						strncat(temp4,&temp[i],1);
 						i++;
 					}
-					b=0;
-					while(i>2)
-					{
-						strncat(temp3,&temp4[b],1);
-						b++;
-						i--;
-					}
-					temp5 = strtok(temp + (b+1), " +)-(*/^%$!");
-					strcat(temp3,temp5);
-					ptr += strlen(temp3) +1;
-					eksponensial = Eksponensial(temp3);
+					ptr += strlen(temp4) +1;
+					eksponensial = Eksponensial(temp4);
 					if(eksponensial < 0)
 					{
 						eksponensial = -1 * eksponensial;
@@ -499,28 +492,49 @@ char *infixToPostfix(char *infix,char *postfix)
 				}
 				else
 				{
-					strcpy(tempInfix,infix);
 					temp = strtok(tempInfix + ptr, " +-*/^%$!");
-	                ptr += strlen(temp) + 1;
 					if(strstr(temp,"e"))
 		            {
+		            	temp = strtok(temp, "+()-*/^%$!");
+		            	ptr += strlen(temp) + 1;
 		            	sprintf(temp,"%lf",eksponen);
 					}
 					else if(strstr(temp,"phi"))
 		            {
+		            	temp = strtok(temp, "+()-*/^%$!");
+		            	ptr += strlen(temp) + 1;
 		                sprintf(temp,"%lf",phi);
 					}
 					else if(strstr(temp,"ln"))
 		            {
-		            	sscanf(temp,"ln%lf",&value);
+		            	i=0;
+						while(!strstr(temp4,")")) 
+						{
+							strncat(temp4,&temp[i],1);
+							i++;
+						}
+						ptr+=strlen(temp4) +1;
+		            	sscanf(temp,"ln(%lf)",&value);
 						lon = logaritmanatural(value);
 						sprintf(temp,"%lf",lon);
 					}
 					else if(strstr(temp,"log"))
 					{
+						i=0;
+						while(!strstr(temp4,")")) 
+						{
+							strncat(temp4,&temp[i],1);
+							i++;
+						}
+						ptr+=strlen(temp4) +1;
 						sscanf(temp,"%lflog(%lf)",&basis,&value);
 						log = HitungLogBebas(basis, value);
 						sprintf(temp,"%lf",log);
+					}
+					else
+					{
+						temp = strtok(temp, "+()-*/^%$!");
+		            	ptr+=strlen(temp) +1;
 					}
 	                strcat(temp2, temp);
 	                strcat(postfix, temp2);
@@ -558,7 +572,6 @@ char *infixToPostfix(char *infix,char *postfix)
 					eksponensial = Eksponensial(temp4);
 					sprintf(temp,"%lf",eksponensial);
 					strcat(postfix, temp);
-	                strcat(postfix, oneSpace);
 	                strcat(postfix, oneSpace);
 				}
 	            else
