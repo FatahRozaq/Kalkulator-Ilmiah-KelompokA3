@@ -437,11 +437,17 @@ char *infixToPostfix(char *infix,char *postfix)
             {
                 strncat(temp2, &tempChar3, 1);
                 strcpy(tempInfix, infix);
-                temp = strtok(tempInfix + ptr, " -+*/^%$!");
+                temp = strtok(tempInfix + ptr, "+*/^%$!");
                 if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
-					ptr += strlen(temp) +1;
-					trigono = DerajatTrigono(temp);
+					i=1;
+					while(!strstr(temp4,")")) 
+					{
+						strncat(temp4,&temp[i],1);
+						i++;
+					}
+					ptr += strlen(temp4) +1;
+					trigono = DerajatTrigono(temp4);
 					if(trigono < 0)
 					{
 						trigono = -1 * trigono;
@@ -494,7 +500,7 @@ char *infixToPostfix(char *infix,char *postfix)
 				else
 				{
 					strcpy(tempInfix,infix);
-					temp = strtok(tempInfix + ptr, " +)-(*/^%$!");
+					temp = strtok(tempInfix + ptr, " +-*/^%$!");
 	                ptr += strlen(temp) + 1;
 					if(strstr(temp,"e"))
 		            {
@@ -512,7 +518,7 @@ char *infixToPostfix(char *infix,char *postfix)
 					}
 					else if(strstr(temp,"log"))
 					{
-						sscanf(temp,"%lflog%lf",&basis,&value);
+						sscanf(temp,"%lflog(%lf)",&basis,&value);
 						log = HitungLogBebas(basis, value);
 						sprintf(temp,"%lf",log);
 					}
@@ -525,11 +531,17 @@ char *infixToPostfix(char *infix,char *postfix)
             else
             {
 	            strcpy(tempInfix, infix);
-                temp = strtok(tempInfix + ptr, " +-*/^%$!");
+                temp = strtok(tempInfix + ptr, " +*/^%$!");
 				if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
-					ptr += strlen(temp);
-					trigono = DerajatTrigono(temp);
+					i=0;
+					while(!strstr(temp4,")")) 
+					{
+						strncat(temp4,&temp[i],1);
+						i++;
+					}
+					ptr += strlen(temp4);
+					trigono = DerajatTrigono(temp4);
 					sprintf(temp,"%lf",trigono);
 					strcat(postfix, temp);
 	                strcat(postfix, oneSpace);
@@ -537,22 +549,13 @@ char *infixToPostfix(char *infix,char *postfix)
 				else if(strstr(temp,"exp"))
 				{
 					i=0;
-					while(!strstr(temp4,"0") && !strstr(temp4,"1") &&  !strstr(temp4,"2") &&  !strstr(temp4,"3")&&  !strstr(temp4,"4")&&  !strstr(temp4,"5")&&  !strstr(temp4,"6")&&  !strstr(temp4,"7")&&  !strstr(temp4,"8")&&  !strstr(temp4,"9") )
+					while(!strstr(temp4,")")) 
 					{
 						strncat(temp4,&temp[i],1);
 						i++;
 					}
-					b=0;
-					while(i>1)
-					{
-						strncat(temp3,&temp4[b],1);
-						b++;
-						i--;
-					}
-					temp5 = strtok(temp + (b), " +)-(*/^%$!");
-					strcat(temp3,temp5);
-					ptr += strlen(temp3);
-					eksponensial = Eksponensial(temp3);
+					ptr += strlen(temp4);
+					eksponensial = Eksponensial(temp4);
 					sprintf(temp,"%lf",eksponensial);
 					strcat(postfix, temp);
 	                strcat(postfix, oneSpace);
@@ -560,28 +563,49 @@ char *infixToPostfix(char *infix,char *postfix)
 				}
 	            else
 				{
-					
-	            	temp = strtok(tempInfix + ptr, " +-)(*/^%$!");
-	            	ptr+=strlen(temp);
+	            	temp = strtok(tempInfix + ptr, "+-*/^%$!");
 					if(strstr(temp,"e"))
 		            {
+		            	temp = strtok(temp, "+()-*/^%$!");
+		            	ptr+=strlen(temp);
 		            	sprintf(temp,"%lf",eksponen);
 					}
 					else if(strstr(temp,"phi"))
 		            {
+		            	temp = strtok(temp, "+()-*/^%$!");
+		            	ptr+=strlen(temp);
 		                sprintf(temp,"%lf",phi);
 					}
 					else if(strstr(temp,"ln"))
 		            {
-		            	sscanf(temp,"ln%lf",&value);
+		            	i=0;
+						while(!strstr(temp4,")")) 
+						{
+							strncat(temp4,&temp[i],1);
+							i++;
+						}
+						ptr+=strlen(temp4);
+		            	sscanf(temp,"ln(%lf)",&value);
 						lon = logaritmanatural(value);
 						sprintf(temp,"%lf",lon);
 					}
 					else if(strstr(temp,"log"))
 					{
-						sscanf(temp,"%lflog%lf",&basis,&value);
+						i=0;
+						while(!strstr(temp4,")")) 
+						{
+							strncat(temp4,&temp[i],1);
+							i++;
+						}
+						ptr+=strlen(temp4);
+						sscanf(temp,"%lflog(%lf)",&basis,&value);
 						log = HitungLogBebas(basis, value);
 						sprintf(temp,"%lf",log);
+					}
+					else
+					{
+						temp = strtok(temp, "+()-*/^%$!");
+		            	ptr+=strlen(temp);
 					}
 	                strcat(postfix, temp);
 	            	strcat(postfix, oneSpace);
