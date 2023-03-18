@@ -103,12 +103,11 @@ void CalStfc()
 		printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 	    printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan : ");
 		scanf(" %[^\n]", infixExpr);	
- 
         gantiNewLineJadiSpasi(infixExpr);
         x=hapusSpasi(infixExpr);
-        lowerCase(x);
         header();
         Calculator();
+        lowerCase(x);
     	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 		//printf("\n\t=============================================================== \n");	
   		printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : %s\n ",infixToPostfix(x, postfixExpr));
@@ -142,12 +141,25 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"sin(-%lf)",&value);
-			value = -1*value;
+			if (sscanf(input,"sin(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah sin(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
 		}
 		else
 		{
-			sscanf(input,"sin(%lf)",&value);
+			if (sscanf(input,"sin(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan eksponensial yang benar adalah sin(100)\n");
+				exit(0);
+			}
 		}
 		return TriSin(value*3.14159 /180);
 	}
@@ -155,12 +167,25 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"cos(-%lf)",&value);
-			value = -1*value;
+			if (sscanf(input,"cos(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan eksponensial yang benar adalah cos(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
 		}
 		else
 		{
-			sscanf(input,"cos(%lf)",&value);
+			if (sscanf(input,"cos(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah cos(100)\n");
+				exit(0);
+			}
 		}
 		return TriCos(value*3.14159 /180);
 	}
@@ -168,12 +193,25 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"tan(-%lf)",&value);
-			value = -1*value;
+			if (sscanf(input,"tan(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah tan(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
 		}
 		else
 		{
-			sscanf(input,"tan(%lf)",&value);
+			if (sscanf(input,"tan(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah tan(100)\n");
+				exit(0);
+			}
 		}
 		return TriTan(value*3.14159 /180);
 	}
@@ -181,12 +219,26 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"cot(-%lf)",&value);
-			value = -1*value;
+			if (sscanf(input,"cot(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah cot(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+			
 		}
 		else
 		{
-			sscanf(input,"cot(%lf)",&value);
+			if (sscanf(input,"cot(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah cot(100)\n");
+				exit(0);
+			}
 		}
 		return TriCot(value*3.14159 /180);
 	}
@@ -194,12 +246,26 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"sec(-%lf)",&value);
-			value = -1*value;
+			if (sscanf(input,"sec(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah sec(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
 		}
 		else
 		{
-			sscanf(input,"sec(%lf)",&value);
+			if (sscanf(input,"sec(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah sec(100)\n");
+				exit(0);
+			}
+			
 		}
 		return TriSec(value*3.14159 /180);
 	}
@@ -207,12 +273,26 @@ double DerajatTrigono(char *input)
 	{
 		if(strstr(input,"-"))
 		{
-			sscanf(input,"csc(-%lf)",&value);
-			value = -1*value;
+			if (sscanf(input,"csc(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah csc(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
 		}
 		else
 		{
-			sscanf(input,"csc(%lf)",&value);
+			if (sscanf(input,"csc(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah csc(100)\n");
+				exit(0);
+			}
+			
 		}
 		return TriCsc(value*3.14159 /180);
 	}
@@ -435,20 +515,69 @@ char *infixToPostfix(char *infix,char *postfix)
 		    char temp2[256] = "";
 		    char tempChar3 = '-';
 		    int i,b;
+		    int panjang;
             if(negatifInteger(infix,infix[ptr],ptr))
             {
                 strncat(temp2, &tempChar3, 1);
                 strcpy(tempInfix, infix);
                 temp = strtok(tempInfix + ptr, "+*/^%$!");
-                if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
+                if(strstr(temp,"log"))
+				{
+					temp = strtok(tempInfix + ptr, "+-*/^%$!");
+					if (sscanf(temp,"%lflog(%lf)",&basis,&value) != 2) 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan logaritma yang benar adalah 10log(100)\n");
+						exit(0);
+					}
+					else
+					{
+						i=0;
+						while(!strstr(temp4,")"))
+						{
+							strncat(temp4,&temp[i],1);
+							i++;
+						}
+						ptr += strlen(temp4) +1;
+						log = HitungLogBebas(basis, value);
+						sprintf(temp,"%lf",log);
+						strcat(temp2, temp);
+		                strcat(postfix, temp2);
+		                strcat(postfix, oneSpace);	
+					}
+				}
+                else if(isdigit(temp[1]))
+				{
+						temp = strtok(temp, "+()-*/^%$!");
+		            	ptr+=strlen(temp) +1;
+		            	strcat(temp2, temp);
+		                strcat(postfix, temp2);
+		                strcat(postfix, oneSpace);
+				}
+                else if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
 					i=1;
-					while(!strstr(temp4,")")) 
+					while(!isdigit(temp[i]))
 					{
-						strncat(temp4,&temp[i],1);
+						strncat(temp3,&temp[i],1);
 						i++;
 					}
-					ptr += strlen(temp4) +1;
+					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!");
+					strcat(temp3,temp5);
+					if(strstr(temp3,"("))
+					{
+						i=0;
+						while(!strstr(temp4,")"))
+						{
+							strncat(temp4,&temp3[i],1);
+							i++;
+						}
+						ptr += strlen(temp4) +1;
+					}
+					else
+					{
+						strcpy(temp4, temp3);
+					}
 					trigono = DerajatTrigono(temp4);
 					if(trigono < 0)
 					{
@@ -468,12 +597,27 @@ char *infixToPostfix(char *infix,char *postfix)
 				else if(strstr(temp,"exp"))
 				{
 					i=1;
-					while(!strstr(temp4,")"))
+					while(!isdigit(temp[i]))
 					{
-						strncat(temp4,&temp[i],1);
+						strncat(temp3,&temp[i],1);
 						i++;
 					}
-					ptr += strlen(temp4) +1;
+					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!");
+					strcat(temp3,temp5);
+					if(strstr(temp3,"("))
+					{
+						i=0;
+						while(!strstr(temp4,")"))
+						{
+							strncat(temp4,&temp3[i],1);
+							i++;
+						}
+						ptr += strlen(temp4) +1;
+					}
+					else
+					{
+						strcpy(temp4, temp3);
+					}
 					eksponensial = Eksponensial(temp4);
 					if(eksponensial < 0)
 					{
@@ -492,7 +636,7 @@ char *infixToPostfix(char *infix,char *postfix)
 				}
 				else
 				{
-					temp = strtok(tempInfix + ptr, " +-*/^%$!");
+					temp = strtok(tempInfix + ptr, " +*/^%$!");
 					if(strstr(temp,"e"))
 		            {
 		            	temp = strtok(temp, "+()-*/^%$!");
@@ -507,34 +651,25 @@ char *infixToPostfix(char *infix,char *postfix)
 					}
 					else if(strstr(temp,"ln"))
 		            {
-		            	i=0;
-						while(!strstr(temp4,")")) 
+		            	if (sscanf(temp,"-ln(%lf)",&value) != 1) 
 						{
-							strncat(temp4,&temp[i],1);
-							i++;
+						    printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						    printf("\nContoh penulisan logaritma natural yang benar adalah ln(100)\n");
+						    exit(0);
 						}
-						ptr+=strlen(temp4) +1;
-		            	sscanf(temp,"ln(%lf)",&value);
-						lon = logaritmanatural(value);
-						sprintf(temp,"%lf",lon);
-					}
-					else if(strstr(temp,"log"))
-					{
-						i=0;
-						while(!strstr(temp4,")")) 
+						else
 						{
-							strncat(temp4,&temp[i],1);
-							i++;
+							i=1;
+							while(!strstr(temp4,")"))
+							{
+								strncat(temp4,&temp[i],1);
+								i++;
+							}
+							printf("test %s",temp4);
+							ptr += strlen(temp4) +1;
+							lon = logaritmanatural(value);
+							sprintf(temp,"%lf",lon);
 						}
-						ptr+=strlen(temp4) +1;
-						sscanf(temp,"%lflog(%lf)",&basis,&value);
-						log = HitungLogBebas(basis, value);
-						sprintf(temp,"%lf",log);
-					}
-					else
-					{
-						temp = strtok(temp, "+()-*/^%$!");
-		            	ptr+=strlen(temp) +1;
 					}
 	                strcat(temp2, temp);
 	                strcat(postfix, temp2);
@@ -546,15 +681,61 @@ char *infixToPostfix(char *infix,char *postfix)
             {
 	            strcpy(tempInfix, infix);
                 temp = strtok(tempInfix + ptr, " +*/^%$!");
-				if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
+                if(strstr(temp,"log"))
+				{
+					temp = strtok(tempInfix + ptr, "+-*/^%$!");
+					if (sscanf(temp,"%lflog(%lf)",&basis,&value) != 2) 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan logaritma yang benar adalah 10log(100)\n");
+						exit(0);
+					}
+					else
+					{
+						i=0;
+						while(!strstr(temp4,")"))
+						{
+							strncat(temp4,&temp[i],1);
+							i++;
+						}
+						ptr += strlen(temp4);
+						log = HitungLogBebas(basis, value);
+						sprintf(temp,"%lf",log);
+						strcat(postfix, temp);
+	            		strcat(postfix, oneSpace);	
+					}
+				}
+                else if(isdigit(temp[0]))
+                {
+					temp = strtok(temp, "+()-*/^%$!");
+		        	ptr+=strlen(temp);
+		        	strcat(postfix, temp);
+	            	strcat(postfix, oneSpace);
+				}
+				else if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
 					i=0;
-					while(!strstr(temp4,")")) 
+					while(!isdigit(temp[i]))
 					{
-						strncat(temp4,&temp[i],1);
+						strncat(temp3,&temp[i],1);
 						i++;
 					}
-					ptr += strlen(temp4);
+					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!");
+					strcat(temp3,temp5);
+					if(strstr(temp3,"("))
+					{
+						i=0;
+						while(!strstr(temp4,")"))
+						{
+							strncat(temp4,&temp3[i],1);
+							i++;
+						}
+						ptr += strlen(temp4);
+					}
+					else
+					{
+						strcpy(temp4, temp3);
+					}
 					trigono = DerajatTrigono(temp4);
 					sprintf(temp,"%lf",trigono);
 					strcat(postfix, temp);
@@ -563,12 +744,27 @@ char *infixToPostfix(char *infix,char *postfix)
 				else if(strstr(temp,"exp"))
 				{
 					i=0;
-					while(!strstr(temp4,")")) 
+					while(!isdigit(temp[i]))
 					{
-						strncat(temp4,&temp[i],1);
+						strncat(temp3,&temp[i],1);
 						i++;
 					}
-					ptr += strlen(temp4);
+					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!");
+					strcat(temp3,temp5);
+					if(strstr(temp3,"("))
+					{
+						i=0;
+						while(!strstr(temp4,")"))
+						{
+							strncat(temp4,&temp3[i],1);
+							i++;
+						}
+						ptr += strlen(temp4);
+					}
+					else
+					{
+						strcpy(temp4, temp3);
+					}
 					eksponensial = Eksponensial(temp4);
 					sprintf(temp,"%lf",eksponensial);
 					strcat(postfix, temp);
@@ -591,34 +787,26 @@ char *infixToPostfix(char *infix,char *postfix)
 					}
 					else if(strstr(temp,"ln"))
 		            {
-		            	i=0;
-						while(!strstr(temp4,")")) 
+		            	printf("masuk");
+		            	printf("test %s", temp);
+		            	if (sscanf(temp,"ln(%lf)",&value) != 1) 
 						{
-							strncat(temp4,&temp[i],1);
-							i++;
+						    printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						    printf("\nContoh penulisan logaritma natural yang benar adalah ln(100)\n");
+						    exit(0);
 						}
-						ptr+=strlen(temp4);
-		            	sscanf(temp,"ln(%lf)",&value);
-						lon = logaritmanatural(value);
-						sprintf(temp,"%lf",lon);
-					}
-					else if(strstr(temp,"log"))
-					{
-						i=0;
-						while(!strstr(temp4,")")) 
+						else
 						{
-							strncat(temp4,&temp[i],1);
-							i++;
+							i=0;
+							while(!strstr(temp4,")")) 
+							{
+								strncat(temp4,&temp[i],1);
+								i++;
+							}
+							ptr+=strlen(temp4);
+							lon = logaritmanatural(value);
+							sprintf(temp,"%lf",lon);
 						}
-						ptr+=strlen(temp4);
-						sscanf(temp,"%lflog(%lf)",&basis,&value);
-						log = HitungLogBebas(basis, value);
-						sprintf(temp,"%lf",log);
-					}
-					else
-					{
-						temp = strtok(temp, "+()-*/^%$!");
-		            	ptr+=strlen(temp);
 					}
 	                strcat(postfix, temp);
 	            	strcat(postfix, oneSpace);

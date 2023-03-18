@@ -443,18 +443,38 @@ float luasIntegral(float a, float b, float p, float q, float c, float bawah, flo
 //========================================================
 double Eksponensial(char *input){
 	double hasil, value;
+	hasil =0;
 	
+
 	if(strstr(input,"-"))
 	{
-		sscanf(input,"\n\t\t\t\t\t\t\texp-(%lf)",&value);
-		value = -1*value;
+		if (sscanf(input,"exp(-%lf)",&value) != 1) 
+		{
+			printf("\nInput tidak sesuai dengan format yang diharapkan!\n");
+			printf("\nContoh penulisan eksponensial yang benar adalah exp(100)\n");
+			exit(0);
+		}
+		else
+		{
+			value = -1*value;
+			hasil = exp(value);	
+		}
 	}
 	else
 	{
-		sscanf(input,"\n\t\t\t\t\t\t\texp(%lf)",&value);
+		if (sscanf(input,"exp(%lf)",&value) != 1) 
+		{
+			printf("\nInput tidak sesuai dengan format yang diharapkan!\n");
+			printf("\nContoh penulisan eksponensial yang benar adalah exp(100)\n");
+			exit(0);
+		}
+		else
+		{
+			hasil = exp(value);
+		}
 	}
 	
-	hasil = eksponen(value);
+	
 	return hasil;
 }
 
