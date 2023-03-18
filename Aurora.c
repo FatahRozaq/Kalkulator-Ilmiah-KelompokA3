@@ -39,7 +39,7 @@ double akar(double bil, double pangkat) {
     double diff = 1.0;
     while (diff > precision) {
         result = ((pangkat - 1.0) * result + bil / Powku(result, pangkat - 1)) / pangkat;
-        diff = result - (bil / pow(result, pangkat - 1));
+        diff = result - (bil / Powku(result, pangkat - 1));
         if (diff < 0) {
             diff = -diff;
         }
@@ -63,6 +63,10 @@ double akar(double bil, double pangkat) {
 double Powku(double base, double exponent) {
     double result = 1.0;
     int i;
+    if (exponent < 0) {
+        base = 1.0 / base;
+        exponent = -exponent;
+    }
     for (i = 0; i < exponent; i++) {
         result *= base;
     }
