@@ -111,6 +111,12 @@ double TriSec(double value);
 
 double TriCsc(double value);
 
+double HiSin(double value);
+
+double HiCos(double value);
+
+double HiTan(double value);
+
 void Matriks();
 
 void IsiMatriks(int baris, int kolom, int Hasil[100][100]);

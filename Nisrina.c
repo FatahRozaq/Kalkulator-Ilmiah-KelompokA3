@@ -301,18 +301,18 @@ double DerajatTrigono(char *input)
 double TriSin(double value)
 {
 	
-	return sin(value);
+	return HiSin(value);
 }
 
 double TriCos(double value)
 {
 	
-	return cos(value);
+	return HiCos(value);
 }
 double TriTan(double value)
 {
 	
-	return tan(value);
+	return HiTan(value);
 }
 double TriCot(double value)
 {
@@ -338,6 +338,76 @@ double TriCsc(double value)
 	sin = TriSin(value);
 	
 	return (1/sin);
+}
+
+double HiSin(double value){
+
+	double sign=1, res=0, term;
+	int k =1;
+	
+	if (value<0){
+	
+		sign=-1.0;
+		
+		value=-value;
+	
+	}
+	
+	if (value > 360) {
+   		value -= (int)(value / 360) * 360;
+	}
+	
+	value*=phi/180.0;
+	
+	term=value;
+	
+	while (res+term!=res){
+	
+		res+=term;
+		
+		k+=2;
+		
+		term*=-value*value/k/(k-1);
+	
+	}
+	
+	res = sign*res;
+	
+	return res;
+
+}
+
+double HiCos(double value){
+
+	double res=0, term=1;
+	int k=0;
+	
+	if (value<0) value=-value;
+	
+	if (value > 360) {
+   		value -= (int)(value / 360) * 360;
+	}
+	
+	value*=phi/180.0;
+	
+	while (res+term!=res){
+	
+		res+=term;
+		
+		k+=2;
+		
+		term*=-value*value/k/(k-1);
+	
+	}
+	
+	return res;
+
+}
+
+double HiTan(double value) {
+    double res = sin(value) / cos(value);
+    
+    return res;
 }
 
 Stack* inisialisasi()
