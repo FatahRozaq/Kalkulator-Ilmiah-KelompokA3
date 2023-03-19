@@ -161,7 +161,7 @@ double DerajatTrigono(char *input)
 				exit(0);
 			}
 		}
-		return TriSin(value*3.14159 /180);
+		return TriSin(value);
 	}
 	else if(strstr(input,"cos"))
 	{
@@ -187,7 +187,7 @@ double DerajatTrigono(char *input)
 				exit(0);
 			}
 		}
-		return TriCos(value*3.14159 /180);
+		return TriCos(value);
 	}
 	else if(strstr(input,"tan"))
 	{
@@ -213,7 +213,7 @@ double DerajatTrigono(char *input)
 				exit(0);
 			}
 		}
-		return TriTan(value*3.14159 /180);
+		return TriTan(value);
 	}
 	else if(strstr(input,"cot"))
 	{
@@ -240,7 +240,7 @@ double DerajatTrigono(char *input)
 				exit(0);
 			}
 		}
-		return TriCot(value*3.14159 /180);
+		return TriCot(value);
 	}
 	else if(strstr(input,"sec"))
 	{
@@ -267,7 +267,7 @@ double DerajatTrigono(char *input)
 			}
 			
 		}
-		return TriSec(value*3.14159 /180);
+		return TriSec(value);
 	}
 	else if(strstr(input,"csc"))
 	{
@@ -294,25 +294,96 @@ double DerajatTrigono(char *input)
 			}
 			
 		}
-		return TriCsc(value*3.14159 /180);
+		return TriCsc(value);
 	}
+}
+
+double Sin(double value){
+	
+	printf("Sinii Wotyyyy : %lf", value);
+
+	double sign=1, res=0, term;
+	int k =1;
+	
+	if (value<0){
+	
+		sign=-1.0;
+		
+		value=-value;
+	
+	}
+	
+	if (value > 360) {
+   		value -= (int)(value / 360) * 360;
+	}
+	
+	value*=3.14/180.0;
+	
+	term=value;
+	
+	while (res+term!=res){
+	
+		res+=term;
+		
+		k+=2;
+		
+		term*=-value*value/k/(k-1);
+	
+	}
+	
+	res = sign*res;
+	
+	return res;
+
+}
+
+double Cos(double value){
+
+	double res=0, term=1;
+	int k=0;
+	
+	if (value<0) value=-value;
+	
+	if (value > 360) {
+   		value -= (int)(value / 360) * 360;
+	}
+	
+	value*=3.14/180.0;
+	
+	while (res+term!=res){
+	
+	res+=term;
+	
+	k+=2;
+	
+	term*=-value*value/k/(k-1);
+	
+	}
+	
+	return res;
+
+}
+
+double Tan(double value) {
+    double res = Sin(value) / Cos(value);
+    
+    return res;
 }
 
 double TriSin(double value)
 {
-	
-	return HiSin(value);
+	return Sin(value);
 }
 
 double TriCos(double value)
 {
 	
-	return HiCos(value);
+	return Cos(value);
 }
 double TriTan(double value)
 {
 	
-	return HiTan(value);
+	return Tan(value);
 }
 double TriCot(double value)
 {
@@ -338,76 +409,6 @@ double TriCsc(double value)
 	sin = TriSin(value);
 	
 	return (1/sin);
-}
-
-double HiSin(double value){
-
-	double sign=1, res=0, term;
-	int k =1;
-	
-	if (value<0){
-	
-		sign=-1.0;
-		
-		value=-value;
-	
-	}
-	
-	if (value > 360) {
-   		value -= (int)(value / 360) * 360;
-	}
-	
-	value*=phi/180.0;
-	
-	term=value;
-	
-	while (res+term!=res){
-	
-		res+=term;
-		
-		k+=2;
-		
-		term*=-value*value/k/(k-1);
-	
-	}
-	
-	res = sign*res;
-	
-	return res;
-
-}
-
-double HiCos(double value){
-
-	double res=0, term=1;
-	int k=0;
-	
-	if (value<0) value=-value;
-	
-	if (value > 360) {
-   		value -= (int)(value / 360) * 360;
-	}
-	
-	value*=phi/180.0;
-	
-	while (res+term!=res){
-	
-		res+=term;
-		
-		k+=2;
-		
-		term*=-value*value/k/(k-1);
-	
-	}
-	
-	return res;
-
-}
-
-double HiTan(double value) {
-    double res = sin(value) / cos(value);
-    
-    return res;
 }
 
 Stack* inisialisasi()

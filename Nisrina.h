@@ -111,11 +111,11 @@ double TriSec(double value);
 
 double TriCsc(double value);
 
-double HiSin(double value);
+double Sin(double value);
 
-double HiCos(double value);
+double Cos(double value);
 
-double HiTan(double value);
+double Tan(double value);
 
 void Matriks();
 
