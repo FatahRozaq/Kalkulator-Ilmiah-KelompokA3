@@ -720,7 +720,9 @@ char *infixToPostfix(char *infix,char *postfix)
 						strncat(temp3,&temp[i],1);
 						i++;
 					}
-					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!");
+					printf("test3 %s", temp3);
+					temp5 = strtok(temp + strlen(temp3), "+(-*/^%$!");
+					printf("test5 %s", temp5);
 					strcat(temp3,temp5);
 					if(strstr(temp3,"("))
 					{
@@ -736,6 +738,7 @@ char *infixToPostfix(char *infix,char *postfix)
 					{
 						strcpy(temp4, temp3);
 					}
+					printf("test %s", temp4);
 					trigono = DerajatTrigono(temp4);
 					sprintf(temp,"%lf",trigono);
 					strcat(postfix, temp);
@@ -749,7 +752,7 @@ char *infixToPostfix(char *infix,char *postfix)
 						strncat(temp3,&temp[i],1);
 						i++;
 					}
-					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!");
+					temp5 = strtok(temp + strlen(temp3), "+(-*/^%$!");
 					strcat(temp3,temp5);
 					if(strstr(temp3,"("))
 					{
