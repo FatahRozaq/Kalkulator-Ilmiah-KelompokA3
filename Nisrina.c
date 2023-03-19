@@ -110,7 +110,7 @@ void CalStfc()
         lowerCase(x);
     	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 		//printf("\n\t=============================================================== \n");	
-  		printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : %s\n ",infixToPostfix(x, postfixExpr));
+		infixToPostfix(x, postfixExpr);
   		isChar = validasiChar(postfixExpr);
   		if (isChar == 1)
   		{
@@ -118,6 +118,7 @@ void CalStfc()
 		}
 		else if(isChar == 0)
 		{
+			printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : %s\n ",postfixExpr);
 			hasil = hitungPostfix(postfixExpr);
         	printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);	
 		}
@@ -299,8 +300,6 @@ double DerajatTrigono(char *input)
 }
 
 double Sin(double value){
-	
-	printf("Sinii Wotyyyy : %lf", value);
 
 	double sign=1, res=0, term;
 	int k =1;
@@ -742,6 +741,10 @@ char *infixToPostfix(char *infix,char *postfix)
 							sprintf(temp,"%lf",lon);
 						}
 					}
+					else
+					{
+						ptr+=strlen(temp);
+					}
 	                strcat(temp2, temp);
 	                strcat(postfix, temp2);
 	                strcat(postfix, oneSpace);
@@ -791,9 +794,7 @@ char *infixToPostfix(char *infix,char *postfix)
 						strncat(temp3,&temp[i],1);
 						i++;
 					}
-					printf("test3 %s", temp3);
 					temp5 = strtok(temp + strlen(temp3), "+(-*/^%$!");
-					printf("test5 %s", temp5);
 					strcat(temp3,temp5);
 					if(strstr(temp3,"("))
 					{
@@ -881,6 +882,10 @@ char *infixToPostfix(char *infix,char *postfix)
 							lon = logaritmanatural(value);
 							sprintf(temp,"%lf",lon);
 						}
+					}
+					else
+					{
+						ptr+=strlen(temp);
 					}
 	                strcat(postfix, temp);
 	            	strcat(postfix, oneSpace);
