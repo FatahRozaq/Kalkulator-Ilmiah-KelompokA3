@@ -320,7 +320,7 @@ float Luas(float bil2){
 }		
 
 
-
+/*
 //LOGARITMA BASIS 10
 float Logaritma(float bil1){
 
@@ -331,7 +331,8 @@ float Logaritma(float bil1){
 //	printf("%g",Hasil);
 
 	return Hasil;
-}	
+}	===================================> double HitungLog10(double angka) 
+*/
 
 void InputDataModulus(int *bilMod1, int *bilMod2, char *kalimat){
 	printf("%s", kalimat);
