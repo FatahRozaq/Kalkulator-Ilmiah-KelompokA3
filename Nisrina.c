@@ -67,7 +67,7 @@ int validasiChar(char postfix[256])
 	while(i < length)
 	{
 		asci = (int)postfix[i];
-		if((asci >=97 && asci <=122) || (asci >=65 && asci <=90) )
+		if((asci >=97 && asci <=122) || (asci >=65 && asci <=90) || postfix[i] =='(' )
 		{
 			hasil = 1;
 			break;
@@ -474,7 +474,7 @@ int priority(char c)
 */
 int isOperator(char c)
 {
-    if( c=='(' || c=='+' || c=='-' || c=='/' || c=='*' || c=='^' || c=='$' || c=='%' || c=='!') return 1;
+    if( c=='(' || c=='+' || c=='-' || c=='/' || c=='*' || c=='^' || c=='$' || c=='%' || c=='!' ) return 1;
     else return 0;
 }
 /*
@@ -484,6 +484,7 @@ int negatifInteger(char *infix,char c,int ptr)
 {
     if (ptr == 0 && c == '-' ) return 1;
     else  if((infix[ptr-1] == '!' && c == '-' ) )return 0;
+    else  if((infix[ptr-1] == '|' && c == '-' ) )return 1;
     else  if((isOperator(infix[ptr-1]) && c == '-' ) )return 1;
     else return 0;
 }
@@ -522,6 +523,9 @@ char *infixToPostfix(char *infix,char *postfix)
     Stack *s = inisialisasi();
     double trigono, lon, log, eksponensial;
     double value, basis;
+    int mutlak;
+    
+    mutlak =0;
     
 
     while(infix[ptr] != '\0' )
@@ -565,6 +569,28 @@ char *infixToPostfix(char *infix,char *postfix)
                 }
             }
         }
+        else if(infix[ptr]=='|' && mutlak == 0)
+        {
+        	pushChar(s,infix[ptr]);
+            ptr++;
+        	mutlak=1;
+        }
+        else if(infix[ptr]=='|' && mutlak == 1)
+        {
+        	char tempChar2;
+            while(top(s).cData!='|')
+            {
+                
+                tempChar2 = pop(s).cData;
+                strncat(postfix, &tempChar2, 1);
+                strcat(postfix, oneSpace);
+            }
+            tempChar2 = pop(s).cData;
+            strncat(postfix, &tempChar2, 1);
+        	strcat(postfix, oneSpace);
+            mutlak--;
+            ptr++;
+        }
         else if(infix[ptr]==')')
         {
             while(top(s).cData!='(')
@@ -590,11 +616,11 @@ char *infixToPostfix(char *infix,char *postfix)
             {
                 strncat(temp2, &tempChar3, 1);
                 strcpy(tempInfix, infix);
-                temp = strtok(tempInfix + ptr, "+*/^%$!");
+                temp = strtok(tempInfix + ptr, "+*/^%$!|");
                 
                 if(isdigit(temp[1]))
 				{
-						temp = strtok(temp, "+()-*/^%$!");
+						temp = strtok(temp, "+()-*/^%$!|");
 		            	ptr+=strlen(temp) +1;
 		            	strcat(temp2, temp);
 		                strcat(postfix, temp2);
@@ -602,7 +628,7 @@ char *infixToPostfix(char *infix,char *postfix)
 				}
 				else if(strstr(temp,"log"))
 				{
-					temp = strtok(tempInfix + ptr, "+-*/^%$!");
+					temp = strtok(tempInfix + ptr, "+-*/^%$!|");
 					if (sscanf(temp,"log%lf(%lf)",&basis,&value) != 2) 
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
@@ -634,7 +660,7 @@ char *infixToPostfix(char *infix,char *postfix)
 						i++;
 					}
 					
-					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!");
+					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!|");
 					strcat(temp3,temp5);
 					if(strstr(temp3,"(") && strstr(temp3,")") )
 					{
@@ -679,7 +705,7 @@ char *infixToPostfix(char *infix,char *postfix)
 						strncat(temp3,&temp[i],1);
 						i++;
 					}
-					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!");
+					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!|");
 					strcat(temp3,temp5);
 					if(strstr(temp3,"("))
 					{
@@ -713,16 +739,16 @@ char *infixToPostfix(char *infix,char *postfix)
 				}
 				else
 				{
-					temp = strtok(tempInfix + ptr, " +*/^%$!");
+					temp = strtok(tempInfix + ptr, " +*/^%$!|");
 					if(strstr(temp,"e"))
 		            {
-		            	temp = strtok(temp, "+()-*/^%$!");
+		            	temp = strtok(temp, "+()-*/^%$!|");
 		            	ptr += strlen(temp) + 1;
 		            	sprintf(temp,"%lf",eksponen);
 					}
 					else if(strstr(temp,"phi"))
 		            {
-		            	temp = strtok(temp, "+()-*/^%$!");
+		            	temp = strtok(temp, "+()-*/^%$!|");
 		            	ptr += strlen(temp) + 1;
 		                sprintf(temp,"%lf",phi);
 					}
@@ -761,18 +787,18 @@ char *infixToPostfix(char *infix,char *postfix)
             else
             {
 	            strcpy(tempInfix, infix);
-                temp = strtok(tempInfix + ptr, " +*/^%$!");
+                temp = strtok(tempInfix + ptr, " +*/^%$!|");
                 
                 if(isdigit(temp[0]))
                 {
-					temp = strtok(temp, "+()-*/^%$!");
+					temp = strtok(temp, "+()-*/^%$!|");
 		        	ptr+=strlen(temp);
 		        	strcat(postfix, temp);
 	            	strcat(postfix, oneSpace);
 				}
 				else if(strstr(temp,"log"))
 				{
-					temp = strtok(tempInfix + ptr, "+-*/^%$!");
+					temp = strtok(tempInfix + ptr, "+-*/^%$!|");
 					if (sscanf(temp,"log%lf(%lf)",&basis,&value) != 2) 
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
@@ -802,7 +828,7 @@ char *infixToPostfix(char *infix,char *postfix)
 						strncat(temp3,&temp[i],1);
 						i++;
 					}
-					temp5 = strtok(temp + strlen(temp3), "+(-*/^%$!");
+					temp5 = strtok(temp + strlen(temp3), "+(-*/^%$!|");
 					strcat(temp3,temp5);
 					if(strstr(temp3,"(") && strstr(temp3,")"))
 					{
@@ -836,7 +862,7 @@ char *infixToPostfix(char *infix,char *postfix)
 						strncat(temp3,&temp[i],1);
 						i++;
 					}
-					temp5 = strtok(temp + strlen(temp3), "+(-*/^%$!");
+					temp5 = strtok(temp + strlen(temp3), "+(-*/^%$!|");
 					strcat(temp3,temp5);
 					if(strstr(temp3,"("))
 					{
@@ -859,16 +885,16 @@ char *infixToPostfix(char *infix,char *postfix)
 				}
 	            else
 				{
-	            	temp = strtok(tempInfix + ptr, "+-*/^%$!");
+	            	temp = strtok(tempInfix + ptr, "+-*/^%$!|");
 					if(strstr(temp,"e"))
 		            {
-		            	temp = strtok(temp, "+()-*/^%$!");
+		            	temp = strtok(temp, "+()-*/^%$!|");
 		            	ptr+=strlen(temp);
 		            	sprintf(temp,"%lf",eksponen);
 					}
 					else if(strstr(temp,"phi"))
 		            {
-		            	temp = strtok(temp, "+()-*/^%$!");
+		            	temp = strtok(temp, "+()-*/^%$!|");
 		            	ptr+=strlen(temp);
 		                sprintf(temp,"%lf",phi);
 					}
@@ -939,7 +965,7 @@ double hitungPostfix(char postFix[])
     double a, b;
     Stack *stack = inisialisasi();
     char *token = strtok(postFix," ");
-    double modulus, faktorial, penjumlahan, pengurangan, perkalian, pembagian, Akar, pangkat;
+    double modulus, faktorial, penjumlahan, pengurangan, perkalian, pembagian, Akar, pangkat, mutlak;
 
     while(token != NULL)
     {
@@ -954,6 +980,16 @@ double hitungPostfix(char postFix[])
         	a = pop(stack).bData;
         	faktorial= hitungFaktorial(a);
             push(stack, faktorial );
+		}
+		else if(*token == '|')
+        {
+        	a = pop(stack).bData;
+        	mutlak = a;
+        	if(a <0)
+        	{
+        		mutlak = -1*a;
+			}
+            push(stack, mutlak );
 		}
         // mengecek apakah operator, jika TRUE nilai 2 teratas akan di POP untuk dilakukan perhitungan
         // hasilnya akan di PUSH kembali ke stack
