@@ -457,7 +457,7 @@ double Eksponensial(char *input){
 		else
 		{
 			value = -1*value;
-			hasil = exp(value);	
+			hasil = eksponen(value);	
 		}
 	}
 	else
@@ -470,7 +470,7 @@ double Eksponensial(char *input){
 		}
 		else
 		{
-			hasil = exp(value);
+			hasil = eksponen(value);
 		}
 	}
 	

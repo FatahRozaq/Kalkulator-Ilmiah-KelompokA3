@@ -374,5 +374,23 @@ double HitungLogBebas(double basis2, double angka2){
 
     return result;
 }	
+
+double HiLog(double x) {
+     if (x <= 0) {
+        printf("Error: logarithm undefined for x <= 0.\n");
+        return 0;
+    }
+    
+    int k, n = 100;
+    double y = (x - 1) / x;
+    double y2 = y * y;
+    double sum = 0;
+    double term = y;
+    for (k = n; k > 0; k--) {
+        sum += term;
+        term *= -y * k / (k + 1);
+    }
+    return sum;
+}
 	
 
