@@ -8,7 +8,6 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include "boolean.h"
-#include "Nisrina.h"
 #include "Aurora.h"
 #include "fatah.h"
 #include "jojo.h"

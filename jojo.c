@@ -25,11 +25,11 @@ void konvertSuhu(){ // Panggil modul ini di main
 	Suhu(bil2);
 }
 void panggilLogaritma(){ // Panggil modul ini di main
-	float bil1, log1;
+	double bil1, log1;
 	
 	printf("\n\t\t\t\t\t\t\tMasukkan angka=");
-	scanf("%f", &bil1);
-	log1 = Logaritma(bil1);
+	scanf("%lf", &bil1);
+	log1 = HitungLog10(bil1);
 	printf("\n\t\t\t\t\t\t\tHasil Logaritma : %g", log1);
 }
 
@@ -343,7 +343,7 @@ void InputDataModulus(int *bilMod1, int *bilMod2, char *kalimat){
 }	
 
 void LogaritmaBebas(){
-	float basis, angka, Hasil;
+	double basis, angka, Hasil;
    
     printf("\n\t\t\t\t\t\t\tMasukkan basis : ");
     scanf("%lf", &basis);
