@@ -23,7 +23,7 @@ double Pangkat(double bil1, double bil2)
 {
 	double hasil;
 	
-	hasil = pow(bil1, bil2);
+	hasil = Powku(bil1, bil2);
 	
 	return hasil;
 }
@@ -967,7 +967,7 @@ double hitungPostfix(char postFix[])
                 push(stack, pangkat );
                 break;
             case '$':
-            	Akar = akar(b, a);
+            	Akar = akar(a, b);
                 push(stack, Akar );
                 break;
             case '%':

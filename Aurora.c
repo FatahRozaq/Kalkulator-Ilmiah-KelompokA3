@@ -62,16 +62,49 @@ double akar(double bil, double pangkat) {
 
 double Powku(double base, double exponent) {
     double result = 1.0;
-    int i;
-    if (exponent < 0) {
+
+    if (exponent == 0.0) {
+        return 1.0;
+    }
+
+    if (base == 0.0) {
+        return 0.0;
+    }
+
+    if (exponent < 0.0) {
         base = 1.0 / base;
         exponent = -exponent;
     }
-    for (i = 0; i < exponent; i++) {
-        result *= base;
+
+    while (exponent > 1.0) {
+        if (Modulus(exponent, 2.0) == 0.0) {
+            base *= base;
+            exponent /= 2.0;
+        } else {
+            result *= base;
+            exponent -= 1.0;
+        }
     }
+
+    if (exponent > 0.0) {
+        result *= exp(exponent * log(base));
+    }
+
     return result;
 }
+
+//double Powku(double base, double exponent) {
+//    double result = 1.0;
+//    int i;
+//    if (exponent < 0) {
+//        base = 1.0 / base;
+//        exponent = -exponent;
+//    }
+//    for (i = 0; i < exponent; i++) {
+//        result *= base;
+//    }
+//    return result;
+//}
 
 
 /*
