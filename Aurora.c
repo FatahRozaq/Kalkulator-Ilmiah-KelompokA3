@@ -21,8 +21,7 @@ Author			: Athalie Aurora Puspanegara
 
 /* ======= End of Header File ====== */
 
-#define INFINITY 1.0/0.0
-#define NAN 0.0/0.0
+
 
 
 
@@ -48,18 +47,6 @@ double akar(double bil, double pangkat) {
     }
     return result;
     
-//    double hasil;
-//    int ap;
-//    
-//    ap = (int)pangkat;
-//    
-//    // Menghitung akar pangkat tertentu
-//    hasil = Powku(fabs(bil), 1.0 / ap);
-//    if (bil < 0) {
-//        hasil = -hasil;
-//    }
-//    
-//    return hasil;
 }
 
 double Powku(double base, double exponent) {
@@ -95,264 +82,21 @@ double Powku(double base, double exponent) {
     return result;
 }
 
-//double Powku(double base, double exponent) {
-//    double result = 1.0;
-//    int i;
-//    if (exponent < 0) {
-//        base = 1.0 / base;
-//        exponent = -exponent;
-//    }
-//    for (i = 0; i < exponent; i++) {
-//        result *= base;
-//    }
-//    return result;
-//}
 
-
-/*
-double Powku(double x, int y) 		// Mengganti pow() dari math.h
+// Logaritma basis 10
+double HitungLog10(double angka)
 {
-    double hasil = 1.0;
-    int i;
+    double result = 0;
+    double numerator = angka;
+    double denominator = 10;
 
-    if (y == 0) {
-        return 1.0;
-    }
-
-    for (i = 0; i < abs(y); i++) {
-        hasil *= x;
-    }
-
-    if (y < 0) {
-        hasil = 1.0 / hasil;
-    }
-
-    return hasil;
-}
-
-======
-
-double Powku(double x, int y) {
-    double result = 1.0;
-
-    if (y == 0) {
-        return 1.0;
-    }
-
-    while (y != 0) {
-        if (y % 2 != 0) {
-            result *= x;
-        }
-
-        x *= x;
-        y /= 2;
-    }
-
-    if (y < 0) {
-        result = 1.0 / result;
+    while (numerator >= denominator) {
+        result++;
+        numerator /= denominator;
     }
 
     return result;
 }
-
-double Powku(double x, int y) {
-    double result;
-    int i;
-
-    if (y == 0) {
-        return 1.0;
-    }
-
-    if (x == 0.0) {
-        return 0.0;
-    }
-
-    if (y < 0) {
-        x = 1.0 / x;
-        y = -y;
-    }
-
-    for (i = 0; i < y; i++) {
-        result *= x;
-    }
-
-    result = x^y;
-}
-
-
-double Powku(double x, int y) {
-    double result = 1.0;
-
-    if (y == 0) {
-        return 1.0;
-    } else if (y > 0) {
-        while (y > 0) {
-            result *= x;
-            y--;
-        }
-    } else {
-        while (y < 0) {
-            result *= 1/x;
-            y++;
-        }
-    }
-
-    return result;
-}
-
-
-double Powku(double x, double y) {
-    double result = 1.0;
-
-    if (y == 0.0) {
-        return 1.0;
-    }
-
-    if (x == 0.0) {
-        return 0.0;
-    }
-
-    if (y < 0.0) {
-        x = 1.0 / x;
-        y = -y;
-    }
-
-    while (y > 0.0) {
-        if (fmod(y, 2.0) == 1.0) {
-            result *= x;
-        }
-        x *= x;
-        y /= 2.0;
-    }
-
-    return result;
-}
-
-
-
-
-double pow(double x, int y) {
-    if (x == 1.0 || y == 0.0) {
-        return 1.0;
-    }
-    if (y == 1.0) {
-        return x;
-    }
-    if (y == -1.0) {
-        return 1.0 / x;
-    }
-    if (x == 0.0) {
-        if (y > 0.0) {
-            return 0.0;
-        } else if (y < 0.0) {
-            return INFINITY;
-        }
-    }
-    if (y == INFINITY || y == -INFINITY) {
-        return INFINITY;
-    }
-    if (y != y) { // y is NaN
-        return y;
-    }
-    if (x == INFINITY) {
-        if (y > 0.0) {
-            return INFINITY;
-        } else if (y < 0.0) {
-            return 0.0;
-        }
-    }
-    if (x == -INFINITY) {
-        if (y > 0.0) {
-            if (fmod(y, 2.0) == 0.0) {
-                return INFINITY;
-            } else {
-                return -INFINITY;
-            }
-        } else if (y < 0.0) {
-            if (fmod(y, 2.0) == 0.0) {
-                return 0.0;
-            } else {
-                return -0.0;
-            }
-        }
-    }
-    double absy = fabs(y);
-    double floorabsy = floor(absy);
-    double t = ((floorabsy == absy) ? myPow(x, (int)floorabsy) : myPow(x, floorabsy) * myPow(x, absy - floorabsy));
-    if (y < 0.0) {
-        return 1.0 / t;
-    }
-    return t;
-}
-
-double myPow(double x, double y) {
-    double result = 1.0;
-    int i;
-
-    if (y == 0) {
-        return 1.0;
-    }
-
-    for (i = 0; i < abs(y); i++) {
-        result *= x;
-    }
-
-    if (y < 0) {
-        result = 1.0 / result;
-    }
-
-    return result;
-}
-double pow(double x, int y);
-*/
-
-
-
-
-//double Powku(double x, double y) {
-//    double result = 1.0;
-//
-//    if (x == 0.0) {
-//        if (y == 0.0) {
-//            // 0^0 is undefined
-//            return NAN;
-//        } else if (y < 0.0) {
-//            // 0^(-y) is infinity
-//            return INFINITY;
-//        } else {
-//            // 0^y is 0
-//            return 0.0;
-//        }
-//    }
-//
-//    if (y == 0.0) {
-//        return 1.0;
-//    }
-//
-//    if (y < 0.0) {
-//        x = 1.0 / x;
-//        y = -y;
-//    }
-//
-//    while (y > 1.0) {
-//        if (fmod(y, 2.0) == 0.0) {
-//            x *= x;
-//            y /= 2.0;
-//        } else {
-//            result *= x;
-//            y--;
-//        }
-//    }
-//
-//    result *= x;
-//
-//    if (result == INFINITY) {
-//        // x^y is infinity
-//        return INFINITY;
-//    }
-//
-//    return result;
-//}
 
 
 double Fabs(double x) {
@@ -586,7 +330,7 @@ void Calculator()
 {
 printf("\n\n\n\t\t\t\t\t\t\t\t\t _____________________________________");	
 printf("\n\t\t\t\t\t\t\t\t\t|  _________________________________  |");
-printf("\n\t\t\t\t\t\t\t\t\t| |                            0.   | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |                                 | |");
 printf("\n\t\t\t\t\t\t\t\t\t| |_________________________________| |");
 printf("\n\t\t\t\t\t\t\t\t\t| |_________________________________| |");
 printf("\n\t\t\t\t\t\t\t\t\t|                                     |");

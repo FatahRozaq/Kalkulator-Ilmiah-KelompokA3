@@ -21,6 +21,7 @@ double fabs(double x);
 double floor(double x);
 double fmod(double x, double y);
 
+double HitungLog10(double angka);
 
 
 void deretAritmatika();

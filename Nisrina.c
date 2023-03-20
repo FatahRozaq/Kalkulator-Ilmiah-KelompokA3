@@ -604,10 +604,19 @@ char *infixToPostfix(char *infix,char *postfix)
                 strncat(temp2, &tempChar3, 1);
                 strcpy(tempInfix, infix);
                 temp = strtok(tempInfix + ptr, "+*/^%$!");
-                if(strstr(temp,"log"))
+                
+                if(isdigit(temp[1]))
+				{
+						temp = strtok(temp, "+()-*/^%$!");
+		            	ptr+=strlen(temp) +1;
+		            	strcat(temp2, temp);
+		                strcat(postfix, temp2);
+		                strcat(postfix, oneSpace);
+				}
+				else if(strstr(temp,"log"))
 				{
 					temp = strtok(tempInfix + ptr, "+-*/^%$!");
-					if (sscanf(temp,"%lflog(%lf)",&basis,&value) != 2) 
+					if (sscanf(temp,"log%lf(%lf)",&basis,&value) != 2) 
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan logaritma yang benar adalah 10log(100)\n");
@@ -629,14 +638,6 @@ char *infixToPostfix(char *infix,char *postfix)
 		                strcat(postfix, oneSpace);	
 					}
 				}
-                else if(isdigit(temp[1]))
-				{
-						temp = strtok(temp, "+()-*/^%$!");
-		            	ptr+=strlen(temp) +1;
-		            	strcat(temp2, temp);
-		                strcat(postfix, temp2);
-		                strcat(postfix, oneSpace);
-				}
                 else if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
 					i=1;
@@ -645,17 +646,23 @@ char *infixToPostfix(char *infix,char *postfix)
 						strncat(temp3,&temp[i],1);
 						i++;
 					}
+					
 					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!");
 					strcat(temp3,temp5);
-					if(strstr(temp3,"("))
+					if(strstr(temp3,"(") && strstr(temp3,")") )
 					{
-						i=0;
-						while(!strstr(temp4,")"))
-						{
-							strncat(temp4,&temp3[i],1);
-							i++;
-						}
-						ptr += strlen(temp4) +1;
+							i=0;
+							while(!strstr(temp4,")"))
+							{
+								strncat(temp4,&temp3[i],1);
+								i++;
+							}
+							ptr += strlen(temp4) +1;
+					}
+					else if(strstr(temp3,"("))
+					{
+							printf("\nInput tidak sesuai dengan format yang diharapkan, anda kurang menuliskan ')' !\n");
+							exit(0);
 					}
 					else
 					{
@@ -768,10 +775,18 @@ char *infixToPostfix(char *infix,char *postfix)
             {
 	            strcpy(tempInfix, infix);
                 temp = strtok(tempInfix + ptr, " +*/^%$!");
-                if(strstr(temp,"log"))
+                
+                if(isdigit(temp[0]))
+                {
+					temp = strtok(temp, "+()-*/^%$!");
+		        	ptr+=strlen(temp);
+		        	strcat(postfix, temp);
+	            	strcat(postfix, oneSpace);
+				}
+				else if(strstr(temp,"log"))
 				{
 					temp = strtok(tempInfix + ptr, "+-*/^%$!");
-					if (sscanf(temp,"%lflog(%lf)",&basis,&value) != 2) 
+					if (sscanf(temp,"log%lf(%lf)",&basis,&value) != 2) 
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan logaritma yang benar adalah 10log(100)\n");
@@ -792,13 +807,6 @@ char *infixToPostfix(char *infix,char *postfix)
 	            		strcat(postfix, oneSpace);	
 					}
 				}
-                else if(isdigit(temp[0]))
-                {
-					temp = strtok(temp, "+()-*/^%$!");
-		        	ptr+=strlen(temp);
-		        	strcat(postfix, temp);
-	            	strcat(postfix, oneSpace);
-				}
 				else if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
 					i=0;
@@ -809,7 +817,7 @@ char *infixToPostfix(char *infix,char *postfix)
 					}
 					temp5 = strtok(temp + strlen(temp3), "+(-*/^%$!");
 					strcat(temp3,temp5);
-					if(strstr(temp3,"("))
+					if(strstr(temp3,"(") && strstr(temp3,")"))
 					{
 						i=0;
 						while(!strstr(temp4,")"))
@@ -819,11 +827,15 @@ char *infixToPostfix(char *infix,char *postfix)
 						}
 						ptr += strlen(temp4);
 					}
+					else if(strstr(temp3,"("))
+					{
+							printf("\nInput tidak sesuai dengan format yang diharapkan, anda kurang menuliskan ')' !\n");
+							exit(0);
+					}
 					else
 					{
 						strcpy(temp4, temp3);
 					}
-					printf("test %s", temp4);
 					trigono = DerajatTrigono(temp4);
 					sprintf(temp,"%lf",trigono);
 					strcat(postfix, temp);

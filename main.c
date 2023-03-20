@@ -14,7 +14,8 @@ int main()
 	int modulus, pilih;
 	
 	Fullmode();
-	header();
+	CalStfc();
+	/*header();
 	BarmenuUtama();
 	
 	
@@ -26,7 +27,7 @@ int main()
 	printf("\t\t\t\t\t\t\t\t [4]. Credit   		   \n\n");	
 	printf("\t\t\t\t\t\t\t\t [0]. Keluar                \n");
 	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
-
+	
 	PilihMenu(&pilih);
 	getchar();
 	switch (pilih)
@@ -52,6 +53,7 @@ int main()
 		default:
 			printf("Inputan tidak valid");
 	}
+	*/
 	
 	return 0;
 }
