@@ -10,11 +10,57 @@
 
 int main()
 {
-	float penjumlahan, pengurangan, pembagian, perkalian, perpangkatan;
-	int modulus, pilih;
+	char *infixExpr;
+    infixExpr=malloc(266*sizeof(char));
+	char pilih;
+	double hasil;
+	int isChar;
 	
 	Fullmode();
-	CalStfc();
+	header();
+    do
+    {	
+    	
+    	char postfixExpr[256] = "";
+        char*x;
+    	Calculator();
+		printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+		//printf("\n\t=============================================================== \n");	
+  		//printf("\n\n\t\t\t\t\t\t\t\t\tPosfix : %s\n ",infixToPostfix(x, postfixExpr));
+  	    //hasil = hitungPostfix(postfixExpr);
+        //printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan: %g\n\n", hasil);	
+		printf("\t 														 \n");
+		printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+	    printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan : ");
+		scanf(" %[^\n]", infixExpr);	
+        gantiNewLineJadiSpasi(infixExpr);
+        x=hapusSpasi(infixExpr);
+        header();
+        Calculator();
+        lowerCase(x);
+    	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+		//printf("\n\t=============================================================== \n");	
+		infixToPostfix(x, postfixExpr);
+  		isChar = validasiChar(postfixExpr);
+  		if (isChar == 1)
+  		{
+  			printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
+		}
+		else if(isChar == 0)
+		{
+			printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : %s\n ",postfixExpr);
+			hasil = hitungPostfix(postfixExpr);
+        	printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);	
+		}
+		printf("\t 														 \n");
+		printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+	   
+        printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan lagi? (Y/N) ");
+        pilih = getche();
+        system("CLS");
+        header();
+        
+	}while(pilih == 'y' || pilih == 'Y');
 	/*header();
 	BarmenuUtama();
 	

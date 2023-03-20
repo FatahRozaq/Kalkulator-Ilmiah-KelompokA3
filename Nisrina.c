@@ -114,7 +114,7 @@ void CalStfc()
   		isChar = validasiChar(postfixExpr);
   		if (isChar == 1)
   		{
-  			printf("\n\n\t\t\t\t\t\t\t\t\tTidak valid ada char\n");
+  			printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
 		}
 		else if(isChar == 0)
 		{
@@ -304,40 +304,33 @@ double Sin(double value){
 	double sign=1, res=0, term;
 	int k =1;
 	
-	if (value == 30){
-		res = 0.5;
-	} else{
-		if (value<0){
+	if (value<0){
 	
-			sign=-1.0;
-			
-			value=-value;
+		sign=-1.0;
+		
+		value=-value;
 	
-		}
-		
-		if (value > 360) {
-	   		value -= (int)(value / 360) * 360;
-		}
-		
-		value*=3.14/180.0;
-		
-		term=value;
-		
-		while (res+term!=res){
-		
-			res+=term;
-			
-			k+=2;
-			
-			term*=-value*value/k/(k-1);
-		
-		}
-		
-		res = sign*res;
 	}
 	
+	if (value > 360) {
+   		value -= (int)(value / 360) * 360;
+	}
 	
-//	res = round(res * 2.0) / 2.0;
+	value*=3.14/180.0;
+	
+	term=value;
+	
+	while (res+term!=res){
+	
+		res+=term;
+		
+		k+=2;
+		
+		term*=-value*value/k/(k-1);
+	
+	}
+	
+	res = sign*res;
 	
 	return res;
 
@@ -366,19 +359,13 @@ double Cos(double value){
 	
 	}
 	
-//	if ()
 	return res;
 
 }
 
 double Tan(double value) {
-	double res;
-	if(value == 45){
-		res = 1;
-	}else
-    res = Sin(value) / Cos(value);
+    double res = Sin(value) / Cos(value);
     
-//    res = round(res * 2.0) / 2.0;
     return res;
 }
 
