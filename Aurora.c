@@ -9,6 +9,8 @@ Author			: Athalie Aurora Puspanegara
 
 #include "Aurora.h"
 #include "jojo.h"
+#include "fatah.h"
+#include "gavrila.h"
 
 #include <stdio.h>
 #include <stdlib.h>
