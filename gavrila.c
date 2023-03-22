@@ -383,7 +383,28 @@ double hitungarccos(double x){
 
 double hitungarctan(double x){
 	double rad, hasil;
-	rad = atan(x); //menghitung nilai inverse sinus dalam radian
+	rad = atan(x); //menghitung nilai inverse dalam radian
+    hasil = rad * 180 / M_PI; //mengonversi ke derajat
+    return hasil;
+}
+
+double hitungarccsc(double x){
+	double rad, hasil;
+	rad = asin(1/x); //menghitung nilai inverse dalam radian
+    hasil = rad * 180 / M_PI; //mengonversi ke derajat
+    return hasil;
+}
+
+double hitungarcsec(double x){
+	double rad, hasil;
+	rad = acos(1/x); //menghitung nilai inverse dalam radian
+    hasil = rad * 180 / M_PI; //mengonversi ke derajat
+    return hasil;
+}
+
+double hitungarccot(double x){
+	double rad, hasil;
+	rad = atan(1/x); //menghitung nilai inverse sinus dalam radian
     hasil = rad * 180 / M_PI; //mengonversi ke derajat
     return hasil;
 }
@@ -408,5 +429,29 @@ double hitungcosh(double x){
 double hitungtanh(double x){
 	x = toRadians(x);
 	result = (pow(e, 2 * x)-1) / (pow(e, 2*x)+1);
+	return result;
+}
+
+double hitungsech(double x){
+	double result;
+	
+	x = toRadians(x);
+	result = (2*pow(e, x)) / (pow(e, 2*x)+1);
+	return result;
+}
+
+double hitungcsch(double x){
+	double result;
+	
+	x = toRadians(x);
+	result = (2*pow(e, x)) / (pow(e, 2*x)-1);
+	return result;
+}
+
+double hitungcoth(double x){
+	double result;
+	
+	x = toRadians(x);
+	result = (pow(e, 2 * x)+1) / (pow(e, 2*x)-1);
 	return result;
 }

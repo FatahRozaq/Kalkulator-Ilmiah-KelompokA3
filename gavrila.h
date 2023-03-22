@@ -34,6 +34,12 @@ double hitungarccos(double x);
 
 double hitungarctan(double x);
 
+double hitungarccsc(double x);
+
+double hitungarcsec(double x);
+
+double hitungarccot(double x);
+
 double toRadians(double degree);
 
 double hitungsinh(double x);
@@ -41,5 +47,11 @@ double hitungsinh(double x);
 double hitungcosh(double x);
 
 double hitungtanh(double x);
+
+double hitungsech(double x);
+
+double hitungcsch(double x);
+
+double hitungcoth(double x);
 
 #endif
