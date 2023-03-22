@@ -243,7 +243,7 @@ double DerajatTrigono(char *input)
 				exit(0);
 			}
 		}
-//		return hitungarcsec(value);
+		return hitungarcsec(value);
 	}
 	
 	if(strstr(input,"arccot"))
@@ -270,7 +270,7 @@ double DerajatTrigono(char *input)
 				exit(0);
 			}
 		}
-//		return hitungarccot(value);
+		return hitungarccot(value);
 	}
 	
 	if(strstr(input,"arccsc"))
@@ -297,7 +297,7 @@ double DerajatTrigono(char *input)
 				exit(0);
 			}
 		}
-//		return hitungarccsc(value);
+		return hitungarccsc(value);
 	}
 	
 	if(strstr(input,"sinh"))
@@ -405,7 +405,7 @@ double DerajatTrigono(char *input)
 				exit(0);
 			}
 		}
-//		return hitungsech(value);
+		return hitungsech(value);
 	}
 	
 	if(strstr(input,"coth"))
@@ -432,7 +432,7 @@ double DerajatTrigono(char *input)
 				exit(0);
 			}
 		}
-//		return hitungcoth(value);
+		return hitungcoth(value);
 	}
 	
 	if(strstr(input,"csch"))
@@ -459,7 +459,7 @@ double DerajatTrigono(char *input)
 				exit(0);
 			}
 		}
-//		return hitungcsch(value);
+		return hitungcsch(value);
 	}
 	
 	if(strstr(input,"sin"))

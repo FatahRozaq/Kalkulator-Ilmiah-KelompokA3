@@ -414,6 +414,8 @@ double toRadians(double degree) {
 }
 
 double hitungsinh(double x){
+	double result;
+	
 	x = toRadians(x);
 	result = (1 - pow(e, -2 * x)) / (2 * pow(e, -x));
 	
@@ -422,12 +424,16 @@ double hitungsinh(double x){
 }
 
 double hitungcosh(double x){
+	double result;
+	
 	x = toRadians(x);
 	result = (1 + pow(e, -2 * x)) / (2 * pow(e, -x));
 	return result;
 }
 
 double hitungtanh(double x){
+	double result;
+	
 	x = toRadians(x);
 	result = (pow(e, 2 * x)-1) / (pow(e, 2*x)+1);
 	return result;
