@@ -387,3 +387,26 @@ double hitungarctan(double x){
     hasil = rad * 180 / M_PI; //mengonversi ke derajat
     return hasil;
 }
+
+double toRadians(double degree) {
+    return degree * (3.14159265359 / 180.0);
+}
+
+double hitungsinh(double x){
+	x = toRadians(x);
+	result = (1 - pow(e, -2 * x)) / (2 * pow(e, -x));
+	return result;
+	
+}
+
+double hitungcosh(double x){
+	x = toRadians(x);
+	result = (1 + pow(e, -2 * x)) / (2 * pow(e, -x));
+	return result;
+}
+
+double hitungtanh(double x){
+	x = toRadians(x);
+	result = (pow(e, 2 * x)-1) / (pow(e, 2*x)+1);
+	return result;
+}

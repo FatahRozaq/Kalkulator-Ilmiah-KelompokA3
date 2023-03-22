@@ -1,5 +1,6 @@
 #ifndef GAVRILA_H
 #define GAVRILA_H
+#define e 2.7182818284
 
 //spesifikasi
 
@@ -32,5 +33,13 @@ double hitungarccos(double x);
 //void arctan();
 
 double hitungarctan(double x);
+
+double toRadians(double degree);
+
+double hitungsinh(double x);
+
+double hitungcosh(double x);
+
+double hitungtanh(double x);
 
 #endif
