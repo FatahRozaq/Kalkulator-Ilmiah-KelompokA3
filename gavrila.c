@@ -321,3 +321,69 @@ double Hitungdaya(int satuan1, int satuan2, double daya){
         return hasilconvert;
     }
     
+//void arcsin(){
+//	double x, result;
+//	
+//	printf("Masukkan bilangan (1<=x<=-1)");
+//	scanf("%lf", &x);
+//	if (x>1 || x<-1)){
+//		printf("Invalid input (Masukkan bilangan 1<=x<=-1)")
+//	}
+//	result = hitungarcsin(x);
+//	printf("arcsin dari %lf adalah %lf derajat", x, result);
+//}
+
+double hitungarcsin(double x){
+	double rad, hasil;
+	
+	if (x>1 || x<-1){
+		printf("Invalid ArcSin salah (Masukkan bilangan 1<=x<=-1)");
+	}
+	else{
+		rad = asin(x); //menghitung nilai inverse sinus dalam radian
+    	hasil = rad * 180 / M_PI; //mengonversi ke derajat
+    	return hasil;
+	}
+	
+}
+
+//void arccos(){
+//	double x, result;
+//	
+//	printf("Masukkan bilangan (1<=x<=-1)");
+//	scanf("%lf", &x);
+//	if (x>1 || x<-1)){
+//		printf("Invalid input (Masukkan bilangan 1<=x<=-1)")
+//	}
+//	result = hitungarccos(x);
+//	printf("arcsin dari %lf adalah %lf derajat", x, result);
+//}
+
+double hitungarccos(double x){
+	double rad, hasil;
+	
+	if (x>1 || x<-1){
+		printf("Input ArcCos salah (Masukkan bilangan 1<=x<=-1)");
+	}else{
+		rad = acos(x); //menghitung nilai inverse sinus dalam radian
+    	hasil = rad * 180 / M_PI; //mengonversi ke derajat
+    	return hasil;
+	}
+
+}
+
+//void arctan(){
+//	double x, result;
+//	
+//	printf("Masukkan bilangan: ");
+//	scanf("%lf", &x);
+//	result = hitungaarctan(x);
+//	printf("arcsin dari %lf adalah %lf derajat", x, result);
+//}
+
+double hitungarctan(double x){
+	double rad, hasil;
+	rad = atan(x); //menghitung nilai inverse sinus dalam radian
+    hasil = rad * 180 / M_PI; //mengonversi ke derajat
+    return hasil;
+}

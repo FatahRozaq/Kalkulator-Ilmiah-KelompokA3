@@ -21,4 +21,16 @@ void konvertDaya();
 
 double Hitungdaya(int satuan1, int satuan2, double daya);
 
+//void arcsin();
+
+double hitungarcsin(double x);
+
+//void arccos();
+
+double hitungarccos(double x);
+
+//void arctan();
+
+double hitungarctan(double x);
+
 #endif
