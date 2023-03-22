@@ -320,24 +320,13 @@ double Hitungdaya(int satuan1, int satuan2, double daya){
         
         return hasilconvert;
     }
-    
-//void arcsin(){
-//	double x, result;
-//	
-//	printf("Masukkan bilangan (1<=x<=-1)");
-//	scanf("%lf", &x);
-//	if (x>1 || x<-1)){
-//		printf("Invalid input (Masukkan bilangan 1<=x<=-1)")
-//	}
-//	result = hitungarcsin(x);
-//	printf("arcsin dari %lf adalah %lf derajat", x, result);
-//}
 
 double hitungarcsin(double x){
 	double rad, hasil;
 	
 	if (x>1 || x<-1){
-		printf("Invalid ArcSin salah (Masukkan bilangan 1<=x<=-1)");
+		printf("\n\nInput ArcSin salah (Masukkan bilangan 1<=x<=-1)");
+		exit(0);
 	}
 	else{
 		rad = asin(x); //menghitung nilai inverse sinus dalam radian
@@ -347,23 +336,12 @@ double hitungarcsin(double x){
 	
 }
 
-//void arccos(){
-//	double x, result;
-//	
-//	printf("Masukkan bilangan (1<=x<=-1)");
-//	scanf("%lf", &x);
-//	if (x>1 || x<-1)){
-//		printf("Invalid input (Masukkan bilangan 1<=x<=-1)")
-//	}
-//	result = hitungarccos(x);
-//	printf("arcsin dari %lf adalah %lf derajat", x, result);
-//}
-
 double hitungarccos(double x){
 	double rad, hasil;
 	
 	if (x>1 || x<-1){
-		printf("Input ArcCos salah (Masukkan bilangan 1<=x<=-1)");
+		printf("\n\nInput ArcCos salah (Masukkan bilangan 1<=x<=-1)");
+		exit(0);
 	}else{
 		rad = acos(x); //menghitung nilai inverse sinus dalam radian
     	hasil = rad * 180 / M_PI; //mengonversi ke derajat
@@ -371,15 +349,6 @@ double hitungarccos(double x){
 	}
 
 }
-
-//void arctan(){
-//	double x, result;
-//	
-//	printf("Masukkan bilangan: ");
-//	scanf("%lf", &x);
-//	result = hitungaarctan(x);
-//	printf("arcsin dari %lf adalah %lf derajat", x, result);
-//}
 
 double hitungarctan(double x){
 	double rad, hasil;
@@ -393,6 +362,8 @@ double toRadians(double degree) {
 }
 
 double hitungsinh(double x){
+	double result;
+	
 	x = toRadians(x);
 	result = (1 - pow(e, -2 * x)) / (2 * pow(e, -x));
 	return result;
@@ -400,12 +371,16 @@ double hitungsinh(double x){
 }
 
 double hitungcosh(double x){
+	double result;
+	
 	x = toRadians(x);
 	result = (1 + pow(e, -2 * x)) / (2 * pow(e, -x));
 	return result;
 }
 
 double hitungtanh(double x){
+	double result;
+	
 	x = toRadians(x);
 	result = (pow(e, 2 * x)-1) / (pow(e, 2*x)+1);
 	return result;

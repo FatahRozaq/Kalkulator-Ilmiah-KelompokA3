@@ -185,7 +185,7 @@ double DerajatTrigono(char *input)
 			if (sscanf(input,"arccos(%lf)",&value) != 1) 
 			{
 				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
-				printf("\nContoh penulisan eksponensial yang benar adalah arccos(100)\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arccos(100)\n");
 				exit(0);
 			}
 		}
@@ -212,11 +212,254 @@ double DerajatTrigono(char *input)
 			if (sscanf(input,"arctan(%lf)",&value) != 1) 
 			{
 				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
-				printf("\nContoh penulisan eksponensial yang benar adalah arctan(100)\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arctan(100)\n");
 				exit(0);
 			}
 		}
 		return hitungarctan(value);
+	}
+	
+	if(strstr(input,"arcsec"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"arcsec(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arcsec(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"arcsec(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arcsec(100)\n");
+				exit(0);
+			}
+		}
+//		return hitungarcsec(value);
+	}
+	
+	if(strstr(input,"arccot"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"arccot(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arccot(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"arccot(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arccot(100)\n");
+				exit(0);
+			}
+		}
+//		return hitungarccot(value);
+	}
+	
+	if(strstr(input,"arccsc"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"arccsc(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arccsc(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"arccsc(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arccsc(100)\n");
+				exit(0);
+			}
+		}
+//		return hitungarccsc(value);
+	}
+	
+	if(strstr(input,"sinh"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"sinh(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah sinh(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"sinh(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah sinh(100)\n");
+				exit(0);
+			}
+		}
+		return hitungsinh(value);
+	}
+	
+	if(strstr(input,"cosh"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"cosh(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah cosh(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"cosh(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah cosh(100)\n");
+				exit(0);
+			}
+		}
+		return hitungcosh(value);
+	}
+	
+	if(strstr(input,"tanh"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"tanh(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah tanh(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"tanh(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah tanh(100)\n");
+				exit(0);
+			}
+		}
+		return hitungtanh(value);
+	}
+	
+	if(strstr(input,"sech"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"sech(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah sech(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"sech(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah sech(100)\n");
+				exit(0);
+			}
+		}
+//		return hitungsech(value);
+	}
+	
+	if(strstr(input,"coth"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"coth(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah coth(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"coth(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah coth(100)\n");
+				exit(0);
+			}
+		}
+//		return hitungcoth(value);
+	}
+	
+	if(strstr(input,"csch"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"csch(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah csch(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"csch(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah csch(100)\n");
+				exit(0);
+			}
+		}
+//		return hitungcsch(value);
 	}
 	
 	if(strstr(input,"sin"))
@@ -239,7 +482,7 @@ double DerajatTrigono(char *input)
 			if (sscanf(input,"sin(%lf)",&value) != 1) 
 			{
 				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
-				printf("\nContoh penulisan eksponensial yang benar adalah sin(100)\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah sin(100)\n");
 				exit(0);
 			}
 		}
@@ -252,7 +495,7 @@ double DerajatTrigono(char *input)
 			if (sscanf(input,"cos(-%lf)",&value) != 1) 
 			{
 				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
-				printf("\nContoh penulisan eksponensial yang benar adalah cos(100)\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah cos(100)\n");
 				exit(0);
 			}
 			else
