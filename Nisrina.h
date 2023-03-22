@@ -12,6 +12,11 @@
 #include "fatah.h"
 #include "jojo.h"
 #include "gavrila.h"
+#define Nil NULL
+#define Prev(P) (P)->prev
+#define Info(P) (P)->info
+#define Next(P) (P)->next
+#define string char*
 
 typedef union
 {
@@ -25,6 +30,23 @@ typedef struct
     int top;
 } Stack;
 
+typedef string infotype;
+typedef struct tElmtList *address;
+typedef struct tElmtList {
+	 address  prev;
+	 infotype info;
+	 address  next;
+	 } ElmtList;
+
+//linked list
+
+address Alokasi(infotype X);
+
+void InsVLast(address *front,address *rear, infotype X);
+
+void InsertLast (address *front,address *rear, address P);
+
+void PrintInfoASC (address data);
 
 /* {membuat sendiri */
 double Penjumlahan (double bil1, double bil2);
@@ -74,7 +96,7 @@ int isAfter(Stack *s);
 
 char * hapusSpasi(char * infix);
 
-char *infixToPostfix(char *infix,char *postfix);
+void infixToPostfix(char *infix, address *front, address *rear);
 
 void gantiNewLineJadiSpasi(char *s);
 

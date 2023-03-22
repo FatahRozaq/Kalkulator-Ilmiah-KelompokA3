@@ -16,6 +16,10 @@ int main()
 	double hasil;
 	int isChar;
 	
+	address front,rear;
+	
+	
+	
 	Fullmode();
 	header();
     do
@@ -23,6 +27,8 @@ int main()
     	
     	char postfixExpr[256] = "";
         char*x;
+        front = Nil;
+		rear = Nil;
     	Calculator();
 		printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 		//printf("\n\t=============================================================== \n");	
@@ -40,8 +46,9 @@ int main()
         lowerCase(x);
     	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 		//printf("\n\t=============================================================== \n");	
-		infixToPostfix(x, postfixExpr);
-  		isChar = validasiChar(postfixExpr);
+		infixToPostfix(x, &front, &rear);
+		PrintInfoASC (front);
+  		/*isChar = validasiChar(postfixExpr);
   		if (isChar == 1)
   		{
   			printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
@@ -58,7 +65,7 @@ int main()
         printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan lagi? (Y/N) ");
         pilih = getche();
         system("CLS");
-        header();
+        header();*/
         
 	}while(pilih == 'y' || pilih == 'Y');
 	/*header();

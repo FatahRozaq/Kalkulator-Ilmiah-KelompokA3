@@ -10,6 +10,94 @@
 #define eksponen 2.718281828
 #define phi 3.14
 
+
+//linked list
+
+address Alokasi(infotype X)
+/* Mengirimkan address hasil alokasi sebuah elemen */
+/* Jika alokasi berhasil, maka address != Nil, 	   */
+/*	dan misalnya menghasilkan P, maka Info(P) = X, Next(P) = Nil */
+/* Jika alokasi gagal, mengirimkan Nil */
+{
+	 /* Kamus Lokal */
+	 address P;
+	 
+	 /* Algoritma */
+	 P = (address) malloc (sizeof (ElmtList));
+	 if (P != Nil)		/* Alokasi berhasil */
+	 {
+	Prev(P) = Nil;
+	Info(P) = X;
+	Next(P) = Nil;
+	 }
+	 return (P);
+}
+
+void InsVLast(address *front,address *rear, infotype X)
+{
+	address P;
+	P = Alokasi(X);
+	if (P != Nil)
+	{	
+	InsertLast (front,rear, P);
+			}
+			
+}
+
+void InsertLast (address *front,address *rear, address P)
+{
+	
+	if(*front == Nil)
+	{
+		*front = P;
+		*rear = P;
+	}
+	else
+	{
+		Next(*rear) = P;
+		Prev(P) = *rear;
+		*rear = P;
+	}
+	
+	
+	
+
+}
+
+void PrintInfoASC (address data)
+/* IS : L mungkin kosong */
+/* FS : Jika List tidak kosong, semua info yang disimpan pada elemen list */
+/*	diprint. Jika list kosong, hanya menuliskan "List Kosong" */
+{
+	 /* Kamus Lokal */
+	address P;
+	int i;
+	
+	 /* Algoritma */
+	if (data == Nil)
+	{
+		 printf ("List Kosong .... \a\n");
+	}
+	else	/* List memiliki elemen */
+	{
+		 P = data;
+		 for (;;)
+		 {
+			if (P == Nil)
+			{
+				 printf("\n");
+				 break;
+			}
+			else	/* Belum berada di akhir List */
+			{
+				 printf (" %s ", Info(P));
+				  //%c karena nilai yang dikeluarkan bertipe char
+				 P = Next(P);
+			}
+		 }
+	}
+}
+
 double Penjumlahan (double bil1, double bil2)
 {
 	double hasil;
@@ -77,62 +165,7 @@ int validasiChar(char postfix[256])
 	return hasil;
 	
 }
-void CalStfc()
-{
-	char *infixExpr;
-    infixExpr=malloc(266*sizeof(char));
-	char pilih;
-	double hasil;
-	int isChar;
-	
-	header();
-	
-	
-    do
-    {	
-    	
-    	char postfixExpr[256] = "";
-        char*x;
-    	Calculator();
-		printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
-		//printf("\n\t=============================================================== \n");	
-  		//printf("\n\n\t\t\t\t\t\t\t\t\tPosfix : %s\n ",infixToPostfix(x, postfixExpr));
-  	    //hasil = hitungPostfix(postfixExpr);
-        //printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan: %g\n\n", hasil);	
-		printf("\t 														 \n");
-		printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
-	    printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan : ");
-		scanf(" %[^\n]", infixExpr);	
-        gantiNewLineJadiSpasi(infixExpr);
-        x=hapusSpasi(infixExpr);
-        header();
-        Calculator();
-        lowerCase(x);
-    	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
-		//printf("\n\t=============================================================== \n");	
-		infixToPostfix(x, postfixExpr);
-  		isChar = validasiChar(postfixExpr);
-  		if (isChar == 1)
-  		{
-  			printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
-		}
-		else if(isChar == 0)
-		{
-			printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : %s\n ",postfixExpr);
-			hasil = hitungPostfix(postfixExpr);
-        	printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);	
-		}
-		printf("\t 														 \n");
-		printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
-	   
-        printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan lagi? (Y/N) ");
-        pilih = getche();
-        system("CLS");
-        header();
-        
-	}while(pilih == 'y' || pilih == 'Y');
-	BacktoMain();
-}
+
 
 double DerajatTrigono(char *input)
 {
@@ -840,7 +873,8 @@ char * hapusSpasi(char * infix)
     x[i]='\0';
     return x;
 }
-char *infixToPostfix(char *infix,char *postfix)
+
+void infixToPostfix(char *infix, address *front, address *rear)
 {
     char oneSpace[] = " ", tempInfix[256];
     int  ptr = 0;
@@ -849,13 +883,18 @@ char *infixToPostfix(char *infix,char *postfix)
     double trigono, lon, log, eksponensial;
     double value, basis;
     int mutlak;
+    int i;
+    infotype (*tampung);
+	
+	tampung = (infotype *) malloc (10 * sizeof(infotype));
+    
+    
     
     mutlak =0;
-    
-
+    i=0;
     while(infix[ptr] != '\0' )
     {
-
+    	
         if(isOperator(infix[ptr]) && !negatifInteger(infix,infix[ptr],ptr))
         {
             if(infix[ptr] == '(' )
@@ -876,10 +915,11 @@ char *infixToPostfix(char *infix,char *postfix)
             else if(priority(infix[ptr])==priority(top(s).cData))
             {
                 char tempchar=pop(s).cData;
-                strncat(postfix,&tempchar,1);
+                *(tampung +i) = (infotype ) malloc (10 * sizeof(char));
+                *(tampung+i) = &tempchar;
+                InsVLast(front, rear, *(tampung+i));
                 pushChar(s,infix[ptr]);
                 ptr++;
-                strcat(postfix,oneSpace);
             }
             else if(priority(infix[ptr]) <priority(top(s).cData) && top(s).cData != '(' && top(s).cData != ')')
             {
@@ -889,8 +929,8 @@ char *infixToPostfix(char *infix,char *postfix)
                     if( isEmpty(s) ) break;
                     if( top(s).cData == '(' ) break;
                     tempChar = pop(s).cData;
-                    strncat(postfix, &tempChar, 1);
-                    strcat(postfix, oneSpace);
+                    *(tampung+i) = &tempChar;
+                	InsVLast(front, rear, *(tampung+i));
                 }
             }
         }
@@ -905,14 +945,10 @@ char *infixToPostfix(char *infix,char *postfix)
         	char tempChar2;
             while(top(s).cData!='|')
             {
-                
-                tempChar2 = pop(s).cData;
-                strncat(postfix, &tempChar2, 1);
-                strcat(postfix, oneSpace);
+		    	InsVLast(front, rear, &tempChar2);
             }
             tempChar2 = pop(s).cData;
-            strncat(postfix, &tempChar2, 1);
-        	strcat(postfix, oneSpace);
+		    InsVLast(front, rear, &tempChar2);
             mutlak--;
             ptr++;
         }
@@ -922,8 +958,8 @@ char *infixToPostfix(char *infix,char *postfix)
             {
                 char tempChar2;
                 tempChar2 = pop(s).cData;
-                strncat(postfix, &tempChar2, 1);
-                strcat(postfix, oneSpace);
+                *(tampung+i) = &tempChar2;
+		    	InsVLast(front, rear, *(tampung+i));
             }
             pop(s);
             ptr++;
@@ -937,6 +973,7 @@ char *infixToPostfix(char *infix,char *postfix)
 		    char tempChar3 = '-';
 		    int i,b;
 		    int panjang;
+		    
             if(negatifInteger(infix,infix[ptr],ptr))
             {
                 strncat(temp2, &tempChar3, 1);
@@ -945,11 +982,12 @@ char *infixToPostfix(char *infix,char *postfix)
                 
                 if(isdigit(temp[1]))
 				{
+						printf("coba");
 						temp = strtok(temp, "+()-*/^%$!|");
 		            	ptr+=strlen(temp) +1;
 		            	strcat(temp2, temp);
-		                strcat(postfix, temp2);
-		                strcat(postfix, oneSpace);
+		            	printf("tost %s", temp2);
+		                InsVLast(front, rear, &temp2);
 				}
 				else if(strstr(temp,"log"))
 				{
@@ -972,8 +1010,8 @@ char *infixToPostfix(char *infix,char *postfix)
 						log = HitungLogBebas(basis, value);
 						sprintf(temp,"%lf",log);
 						strcat(temp2, temp);
-		                strcat(postfix, temp2);
-		                strcat(postfix, oneSpace);	
+		                tampung = temp2;
+		                InsVLast(front, rear, tampung);
 					}
 				}
 				
@@ -1011,15 +1049,14 @@ char *infixToPostfix(char *infix,char *postfix)
 					{
 						trigono = -1 * trigono;
 						sprintf(temp,"%lf",trigono);
-						strcat(postfix, temp);
-	                	strcat(postfix, oneSpace);
+						InsVLast(front, rear, temp);
 					}
 					else
 					{
 						sprintf(temp,"%lf",trigono);
 						strcat(temp2, temp);
-						strcat(postfix, temp2);
-		                strcat(postfix, oneSpace);
+						tampung = temp2;
+		                InsVLast(front, rear, tampung);
 					}
 				}
 				
@@ -1058,15 +1095,14 @@ char *infixToPostfix(char *infix,char *postfix)
 					{
 						trigono = -1 * trigono;
 						sprintf(temp,"%lf",trigono);
-						strcat(postfix, temp);
-	                	strcat(postfix, oneSpace);
+						InsVLast(front, rear, temp);
 					}
 					else
 					{
 						sprintf(temp,"%lf",trigono);
 						strcat(temp2, temp);
-						strcat(postfix, temp2);
-		                strcat(postfix, oneSpace);
+						tampung = temp2;
+		                InsVLast(front, rear, tampung);
 					}
 				}
 				
@@ -1105,15 +1141,14 @@ char *infixToPostfix(char *infix,char *postfix)
 					{
 						trigono = -1 * trigono;
 						sprintf(temp,"%lf",trigono);
-						strcat(postfix, temp);
-	                	strcat(postfix, oneSpace);
+						InsVLast(front, rear, temp);
 					}
 					else
 					{
 						sprintf(temp,"%lf",trigono);
 						strcat(temp2, temp);
-						strcat(postfix, temp2);
-		                strcat(postfix, oneSpace);
+						tampung = temp2;
+		                InsVLast(front, rear, tampung);
 					}
 				}
 				else if(strstr(temp,"exp"))
@@ -1145,15 +1180,14 @@ char *infixToPostfix(char *infix,char *postfix)
 					{
 						eksponensial = -1 * eksponensial;
 						sprintf(temp,"%lf",eksponensial);
-						strcat(postfix, temp);
-	                	strcat(postfix, oneSpace);
+						InsVLast(front, rear, temp);
 					}
 					else
 					{
 						sprintf(temp,"%lf",eksponensial);
 						strcat(temp2, temp);
-						strcat(postfix, temp2);
-		                strcat(postfix, oneSpace);
+						tampung = temp2;
+		                InsVLast(front, rear, tampung);
 					}
 				}
 				else
@@ -1198,8 +1232,8 @@ char *infixToPostfix(char *infix,char *postfix)
 						ptr+=strlen(temp);
 					}
 	                strcat(temp2, temp);
-	                strcat(postfix, temp2);
-	                strcat(postfix, oneSpace);
+	                tampung = temp2;
+		            InsVLast(front, rear, tampung);
 				}
                 
             }
@@ -1212,8 +1246,7 @@ char *infixToPostfix(char *infix,char *postfix)
                 {
 					temp = strtok(temp, "+()-*/^%$!|");
 		        	ptr+=strlen(temp);
-		        	strcat(postfix, temp);
-	            	strcat(postfix, oneSpace);
+		        	InsVLast(front, rear, temp);
 				}
 				else if(strstr(temp,"log"))
 				{
@@ -1235,8 +1268,7 @@ char *infixToPostfix(char *infix,char *postfix)
 						ptr += strlen(temp4);
 						log = HitungLogBebas(basis, value);
 						sprintf(temp,"%lf",log);
-						strcat(postfix, temp);
-	            		strcat(postfix, oneSpace);	
+						InsVLast(front, rear, temp);	
 					}
 				}
 				
@@ -1271,8 +1303,7 @@ char *infixToPostfix(char *infix,char *postfix)
 					}
 					trigono = DerajatTrigono(temp4);
 					sprintf(temp,"%lf",trigono);
-					strcat(postfix, temp);
-	                strcat(postfix, oneSpace);
+					InsVLast(front, rear, temp);
 				}
 				
 				else if(strstr(temp,"sinh") || strstr(temp,"cosh") || strstr(temp,"tanh")|| strstr(temp,"sech") ||strstr(temp,"coth") || strstr(temp,"csch"))
@@ -1306,8 +1337,7 @@ char *infixToPostfix(char *infix,char *postfix)
 					}
 					trigono = DerajatTrigono(temp4);
 					sprintf(temp,"%lf",trigono);
-					strcat(postfix, temp);
-	                strcat(postfix, oneSpace);
+					InsVLast(front, rear, temp);
 				}
 				
 				else if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
@@ -1341,8 +1371,7 @@ char *infixToPostfix(char *infix,char *postfix)
 					}
 					trigono = DerajatTrigono(temp4);
 					sprintf(temp,"%lf",trigono);
-					strcat(postfix, temp);
-	                strcat(postfix, oneSpace);
+					InsVLast(front, rear, temp);
 				}
 				else if(strstr(temp,"exp"))
 				{
@@ -1370,8 +1399,7 @@ char *infixToPostfix(char *infix,char *postfix)
 					}
 					eksponensial = Eksponensial(temp4);
 					sprintf(temp,"%lf",eksponensial);
-					strcat(postfix, temp);
-	                strcat(postfix, oneSpace);
+					InsVLast(front, rear, temp);
 				}
 	            else
 				{
@@ -1415,19 +1443,25 @@ char *infixToPostfix(char *infix,char *postfix)
 					{
 						ptr+=strlen(temp);
 					}
-	                strcat(postfix, temp);
-	            	strcat(postfix, oneSpace);
+	                InsVLast(front, rear, temp);
 				}
             }
         }
+        i++;
     }
+	i=0;
+	infotype tampungchar = (infotype*)malloc(10*sizeof(infotype));
     while(!isEmpty(s))
     {
-        char tempChar6 = pop(s).cData;
-        strncat(postfix, &tempChar6, 1);
-        strcat(postfix,oneSpace);
+    	char test;
+    	printf("tets");
+    	test = pop(s).cData;
+    	*(tampungchar+i) = (infotype)malloc(2*sizeof(char));
+    	*(tampungchar+i) = &test ;
+    	InsVLast(front, rear, *(tampungchar+i));
+    	i++;
     }
-    return postfix;
+    
 }
 /*
 *
