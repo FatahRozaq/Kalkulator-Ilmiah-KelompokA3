@@ -138,6 +138,87 @@ double DerajatTrigono(char *input)
 {
 	double value;
 	
+	if(strstr(input,"arcsin"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"arcsin(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arcsin(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"arcsin(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arcsin(100)\n");
+				exit(0);
+			}
+		}
+		return hitungarcsin(value);
+	}
+	
+	if(strstr(input,"arccos"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"arccos(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arccos(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"arccos(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan eksponensial yang benar adalah arccos(100)\n");
+				exit(0);
+			}
+		}
+		return hitungarccos(value);
+	}
+	
+	if(strstr(input,"arctan"))
+	{
+		if(strstr(input,"-"))
+		{
+			if (sscanf(input,"arctan(-%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan trigonometri yang benar adalah arctan(100)\n");
+				exit(0);
+			}
+			else
+			{
+				value = -1*value;
+			}
+		}
+		else
+		{
+			if (sscanf(input,"arctan(%lf)",&value) != 1) 
+			{
+				printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+				printf("\nContoh penulisan eksponensial yang benar adalah arctan(100)\n");
+				exit(0);
+			}
+		}
+		return hitungarctan(value);
+	}
+	
 	if(strstr(input,"sin"))
 	{
 		if(strstr(input,"-"))
@@ -297,6 +378,7 @@ double DerajatTrigono(char *input)
 		}
 		return TriCsc(value);
 	}
+	
 }
 
 double Sin(double value){
@@ -651,6 +733,100 @@ char *infixToPostfix(char *infix,char *postfix)
 		                strcat(postfix, oneSpace);	
 					}
 				}
+				
+				else if(strstr(temp,"sinh") || strstr(temp,"cosh") || strstr(temp,"tanh")|| strstr(temp,"sech") ||strstr(temp,"coth") || strstr(temp,"csch"))
+				{
+					i=1;
+					while(!isdigit(temp[i]))
+					{
+						strncat(temp3,&temp[i],1);
+						i++;
+					}
+					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!|");
+					strcat(temp3,temp5);
+					if(strstr(temp3,"(") && strstr(temp3,")") )
+					{
+							i=0;
+							while(!strstr(temp4,")"))
+							{
+								strncat(temp4,&temp3[i],1);
+								i++;
+							}
+							ptr += strlen(temp4) +1;
+					}
+					else if(strstr(temp3,"("))
+					{
+							printf("\nInput tidak sesuai dengan format yang diharapkan, anda kurang menuliskan ')' !\n");
+							exit(0);
+					}
+					else
+					{
+						strcpy(temp4, temp3);
+					}
+					trigono = DerajatTrigono(temp4);
+					if(trigono < 0)
+					{
+						trigono = -1 * trigono;
+						sprintf(temp,"%lf",trigono);
+						strcat(postfix, temp);
+	                	strcat(postfix, oneSpace);
+					}
+					else
+					{
+						sprintf(temp,"%lf",trigono);
+						strcat(temp2, temp);
+						strcat(postfix, temp2);
+		                strcat(postfix, oneSpace);
+					}
+				}
+				
+				else if(strstr(temp,"arcsin") || strstr(temp,"arccos") || strstr(temp,"arctan")|| strstr(temp,"arcsec") ||strstr(temp,"arccot") || strstr(temp,"arccsc"))
+				{
+					i=1;
+					while(!isdigit(temp[i]))
+					{
+						strncat(temp3,&temp[i],1);
+						i++;
+					}
+					
+					temp5 = strtok(temp + strlen(temp3) +1, "+(-*/^%$!|");
+					strcat(temp3,temp5);
+					if(strstr(temp3,"(") && strstr(temp3,")") )
+					{
+							i=0;
+							while(!strstr(temp4,")"))
+							{
+								strncat(temp4,&temp3[i],1);
+								i++;
+							}
+							ptr += strlen(temp4) +1;
+					}
+					else if(strstr(temp3,"("))
+					{
+							printf("\nInput tidak sesuai dengan format yang diharapkan, anda kurang menuliskan ')' !\n");
+							exit(0);
+					}
+					else
+					{
+						strcpy(temp4, temp3);
+					}
+					trigono = DerajatTrigono(temp4);
+					if(trigono < 0)
+					{
+						trigono = -1 * trigono;
+						sprintf(temp,"%lf",trigono);
+						strcat(postfix, temp);
+	                	strcat(postfix, oneSpace);
+					}
+					else
+					{
+						sprintf(temp,"%lf",trigono);
+						strcat(temp2, temp);
+						strcat(postfix, temp2);
+		                strcat(postfix, oneSpace);
+					}
+				}
+				
                 else if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
 					i=1;
@@ -820,6 +996,77 @@ char *infixToPostfix(char *infix,char *postfix)
 	            		strcat(postfix, oneSpace);	
 					}
 				}
+				
+				else if(strstr(temp,"arcsin") || strstr(temp,"arccos") || strstr(temp,"arctan")|| strstr(temp,"arcsec") ||strstr(temp,"arccot") || strstr(temp,"arccsc"))
+				{
+					i=0;
+					while(!isdigit(temp[i]))
+					{
+						strncat(temp3,&temp[i],1);
+						i++;
+					}
+					temp5 = strtok(temp + strlen(temp3), "+(-*/^%$!|");
+					strcat(temp3,temp5);
+					if(strstr(temp3,"(") && strstr(temp3,")"))
+					{
+						i=0;
+						while(!strstr(temp4,")"))
+						{
+							strncat(temp4,&temp3[i],1);
+							i++;
+						}
+						ptr += strlen(temp4);
+					}
+					else if(strstr(temp3,"("))
+					{
+							printf("\nInput tidak sesuai dengan format yang diharapkan, anda kurang menuliskan ')' !\n");
+							exit(0);
+					}
+					else
+					{
+						strcpy(temp4, temp3);
+					}
+					trigono = DerajatTrigono(temp4);
+					sprintf(temp,"%lf",trigono);
+					strcat(postfix, temp);
+	                strcat(postfix, oneSpace);
+				}
+				
+				else if(strstr(temp,"sinh") || strstr(temp,"cosh") || strstr(temp,"tanh")|| strstr(temp,"sech") ||strstr(temp,"coth") || strstr(temp,"csch"))
+				{
+					i=0;
+					while(!isdigit(temp[i]))
+					{
+						strncat(temp3,&temp[i],1);
+						i++;
+					}
+					temp5 = strtok(temp + strlen(temp3), "+(-*/^%$!|");
+					strcat(temp3,temp5);
+					if(strstr(temp3,"(") && strstr(temp3,")"))
+					{
+						i=0;
+						while(!strstr(temp4,")"))
+						{
+							strncat(temp4,&temp3[i],1);
+							i++;
+						}
+						ptr += strlen(temp4);
+					}
+					else if(strstr(temp3,"("))
+					{
+							printf("\nInput tidak sesuai dengan format yang diharapkan, anda kurang menuliskan ')' !\n");
+							exit(0);
+					}
+					else
+					{
+						strcpy(temp4, temp3);
+					}
+					trigono = DerajatTrigono(temp4);
+					sprintf(temp,"%lf",trigono);
+					strcat(postfix, temp);
+	                strcat(postfix, oneSpace);
+				}
+				
 				else if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
 					i=0;
