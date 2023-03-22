@@ -54,4 +54,5 @@ double hitungcsch(double x);
 
 double hitungcoth(double x);
 
+
 #endif

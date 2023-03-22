@@ -416,6 +416,7 @@ double toRadians(double degree) {
 double hitungsinh(double x){
 	x = toRadians(x);
 	result = (1 - pow(e, -2 * x)) / (2 * pow(e, -x));
+	
 	return result;
 	
 }
