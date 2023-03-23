@@ -805,7 +805,7 @@ void push(Stack *s, double val)
 /*
 *
 */
-void pushChar(Stack *s, char c)
+void pushChar(Stack *s, char* c)
 {
     s->item[++s->top].cData = c;
 }
@@ -819,12 +819,12 @@ int isFull(Stack *s)
 /*
 *
 */
-int priority(char c)
+int priority(char* c)
 {
-    if (c=='+' || c=='-') return 1;
-    else if (c=='*' || c=='/' || c =='%' ) return 2;
-    else if (c=='^' || c=='$' ) return 3;
-    else if (c== '!' ) return 4;
+    if (*c=='+' || *c=='-') return 1;
+    else if (*c=='*' || *c=='/' || *c =='%' ) return 2;
+    else if (*c=='^' || *c=='$' ) return 3;
+    else if (*c== '!' ) return 4;
     return 0;
 }
 /*
@@ -851,7 +851,10 @@ int negatifInteger(char *infix,char c,int ptr)
 */
 int isAfter(Stack *s)
 {
-    if(s->item[s->top].cData == '(' ) return 1;
+	char* after;
+	
+	after = s->item[s->top].cData;
+    if(*after == '(' ) return 1;
     else return 0;
 }
 /*
@@ -883,83 +886,95 @@ void infixToPostfix(char *infix, address *front, address *rear)
     double trigono, lon, log, eksponensial;
     double value, basis;
     int mutlak;
-    int i;
-    infotype (*tampung);
+    int iTemp;
+    
+    infotype (*tampungchar);
 	
-	tampung = (infotype *) malloc (10 * sizeof(infotype));
-    
-    
-    
+	tampungchar = (infotype *) malloc ( 100* sizeof(infotype));
+    iTemp=0;
     mutlak =0;
-    i=0;
+    
     while(infix[ptr] != '\0' )
     {
-    	
         if(isOperator(infix[ptr]) && !negatifInteger(infix,infix[ptr],ptr))
         {
+        	printf("mask");
             if(infix[ptr] == '(' )
             {
-                pushChar(s,infix[ptr]); //(1+
+            	printf("pil 1");
+                pushChar(s,&infix[ptr]);
                 ptr++;
             }
             else if(isAfter(s))
             {
-                pushChar(s,infix[ptr]);
+            	printf("pil 2");
+                pushChar(s,&infix[ptr]);
                 ptr++;
             }
-            else if(priority(infix[ptr]) > priority(top(s).cData) || isEmpty(s))
+            else if(priority(&infix[ptr]) > priority(top(s).cData) || isEmpty(s))
             {
-                pushChar(s,infix[ptr]);
+            	printf("pil 3");
+                pushChar(s,&infix[ptr]);
                 ptr++;
             }
-            else if(priority(infix[ptr])==priority(top(s).cData))
+            else if(priority(&infix[ptr])==priority(top(s).cData))
             {
-                char tempchar=pop(s).cData;
-                *(tampung +i) = (infotype ) malloc (10 * sizeof(char));
-                *(tampung+i) = &tempchar;
-                InsVLast(front, rear, *(tampung+i));
-                pushChar(s,infix[ptr]);
+            	printf("pil 4");
+                *(tampungchar +iTemp) = (infotype ) malloc (2 * sizeof(char));
+                *(tampungchar+iTemp) = pop(s).cData;
+                InsVLast(front, rear, *(tampungchar+iTemp));
+                pushChar(s,&infix[ptr]);
                 ptr++;
+                iTemp++;
             }
-            else if(priority(infix[ptr]) <priority(top(s).cData) && top(s).cData != '(' && top(s).cData != ')')
+            else if(priority(&infix[ptr]) <priority(top(s).cData) && *(top(s).cData) != '(' && *(top(s).cData) != ')')
             {
+            	printf("pil 5");
                 while(1)
                 {
-                    char tempChar;
+                	
                     if( isEmpty(s) ) break;
-                    if( top(s).cData == '(' ) break;
-                    tempChar = pop(s).cData;
-                    *(tampung+i) = &tempChar;
-                	InsVLast(front, rear, *(tampung+i));
+                    if( *(top(s).cData) == '(' ) break;
+                    *(tampungchar +iTemp) = (infotype ) malloc (2 * sizeof(char));
+	                *(tampungchar+iTemp) = pop(s).cData;
+                	InsVLast(front, rear, *(tampungchar+iTemp));
+                	iTemp++;
                 }
             }
         }
         else if(infix[ptr]=='|' && mutlak == 0)
         {
-        	pushChar(s,infix[ptr]);
+        	pushChar(s,&infix[ptr]);
             ptr++;
         	mutlak=1;
         }
         else if(infix[ptr]=='|' && mutlak == 1)
         {
         	char tempChar2;
-            while(top(s).cData!='|')
+            while(*(top(s).cData)!='|')
             {
-		    	InsVLast(front, rear, &tempChar2);
+            	*(tampungchar +iTemp) = (infotype ) malloc (2 * sizeof(char));
+	            *(tampungchar+iTemp) = pop(s).cData;
+                InsVLast(front, rear, *(tampungchar+iTemp));
+                iTemp++;
             }
-            tempChar2 = pop(s).cData;
-		    InsVLast(front, rear, &tempChar2);
+            *(tampungchar+iTemp) = (infotype ) malloc (2 * sizeof(char));
+	        *(tampungchar+iTemp) = pop(s).cData;
+            InsVLast(front, rear, *(tampungchar+iTemp));
+            iTemp++;
             mutlak--;
             ptr++;
         }
         else if(infix[ptr]==')')
         {
-            while(top(s).cData!='(')
+        	printf("musk");
+            while(*(top(s).cData)!='(')
             {
-                char tempChar2;
-                tempChar2 = pop(s).cData;
-                *(tampung+i) = &tempChar2;
-		    	InsVLast(front, rear, *(tampung+i));
+            	printf("duk");
+                *(tampungchar +iTemp) = (infotype ) malloc (2 * sizeof(char));
+	            *(tampungchar+iTemp) = pop(s).cData;
+                InsVLast(front, rear, *(tampungchar+iTemp));
+                iTemp++;
             }
             pop(s);
             ptr++;
@@ -974,6 +989,7 @@ void infixToPostfix(char *infix, address *front, address *rear)
 		    int i,b;
 		    int panjang;
 		    
+		    printf("sini");
             if(negatifInteger(infix,infix[ptr],ptr))
             {
                 strncat(temp2, &tempChar3, 1);
@@ -982,12 +998,13 @@ void infixToPostfix(char *infix, address *front, address *rear)
                 
                 if(isdigit(temp[1]))
 				{
-						printf("coba");
 						temp = strtok(temp, "+()-*/^%$!|");
 		            	ptr+=strlen(temp) +1;
 		            	strcat(temp2, temp);
-		            	printf("tost %s", temp2);
-		                InsVLast(front, rear, &temp2);
+		            	*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    	*(tampungchar +iTemp) = temp2;
+				    	InsVLast(front, rear, *(tampungchar +iTemp));
+				    	iTemp++;
 				}
 				else if(strstr(temp,"log"))
 				{
@@ -1010,8 +1027,10 @@ void infixToPostfix(char *infix, address *front, address *rear)
 						log = HitungLogBebas(basis, value);
 						sprintf(temp,"%lf",log);
 						strcat(temp2, temp);
-		                tampung = temp2;
-		                InsVLast(front, rear, tampung);
+						*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    	*(tampungchar +iTemp) = temp2;
+				    	InsVLast(front, rear, *(tampungchar +iTemp));
+				    	iTemp++;
 					}
 				}
 				
@@ -1049,14 +1068,19 @@ void infixToPostfix(char *infix, address *front, address *rear)
 					{
 						trigono = -1 * trigono;
 						sprintf(temp,"%lf",trigono);
-						InsVLast(front, rear, temp);
+						*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    	*(tampungchar +iTemp) = temp;
+				    	InsVLast(front, rear, *(tampungchar +iTemp));
+				    	iTemp++;
 					}
 					else
 					{
 						sprintf(temp,"%lf",trigono);
 						strcat(temp2, temp);
-						tampung = temp2;
-		                InsVLast(front, rear, tampung);
+						*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    	*(tampungchar +iTemp) = temp2;
+				    	InsVLast(front, rear, *(tampungchar +iTemp));
+				    	iTemp++;
 					}
 				}
 				
@@ -1095,14 +1119,19 @@ void infixToPostfix(char *infix, address *front, address *rear)
 					{
 						trigono = -1 * trigono;
 						sprintf(temp,"%lf",trigono);
-						InsVLast(front, rear, temp);
+						*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    	*(tampungchar +iTemp) = temp;
+				    	InsVLast(front, rear, *(tampungchar +iTemp));
+				    	iTemp++;
 					}
 					else
 					{
 						sprintf(temp,"%lf",trigono);
 						strcat(temp2, temp);
-						tampung = temp2;
-		                InsVLast(front, rear, tampung);
+						*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    	*(tampungchar +iTemp) = temp2;
+				    	InsVLast(front, rear, *(tampungchar +iTemp));
+				    	iTemp++;
 					}
 				}
 				
@@ -1141,14 +1170,19 @@ void infixToPostfix(char *infix, address *front, address *rear)
 					{
 						trigono = -1 * trigono;
 						sprintf(temp,"%lf",trigono);
-						InsVLast(front, rear, temp);
+						*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    	*(tampungchar +iTemp) = temp;
+				    	InsVLast(front, rear, *(tampungchar +iTemp));
+				    	iTemp++;
 					}
 					else
 					{
 						sprintf(temp,"%lf",trigono);
 						strcat(temp2, temp);
-						tampung = temp2;
-		                InsVLast(front, rear, tampung);
+						*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    	*(tampungchar +iTemp) = temp2;
+				    	InsVLast(front, rear, *(tampungchar +iTemp));
+				    	iTemp++;
 					}
 				}
 				else if(strstr(temp,"exp"))
@@ -1180,14 +1214,19 @@ void infixToPostfix(char *infix, address *front, address *rear)
 					{
 						eksponensial = -1 * eksponensial;
 						sprintf(temp,"%lf",eksponensial);
-						InsVLast(front, rear, temp);
+						*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    	*(tampungchar +iTemp) = temp;
+				    	InsVLast(front, rear, *(tampungchar +iTemp));
+				    	iTemp++;
 					}
 					else
 					{
 						sprintf(temp,"%lf",eksponensial);
 						strcat(temp2, temp);
-						tampung = temp2;
-		                InsVLast(front, rear, tampung);
+						*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    	*(tampungchar +iTemp) = temp2;
+				    	InsVLast(front, rear, *(tampungchar +iTemp));
+				    	iTemp++;
 					}
 				}
 				else
@@ -1232,8 +1271,10 @@ void infixToPostfix(char *infix, address *front, address *rear)
 						ptr+=strlen(temp);
 					}
 	                strcat(temp2, temp);
-	                tampung = temp2;
-		            InsVLast(front, rear, tampung);
+	                *(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    *(tampungchar +iTemp) = temp2;
+				    InsVLast(front, rear, *(tampungchar +iTemp));
+				    iTemp++;
 				}
                 
             }
@@ -1246,7 +1287,9 @@ void infixToPostfix(char *infix, address *front, address *rear)
                 {
 					temp = strtok(temp, "+()-*/^%$!|");
 		        	ptr+=strlen(temp);
-		        	InsVLast(front, rear, temp);
+		        	*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+				    *(tampungchar +iTemp) = temp;
+				    InsVLast(front, rear, *(tampungchar +iTemp));
 				}
 				else if(strstr(temp,"log"))
 				{
@@ -1268,7 +1311,10 @@ void infixToPostfix(char *infix, address *front, address *rear)
 						ptr += strlen(temp4);
 						log = HitungLogBebas(basis, value);
 						sprintf(temp,"%lf",log);
-						InsVLast(front, rear, temp);	
+						*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+					    *(tampungchar +iTemp) = temp;
+					    InsVLast(front, rear, *(tampungchar +iTemp));	
+					    iTemp++;
 					}
 				}
 				
@@ -1303,7 +1349,10 @@ void infixToPostfix(char *infix, address *front, address *rear)
 					}
 					trigono = DerajatTrigono(temp4);
 					sprintf(temp,"%lf",trigono);
-					InsVLast(front, rear, temp);
+					*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+					*(tampungchar +iTemp) = temp;
+					InsVLast(front, rear, *(tampungchar +iTemp));
+					iTemp++;
 				}
 				
 				else if(strstr(temp,"sinh") || strstr(temp,"cosh") || strstr(temp,"tanh")|| strstr(temp,"sech") ||strstr(temp,"coth") || strstr(temp,"csch"))
@@ -1337,7 +1386,10 @@ void infixToPostfix(char *infix, address *front, address *rear)
 					}
 					trigono = DerajatTrigono(temp4);
 					sprintf(temp,"%lf",trigono);
-					InsVLast(front, rear, temp);
+					*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+					*(tampungchar +iTemp) = temp;
+					InsVLast(front, rear, *(tampungchar +iTemp));
+					iTemp++;
 				}
 				
 				else if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
@@ -1371,7 +1423,10 @@ void infixToPostfix(char *infix, address *front, address *rear)
 					}
 					trigono = DerajatTrigono(temp4);
 					sprintf(temp,"%lf",trigono);
-					InsVLast(front, rear, temp);
+					*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+					*(tampungchar +iTemp) = temp;
+					InsVLast(front, rear, *(tampungchar +iTemp));
+					iTemp++;
 				}
 				else if(strstr(temp,"exp"))
 				{
@@ -1399,7 +1454,10 @@ void infixToPostfix(char *infix, address *front, address *rear)
 					}
 					eksponensial = Eksponensial(temp4);
 					sprintf(temp,"%lf",eksponensial);
-					InsVLast(front, rear, temp);
+					*(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+					*(tampungchar +iTemp) = temp;
+					InsVLast(front, rear, *(tampungchar +iTemp));
+					iTemp++;
 				}
 	            else
 				{
@@ -1443,23 +1501,25 @@ void infixToPostfix(char *infix, address *front, address *rear)
 					{
 						ptr+=strlen(temp);
 					}
-	                InsVLast(front, rear, temp);
+	                *(tampungchar +iTemp) = (infotype ) malloc (5 * sizeof(char));
+					*(tampungchar +iTemp) = temp;
+					InsVLast(front, rear, *(tampungchar +iTemp));
+					iTemp++;
 				}
             }
+            
         }
-        i++;
+        
     }
-	i=0;
-	infotype tampungchar = (infotype*)malloc(10*sizeof(infotype));
+	
     while(!isEmpty(s))
     {
-    	char test;
+    	printf("temp %d", iTemp);
     	printf("tets");
-    	test = pop(s).cData;
-    	*(tampungchar+i) = (infotype)malloc(2*sizeof(char));
-    	*(tampungchar+i) = &test ;
-    	InsVLast(front, rear, *(tampungchar+i));
-    	i++;
+    	*(tampungchar+iTemp) = (infotype ) malloc (5 * sizeof(char));
+    	*(tampungchar+iTemp) = pop(s).cData;
+    	InsVLast(front, rear, *(tampungchar +iTemp));
+    	iTemp++;
     }
     
 }

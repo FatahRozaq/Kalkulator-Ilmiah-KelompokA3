@@ -338,6 +338,7 @@ double hitungarcsin(double x){
 	
 	if (x>1 || x<-1){
 		printf("Invalid ArcSin salah (Masukkan bilangan 1<=x<=-1)");
+		exit(0);
 	}
 	else{
 		rad = asin(x); //menghitung nilai inverse sinus dalam radian
@@ -364,6 +365,7 @@ double hitungarccos(double x){
 	
 	if (x>1 || x<-1){
 		printf("Input ArcCos salah (Masukkan bilangan 1<=x<=-1)");
+		exit(0);
 	}else{
 		rad = acos(x); //menghitung nilai inverse sinus dalam radian
     	hasil = rad * 180 / M_PI; //mengonversi ke derajat
@@ -414,6 +416,8 @@ double toRadians(double degree) {
 }
 
 double hitungsinh(double x){
+	
+	double result;
 	x = toRadians(x);
 	result = (1 - pow(e, -2 * x)) / (2 * pow(e, -x));
 	
@@ -422,12 +426,14 @@ double hitungsinh(double x){
 }
 
 double hitungcosh(double x){
+	double result;
 	x = toRadians(x);
 	result = (1 + pow(e, -2 * x)) / (2 * pow(e, -x));
 	return result;
 }
 
 double hitungtanh(double x){
+	double result;
 	x = toRadians(x);
 	result = (pow(e, 2 * x)-1) / (pow(e, 2*x)+1);
 	return result;

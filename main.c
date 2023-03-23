@@ -10,8 +10,7 @@
 
 int main()
 {
-	char *infixExpr;
-    infixExpr=malloc(266*sizeof(char));
+	
 	char pilih;
 	double hasil;
 	int isChar;
@@ -24,8 +23,8 @@ int main()
 	header();
     do
     {	
-    	
-    	char postfixExpr[256] = "";
+    	char *infixExpr;
+    	infixExpr=malloc(266*sizeof(char));
         char*x;
         front = Nil;
 		rear = Nil;
