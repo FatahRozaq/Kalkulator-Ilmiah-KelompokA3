@@ -21,7 +21,7 @@
 typedef union
 {
     double bData;
-    char*  cData;
+    char  cData;
 } Item;
 
 typedef struct
@@ -82,11 +82,11 @@ Item pop(Stack *s);
 
 void push(Stack *s, double val);
 
-void pushChar(Stack *s, char* c);
+void pushChar(Stack *s, char c);
 
 int isFull(Stack *s);
 
-int priority(char* c);
+int priority(char c);
 
 int isOperator(char c);
 
