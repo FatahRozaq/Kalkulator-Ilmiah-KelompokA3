@@ -20,15 +20,17 @@ int main()
 	
 	
 	Fullmode();
-	header();
+	
     do
     {	
     	char *infixExpr;
     	infixExpr=malloc(266*sizeof(char));
         char*x;
-        front = Nil;
-		rear = Nil;
+        
+		header();
     	Calculator();
+    	front = Nil;
+		rear = Nil;
 		printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 		//printf("\n\t=============================================================== \n");	
   		//printf("\n\n\t\t\t\t\t\t\t\t\tPosfix : %s\n ",infixToPostfix(x, postfixExpr));
@@ -46,16 +48,17 @@ int main()
     	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 		//printf("\n\t=============================================================== \n");	
 		infixToPostfix(x, &front, &rear);
-		PrintInfoASC (front);
-  		/*isChar = validasiChar(postfixExpr);
+  		isChar = validasiChar(front);
   		if (isChar == 1)
   		{
   			printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
 		}
 		else if(isChar == 0)
 		{
-			printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : %s\n ",postfixExpr);
-			hasil = hitungPostfix(postfixExpr);
+			printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : ");
+			PrintInfoASC (front);
+			printf("\n");
+			hasil = hitungPostfix(front);
         	printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);	
 		}
 		printf("\t 														 \n");
@@ -63,9 +66,7 @@ int main()
 	   
         printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan lagi? (Y/N) ");
         pilih = getche();
-        system("CLS");
-        header();*/
-        
+        DelAll (&front,&rear);
 	}while(pilih == 'y' || pilih == 'Y');
 	/*header();
 	BarmenuUtama();

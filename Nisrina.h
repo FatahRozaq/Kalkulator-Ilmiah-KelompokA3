@@ -48,6 +48,12 @@ void InsertLast (address *front,address *rear, address P);
 
 void PrintInfoASC (address data);
 
+void DelVFirst (address *front,address *rear );
+
+void DelAll (address *front,address *rear);
+
+void DeAlokasi (address P);
+
 /* {membuat sendiri */
 double Penjumlahan (double bil1, double bil2);
 
@@ -102,11 +108,11 @@ void gantiNewLineJadiSpasi(char *s);
 
 int isNumber(char *token);
 
-double hitungPostfix(char postFix[]);
+double hitungPostfix(address front);
 /*}*/
 
 /* {membuat sendiri */
-int validasiChar(char postfix[256]);
+int validasiChar(address front);
 
 void CalStfc();
 

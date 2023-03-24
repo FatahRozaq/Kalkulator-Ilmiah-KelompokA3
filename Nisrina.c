@@ -98,6 +98,54 @@ void PrintInfoASC (address data)
 	}
 }
 
+void DelVFirst (address *front,address *rear )
+{
+	address P;
+	
+	if (*front != Nil)
+	{
+		P = *front;
+		*front = Next(P);
+		Next(P) = Nil;
+		if(*front == Nil)
+		{
+			*rear = Nil;
+		}
+		else
+		{
+			Prev(*front) = Nil;
+		}
+		DeAlokasi (P);
+	}
+		else
+	{	
+		printf("tidak ada yang dihapus\n");
+		}
+	
+}
+
+
+void DelAll (address *front,address *rear)
+/* Delete semua elemen list dan alamat elemen di dealokasi */
+{
+	 /* Kamus Lokal */
+	while (*front != Nil  )
+	{
+		DelVFirst (front,rear);
+	}
+}
+
+void DeAlokasi (address P)
+/* IS : P terdefinisi */
+/* FS : P dikembalikan ke sistem */
+/* Melakukan dealokasi / pengembalian address P ke system */
+{
+	 if (P != Nil)
+	 {
+		free (P);
+	 }
+}
+
 double Penjumlahan (double bil1, double bil2)
 {
 	double hasil;
@@ -144,23 +192,41 @@ void TampilHasilInt(int hasil, char nama[])
 	printf("\n%s : %d", nama,hasil);
 }
 
-int validasiChar(char postfix[256])
+int validasiChar(address front)
 {
-	int length;
-	int i=0;
-	int asci;
-	int hasil = 0;
+
+	address P;
+	char* tampung;
+	int hasil=0;
 	
-	length = strlen(postfix);
-	while(i < length)
+	 /* Algoritma */
+	if (front == Nil)
 	{
-		asci = (int)postfix[i];
-		if((asci >=97 && asci <=122) || (asci >=65 && asci <=90) || postfix[i] =='(' )
-		{
-			hasil = 1;
-			break;
-		}
-		i++;
+		 hasil =0;
+	}
+	else	/* List memiliki elemen */
+	{
+		 P = front;
+		 for (;;)
+		 {
+		 	if (P == Nil)
+		 	{
+		 		break;
+			}
+			else
+			{
+				tampung = Info(P);
+				if (isdigit (*tampung) || isOperator(*tampung))
+				{
+					P = Next(P);
+				}
+				else	/* Belum berada di akhir List */
+				{
+					 hasil = 1;
+					 break;
+				}
+			}
+		 }
 	}
 	return hasil;
 	
@@ -953,7 +1019,6 @@ void infixToPostfix(char *infix, address *front, address *rear)
         }
         else if(infix[ptr]==')')
         {
-        	printf("musk");
             while(top(s).cData!='(')
             {
                 tampungChar = (infotype ) malloc(2*sizeof(char));
@@ -1488,25 +1553,25 @@ int isNumber(char *token)
 {
     return isdigit(*token) || ( *token == '-' && isdigit(token[1]) );
 }
-/*
-*
-*/
-/// fungsi untuk mengecek postfix dan melakukan perhitungan
-double hitungPostfix(char postFix[])
+
+
+double hitungPostfix(address front)
 {
     double a, b;
+    address P;
     Stack *stack = inisialisasi();
-    char *token = strtok(postFix," ");
+    char *token;
     double modulus, faktorial, penjumlahan, pengurangan, perkalian, pembagian, Akar, pangkat, mutlak;
-
-    while(token != NULL)
+    
+    P= front;
+    while(P != NULL)
     {
+    	token = Info(P);
         // pengecekan apakah angka, jika TRUE maka diubah menjadi float dan di PUSH ke subvar fdata dari subvar item struct Stack
         if(isNumber(token))
         {
             push(stack, strtod(token,NULL));
         }
-        
         else if(isOperator(*token) && *token == '!')
         {
         	a = pop(stack).bData;
@@ -1563,7 +1628,7 @@ double hitungPostfix(char postFix[])
                 break;
             }
         }
-        token = strtok(NULL, " "); // proses pemisahan
+        P = Next(P);// proses pemisahan
     }
     return pop(stack).bData;
 }
