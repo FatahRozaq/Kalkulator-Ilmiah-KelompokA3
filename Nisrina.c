@@ -58,10 +58,98 @@ void InsertLast (address *front,address *rear, address P)
 		Prev(P) = *rear;
 		*rear = P;
 	}
-	
-	
-	
+}
 
+addressChar AlokasiChar(char X)
+/* Mengirimkan address hasil alokasi sebuah elemen */
+/* Jika alokasi berhasil, maka address != Nil, 	   */
+/*	dan misalnya menghasilkan P, maka Info(P) = X, Next(P) = Nil */
+/* Jika alokasi gagal, mengirimkan Nil */
+{
+	 /* Kamus Lokal */
+	 addressChar P;
+	 
+	 /* Algoritma */
+	 P = (addressChar) malloc (sizeof (TempChar));
+	 if (P != Nil)		/* Alokasi berhasil */
+	 {
+	Prev(P) = Nil;
+	Char(P) = X;
+	Next(P) = Nil;
+	 }
+	 return (P);
+}
+
+void InsVLastChar(addressChar *top, char X)
+{
+	addressChar P;
+	P = AlokasiChar(X);
+	if (P != Nil)
+	{	
+	InsertLastChar (top, P);
+			}
+			
+}
+
+void InsertLastChar (addressChar *top, addressChar P)
+{
+	
+	if(*top == Nil)
+	{
+		*top = P;
+	}
+	else
+	{
+		Next(*top) = P;
+		Prev(P) = *top;
+		*top = P;
+	}
+}
+
+addressNum AlokasiNum(double X)
+/* Mengirimkan address hasil alokasi sebuah elemen */
+/* Jika alokasi berhasil, maka address != Nil, 	   */
+/*	dan misalnya menghasilkan P, maka Info(P) = X, Next(P) = Nil */
+/* Jika alokasi gagal, mengirimkan Nil */
+{
+	 /* Kamus Lokal */
+	 addressNum P;
+	 
+	 /* Algoritma */
+	 P = (addressNum) malloc (sizeof (TempNum));
+	 if (P != Nil)		/* Alokasi berhasil */
+	 {
+	Prev(P) = Nil;
+	Number(P) = X;
+	Next(P) = Nil;
+	 }
+	 return (P);
+}
+
+void InsVLastNum(addressNum *top, double X)
+{
+	addressNum P;
+	P = AlokasiNum(X);
+	if (P != Nil)
+	{	
+	InsertLastNum (top, P);
+			}
+			
+}
+
+void InsertLastNum (addressNum *top, addressNum P)
+{
+	
+	if(*top == Nil)
+	{
+		*top = P;
+	}
+	else
+	{
+		Next(*top) = P;
+		Prev(P) = *top;
+		*top = P;
+	}
 }
 
 void PrintInfoASC (address data)
@@ -98,6 +186,73 @@ void PrintInfoASC (address data)
 	}
 }
 
+void PrintInfoChar (addressChar data)
+/* IS : L mungkin kosong */
+/* FS : Jika List tidak kosong, semua info yang disimpan pada elemen list */
+/*	diprint. Jika list kosong, hanya menuliskan "List Kosong" */
+{
+	 /* Kamus Lokal */
+	addressChar P;
+	int i;
+	
+	 /* Algoritma */
+	if (data == Nil)
+	{
+		 printf ("List Kosong .... \a\n");
+	}
+	else	/* List memiliki elemen */
+	{
+		 P = data;
+		 for (;;)
+		 {
+			if (P == Nil)
+			{
+				 printf("\n");
+				 break;
+			}
+			else	/* Belum berada di akhir List */
+			{
+				 printf (" %c ", Char(P));
+				  //%c karena nilai yang dikeluarkan bertipe char
+				 P = Prev(P);
+			}
+		 }
+	}
+}
+
+void PrintInfoNum (addressNum data)
+/* IS : L mungkin kosong */
+/* FS : Jika List tidak kosong, semua info yang disimpan pada elemen list */
+/*	diprint. Jika list kosong, hanya menuliskan "List Kosong" */
+{
+	 /* Kamus Lokal */
+	addressNum P;
+	int i;
+	
+	 /* Algoritma */
+	if (data == Nil)
+	{
+		 printf ("List Kosong .... \a\n");
+	}
+	else	/* List memiliki elemen */
+	{
+		 P = data;
+		 for (;;)
+		 {
+			if (P == Nil)
+			{
+				 printf("\n");
+				 break;
+			}
+			else	/* Belum berada di akhir List */
+			{
+				 printf (" %lf ", Number(P));
+				  //%c karena nilai yang dikeluarkan bertipe char
+				 P = Prev(P);
+			}
+		 }
+	}
+}
 void DelVFirst (address *front,address *rear )
 {
 	address P;
@@ -146,6 +301,63 @@ void DeAlokasi (address P)
 	 }
 }
 
+void DelVLastChar (addressChar *top )
+{
+	addressChar P;
+	
+	if (*top != Nil)
+	{
+		P = *top;
+		*top = Prev(P);
+		Prev(P) = Nil;
+		DeAlokasiChar (P);
+	}
+		else
+	{	
+		printf("tidak ada yang dihapus\n");
+		}
+	
+}
+
+void DeAlokasiChar (addressChar P)
+/* IS : P terdefinisi */
+/* FS : P dikembalikan ke sistem */
+/* Melakukan dealokasi / pengembalian address P ke system */
+{
+	 if (P != Nil)
+	 {
+		free (P);
+	 }
+}
+
+void DelVLastNum (addressNum *top )
+{
+	addressNum P;
+	
+	if (*top != Nil)
+	{
+		P = *top;
+		*top = Prev(P);
+		Prev(P) = Nil;
+		DeAlokasiNum (P);
+	}
+		else
+	{	
+		printf("tidak ada yang dihapus\n");
+		}
+	
+}
+
+void DeAlokasiNum (addressNum P)
+/* IS : P terdefinisi */
+/* FS : P dikembalikan ke sistem */
+/* Melakukan dealokasi / pengembalian address P ke system */
+{
+	 if (P != Nil)
+	 {
+		free (P);
+	 }
+}
 double Penjumlahan (double bil1, double bil2)
 {
 	double hasil;
@@ -834,7 +1046,7 @@ double TriCsc(double value)
 	return (1/sin);
 }
 
-Stack* inisialisasi()
+/*Stack* inisialisasi()
 {
     Stack *s = malloc(sizeof(Stack));
     s->top=-1;
@@ -843,42 +1055,70 @@ Stack* inisialisasi()
 /*
 *
 */
-int isEmpty(Stack *s)
+int isEmpty(addressChar top)
 {
-    return s->top == -1;
+    return top == Nil;
 }
 /*
 *
 */
-Item top(Stack *s)
+char topPop(addressChar top)
 {
-    return s->item[s->top];
+	char data;
+	
+	if(top != Nil)
+	{
+	data = Char(top);	
+	}
+	else
+	{
+		data = 'c';
+	}
+	
+	
+    return data;
 }
 /*
 *
 */
-Item pop(Stack *s)
+char pop(addressChar *top)
 {
-    return s->item[s->top--];
+	char data;
+	
+	data = Char(*top);
+    DelVLastChar (top);
+    
+    return data;
+}
+
+double popNum(addressNum *top)
+{
+	double data;
+	
+	data = Number(*top);
+    DelVLastNum (top);
+    
+    return data;
 }
 /*
 *
 */
-void push(Stack *s, double val)
+void push(double d, addressNum *top)
 {
-    s->item[++s->top].bData = val;
+    InsVLastNum(top, d);
 }
 /*
 *
 */
-void pushChar(Stack *s, char c)
+void pushChar(char c, addressChar *top)
 {
-    s->item[++s->top].cData = c;
+	
+    InsVLastChar(top, c);
 }
 /*
 *
 */
-int isFull(Stack *s)
+/*int isFull(Stack *s)
 {
     return s->top==255;
 }
@@ -915,9 +1155,12 @@ int negatifInteger(char *infix,char c,int ptr)
 /*
 *
 */
-int isAfter(Stack *s)
+int isAfter(addressChar top)
 {
-    if(s->item[s->top].cData == '(' ) return 1;
+	char data;
+	
+	data = Char(top);
+    if(data == '(' ) return 1;
     else return 0;
 }
 /*
@@ -945,50 +1188,57 @@ void infixToPostfix(char *infix, address *front, address *rear)
     char oneSpace[] = " ", tempInfix[256];
     int  ptr = 0;
     char *temp;
-    Stack *s = inisialisasi();
     double trigono, lon, log, eksponensial;
     double value, basis;
     int mutlak;
     infotype tampungChar;
+    addressChar top;
+    top = Nil;
+    
     mutlak =0;
     
     while(infix[ptr] != '\0' )
     {
         if(isOperator(infix[ptr]) && !negatifInteger(infix,infix[ptr],ptr))
         {
-            if(infix[ptr] == '(' )
+        	if(isEmpty(top))
             {
-                pushChar(s,infix[ptr]);
+                pushChar(infix[ptr], &top);
                 ptr++;
             }
-            else if(isAfter(s))
+            else if(infix[ptr] == '(' )
             {
-                pushChar(s,infix[ptr]);
+                pushChar(infix[ptr], &top);
                 ptr++;
             }
-            else if(priority(infix[ptr]) > priority(top(s).cData) || isEmpty(s))
+            else if(isAfter(top))
             {
-                pushChar(s,infix[ptr]);
+                pushChar(infix[ptr], &top);
                 ptr++;
             }
-            else if(priority(infix[ptr])==priority(top(s).cData))
+            else if(priority(infix[ptr]) > priority(topPop(top)))
+            {
+                pushChar(infix[ptr], &top);
+                ptr++;
+            }
+            else if(priority(infix[ptr])==priority(topPop(top)))
             {
             	tampungChar = (infotype ) malloc(2*sizeof(char));
-            	tampungChar[0] = pop(s).cData;
+            	tampungChar[0] = pop(&top);
 		    	tampungChar[1] = '\0';
 		    	InsVLast(front, rear, tampungChar);
-                pushChar(s,infix[ptr]);
+                pushChar(infix[ptr], &top);
                 ptr++;
             }
-            else if(priority(infix[ptr]) <priority(top(s).cData) && top(s).cData != '(' && top(s).cData != ')')
+            else if(priority(infix[ptr]) <priority(topPop(top)) && topPop(top) != '(' && topPop(top) != ')')
             {
                 while(1)
                 {
                 	
-                    if( isEmpty(s) ) break;
-                    if( top(s).cData == '(' ) break;
+                    if( isEmpty(top) ) break;
+                    if( topPop(top) == '(' ) break;
                     tampungChar = (infotype ) malloc(2*sizeof(char));
-	            	tampungChar[0] = pop(s).cData;
+	            	tampungChar[0] = pop(&top);
 			    	tampungChar[1] = '\0';
 			    	InsVLast(front, rear, tampungChar);
                 }
@@ -996,22 +1246,22 @@ void infixToPostfix(char *infix, address *front, address *rear)
         }
         else if(infix[ptr]=='|' && mutlak == 0)
         {
-        	pushChar(s,infix[ptr]);
+        	pushChar(infix[ptr], &top);
             ptr++;
         	mutlak=1;
         }
         else if(infix[ptr]=='|' && mutlak == 1)
         {
         	char tempChar2;
-            while(top(s).cData!='|')
+            while(topPop(top)!='|')
             {
             	tampungChar = (infotype ) malloc(2*sizeof(char));
-            	tampungChar[0] = pop(s).cData;
+            	tampungChar[0] = pop(&top);
 		    	tampungChar[1] = '\0';
 		    	InsVLast(front, rear, tampungChar);
             }
             tampungChar = (infotype ) malloc(2*sizeof(char));
-            tampungChar[0] = pop(s).cData;
+            tampungChar[0] = pop(&top);
 		   	tampungChar[1] = '\0';
 		    InsVLast(front, rear, tampungChar);
             mutlak--;
@@ -1019,14 +1269,14 @@ void infixToPostfix(char *infix, address *front, address *rear)
         }
         else if(infix[ptr]==')')
         {
-            while(top(s).cData!='(')
+            while(topPop(top)!='(')
             {
                 tampungChar = (infotype ) malloc(2*sizeof(char));
-            	tampungChar[0] = pop(s).cData;
+            	tampungChar[0] = pop(&top);
 		    	tampungChar[1] = '\0';
 		    	InsVLast(front, rear, tampungChar);
             }
-            pop(s);
+            DelVLastChar (&top );
             ptr++;
         }
         else
@@ -1525,12 +1775,11 @@ void infixToPostfix(char *infix, address *front, address *rear)
         }
         
     }
-    
 	
-    while(!isEmpty(s))
+    while(!isEmpty(top))
     {
     	tampungChar = (infotype ) malloc(2*sizeof(char));
-    	tampungChar[0] = pop(s).cData; // set the first character to the input character
+    	tampungChar[0] = pop(&top); // set the first character to the input character
     	tampungChar[1] = '\0';
     	InsVLast(front, rear, tampungChar);
     }
@@ -1559,9 +1808,11 @@ double hitungPostfix(address front)
 {
     double a, b;
     address P;
-    Stack *stack = inisialisasi();
     char *token;
     double modulus, faktorial, penjumlahan, pengurangan, perkalian, pembagian, Akar, pangkat, mutlak;
+    addressNum top;
+    
+    top = Nil;
     
     P= front;
     while(P != NULL)
@@ -1570,59 +1821,59 @@ double hitungPostfix(address front)
         // pengecekan apakah angka, jika TRUE maka diubah menjadi float dan di PUSH ke subvar fdata dari subvar item struct Stack
         if(isNumber(token))
         {
-            push(stack, strtod(token,NULL));
+        	push(strtod(token,NULL), &top);
         }
         else if(isOperator(*token) && *token == '!')
         {
-        	a = pop(stack).bData;
+        	a = popNum(&top);
         	faktorial= hitungFaktorial(a);
-            push(stack, faktorial );
+        	push(faktorial, &top);
 		}
 		else if(*token == '|')
         {
-        	a = pop(stack).bData;
+        	a = popNum(&top);
         	mutlak = a;
         	if(a <0)
         	{
         		mutlak = -1*a;
 			}
-            push(stack, mutlak );
+            push(mutlak, &top);
 		}
         // mengecek apakah operator, jika TRUE nilai 2 teratas akan di POP untuk dilakukan perhitungan
         // hasilnya akan di PUSH kembali ke stack
         else if(isOperator(*token))
         {
-            a = pop(stack).bData;
-            b = pop(stack).bData;
+            a = popNum(&top);
+            b = popNum(&top);
             switch(*token)
             {
             case '+':
             	penjumlahan = Penjumlahan(b, a);
-                push(stack, penjumlahan );
+            	push(penjumlahan, &top);
                 break;
             case '-':
             	pengurangan = Pengurangan(b, a);
-                push(stack, pengurangan );
+            	push(pengurangan, &top);
                 break;
             case '*':
             	perkalian = Perkalian(b, a);
-                push(stack, perkalian );
+            	push(perkalian, &top);
                 break;
             case '/':
             	pembagian = Pembagian(b, a);
-                push(stack, pembagian );
+            	push(pembagian, &top);
                 break;
             case '^':
             	pangkat = Pangkat(b, a);
-                push(stack, pangkat );
+            	push(pangkat, &top);
                 break;
             case '$':
             	Akar = akar(a, b);
-                push(stack, Akar );
+            	push(Akar, &top);
                 break;
             case '%':
             	modulus = Modulus(b,a);
-                push(stack, modulus );
+            	push(modulus, &top);
                 break;
             default:
                 break;
@@ -1630,7 +1881,7 @@ double hitungPostfix(address front)
         }
         P = Next(P);// proses pemisahan
     }
-    return pop(stack).bData;
+    return popNum(&top);
 }
 
 void CalStd()

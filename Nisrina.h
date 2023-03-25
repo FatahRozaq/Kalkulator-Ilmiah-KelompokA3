@@ -16,19 +16,25 @@
 #define Prev(P) (P)->prev
 #define Info(P) (P)->info
 #define Next(P) (P)->next
+#define Char(P) (P)->cData
+#define Number(P) (P)->bData
 #define string char*
 
-typedef union
+typedef struct tempChar *addressChar;
+typedef struct tempChar
 {
-    double bData;
+	addressChar prev;
     char  cData;
-} Item;
+    addressChar next;
+} TempChar;
 
-typedef struct
+typedef struct tempNum *addressNum;
+typedef struct tempNum
 {
-    Item item[256];
-    int top;
-} Stack;
+	addressNum prev;
+    double  bData;
+    addressNum next;
+} TempNum;
 
 typedef string infotype;
 typedef struct tElmtList *address;
@@ -48,11 +54,33 @@ void InsertLast (address *front,address *rear, address P);
 
 void PrintInfoASC (address data);
 
+void PrintInfoChar (addressChar data);
+
 void DelVFirst (address *front,address *rear );
 
 void DelAll (address *front,address *rear);
 
 void DeAlokasi (address P);
+
+void DelVLastChar (addressChar *top );
+
+void DeAlokasiChar (addressChar P);
+
+void DelVLastNum (addressNum *top );
+
+void DeAlokasiNum (addressNum P);
+
+addressChar AlokasiChar(char X);
+
+void InsVLastChar(addressChar *top, char X);
+
+void InsertLastChar (addressChar *top, addressChar P);
+
+addressNum AlokasiNum(double X);
+
+void InsVLastNum(addressNum *top, double X);
+
+void InsertLastNum (addressNum *top, addressNum P);
 
 /* {membuat sendiri */
 double Penjumlahan (double bil1, double bil2);
@@ -78,19 +106,21 @@ void CalStd();
 -menambahkan algoritma untuk phi, e, eksponen, logaritma, logaritma natural, trigonometri dan lain-lain
 -mengubah tipe data menjadi double dari yang sebelumnya float
 dan lain-lain */
-Stack* inisialisasi();
+//Stack* inisialisasi();
 
-int isEmpty(Stack *s);
+int isEmpty(addressChar top);
 
-Item top(Stack *s);
+char topPop(addressChar top);
 
-Item pop(Stack *s);
+char pop(addressChar *top);
 
-void push(Stack *s, double val);
+double popNum(addressNum *top);
 
-void pushChar(Stack *s, char c);
+void push(double d, addressNum *top);
 
-int isFull(Stack *s);
+void pushChar(char c, addressChar *top);
+
+//int isFull(Stack *s);
 
 int priority(char c);
 
@@ -98,7 +128,7 @@ int isOperator(char c);
 
 int negatifInteger(char *infix,char c,int ptr);
 
-int isAfter(Stack *s);
+int isAfter(addressChar top);
 
 char * hapusSpasi(char * infix);
 
