@@ -402,7 +402,12 @@ int validasiChar(address front)
 			else
 			{
 				tampung = Info(P);
-				if (isdigit (*tampung) || isOperator(*tampung))
+				if( isOperator(*tampung) && *tampung=='(')
+				{
+					hasil = 1;
+					break;
+				}
+				else if (isdigit (*tampung) || isOperator(*tampung))
 				{
 					P = Next(P);
 				}
@@ -1221,6 +1226,11 @@ void infixToPostfix(char *infix, address *front, address *rear)
                 tampungChar = (infotype ) malloc(2*sizeof(char));
             	tampungChar[0] = pop(&top);
 		    	tampungChar[1] = '\0';
+		    	if(*tampungChar= 'c')
+		    	{
+		    		printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
+		    		exit(0);
+				}
 		    	InsVLast(front, rear, tampungChar);
             }
             DelVLastChar (&top );
