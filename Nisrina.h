@@ -120,8 +120,6 @@ void push(double d, addressNum *top);
 
 void pushChar(char c, addressChar *top);
 
-//int isFull(Stack *s);
-
 int priority(char c);
 
 int isOperator(char c);

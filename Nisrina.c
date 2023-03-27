@@ -61,10 +61,6 @@ void InsertLast (address *front,address *rear, address P)
 }
 
 addressChar AlokasiChar(char X)
-/* Mengirimkan address hasil alokasi sebuah elemen */
-/* Jika alokasi berhasil, maka address != Nil, 	   */
-/*	dan misalnya menghasilkan P, maka Info(P) = X, Next(P) = Nil */
-/* Jika alokasi gagal, mengirimkan Nil */
 {
 	 /* Kamus Lokal */
 	 addressChar P;
@@ -153,9 +149,6 @@ void InsertLastNum (addressNum *top, addressNum P)
 }
 
 void PrintInfoASC (address data)
-/* IS : L mungkin kosong */
-/* FS : Jika List tidak kosong, semua info yang disimpan pada elemen list */
-/*	diprint. Jika list kosong, hanya menuliskan "List Kosong" */
 {
 	 /* Kamus Lokal */
 	address P;
@@ -179,7 +172,6 @@ void PrintInfoASC (address data)
 			else	/* Belum berada di akhir List */
 			{
 				 printf (" %s ", Info(P));
-				  //%c karena nilai yang dikeluarkan bertipe char
 				 P = Next(P);
 			}
 		 }
@@ -187,9 +179,6 @@ void PrintInfoASC (address data)
 }
 
 void PrintInfoChar (addressChar data)
-/* IS : L mungkin kosong */
-/* FS : Jika List tidak kosong, semua info yang disimpan pada elemen list */
-/*	diprint. Jika list kosong, hanya menuliskan "List Kosong" */
 {
 	 /* Kamus Lokal */
 	addressChar P;
@@ -213,7 +202,6 @@ void PrintInfoChar (addressChar data)
 			else	/* Belum berada di akhir List */
 			{
 				 printf (" %c ", Char(P));
-				  //%c karena nilai yang dikeluarkan bertipe char
 				 P = Prev(P);
 			}
 		 }
@@ -221,9 +209,6 @@ void PrintInfoChar (addressChar data)
 }
 
 void PrintInfoNum (addressNum data)
-/* IS : L mungkin kosong */
-/* FS : Jika List tidak kosong, semua info yang disimpan pada elemen list */
-/*	diprint. Jika list kosong, hanya menuliskan "List Kosong" */
 {
 	 /* Kamus Lokal */
 	addressNum P;
@@ -247,7 +232,6 @@ void PrintInfoNum (addressNum data)
 			else	/* Belum berada di akhir List */
 			{
 				 printf (" %lf ", Number(P));
-				  //%c karena nilai yang dikeluarkan bertipe char
 				 P = Prev(P);
 			}
 		 }
@@ -281,7 +265,6 @@ void DelVFirst (address *front,address *rear )
 
 
 void DelAll (address *front,address *rear)
-/* Delete semua elemen list dan alamat elemen di dealokasi */
 {
 	 /* Kamus Lokal */
 	while (*front != Nil  )
@@ -291,9 +274,6 @@ void DelAll (address *front,address *rear)
 }
 
 void DeAlokasi (address P)
-/* IS : P terdefinisi */
-/* FS : P dikembalikan ke sistem */
-/* Melakukan dealokasi / pengembalian address P ke system */
 {
 	 if (P != Nil)
 	 {
@@ -320,9 +300,6 @@ void DelVLastChar (addressChar *top )
 }
 
 void DeAlokasiChar (addressChar P)
-/* IS : P terdefinisi */
-/* FS : P dikembalikan ke sistem */
-/* Melakukan dealokasi / pengembalian address P ke system */
 {
 	 if (P != Nil)
 	 {
@@ -349,9 +326,6 @@ void DelVLastNum (addressNum *top )
 }
 
 void DeAlokasiNum (addressNum P)
-/* IS : P terdefinisi */
-/* FS : P dikembalikan ke sistem */
-/* Melakukan dealokasi / pengembalian address P ke system */
 {
 	 if (P != Nil)
 	 {
@@ -1037,6 +1011,7 @@ double TriSec(double value)
 	
 	return (1/cos);
 }
+
 double TriCsc(double value)
 {
 	double sin;
@@ -1046,22 +1021,13 @@ double TriCsc(double value)
 	return (1/sin);
 }
 
-/*Stack* inisialisasi()
-{
-    Stack *s = malloc(sizeof(Stack));
-    s->top=-1;
-    return s;
-}
-/*
-*
-*/
+
 int isEmpty(addressChar top)
 {
     return top == Nil;
 }
-/*
-*
-*/
+
+
 char topPop(addressChar top)
 {
 	char data;
@@ -1075,12 +1041,9 @@ char topPop(addressChar top)
 		data = 'c';
 	}
 	
-	
     return data;
 }
-/*
-*
-*/
+
 char pop(addressChar *top)
 {
 	char data;
@@ -1100,31 +1063,21 @@ double popNum(addressNum *top)
     
     return data;
 }
-/*
-*
-*/
+
+
 void push(double d, addressNum *top)
 {
     InsVLastNum(top, d);
 }
-/*
-*
-*/
+
+
 void pushChar(char c, addressChar *top)
 {
 	
     InsVLastChar(top, c);
 }
-/*
-*
-*/
-/*int isFull(Stack *s)
-{
-    return s->top==255;
-}
-/*
-*
-*/
+
+
 int priority(char c)
 {
     if (c=='+' || c=='-') return 1;
@@ -1133,17 +1086,15 @@ int priority(char c)
     else if (c== '!' ) return 4;
     return 0;
 }
-/*
-*
-*/
+
+
 int isOperator(char c)
 {
     if( c=='(' || c=='+' || c=='-' || c=='/' || c=='*' || c=='^' || c=='$' || c=='%' || c=='!' ) return 1;
     else return 0;
 }
-/*
-*
-*/
+
+
 int negatifInteger(char *infix,char c,int ptr)
 {
     if (ptr == 0 && c == '-' ) return 1;
@@ -1152,9 +1103,8 @@ int negatifInteger(char *infix,char c,int ptr)
     else  if((isOperator(infix[ptr-1]) && c == '-' ) )return 1;
     else return 0;
 }
-/*
-*
-*/
+
+
 int isAfter(addressChar top)
 {
 	char data;
@@ -1163,9 +1113,7 @@ int isAfter(addressChar top)
     if(data == '(' ) return 1;
     else return 0;
 }
-/*
-*
-*/
+
 
 char * hapusSpasi(char * infix)
 {
@@ -1185,7 +1133,7 @@ char * hapusSpasi(char * infix)
 
 void infixToPostfix(char *infix, address *front, address *rear)
 {
-    char oneSpace[] = " ", tempInfix[256];
+	char tempInfix[255];
     int  ptr = 0;
     char *temp;
     double trigono, lon, log, eksponensial;
@@ -1194,7 +1142,6 @@ void infixToPostfix(char *infix, address *front, address *rear)
     infotype tampungChar;
     addressChar top;
     top = Nil;
-    
     mutlak =0;
     
     while(infix[ptr] != '\0' )
@@ -1879,7 +1826,7 @@ double hitungPostfix(address front)
                 break;
             }
         }
-        P = Next(P);// proses pemisahan
+        P = Next(P);
     }
     return popNum(&top);
 }
