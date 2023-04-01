@@ -13,6 +13,27 @@
 
 //linked list
 
+addressTree AlokasiTree(infotype X)
+/* Mengirimkan address hasil alokasi sebuah elemen */
+/* Jika alokasi berhasil, maka address != Nil, 	   */
+/*	dan misalnya menghasilkan P, maka Info(P) = X, Next(P) = Nil */
+/* Jika alokasi gagal, mengirimkan Nil */
+{
+	 /* Kamus Lokal */
+	 addressTree P;
+	 
+	 /* Algoritma */
+	 P = (addressTree) malloc (sizeof (Tree));
+	 if (P != Nil)		/* Alokasi berhasil */
+	 {
+		Left(P) = Nil;
+		Parent(P) = Nil;
+		Info(P) = X;
+		Right(P) = Nil;
+	 }
+	 return (P);
+}
+
 address Alokasi(infotype X)
 /* Mengirimkan address hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka address != Nil, 	   */
@@ -408,6 +429,10 @@ int validasiChar(address front)
 					break;
 				}
 				else if (isdigit (*tampung) || isOperator(*tampung))
+				{
+					P = Next(P);
+				}
+				else if (*tampung=='|')
 				{
 					P = Next(P);
 				}
@@ -1069,10 +1094,41 @@ double popNum(addressNum *top)
     return data;
 }
 
-
-void push(double d, addressNum *top)
+double popRight(addressTree *parent)
 {
-    InsVLastNum(top, d);
+	double data;
+	infotype angka;
+	
+	angka = Info(Right(*parent));
+	data = atof(angka);
+    DeAlokasiTree (Right(*parent));
+    Right(*parent) = Nil;
+    
+    return data;
+}
+
+double popLeft(addressTree *parent)
+{
+	double data;
+	infotype angka;
+	
+	angka = Info(Left(*parent));
+	data = atof(angka);
+    DeAlokasiTree (Left(*parent));
+    Left(*parent) = Nil;
+    
+    return data;
+}
+
+void push(double d, addressTree *parent)
+{
+	char str[10];
+	infotype data;
+	
+	sprintf(str, "%lf", d);
+	data = str;
+	
+    Info(*parent)= data;
 }
 
 
@@ -1732,7 +1788,7 @@ void infixToPostfix(char *infix, address *front, address *rear)
         }
         
     }
-	
+    
     while(!isEmpty(top))
     {
     	tampungChar = (infotype ) malloc(2*sizeof(char));
@@ -1745,6 +1801,103 @@ void infixToPostfix(char *infix, address *front, address *rear)
 /*
 *
 */
+
+void treePostFix(addressTree *root, address rear)
+{
+	addressTree parent;
+	addressTree Pcur;
+	infotype data;
+	int opr;
+	
+	opr =0;
+	
+	while(rear != Nil)
+	{
+		data = Info(rear);
+		if(*root == Nil)
+		{
+			*root = AlokasiTree(data);
+			parent = *root;
+			Pcur = *root;
+		}
+		else
+		{
+			if(opr == 0)
+			{
+				if(Right(parent) == Nil)
+				{
+					Right(parent) = AlokasiTree(data);
+					Pcur = Right(parent);
+					Parent(Pcur) = parent;
+				}
+				else if(Left(parent) == Nil)
+				{
+					Left(parent) = AlokasiTree(data);
+					Pcur = 	Left(parent);
+					Parent(Pcur) = parent;
+				}
+				else
+				{
+					while(Left(parent) != Nil)
+					{
+						Pcur = parent;
+						parent = Parent(Pcur);
+					}
+					
+					Left(parent) = AlokasiTree(data);
+					Pcur = 	Left(parent);
+				}
+			}
+			else
+			{
+				if(Right(parent) == Nil)
+				{
+					Right(parent) = AlokasiTree(data);
+					Pcur = Right(parent);
+					Parent(Pcur) = parent;
+				}
+				else
+				{
+					Pcur = parent;
+						parent = Parent(Pcur);
+					while(Left(parent) != Nil)
+					{
+						Pcur = parent;
+						parent = Parent(Pcur);
+					}
+					
+					Left(parent) = AlokasiTree(data);
+					Pcur = 	Left(parent);
+				}
+			}
+			
+			if(!isNumber(Info(Pcur)) && Right(Pcur) == Nil)
+			{
+				parent = Pcur;
+				if(*(Info(parent)) == '!' || *(Info(parent)) == '|' )
+				{
+					opr =1;
+				}
+				else
+				{
+					opr = 0;
+				}
+			}
+			
+		}
+		rear = Prev(rear);
+	}
+	
+}
+
+void DeAlokasiTree (addressTree P)
+{
+	 if (P != Nil)
+	 {
+		free (P);
+	 }
+}
+
 void gantiNewLineJadiSpasi(char *s)
 {
     char *s1 = s;
@@ -1761,84 +1914,88 @@ int isNumber(char *token)
 }
 
 
-double hitungPostfix(address front)
+double hitungPostfix(addressTree *root)
 {
     double a, b;
-    address P;
     char *token;
     double modulus, faktorial, penjumlahan, pengurangan, perkalian, pembagian, Akar, pangkat, mutlak;
-    addressNum top;
+    addressTree parent;
+	double result;
     
-    top = Nil;
-    
-    P= front;
-    while(P != NULL)
+    while(!isNumber(Info(*root)))
     {
-    	token = Info(P);
+    	parent = *root;
+    	
+    	while(Right(Right(parent)) != Nil)
+    	{
+    		parent = Right(parent);
+		}
+		
+    	token = Info(parent);
         // pengecekan apakah angka, jika TRUE maka diubah menjadi float dan di PUSH ke subvar fdata dari subvar item struct Stack
-        if(isNumber(token))
+        if(isOperator(*token) && *token == '!')
         {
-        	push(strtod(token,NULL), &top);
-        }
-        else if(isOperator(*token) && *token == '!')
-        {
-        	a = popNum(&top);
+        	a = popRight(&parent);
         	faktorial= hitungFaktorial(a);
-        	push(faktorial, &top);
+        	push(faktorial, &parent);
 		}
 		else if(*token == '|')
         {
-        	a = popNum(&top);
+        	a = popRight(&parent);
         	mutlak = a;
         	if(a <0)
         	{
         		mutlak = -1*a;
 			}
-            push(mutlak, &top);
+            push(mutlak, &parent);
 		}
         // mengecek apakah operator, jika TRUE nilai 2 teratas akan di POP untuk dilakukan perhitungan
         // hasilnya akan di PUSH kembali ke stack
         else if(isOperator(*token))
         {
-            a = popNum(&top);
-            b = popNum(&top);
+            a = popRight(&parent);
+            b = popLeft(&parent);
             switch(*token)
             {
             case '+':
             	penjumlahan = Penjumlahan(b, a);
-            	push(penjumlahan, &top);
+            	push(penjumlahan, &parent);
                 break;
             case '-':
             	pengurangan = Pengurangan(b, a);
-            	push(pengurangan, &top);
+            	push(pengurangan, &parent);
                 break;
             case '*':
             	perkalian = Perkalian(b, a);
-            	push(perkalian, &top);
+            	push(perkalian, &parent);
                 break;
             case '/':
             	pembagian = Pembagian(b, a);
-            	push(pembagian, &top);
+            	push(pembagian, &parent);
                 break;
             case '^':
             	pangkat = Pangkat(b, a);
-            	push(pangkat, &top);
+            	push(pangkat, &parent);
                 break;
             case '$':
             	Akar = akar(a, b);
-            	push(Akar, &top);
+            	push(Akar, &parent);
                 break;
             case '%':
             	modulus = Modulus(b,a);
-            	push(modulus, &top);
+            	push(modulus, &parent);
                 break;
             default:
                 break;
             }
         }
-        P = Next(P);
     }
-    return popNum(&top);
+    
+    result = atof(Info(*root));
+    DeAlokasiTree (parent);
+    *root = Nil;
+    
+    return result;
 }
 
 void CalStd()

@@ -16,7 +16,9 @@ int main()
 	int isChar;
 	
 	address front,rear;
+	addressTree root;
 	
+	root = Nil;
 	
 	
 	Fullmode();
@@ -55,10 +57,11 @@ int main()
 		}
 		else if(isChar == 0)
 		{
+			treePostFix(&root, rear);
 			printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : ");
 			PrintInfoASC (front);
 			printf("\n");
-			hasil = hitungPostfix(front);
+			hasil = hitungPostfix(&root);
         	printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);	
 		}
 		printf("\t 														 \n");
