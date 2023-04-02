@@ -313,10 +313,6 @@ void DelVLastChar (addressChar *top )
 		Prev(P) = Nil;
 		DeAlokasiChar (P);
 	}
-		else
-	{	
-		printf("tidak ada yang dihapus\n");
-		}
 	
 }
 
@@ -1078,7 +1074,15 @@ char pop(addressChar *top)
 {
 	char data;
 	
-	data = Char(*top);
+	if(*top == Nil)
+	{
+		data = 'c';
+	}
+	else
+	{
+			data = Char(*top);
+	}
+
     DelVLastChar (top);
     
     return data;
@@ -1282,7 +1286,7 @@ void infixToPostfix(char *infix, address *front, address *rear)
                 tampungChar = (infotype ) malloc(2*sizeof(char));
             	tampungChar[0] = pop(&top);
 		    	tampungChar[1] = '\0';
-		    	if(*tampungChar= 'c')
+		    	if(*tampungChar== 'c')
 		    	{
 		    		printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
 		    		exit(0);
@@ -1926,10 +1930,21 @@ double hitungPostfix(addressTree *root)
     {
     	parent = *root;
     	
-    	while(Right(Right(parent)) != Nil)
+    	if(isOperator(*(Info(Right(parent)))))
     	{
-    		parent = Right(parent);
+    		while(Right(Right(parent)) != Nil)
+	    	{
+	    		parent =Right(parent);
+			}
 		}
+    	else if(isOperator(*(Info(Left(parent)))))
+    	{
+    		while(Left(Left(parent)) != Nil)
+	    	{
+	    		parent = Left(parent);
+			}
+		}
+    	
 		
     	token = Info(parent);
         // pengecekan apakah angka, jika TRUE maka diubah menjadi float dan di PUSH ke subvar fdata dari subvar item struct Stack
