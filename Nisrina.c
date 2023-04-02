@@ -1126,11 +1126,11 @@ double popLeft(addressTree *parent)
 
 void push(double d, addressTree *parent)
 {
-	char str[10];
 	infotype data;
 	
-	sprintf(str, "%lf", d);
-	data = str;
+	data=(char*)malloc(5*sizeof(char));
+	
+	sprintf(data, "%lf", d);
 	
     Info(*parent)= data;
 }
@@ -1924,6 +1924,7 @@ double hitungPostfix(addressTree *root)
     char *token;
     double modulus, faktorial, penjumlahan, pengurangan, perkalian, pembagian, Akar, pangkat, mutlak;
     addressTree parent;
+    addressTree Pcur;
 	double result;
     
     while(!isNumber(Info(*root)))
@@ -1932,21 +1933,42 @@ double hitungPostfix(addressTree *root)
     	
     	if(isOperator(*(Info(Right(parent)))))
     	{
-    		while(Right(Right(parent)) != Nil)
-	    	{
-	    		parent =Right(parent);
+    		Pcur = Right(parent);
+    		while(isOperator(*(Info(Left(Pcur)))) || isOperator(*(Info(Right(Pcur)))) )
+    		{
+    			if(isOperator(*Info(Left(Pcur))))
+    			{
+    				Pcur = Left(Pcur);
+				}
+				else if(isOperator(*Info(Right(Pcur))))
+				{
+					Pcur = Right(Pcur);
+				}
 			}
+			
+			parent= Pcur;
 		}
     	else if(isOperator(*(Info(Left(parent)))))
     	{
-    		while(Left(Left(parent)) != Nil)
-	    	{
-	    		parent = Left(parent);
+    		Pcur = Left(parent);
+    		while(isOperator(*(Info(Left(Pcur)))) || isOperator(*(Info(Right(Pcur)))) )
+    		{
+    			if(isOperator(*Info(Left(Pcur))))
+    			{
+    				Pcur = Left(Pcur);
+				}
+				else if(isOperator(*Info(Right(Pcur))))
+				{
+					Pcur = Right(Pcur);
+				}
 			}
+			
+			parent= Pcur;
 		}
     	
 		
     	token = Info(parent);
+    	printf("token %s", token);
         // pengecekan apakah angka, jika TRUE maka diubah menjadi float dan di PUSH ke subvar fdata dari subvar item struct Stack
         if(isOperator(*token) && *token == '!')
         {
@@ -1968,8 +1990,12 @@ double hitungPostfix(addressTree *root)
         // hasilnya akan di PUSH kembali ke stack
         else if(isOperator(*token))
         {
+        	printf("anak knn %s \n ", Info(Right(parent)));
+        	printf("anak krr %s \n ", Info(Left(parent)));
             a = popRight(&parent);
+            printf("kanan %lf", a);
             b = popLeft(&parent);
+            printf("kiri %lf", b);
             switch(*token)
             {
             case '+':
@@ -1977,7 +2003,9 @@ double hitungPostfix(addressTree *root)
             	push(penjumlahan, &parent);
                 break;
             case '-':
+            	printf("masuk sini");
             	pengurangan = Pengurangan(b, a);
+            	printf("hasil %lf", pengurangan);
             	push(pengurangan, &parent);
                 break;
             case '*':
@@ -2004,6 +2032,7 @@ double hitungPostfix(addressTree *root)
                 break;
             }
         }
+        printf("parent %s \n", Info(parent));
     }
     
     result = atof(Info(*root));
