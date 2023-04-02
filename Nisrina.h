@@ -16,6 +16,9 @@
 #define Prev(P) (P)->prev
 #define Info(P) (P)->info
 #define Next(P) (P)->next
+#define Left(P) (P)->left
+#define Right(P) (P)->right
+#define Parent(P) (P)->parent
 #define Char(P) (P)->cData
 #define Number(P) (P)->bData
 #define string char*
@@ -45,6 +48,16 @@ typedef struct tElmtList {
 	 } ElmtList;
 
 //linked list
+
+typedef struct tree *addressTree;
+typedef struct tree {
+	 addressTree  left;
+	 addressTree parent;
+	 infotype info;
+	 addressTree  right;
+	 } Tree;
+	 
+addressTree AlokasiTree(infotype X);
 
 address Alokasi(infotype X);
 
@@ -116,7 +129,11 @@ char pop(addressChar *top);
 
 double popNum(addressNum *top);
 
-void push(double d, addressNum *top);
+double popRight(addressTree *parent);
+
+double popLeft(addressTree *parent);
+
+void push(double d, addressTree *parent);
 
 void pushChar(char c, addressChar *top);
 
@@ -132,11 +149,15 @@ char * hapusSpasi(char * infix);
 
 void infixToPostfix(char *infix, address *front, address *rear);
 
+void treePostFix(addressTree *root, address rear);
+
+void DeAlokasiTree (addressTree P);
+
 void gantiNewLineJadiSpasi(char *s);
 
 int isNumber(char *token);
 
-double hitungPostfix(address front);
+double hitungPostfix(addressTree *root);
 /*}*/
 
 /* {membuat sendiri */
