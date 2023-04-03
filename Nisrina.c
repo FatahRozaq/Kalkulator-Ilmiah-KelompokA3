@@ -1102,7 +1102,7 @@ double popRight(addressTree *parent)
 {
 	double data;
 	infotype angka;
-	
+	angka=(char*)malloc(5*sizeof(char));
 	angka = Info(Right(*parent));
 	data = atof(angka);
     DeAlokasiTree (Right(*parent));
@@ -1116,6 +1116,7 @@ double popLeft(addressTree *parent)
 	double data;
 	infotype angka;
 	
+	angka=(char*)malloc(5*sizeof(char));
 	angka = Info(Left(*parent));
 	data = atof(angka);
     DeAlokasiTree (Left(*parent));
@@ -1244,7 +1245,7 @@ void infixToPostfix(char *infix, address *front, address *rear)
             }
             else if(priority(infix[ptr]) <priority(topPop(top)) && topPop(top) != '(' && topPop(top) != ')')
             {
-                while(1)
+                do
                 {
                 	
                     if( isEmpty(top) ) break;
@@ -1253,7 +1254,7 @@ void infixToPostfix(char *infix, address *front, address *rear)
 	            	tampungChar[0] = pop(&top);
 			    	tampungChar[1] = '\0';
 			    	InsVLast(front, rear, tampungChar);
-                }
+                }while( priority(infix[ptr]) < priority(topPop(top)) );
             }
         }
         else if(infix[ptr]=='|' && mutlak == 0)
@@ -1937,11 +1938,15 @@ double hitungPostfix(addressTree *root)
     addressTree Pcur;
 	double result;
     
+    parent = *root;
     while(!isNumber(Info(*root)))
     {
     	parent = *root;
     	
-    	if(isOperator(*(Info(Right(parent)))))
+    	printf("anak knn %s \n ", Info(Right(parent)));
+        	printf("anak krr %s \n ", Info(Left(parent)));
+    	
+    	if(!isNumber(Info(Right(parent))))
     	{
     		Pcur = Right(parent);
     		while(isOperator(*(Info(Left(Pcur)))) || isOperator(*(Info(Right(Pcur)))) )
@@ -1958,8 +1963,9 @@ double hitungPostfix(addressTree *root)
 			
 			parent= Pcur;
 		}
-    	else if(isOperator(*(Info(Left(parent)))))
+    	else if(!isNumber(Info(Left(parent))))
     	{
+    		printf("kiri");
     		Pcur = Left(parent);
     		while(isOperator(*(Info(Left(Pcur)))) || isOperator(*(Info(Right(Pcur)))) )
     		{
@@ -2013,9 +2019,7 @@ double hitungPostfix(addressTree *root)
             	push(penjumlahan, &parent);
                 break;
             case '-':
-            	printf("masuk sini");
             	pengurangan = Pengurangan(b, a);
-            	printf("hasil %lf", pengurangan);
             	push(pengurangan, &parent);
                 break;
             case '*':
