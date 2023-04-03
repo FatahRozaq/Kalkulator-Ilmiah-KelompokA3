@@ -1949,13 +1949,13 @@ double hitungPostfix(addressTree *root)
     	if(!isNumber(Info(Right(parent))))
     	{
     		Pcur = Right(parent);
-    		while(isOperator(*(Info(Left(Pcur)))) || isOperator(*(Info(Right(Pcur)))) )
+    		while(!isNumber(Info(Left(Pcur))) || !isNumber(Info(Right(Pcur))))
     		{
-    			if(isOperator(*Info(Left(Pcur))))
+    			if(!isNumber(Info(Left(Pcur))))
     			{
     				Pcur = Left(Pcur);
 				}
-				else if(isOperator(*Info(Right(Pcur))))
+				else if(!isNumber(Info(Right(Pcur))))
 				{
 					Pcur = Right(Pcur);
 				}
@@ -1967,13 +1967,13 @@ double hitungPostfix(addressTree *root)
     	{
     		printf("kiri");
     		Pcur = Left(parent);
-    		while(isOperator(*(Info(Left(Pcur)))) || isOperator(*(Info(Right(Pcur)))) )
+    		while(!isNumber(Info(Left(Pcur))) || !isNumber(Info(Right(Pcur))))
     		{
-    			if(isOperator(*Info(Left(Pcur))))
+    			if(!isNumber(Info(Left(Pcur))))
     			{
     				Pcur = Left(Pcur);
 				}
-				else if(isOperator(*Info(Right(Pcur))))
+				else if(!isNumber(Info(Right(Pcur))))
 				{
 					Pcur = Right(Pcur);
 				}
