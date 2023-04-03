@@ -1291,7 +1291,11 @@ void infixToPostfix(char *infix, address *front, address *rear)
 		    		printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
 		    		exit(0);
 				}
-		    	InsVLast(front, rear, tampungChar);
+				else
+				{
+					InsVLast(front, rear, tampungChar);
+				}
+		    	
             }
             DelVLastChar (&top );
             ptr++;
@@ -1798,7 +1802,11 @@ void infixToPostfix(char *infix, address *front, address *rear)
     	tampungChar = (infotype ) malloc(2*sizeof(char));
     	tampungChar[0] = pop(&top); // set the first character to the input character
     	tampungChar[1] = '\0';
-    	InsVLast(front, rear, tampungChar);
+    	if(tampungChar[0] != '(')
+    	{
+    		InsVLast(front, rear, tampungChar);
+		}
+    	
     }
     
 }
