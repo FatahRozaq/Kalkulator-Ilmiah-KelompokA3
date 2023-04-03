@@ -1822,7 +1822,7 @@ void treePostFix(addressTree *root, address rear)
 		{
 			*root = AlokasiTree(data);
 			parent = *root;
-			Pcur = *root;
+			Pcur = parent;
 		}
 		else
 		{
@@ -1850,9 +1850,10 @@ void treePostFix(addressTree *root, address rear)
 					
 					Left(parent) = AlokasiTree(data);
 					Pcur = 	Left(parent);
+					Parent(Pcur) = parent;
 				}
 			}
-			else
+			else if(opr == 1)
 			{
 				if(Right(parent) == Nil)
 				{
@@ -1863,7 +1864,7 @@ void treePostFix(addressTree *root, address rear)
 				else
 				{
 					Pcur = parent;
-						parent = Parent(Pcur);
+					parent = Parent(Pcur);
 					while(Left(parent) != Nil)
 					{
 						Pcur = parent;
@@ -1872,6 +1873,7 @@ void treePostFix(addressTree *root, address rear)
 					
 					Left(parent) = AlokasiTree(data);
 					Pcur = 	Left(parent);
+					Parent(Pcur) = parent;
 				}
 			}
 			
