@@ -23,11 +23,12 @@
 #define Number(P) (P)->bData
 #define string char*
 
+typedef string infotype;
 typedef struct tempChar *addressChar;
 typedef struct tempChar
 {
 	addressChar prev;
-    char  cData;
+    infotype  cData;
     addressChar next;
 } TempChar;
 
@@ -39,7 +40,7 @@ typedef struct tempNum
     addressNum next;
 } TempNum;
 
-typedef string infotype;
+
 typedef struct tElmtList *address;
 typedef struct tElmtList {
 	 address  prev;
@@ -83,9 +84,9 @@ void DelVLastNum (addressNum *top );
 
 void DeAlokasiNum (addressNum P);
 
-addressChar AlokasiChar(char X);
+addressChar AlokasiChar(infotype X);
 
-void InsVLastChar(addressChar *top, char X);
+void InsVLastChar(addressChar *top, infotype X);
 
 void InsertLastChar (addressChar *top, addressChar P);
 
@@ -123,9 +124,9 @@ dan lain-lain */
 
 int isEmpty(addressChar top);
 
-char topPop(addressChar top);
+infotype topPop(addressChar top);
 
-char pop(addressChar *top);
+infotype pop(addressChar *top);
 
 double popNum(addressNum *top);
 
@@ -135,7 +136,7 @@ double popLeft(addressTree *parent);
 
 void push(double d, addressTree *parent);
 
-void pushChar(char c, addressChar *top);
+void pushChar(infotype c, addressChar *top);
 
 int priority(char c);
 

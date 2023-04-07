@@ -457,7 +457,7 @@ double Eksponensial(char *input){
 		else
 		{
 			value = -1*value;
-			hasil = eksponen(value);	
+			hasil = eksponensial(value);	
 		}
 	}
 	else
@@ -470,7 +470,7 @@ double Eksponensial(char *input){
 		}
 		else
 		{
-			hasil = eksponen(value);
+			hasil = eksponensial(value);
 		}
 	}
 	
@@ -500,7 +500,7 @@ double factorialEksponensial(int n) {
     return result;
 }
 
-double eksponen(double x) {
+double eksponensial(double x) {
     double sum = 1.0;
     double term = 1.0;
     int n = 1;
