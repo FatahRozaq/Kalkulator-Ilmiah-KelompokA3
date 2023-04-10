@@ -42,5 +42,8 @@ double eksponensial(double x);
 // Modul Lowercase
 void lowerCase(char *str);
 
+// Modul Help
+void help();
+
 #endif
 

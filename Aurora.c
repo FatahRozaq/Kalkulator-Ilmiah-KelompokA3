@@ -229,7 +229,7 @@ double hitungVolume(double value, int menu)
 
 void header()
 {
-	system("cls");
+//	system("cls");
  printf("\n\n\n\t\t\t\t\t\t\t   /$$$$$$            /$$                  /$$$$$$   /$$$$$$ 	\n");
  printf("\t\t\t\t\t\t\t  /$$__  $$          | $$                 /$$__  $$ /$$__  $$	\n");
  printf("\t\t\t\t\t\t\t | $$  \__/  /$$$$$$  | $$  /$$$$$$$      | $$  \ $$|__/  \ $$	\n");

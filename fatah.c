@@ -525,3 +525,42 @@ void lowerCase(char *str) {
     }
 }
 
+//========================================================
+//						Modul
+//					  	Help
+//========================================================
+void help(){
+	printf("\n\n\n\t\t\t\t\t\t\t 1. Operator pertambahan menggunakan simbol +. Contoh 5+5");
+	printf("\n\t\t\t\t\t\t\t 2. Operator pengurangan menggunakan simbol -. Contoh 5-5");
+	printf("\n\t\t\t\t\t\t\t 3. Operator pembagian menggunakan simbol /. Contoh 5/5");
+	printf("\n\t\t\t\t\t\t\t 4. Operator perkalian menggunakan simbol *. Contoh 5*5");
+	printf("\n\t\t\t\t\t\t\t 5. Format penulisan konstanta adalah (angka)e. Contoh (5)e");
+	printf("\n\t\t\t\t\t\t\t 6. Format penulisan secan adalah sec(angka). Contoh sec(90)");
+	printf("\n\t\t\t\t\t\t\t 7. Format penulisan cosecan adalah csc(angka). Contoh csc(90)");
+	printf("\n\t\t\t\t\t\t\t 8. Format penulisan cotangen adalah cot(angka). Contoh cot(90)");
+	printf("\n\t\t\t\t\t\t\t 9. Format penulisan phi adalah phi. Contoh phi");
+	printf("\n\t\t\t\t\t\t\t 10. Format penulisan sinus adalah sin(angka). Contoh sin(90)");
+	printf("\n\t\t\t\t\t\t\t 11. Format penulisan cosinus adalah cos(angka). Contoh cos(90)");
+	printf("\n\t\t\t\t\t\t\t 12. Format penulisan tangen adalah tan(angka). Contoh tan(90)");
+	printf("\n\t\t\t\t\t\t\t 13. Format penulisan arcsin adalah arcsin(angka). Contoh acrsin(1)");
+	printf("\n\t\t\t\t\t\t\t 14. Format penulisan arccos adalah arccos(angka). Contoh acrcos(1)");
+	printf("\n\t\t\t\t\t\t\t 15. Format penulisan arctan adalah arctan(angka). Contoh acrtan(1)");
+	printf("\n\t\t\t\t\t\t\t 16. Format penulisan arcsec adalah arcsec(angka). Contoh acrsec(1)");
+	printf("\n\t\t\t\t\t\t\t 17. Format penulisan arccsc adalah arccsc(angka). Contoh acrcsc(1)");
+	printf("\n\t\t\t\t\t\t\t 18. Format penulisan arccot adalah arccot(angka). Contoh acrcot(1)");
+	printf("\n\t\t\t\t\t\t\t 19. Format penulisan sinus hiperbolik adalah sinh(angka). Contoh sinh(1)");
+	printf("\n\t\t\t\t\t\t\t 20. Format penulisan cosinus hiperbolik adalah cosh(angka). Contoh cosh(1)");
+	printf("\n\t\t\t\t\t\t\t 21. Format penulisan tangen hiperbolik adalah tanh(angka). Contoh tanh(1)");
+	printf("\n\t\t\t\t\t\t\t 22. Format penulisan secan hiperbolik adalah sech(angka). Contoh sech(1)");
+	printf("\n\t\t\t\t\t\t\t 23. Format penulisan cosecan hiperbolik adalah csch(angka). Contoh csch(1)");
+	printf("\n\t\t\t\t\t\t\t 24. Format penulisan cotangen hiperbolik adalah sinh(angka). Contoh coth(1)");
+	printf("\n\t\t\t\t\t\t\t 25. Operator modulus menggunakan simbol %. Contoh 4%2");
+	printf("\n\t\t\t\t\t\t\t 26. Format penulisan exponent adalah exp(angka). Contoh exp(4)");
+	printf("\n\t\t\t\t\t\t\t 27. Format penulisan tanda kurung adalah (operasi). Contoh (5+5)");
+	printf("\n\t\t\t\t\t\t\t 28. Format penulisan secan adalah angka!. Contoh 3!");
+	printf("\n\t\t\t\t\t\t\t 29. Format penulisan operasi akar adalah pangkat$(angka). Contoh 2$(4)");
+	printf("\n\t\t\t\t\t\t\t 30. Format penulisan operasi pangkat adalah (angka)^pangkat. Contoh (4)^2");
+	printf("\n\t\t\t\t\t\t\t 31. Format penulisan logaritma adalah logBasis(angka). Contoh log10(100)");
+	printf("\n\t\t\t\t\t\t\t 32. Format penulisan logaritma natural adalah ln(angka). Contoh ln(4)");
+};
+
