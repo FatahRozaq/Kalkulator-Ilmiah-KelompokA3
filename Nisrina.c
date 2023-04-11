@@ -1830,16 +1830,10 @@ double hitungPostfix(addressTree *root)
 		
     	token = Info(parent);
         // pengecekan apakah angka, jika TRUE maka diubah menjadi float dan di PUSH ke subvar fdata dari subvar item struct Stack
-        if(isOperator(*token) && *token == '!')
+        if(*token == '|')
         {
         	a = popRight(&parent);
         	b = popLeft(&parent);
-        	faktorial= hitungFaktorial(a);
-        	push(faktorial, &parent);
-		}
-		else if(*token == '|')
-        {
-        	a = popRight(&parent);
         	mutlak = a;
         	if(a <0)
         	{
@@ -1887,7 +1881,10 @@ double hitungPostfix(addressTree *root)
             	modulus = Modulus(b,a);
             	push(modulus, &parent);
                 break;
-            
+            case '!':
+	        	faktorial= hitungFaktorial(a);
+	        	push(faktorial, &parent);
+                break;
             default:
                 break;
             }
