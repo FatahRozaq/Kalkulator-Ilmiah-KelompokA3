@@ -33,6 +33,7 @@ void InputDataModulus(int *bilMod1,int *bilMod2, char kalimat[]);
 void LogaritmaBebas();
 
 double HitungLogBebas(double basis2, double angka2);
+double hiLog(double x);
 
 double HiLog(double x);
 #endif

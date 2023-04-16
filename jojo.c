@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "jojo.h"
-#include <math.h>
 
 void panggilModulus(){ // Panggil modul ini di main
 	int bilMod1, bilMod2, mod;
@@ -363,17 +362,51 @@ double HitungLogBebas(double basis2, double angka2){
 //	
 //	return Hasil;
 
-	double result = 0;
-    double numerator = angka2;
-    double denominator = basis2;
+//	double result = 0;
+//    double numerator = angka2;
+//    double denominator = basis2;
+//
+//    while (numerator >= denominator) {
+//        result++;
+//        numerator /= denominator;
+//    }
+//
+//    return result;
 
-    while (numerator >= denominator) {
-        result++;
-        numerator /= denominator;
+	double eps = 1e-10;
+    double ans = 0.0;
+    if (angka2 <= 0.0 || basis2 <= 0.0) {
+        return 0.0 / 0.0; // return NaN
     }
-
-    return result;
+    ans = hiLog(angka2) / hiLog(basis2);
+    return ans;
 }	
+
+double hiLog(double x) {
+    double eps = 1e-10;
+    double ans = 0.0;
+    int i;
+    if (x <= 0.0) {
+        return 0.0 / 0.0; // return NaN
+    }
+    while (x >= 2.0) {
+        x /= 2.0;
+        ans += 0.69314718056; // log_e(2) = 0.69314718056
+    }
+    double y = x - 1.0;
+    double z = y / (y + 2.0);
+    double z_squared = z * z;
+    double sum = z;
+    double term = z;
+    i = 1;
+    while (term > eps) {
+        term *= z_squared;
+        sum += term / (2 * i + 1);
+        i++;
+    }
+    ans += 2.0 * sum;
+    return ans;
+}
 
 double HiLog(double x) {
      if (x <= 0) {
