@@ -76,7 +76,7 @@ double Powku(double base, double exponent) {
     }
 
     if (exponent > 0.0) {
-        result *= exp(exponent * log(base));
+        result *= eksponensial(exponent * hiLog(base));
     }
 
     return result;
