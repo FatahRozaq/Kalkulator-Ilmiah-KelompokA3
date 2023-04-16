@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "gavrila.h"
 #include "Nisrina.h"
+#define M_PI 3.14159265358979323846
 
 //operasi pengurangan
 double Pengurangan(double bil1, double bil2)
