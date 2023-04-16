@@ -29,7 +29,7 @@ int main()
     	infixExpr=malloc(266*sizeof(char));
         char*x;
         
-        
+        system("cls");
 		header();
     	Calculator();
     	front = Nil;

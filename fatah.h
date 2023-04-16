@@ -2,7 +2,6 @@
 #define fatah_H
 
 #include <stdio.h>
-#include <math.h>
 #include <string.h>
 #include <ctype.h>
 
