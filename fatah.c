@@ -530,130 +530,120 @@ void lowerCase(char *str) {
 //					  	Help
 //========================================================
 void help(){
-	printf("\n\t\t\t\t\t\t\t\t\t|  _____   _____ _____ _____   _____  |");
-	printf("\n\t\t\t\t\t\t\t\t\t| | ln  | |   . |  0  |  .  | |  =  | |");
-	printf("\n\t\t\t\t\t\t\t\t\t| |_____| |_____|_____|_____| |_____| |");
-	printf("\n\t\t\t\t\t\t\t\t\t|_____________________________________|");
-	
 
-
-
-	//system("cls");
-	printf("\n\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd HELP \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
-	printf("\n\n\n\t\t\t\t\t\t\t 1. Operator pertambahan menggunakan simbol ");
-	printf("\n\t\t\t\t\t\t\t\t _____  ");
-	printf("\n\t\t\t\t\t\t\t\t|  +  | ");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : 5+5 ");
+	system("cls");
+	printf("\n\t\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd  H  E  L  P  \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+	printf("\n\t\t\t\t\t\t\t\t|\t");	printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t 1. Operator pertambahan menggunakan simbol "); printf("\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|  +  | "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : 5+5 "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |"); 
+	printf("\n\t\t\t\t\t\t\t\t|\t 2. Operator pengurangan menggunakan simbol "); printf("\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|  -  | "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : 5-5 "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t 3. Operator perkalian menggunakan simbol "); printf("\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|  *  | "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : 5*5 "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");		
+	printf("\n\t\t\t\t\t\t\t\t|\t 4. Operator pembagian menggunakan simbol "); printf("\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|  /  | "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : 5/5 "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t|\t 5. Operator modulus menggunakan simbol "); printf("\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|  %%%  "); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : 4%%%   '2 "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t 6. Operator akar menggunakan simbol "); printf("\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|  $  |       pangkat$(angka)"); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : 2$(5) "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");		
+	printf("\n\t\t\t\t\t\t\t\t|\t 7. Operator pangkat menggunakan simbol "); printf("\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|  ^  |       (angka)^pangkat"); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : (4)^5 "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t 8. Format penulisan konstanta"); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|  e  |       (angka)e"); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : (4)e ");	printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t 9. Format penulisan phi"); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t| phi | "); printf("\t\t\t\t\t\t    |"); 
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : phi "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t 10. Format penulisan exponent"); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t| exp |       exp(angka)"); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : exp(4) ");	printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t 11. Format penulisan tanda kurung"); printf("\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____ ____"); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|  (  |  ) |    (operasi) "); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____|____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : (5*5) "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t 12. Format penulisan faktorial"); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____ "); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|  n! |    angka! "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____|"); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : 5! ");	printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t|\t 13. Format penulisan Logaritma"); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____ "); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t| log |    logBasis(angka) "); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : log10(100) "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t|\t 14. Format penulisan Logaritma Natural"); printf("\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____ "); printf("\t\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t| ln  |    ln(angka) "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : ln(4) "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t|\t 15. Format penulisan trigonometri"); printf("\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t _____ _____ _____ "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t| sin | cos | tan |    trigonometri(angka) "); printf("\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____|_____|_____| "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t| sec | csc | cot | "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|_____|_____|_____| "); printf("\t\t\t\t\t    |");		
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : sin(90) "); printf("\t\t\t\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t|\t 16. Format penulisan invers trigonometri"); printf("\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t|\t ________ ________ ________ "); printf("\t\t\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t|\t| arcsin | arccos | arctan |    inverstrigonometri(angka) "); printf("  |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|________|________|________| "); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t| arcsec | arccsc | arccot | "); printf("\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|________|________|________| "); printf("\t\t\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : arcsin(90) "); printf("\t\t\t\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t|\t 17. Format penulisan trigonometri hiperbolik"); printf("\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t ______ ______ ______ "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t| sinh | cosh | tanh |    trigonometrihiperbolik(angka)"); printf("\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|______|______|______| "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t| sech | csch | coth | "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|______|______|______| ");	printf("\t\t\t\t\t    |");	 
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : sinh(90) "); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");	
+	printf("\n\t\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 	
-	printf("\n\n\n\t\t\t\t\t\t\t 2. Operator pengurangan menggunakan simbol ");
-	printf("\n\t\t\t\t\t\t\t\t _____  ");
-	printf("\n\t\t\t\t\t\t\t\t|  -  | ");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : 5-5 ");
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 3. Operator perkalian menggunakan simbol ");
-	printf("\n\t\t\t\t\t\t\t\t _____  ");
-	printf("\n\t\t\t\t\t\t\t\t|  *  | ");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : 5*5 ");
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 4. Operator pembagian menggunakan simbol ");
-	printf("\n\t\t\t\t\t\t\t\t _____  ");
-	printf("\n\t\t\t\t\t\t\t\t|  /  | ");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : 5/5 ");
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 5. Operator modulus menggunakan simbol ");
-	printf("\n\t\t\t\t\t\t\t\t _____  ");
-	printf("\n\t\t\t\t\t\t\t\t| %%%  ");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : 4%2 ");
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 6. Operator pangkat menggunakan simbol ");
-	printf("\n\t\t\t\t\t\t\t\t _____  ");
-	printf("\n\t\t\t\t\t\t\t\t|  $  |       pangkat$(angka)");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : 2$(4) ");	
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 7. Operator pangkat menggunakan simbol ");
-	printf("\n\t\t\t\t\t\t\t\t _____  ");
-	printf("\n\t\t\t\t\t\t\t\t|  ^  |       (angka)^pangkat");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : (4)^2 ");	
-	
-/*	printf("\n\n\n\t\t\t\t\t\t\t . Operator persen menggunakan simbol ");
-	printf("\n\t\t\t\t\t\t\t\t _____  ");
-	printf("\n\t\t\t\t\t\t\t\t|  %%%           | ");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : 100% ");
-*/	
-	printf("\n\n\n\t\t\t\t\t\t\t 8. Format penulisan konstanta");
-	printf("\n\t\t\t\t\t\t\t\t _____  ");
-	printf("\n\t\t\t\t\t\t\t\t|  e  |       (angka)e");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : (5)e ");	
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 9. Format penulisan phi");
-	printf("\n\t\t\t\t\t\t\t\t _____  ");
-	printf("\n\t\t\t\t\t\t\t\t| phi | ");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : phi ");	
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 10. Format penulisan exponent");
-	printf("\n\t\t\t\t\t\t\t\t _____  ");
-	printf("\n\t\t\t\t\t\t\t\t| exp |       exp(angka) ");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : exp(4) ");		
-
-	printf("\n\n\n\t\t\t\t\t\t\t 11. Format penulisan tanda kurung");
-	printf("\n\t\t\t\t\t\t\t\t _____ ____");
-	printf("\n\t\t\t\t\t\t\t\t|  (  |  ) |    (operasi) ");
-	printf("\n\t\t\t\t\t\t\t\t|_____|____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : (5*5) ");	
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 12. Format penulisan faktorial");
-	printf("\n\t\t\t\t\t\t\t\t _____ ");
-	printf("\n\t\t\t\t\t\t\t\t|  n! |    angka! ");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : 5! ");	
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 13. Format penulisan Logaritma");
-	printf("\n\t\t\t\t\t\t\t\t _____ ");
-	printf("\n\t\t\t\t\t\t\t\t| log |    logBasis(angka) ");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : log10(100) ");
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 14. Format penulisan Logaritma Natural");
-	printf("\n\t\t\t\t\t\t\t\t _____ ");
-	printf("\n\t\t\t\t\t\t\t\t| ln  |    ln(angka) ");
-	printf("\n\t\t\t\t\t\t\t\t|_____| ");
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : ln(4) ");
-
-	printf("\n\n\n\t\t\t\t\t\t\t 15. Format penulisan trigonometri");
-	printf("\n\t\t\t\t\t\t\t\t _____ _____ _____ ");
-	printf("\n\t\t\t\t\t\t\t\t| sin | cos | tan |    trigonometri(angka) ");
-	printf("\n\t\t\t\t\t\t\t\t|_____|_____|_____| ");
-	printf("\n\t\t\t\t\t\t\t\t| sec | csc | cot | ");
-	printf("\n\t\t\t\t\t\t\t\t|_____|_____|_____| ");		
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : sin(90) ");
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 16. Format penulisan invers trigonometri");
-	printf("\n\t\t\t\t\t\t\t\t ________ ________ ________ ");
-	printf("\n\t\t\t\t\t\t\t\t| arcsin | arccos | arctan |    inverstrigonometri(angka) ");
-	printf("\n\t\t\t\t\t\t\t\t|________|________|________| ");
-	printf("\n\t\t\t\t\t\t\t\t| arcsec | arccsc | arccot | ");
-	printf("\n\t\t\t\t\t\t\t\t|________|________|________| ");	
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : arcsin(90) ");
-	
-	printf("\n\n\n\t\t\t\t\t\t\t 17. Format penulisan trigonometri hiperbolik");
-	printf("\n\t\t\t\t\t\t\t\t ______ ______ ______ ");
-	printf("\n\t\t\t\t\t\t\t\t| sinh | cosh | tanh |    trigonometrihiperbolik(angka) ");
-	printf("\n\t\t\t\t\t\t\t\t|______|______|______| ");
-	printf("\n\t\t\t\t\t\t\t\t| sech | csch | coth | ");
-	printf("\n\t\t\t\t\t\t\t\t|______|______|______| ");		
-	printf("\n\n\t\t\t\t\t\t\t      >> Contoh : sinh(90) ");
-		
 };
 
 bool cekHelp(char *str){
