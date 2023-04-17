@@ -13,7 +13,7 @@ int main()
 	
 	char pilih;
 	double hasil;
-	int isChar;
+	int isChar, isHelp;
 	
 	address front,rear;
 	addressTree root;
@@ -48,29 +48,36 @@ int main()
         header();
         Calculator();
         lowerCase(x);
-    	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
-		//printf("\n\t=============================================================== \n");	
-		infixToPostfix(x, &front, &rear);
-  		isChar = validasiChar(front);
-  		if (isChar == 1)
-  		{
-  			printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
+        isHelp = cekHelp(x);
+        if(isHelp == 1){
+        	help();
+		}else{
+			printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+			//printf("\n\t=============================================================== \n");	
+			infixToPostfix(x, &front, &rear);
+	  		isChar = validasiChar(front);
+	  		if (isChar == 1)
+	  		{
+	  			printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
+			}
+			else if(isChar == 0)
+			{
+				treePostFix(&root, rear);
+				printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : ");
+				PrintInfoASC (front);
+				printf("\n");
+				hasil = hitungPostfix(&root);
+	        	printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);	
+			}
+			printf("\t 														 \n");
+			printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+		    
 		}
-		else if(isChar == 0)
-		{
-			treePostFix(&root, rear);
-			printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : ");
-			PrintInfoASC (front);
-			printf("\n");
-			hasil = hitungPostfix(&root);
-        	printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);	
-		}
-		printf("\t 														 \n");
-		printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
-	   
-        printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan lagi? (Y/N) ");
+		
+		printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan lagi? (Y/N) ");
         pilih = getche();
         DelAll (&front,&rear);
+    	
 	}while(pilih == 'y' || pilih == 'Y');
 	/*header();
 	BarmenuUtama();

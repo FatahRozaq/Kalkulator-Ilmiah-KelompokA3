@@ -564,3 +564,11 @@ void help(){
 	printf("\n\t\t\t\t\t\t\t 32. Format penulisan logaritma natural adalah ln(angka). Contoh ln(4)");
 };
 
+bool cekHelp(char *str){
+	if(str[0] == '-'  && str[1] == 'h' ){
+		return true;
+	}else{
+		return false;
+	}
+}
+

@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdbool.h>
+#define true 1
+#define false 0
 
 // Modul Perkalian
 double Perkalian (double bil1, double bil2);
@@ -43,6 +46,7 @@ void lowerCase(char *str);
 
 // Modul Help
 void help();
+bool cekHelp(char *str);
 
 #endif
 
