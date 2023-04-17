@@ -1,13 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
 #include "Nisrina.h"
 #include "Aurora.h"
 #include "fatah.h"
 #include "jojo.h"
 #include "gavrila.h"
-#define eksponen 2.718281828
-#define phi 3.14
+
 
 
 //linked list
@@ -1042,7 +1039,6 @@ double TriCsc(double value)
 	return (1/sin);
 }
 
-
 int isEmpty(addressChar top)
 {
     return top == Nil;
@@ -1147,7 +1143,7 @@ void pushChar(infotype c, addressChar *top)
 int priority(char c)
 {
     if (c=='+' || c=='-') return 1;
-    else if (c=='*' || c=='/' || c =='%' ) return 2;
+    else if (c=='*' || c=='/' || c =='m' ) return 2;
     else if (c=='^' || c=='$' ) return 3;
     else if (c== '!' ) return 4;
     return 0;
@@ -1156,7 +1152,7 @@ int priority(char c)
 
 int isOperator(char c)
 {
-    if( c=='(' || c=='+' || c=='-' || c=='/' || c=='*' || c=='^' || c=='$' || c=='%' || c=='!' ) return 1;
+    if( c=='(' || c=='+' || c=='-' || c=='/' || c=='*' || c=='^' || c=='$' || c=='!' || c=='m') return 1;
     else return 0;
 }
 
@@ -1223,13 +1219,19 @@ void infixToPostfix(char *infix, address *front, address *rear)
             	Chartemp = (infotype ) malloc(2*sizeof(char));
             	Chartemp[0] = infix[ptr];
 		    	Chartemp[1] = '\0';
-		    	printf("test %s", Chartemp);
                 pushChar(Chartemp, &top);
-                ptr++;
+                if(Chartemp[0]  == 'm')
+                {
+                	ptr = ptr+3;
+				}
+				else
+				{
+					ptr++;
+				}
+                
             }
             else if(infix[ptr] == '(' )
             {
-            	printf("masuk ()");
                 Chartemp = (infotype ) malloc(2*sizeof(char));
             	Chartemp[0] = infix[ptr];
 		    	Chartemp[1] = '\0';
@@ -1242,7 +1244,14 @@ void infixToPostfix(char *infix, address *front, address *rear)
             	Chartemp[0] = infix[ptr];
 		    	Chartemp[1] = '\0';
                 pushChar(Chartemp, &top);
-                ptr++;
+                if(Chartemp[0]  == 'm')
+                {
+                	ptr = ptr+3;
+				}
+				else
+				{
+					ptr++;
+				}
             }
             else if(priority(infix[ptr]) > priority(*(topPop(top))))
             {
@@ -1250,7 +1259,14 @@ void infixToPostfix(char *infix, address *front, address *rear)
             	Chartemp[0] = infix[ptr];
 		    	Chartemp[1] = '\0';
                 pushChar(Chartemp, &top);
-                ptr++;
+                if(Chartemp[0]  == 'm')
+                {
+                	ptr = ptr+3;
+				}
+				else
+				{
+					ptr++;
+				}
             }
             else if(priority(infix[ptr])==priority(*(topPop(top))))
             {
@@ -1261,7 +1277,14 @@ void infixToPostfix(char *infix, address *front, address *rear)
             	Chartemp[0] = infix[ptr];
 		    	Chartemp[1] = '\0';
                 pushChar(Chartemp, &top);
-                ptr++;
+                if(Chartemp[0]  == 'm')
+                {
+                	ptr = ptr+3;
+				}
+				else
+				{
+					ptr++;
+				}
             }
             else if(priority(infix[ptr]) <priority(*(topPop(top))) && topPop(top) != "(" && topPop(top) != ")")
             {
@@ -1288,11 +1311,14 @@ void infixToPostfix(char *infix, address *front, address *rear)
         else if(infix[ptr]=='|' && mutlak == 1)
         {
         	char tempChar2;
-            while(topPop(top)!="|")
+        	int mut;
+        	mut = strcmp(topPop(top), "|");
+            while(mut == 1)
             {
             	tampungChar = (infotype ) malloc(2*sizeof(char));
             	tampungChar = pop(&top);
 		    	InsVLast(front, rear, tampungChar);
+		    	mut = strcmp(topPop(top), "|");
             }
             tampungChar = (infotype ) malloc(2*sizeof(char));
             tampungChar= pop(&top);
@@ -1304,10 +1330,8 @@ void infixToPostfix(char *infix, address *front, address *rear)
         {
             while(*topPop(top) != '(')
             {
-            	printf("tostt");
                 tampungChar = (infotype ) malloc(3*sizeof(char));
             	tampungChar = pop(&top);
-            	printf("say %s",tampungChar );
 		    	if(*(tampungChar) == 'p')
 		    	{
 		    		printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
@@ -1321,7 +1345,7 @@ void infixToPostfix(char *infix, address *front, address *rear)
             }
             if(*(topPop(Prev(top))) == 's' || *(topPop(Prev(top))) == 'c' || *(topPop(Prev(top))) == 'a' || *(topPop(Prev(top))) == 't' ||*(topPop(Prev(top))) == 'l' || *(topPop(Prev(top))) == 'e'  )
             {
-            	printf("hai");
+
             	tampungChar = (infotype ) malloc(5*sizeof(char));
             	tampungChar = topPop(Prev(top));
             	InsVLast(front, rear, tampungChar);
@@ -1354,7 +1378,7 @@ void infixToPostfix(char *infix, address *front, address *rear)
             	temp2[0]= '-';
             	temp2[1]= '\0';
                 strcpy(tempInfix, infix);
-                temp = strtok(tempInfix + ptr, "+*/^%$!|");
+                temp = strtok(tempInfix + ptr, "+*/^m$!|");
                 
                 if(temp[1] == '(')
 				{
@@ -1476,7 +1500,7 @@ void infixToPostfix(char *infix, address *front, address *rear)
 				}
 				else
 				{
-					temp = strtok(tempInfix + ptr, " +*/^%$!|");
+					temp = strtok(tempInfix + ptr, " +*/^$!|");
 					if(strstr(temp,"e"))
 		            {
 		            	temp = strtok(temp, "+()-*/^%$!|");
@@ -1501,7 +1525,7 @@ void infixToPostfix(char *infix, address *front, address *rear)
             else
             {
 	            strcpy(tempInfix, infix);
-                temp = strtok(tempInfix + ptr, " +*/^%$!|");
+                temp = strtok(tempInfix + ptr, " +*/^m$!|");
                 
                 if(isdigit(temp[0]))
                 {
@@ -1630,6 +1654,12 @@ void infixToPostfix(char *infix, address *front, address *rear)
         
     }
     
+    if(mutlak == 1)
+    {
+    	printf("Penulisan operasi mutlak tidak valid");
+    	exit(0);
+	}
+    
     while(!isEmpty(top))
     {
     	tampungChar = (infotype ) malloc(2*sizeof(char));
@@ -1666,7 +1696,7 @@ void treePostFix(addressTree *root, address rear)
 			if(!isNumber(Info(Pcur)) && Right(Pcur) == Nil)
 			{
 				parent = Pcur;
-				if(*(Info(parent)) == '!' || *(Info(parent)) == '|' || *(Info(parent)) == 's' || *(Info(parent)) == 'c' || *(Info(parent)) == 'a' || *(Info(parent)) == 't' || Info(parent)[1] == 'n' || *(Info(parent)) == 'e' )
+				if(*(Info(parent)) == '!' || *(Info(parent)) == '|' || *(Info(parent)) == 's'  ||  *(Info(parent)) == 'c' || *(Info(parent)) == 'a' || *(Info(parent)) == 't' || Info(parent)[1] == 'n' || *(Info(parent)) == 'e' )
 				{
 					opr =1;
 				}
@@ -1709,7 +1739,6 @@ void treePostFix(addressTree *root, address rear)
 			{
 				if(Right(parent) == Nil)
 				{
-					printf("kol");
 					Right(parent) = AlokasiTree(data);
 					Pcur = Right(parent);
 					Parent(Pcur) = parent;
@@ -1738,6 +1767,7 @@ void treePostFix(addressTree *root, address rear)
 				if(*(Info(parent)) == '!' || *(Info(parent)) == '|' || *(Info(parent)) == 's' || *(Info(parent)) == 'c' || *(Info(parent)) == 'a' || *(Info(parent)) == 't'  || Info(parent)[1] == 'n' || *(Info(parent)) == 'e' )
 				{
 					opr =1;
+					
 				}
 				else
 				{
@@ -1790,9 +1820,6 @@ double hitungPostfix(addressTree *root)
     while(!isNumber(Info(*root)))
     {
     	parent = *root;
-    	printf("parent %s", Info(parent));
-    	printf("test %s", Info(Left(parent)));
-		printf("test %s", Info(Right(parent)));
     	if(!isNumber(Info(Right(parent))))
     	{
     		Pcur = Right(parent);
@@ -1832,7 +1859,6 @@ double hitungPostfix(addressTree *root)
         if(*token == '|')
         {
         	a = popRight(&parent);
-        	b = popLeft(&parent);
         	mutlak = a;
         	if(a <0)
         	{
@@ -1844,12 +1870,8 @@ double hitungPostfix(addressTree *root)
         // hasilnya akan di PUSH kembali ke stack
         else if(isOperator(*token))
         {
-        	printf("anak knn %s \n ", Info(Right(parent)));
-        	printf("anak krr %s \n ", Info(Left(parent)));
             a = popRight(&parent);
-            printf("kanan %lf", a);
             b = popLeft(&parent);
-            printf("kiri %lf", b);
             switch(*token)
             {
             case '+':
@@ -1865,9 +1887,17 @@ double hitungPostfix(addressTree *root)
             	push(perkalian, &parent);
                 break;
             case '/':
-            	pembagian = Pembagian(b, a);
+            	if(a == 0)
+            	{
+            		printf("pembagian 0 tidak terdefinisi");
+            		exit(1);
+				}
+            	else
+            	{
+            		pembagian = Pembagian(b, a);
             	push(pembagian, &parent);
                 break;
+				}
             case '^':
             	pangkat = Pangkat(b, a);
             	push(pangkat, &parent);
@@ -1876,13 +1906,13 @@ double hitungPostfix(addressTree *root)
             	Akar = akar(a, b);
             	push(Akar, &parent);
                 break;
-            case '%':
+            case 'm':
             	modulus = Modulus(b,a);
             	push(modulus, &parent);
                 break;
             case '!':
-	        	faktorial= hitungFaktorial(a);
-	        	push(faktorial, &parent);
+            	faktorial= hitungFaktorial(a);
+        		push(faktorial, &parent);
                 break;
             default:
                 break;
@@ -1894,7 +1924,6 @@ double hitungPostfix(addressTree *root)
 			b = popLeft(&parent);
 			if(strstr(token, "log") )
 			{
-				printf("nih");
 				log=HitungLogBebas(b, a);
 				push(log, &parent);
 			}
@@ -1938,7 +1967,7 @@ double hitungPostfix(addressTree *root)
         		arccot = hitungarccot(a);
             	push(arccot, &parent);
         	}
-        	else if (token =="sinh" )
+        	else if (strstr(token, "sinh") )
         	{
         		sinh = hitungsinh(a);
             	push(sinh, &parent);
@@ -2001,7 +2030,6 @@ double hitungPostfix(addressTree *root)
         	
         	
 		}
-        printf("parent %s \n", Info(parent));
     }
     
     result = atof(Info(*root));

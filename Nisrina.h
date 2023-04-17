@@ -21,6 +21,8 @@
 #define Char(P) (P)->cData
 #define Number(P) (P)->bData
 #define string char*
+#define eksponen 2.718281828
+#define phi 3.14
 
 typedef string infotype;
 typedef struct tempChar *addressChar;
