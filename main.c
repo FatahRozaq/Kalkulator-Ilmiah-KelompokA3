@@ -12,7 +12,7 @@ int main()
 	
 	char pilih;
 	double hasil;
-	int isChar, isHelp,notValid;
+	int isChar, isHelp,isValid;
 	
 	address front,rear;
 	addressTree root;
@@ -49,8 +49,8 @@ int main()
 		}else{
 			printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 			//printf("\n\t=============================================================== \n");	
-			notValid = validasiFormat(x);
-			if (notValid == 1)
+			isValid = validasiFormat(x);
+			if (isValid == 1)
 	  		{
 	  			printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
 			}

@@ -449,7 +449,7 @@ int validasiFormat(char* teks)
 	 /* Algoritma */
 	if (teks[i] == '\0')
 	{
-		 hasil =1;
+		 hasil =0;
 	}
 	else	/* List memiliki elemen */
 	{
@@ -458,6 +458,7 @@ int validasiFormat(char* teks)
 		 {
 		 	if (teks[i] == '\0')
 		 	{
+		 		hasil =0;
 		 		break;
 			}
 			else
@@ -484,7 +485,7 @@ int validasiFormat(char* teks)
 				}
 				else	/* Belum berada di akhir List */
 				{
-					 hasil = 1;
+					 hasil = 0;
 					 break;
 				}
 			}
