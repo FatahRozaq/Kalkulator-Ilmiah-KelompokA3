@@ -1,5 +1,5 @@
-#include "Nisrina.h"
 #include "gavrila.h"
+#include "Nisrina.h"
 #define M_PI 3.14159265358979323846
 
 //operasi pengurangan
@@ -33,13 +33,13 @@ double ln(double x) {
 	int i;
 	
     if (x <= 0) {
-        return 0.0;  // Return an error value
+        return 0.0;  // Mengembalikan nilai sebagai tanda kesalahan
     }
 
     double result = 0.0;
     double term = (x - 1) / x;  // First term of the series
 
-    for (i = 1; i < 1000; i++) {  // Use 1000 terms for accuracy
+    for (i = 1; i < 1000; i++) {  //memastikan akurasi
         result += term;
         term *= (x - 1) * i / (double)(i + 1) / x;
     }
@@ -79,7 +79,7 @@ double hitungFaktorial(double bil)
 void turunan()
 {
 	int pilih;
-	int b;
+	int a;
 	
 	printf("\n\t\t\t\t\t\t\tMasukan banyak variabel X = ");
 	scanf("%d", &pilih);
@@ -87,42 +87,42 @@ void turunan()
 	int n[pilih], pangkat[pilih];
 	
 	printf("\n\t\t\t\t\t\t\tY = ");
-	for(b=0; b<pilih; b++)
+	for(a=0; a<pilih; a++)
 	{
 		printf("n.X^p ");
-		if((pilih-b)!=1)
+		if((pilih-a)!=1)
 		{
 		printf("+ ");
 		}
 	}
 	
-	for(b=0; b<pilih; b++){
-		printf("\n\t\t\t\t\t\t\tMasukan nilai n ke-%d =",b+1);
-		scanf("%d",&n[b]);
-		printf("\n\t\t\t\t\t\t\tMasukan nilai p ke-%d =",b+1);
-		scanf("%d",&pangkat[b]);		
+	for(a=0; a<pilih; a++){
+		printf("\n\t\t\t\t\t\t\tMasukan nilai n ke-%d =",a+1);
+		scanf("%d",&n[a]);
+		printf("\n\t\t\t\t\t\t\tMasukan nilai p ke-%d =",a+1);
+		scanf("%d",&pangkat[a]);		
 	}
 	
 	printf("\n\t\t\t\t\t\t\tnY  = ");
-	for(b=0; b<pilih; b++)
+	for(a=0; a<pilih; a++)
 	{
-		printf ("%d x^ %d", n[b], pangkat[b]);
-		if((pilih-b)!=1)
+		printf ("%d x^ %d", n[a], pangkat[a]);
+		if((pilih-a)!=1)
 		{
 		printf("+ ");
 		}
 	}
 	
-	for(b=0; b<pilih; b++){
-		n[b] = n[b] * pangkat[b];
-		pangkat[b] = pangkat[b] - 1;
+	for(a=0; a<pilih; a++){
+		n[a] = n[a] * pangkat[a];
+		pangkat[a] = pangkat[a] - 1;
 	}
 	
 	printf("\n\t\t\t\t\t\t\tnY' = ");
-	for(b=0; b<pilih; b++)
+	for(a=0; a<pilih; a++)
 	{
-		printf("%d X^ %d", n[b], pangkat[b]);
-		if((pilih-b)!=1)
+		printf("%d X^ %d", n[a], pangkat[a]);
+		if((pilih-a)!=1)
 		{
 		printf("+ ");
 		}
@@ -337,11 +337,11 @@ double hitungarcsin(double x){
 	double rad, hasil;
 	
 	if (x>1 || x<-1){
-		printf("Invalid ArcSin salah (Masukkan bilangan 1<=x<=-1)");
+		printf("Input ArcSin salah (Masukkan bilangan 1<=x<=-1)");
 		exit(0);
 	}
 	else{
-		rad = asin(x); //menghitung nilai inverse sinus dalam radian
+		rad = asin(x); //menghitung nilai invers sinus dalam radian
     	hasil = rad * 180 / M_PI; //mengonversi ke derajat
     	return hasil;
 	}

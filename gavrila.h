@@ -17,6 +17,7 @@ void Faktorial();
 double hitungFaktorial(double bil);
 
 void turunan();
+//referensi: https://www.diffa.my.id/2020/07/Program-Turunan-Cpp.html
 
 void konvertDaya();
 
@@ -53,6 +54,6 @@ double hitungsech(double x);
 double hitungcsch(double x);
 
 double hitungcoth(double x);
-
-
+//referensi: https://p2k.stekom.ac.id/ensiklopedia/Fungsi_hiperbolik
+//-sebagai pedoman dari penghitungan fungsi hiperbolik
 #endif
