@@ -436,57 +436,74 @@ int validasiChar(address front)
 	
 }
 
-
-int validasiFormat(char* teks)
+int validasiFormat(address front)
 {
 
-	char tampung;
+	address P;
+	char* tampung;
 	int hasil=0;
 	int compare;
-	int i;
-	i = 0;
 	
 	 /* Algoritma */
-	if (teks[i] == '\0')
+	if (front == Nil)
 	{
-		 hasil =0;
+		 hasil =1;
 	}
 	else	/* List memiliki elemen */
 	{
-		 
+		 P = front;
 		 for (;;)
 		 {
-		 	if (teks[i] == '\0')
+		 	if (P == Nil)
 		 	{
-		 		hasil =0;
 		 		break;
 			}
 			else
 			{
-				if (isdigit (teks[i]))
+				tampung = Info(P);
+				if (isdigit (*tampung) )
 				{
-					i++;
-				}
-				else if ( isOperator(teks[i]) || teks[i]=='|')
-				{
-					if(strstr(teks, "mod"))
+					P = Next(P);
+					if(P != Nil)
 					{
-						i= i +3;
+						tampung = Info(P);
+						if(*tampung == '!')
+						{
+							hasil = 1;
+							break;
+						}
+					}
+				}
+				if ( isOperator(*tampung) || *tampung=='|')
+				{
+					if(tampung[0] == '-' && isdigit(tampung[1]))
+					{
+						P = Next(P);
 					}
 					else
 					{
-						i++;
+						P = Next(P);
+						if(P != Nil)
+						{
+							tampung = Info(P);
+							printf("hai %s",tampung );
+							if(!(isdigit(*tampung)) && !(isOperator2(*tampung)))
+							{
+								hasil = 1;
+								break;
+							}
+						}
+						else
+						{
+							hasil = 1;
+							break;	
+						}
 					}
 					
-					if(!(isdigit(teks[i])))
-					{
-						hasil = 1;
-						break;
-					}
 				}
-				else if( strstr(teks, "log") || strstr(teks, "exp") || strstr(teks, "ln") || strstr(teks, "arc") ||strstr(teks, "sin") || strstr(teks, "cos") || strstr(teks, "tan") || strstr(teks, "csc") || strstr(teks, "sec") || strstr(teks, "cot") || strstr(teks, "mod"))
+				else if( strstr(tampung, "log") || strstr(tampung, "exp") || strstr(tampung, "ln") || strstr(tampung, "arc") ||strstr(tampung, "sin") || strstr(tampung, "cos") || strstr(tampung, "tan") || strstr(tampung, "csc") || strstr(tampung, "sec") || strstr(tampung, "cot") )
 				{
-					i++;
+						P = Next(P);
 				}
 				else	/* Belum berada di akhir List */
 				{
@@ -1212,6 +1229,14 @@ int priority(char c)
     return 0;
 }
 
+int isOperator2(char c)
+{
+	if(c== '|' || c== 's' || c== 'c' || c== 'a' || c== 't'  || c== 'n' || c== 'e' )
+	{
+		return 1;
+	}
+}
+
 
 int isOperator(char c)
 {
@@ -1256,6 +1281,384 @@ char * hapusSpasi(char * infix)
     }
     x[i]='\0';
     return x;
+}
+
+void infixLinkedList(char *infix, address *front, address *rear)
+{
+	char tempInfix[255];
+    int  ptr = 0;
+    infotype temp;
+    infotype Chartemp;
+    double trigono, lon, log, eksponensial;
+    double value, basis;
+    int mutlak;
+    int compare;
+    infotype tampungChar;
+    addressChar top;
+    top = Nil;
+    mutlak =0;
+    
+    while(infix[ptr] != '\0' )
+    {
+        if(isOperator(infix[ptr]) && !negatifInteger(infix,infix[ptr],ptr))
+        {
+        	if(isEmpty(top))
+            {
+            	Chartemp = (infotype ) malloc(2*sizeof(char));
+            	Chartemp[0] = infix[ptr];
+		    	Chartemp[1] = '\0';
+		    	InsVLast(front, rear, Chartemp);
+                if(Chartemp[0]  == 'm')
+                {
+                	ptr = ptr+3;
+				}
+				else
+				{
+					ptr++;
+				}
+                
+            }
+            else
+            {
+                Chartemp = (infotype ) malloc(2*sizeof(char));
+            	Chartemp[0] = infix[ptr];
+		    	Chartemp[1] = '\0';
+                InsVLast(front, rear, Chartemp);
+                ptr++;
+            }
+        }
+        else if(infix[ptr]=='|' ||  infix[ptr]==')')
+        {
+        	Chartemp = (infotype ) malloc(2*sizeof(char));
+            Chartemp[0] = infix[ptr];
+		    Chartemp[1] = '\0';
+            InsVLast(front, rear, Chartemp);
+            ptr++;
+        }
+        else
+        {
+        	char temp3[256] = "";
+		    char temp4[256] = "";
+		    char *temp5;
+		    char *temp2;
+		    char *temp1;
+		    char tempChar3 = '-';
+		    int i,b;
+		    int panjang;
+		    
+
+		    temp1 = (infotype ) malloc(10*sizeof(char));
+		    temp1[0]= '\0';
+            if(negatifInteger(infix,infix[ptr],ptr))
+            {
+            	temp2 = (infotype ) malloc(10*sizeof(char));
+            	temp2[0]= '-';
+            	temp2[1]= '\0';
+                strcpy(tempInfix, infix);
+                temp = strtok(tempInfix + ptr, "+*/^m$!|");
+                
+                if(temp[1] == '(')
+				{
+					
+						InsVLast(front, rear, "0");
+						InsVLast(front, rear, "-");
+						ptr++;
+				}
+                else if(isdigit(temp[1]))
+				{
+					
+						temp = strtok(temp, "+()-*/^%$!|");
+		            	ptr+=strlen(temp) +1;
+		            	strcat(temp2, temp);
+				    	InsVLast(front, rear, temp2);
+				}
+				else if(strstr(temp,"log"))
+				{
+					temp = strtok(tempInfix + ptr, "+-*/^%$!|");
+					if (sscanf(temp,"log%lf(%lf)",&basis,&value) != 2) 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan logaritma yang benar adalah log10(100)\n");
+						exit(0);
+					}
+					else
+					{
+						InsVLast(front, rear, "0");
+						InsVLast(front, rear, "-");
+						InsVLast(front, rear,"log");
+						ptr = ptr + 3+1;
+					}
+				}
+				
+				else if(strstr(temp,"sinh") || strstr(temp,"cosh") || strstr(temp,"tanh")|| strstr(temp,"sech") ||strstr(temp,"coth") || strstr(temp,"csch"))
+				{
+					InsVLast(front, rear, "0");
+					InsVLast(front, rear, "-");
+					for(i=0; i<4; i++)
+					{
+						temp1[i] = temp[i+1];
+						
+					}				
+					temp1[i] ='\0';
+	                InsVLast(front, rear, temp1);
+					ptr = ptr + 4 +1;
+					if (infix[ptr] != '(') 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan trigonometri yang benar adalah %s (100)\n", temp1);
+						exit(0);
+					}
+				}
+				
+				else if(strstr(temp,"arcsin") || strstr(temp,"arccos") || strstr(temp,"arctan")|| strstr(temp,"arcsec") ||strstr(temp,"arccot") || strstr(temp,"arccsc"))
+				{
+					InsVLast(front, rear, "0");
+					InsVLast(front, rear, "-");
+					for(i=0; i<6; i++)
+					{
+						temp1[i] = temp[i+1];
+						
+					}				
+					temp1[i] ='\0';
+	                InsVLast(front, rear, temp1);
+					ptr = ptr + 6 +1;
+					if (infix[ptr] != '(') 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan trigonometri yang benar adalah %s(1)\n", temp1);
+						exit(0);
+					}
+				}
+				
+                else if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
+				{
+					InsVLast(front, rear, "0");
+					InsVLast(front, rear, "-");
+					for(i=0; i<3; i++)
+					{
+						temp1[i] = temp[i+1];
+						
+					}				
+					temp1[i] ='\0';
+					InsVLast(front, rear, temp1);
+					ptr = ptr + 3 + 1;
+					if (infix[ptr] != '(') 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan trigonometri yang benar adalah %s (100)\n", temp1);
+						exit(0);
+					}
+				}
+				else if(strstr(temp,"exp"))
+				{
+					InsVLast(front, rear, "0");
+					InsVLast(front, rear, "-");
+					InsVLast(front, rear, "exp");
+					ptr = ptr + 3 +1;
+					if (infix[ptr] != '(') 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan!\n");
+						printf("\nContoh penulisan eksponensial yang benar adalah exp(100)\n");
+						exit(0);
+					}
+				}
+				else if(strstr(temp,"ln"))
+		        {
+		            InsVLast(front, rear, "0");
+					InsVLast(front, rear, "-");
+					InsVLast(front, rear, "ln");
+					ptr = ptr + 2 +1;
+					if (infix[ptr] != '(') 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan logaritma natural yang benar adalah ln(100)\n");
+						exit(0);
+					}
+				}
+				else
+				{
+					temp = strtok(tempInfix + ptr, " +*/^$!|");
+					if(strstr(temp,"e"))
+		            {
+		            	temp = strtok(temp, "+()-*/^%$!|");
+		            	ptr += strlen(temp) + 1;
+		            	sprintf(temp,"%lf",eksponen);
+					}
+					else if(strstr(temp,"phi"))
+		            {
+		            	temp = strtok(temp, "+()-*/^%$!|");
+		            	ptr += strlen(temp) + 1;
+		                sprintf(temp,"%lf",phi);
+					}
+					else
+					{
+						ptr+=strlen(temp);
+					}
+	                strcat(temp2, temp);
+					InsVLast(front, rear, temp2);
+				}
+                
+            }
+            else
+            {
+	            strcpy(tempInfix, infix);
+                temp = strtok(tempInfix + ptr, " +*/^m$!|");
+                
+                if(isdigit(temp[0]))
+                {
+					temp = strtok(temp, "+()-*/^%$!|");
+		        	ptr+=strlen(temp);
+				    strcat(temp1, temp);
+					InsVLast(front, rear, temp1);
+				}
+				else if(strstr(temp,"log"))
+				{
+					temp = strtok(tempInfix + ptr, "+-*/^%$!|");
+					if (sscanf(temp,"log%lf(%lf)",&basis,&value) != 2) 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan logaritma yang benar adalah log10(100)\n");
+						exit(0);
+					}
+					else
+					{
+						InsVLast(front, rear, "log");
+						ptr = ptr + 3;
+					}
+				}
+				
+				else if(strstr(temp,"arcsin") || strstr(temp,"arccos") || strstr(temp,"arctan")|| strstr(temp,"arcsec") ||strstr(temp,"arccot") || strstr(temp,"arccsc"))
+				{
+					for(i=0; i<6; i++)
+					{
+						temp1[i] = temp[i];
+						
+					}				
+					temp1[i] ='\0';
+	                InsVLast(front, rear, temp1);
+					ptr = ptr + 6;
+					if (infix[ptr] != '(') 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan trigonometri yang benar adalah %s(1)\n", temp1);
+						exit(0);
+					}
+				}
+				
+				else if(strstr(temp,"sinh") || strstr(temp,"cosh") || strstr(temp,"tanh")|| strstr(temp,"sech") ||strstr(temp,"coth") || strstr(temp,"csch"))
+				{
+					for(i=0; i<4; i++)
+					{
+						temp1[i] = temp[i];
+						
+					}				
+					temp1[i] ='\0';
+	                InsVLast(front, rear, temp1);
+					ptr = ptr + 4;
+					if (infix[ptr] != '(') 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan trigonometri yang benar adalah %s (100)\n", temp1);
+						exit(0);
+					}
+				}
+				
+				else if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
+				{
+					for(i=0; i<3; i++)
+					{
+						temp1[i] = temp[i];
+						
+					}				
+					temp1[i] ='\0';
+	                InsVLast(front, rear, temp1);
+					ptr = ptr + 3;
+					if (infix[ptr] != '(') 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan trigonometri yang benar adalah %s (100)\n", temp1);
+						exit(0);
+					}
+				}
+				else if(strstr(temp,"exp"))
+				{
+	                InsVLast(front, rear, "exp");
+					ptr = ptr + 3;
+					if (infix[ptr] != '(') 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan!\n");
+						printf("\nContoh penulisan eksponensial yang benar adalah exp(100)\n");
+						exit(0);
+					}
+				}
+				else if(strstr(temp,"ln"))
+		        {
+		            InsVLast(front, rear, "ln");
+					ptr = ptr + 2;
+					if (infix[ptr] != '(') 
+					{
+						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
+						printf("\nContoh penulisan logaritma natural yang benar adalah ln(100)\n");
+						exit(0);
+					}
+				}
+	            else
+				{
+	            	temp = strtok(tempInfix + ptr, "+-*/^%$!|");
+					if(strstr(temp,"e"))
+		            {
+		            	temp = strtok(temp, "+()-*/^%$!|");
+		            	ptr+=strlen(temp);
+		            	sprintf(temp,"%lf",eksponen);
+					}
+					else if(strstr(temp,"phi"))
+		            {
+		            	temp = strtok(temp, "+()-*/^%$!|");
+		            	ptr+=strlen(temp);
+		                sprintf(temp,"%lf",phi);
+					}
+					else
+					{
+						ptr+=strlen(temp);
+					}
+	                strcat(temp1, temp);
+					InsVLast(front, rear, temp1);
+				}
+            }
+            
+        }
+        
+    }
+    
+}
+
+void PrintInfoData (address data)
+{
+	 /* Kamus Lokal */
+	address P;
+	
+	 /* Algoritma */
+	if (data == Nil)
+	{
+		 printf ("List Kosong .... \a\n");
+	}
+	else	/* List memiliki elemen */
+	{
+		 P = data;
+		 for (;;)
+		 {
+			if (P == Nil)
+			{
+				 printf("\n");
+				 break;
+			}
+			else	/* Belum berada di akhir List */
+			{
+				 printf (" %s ", Info(P));
+				 P = Next(P);
+			}
+		 }
+	}
 }
 
 void infixToPostfix(char *infix, address *front, address *rear)

@@ -150,6 +150,8 @@ int priority(char c);
 
 int isOperator(char c);
 
+int isOperator2(char c);
+
 int negatifInteger(char *infix,char c,int ptr);
 
 int isAfter(addressChar top);
@@ -170,9 +172,12 @@ double hitungPostfix(addressTree *root);
 // }
 
 // {membuat sendiri 
+
+void PrintInfoData (address data);
+
 int validasiChar(address front);
 
-int validasiFormat(char* teks);
+int validasiFormat(address front);
 
 void CalStfc();
 
