@@ -165,6 +165,8 @@ double hitungPostfix(addressTree *root);
 /* {membuat sendiri */
 int validasiChar(address front);
 
+int validasiFormat(char* teks);
+
 void CalStfc();
 
 void MenuCalStd();

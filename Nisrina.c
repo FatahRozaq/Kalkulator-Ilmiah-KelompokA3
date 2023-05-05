@@ -437,6 +437,63 @@ int validasiChar(address front)
 }
 
 
+int validasiFormat(char* teks)
+{
+
+	char tampung;
+	int hasil=0;
+	int compare;
+	int i;
+	i = 0;
+	
+	 /* Algoritma */
+	if (teks[i] == '\0')
+	{
+		 hasil =0;
+	}
+	else	/* List memiliki elemen */
+	{
+		 
+		 for (;;)
+		 {
+		 	if (teks[i] == '\0')
+		 	{
+		 		break;
+			}
+			else
+			{
+				if (isdigit (teks[i]))
+				{
+					i++;
+				}
+				else if ( isOperator(teks[i]) || teks[i]=='|')
+				{
+					if(!(isdigit(teks[i+1])))
+					{
+						hasil = 1;
+					 	break;
+					}
+					else
+					{
+						i++;
+					}
+				}
+				else if( strstr(teks, "log") || strstr(teks, "exp") || strstr(teks, "ln") || strstr(teks, "arc") ||strstr(teks, "sin") || strstr(teks, "cos") || strstr(teks, "tan") || strstr(teks, "csc") || strstr(teks, "sec") || strstr(teks, "cot"))
+				{
+					i++;
+				}
+				else	/* Belum berada di akhir List */
+				{
+					 hasil = 1;
+					 break;
+				}
+			}
+		 }
+	}
+	return hasil;
+	
+}
+
 double DerajatTrigono(char *input)
 {
 	double value;
