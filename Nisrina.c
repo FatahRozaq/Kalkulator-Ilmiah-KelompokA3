@@ -420,9 +420,9 @@ int validasiChar(address front)
 				{
 					P = Next(P);
 				}
-				else if( strstr(tampung, "log") || strstr(tampung, "exp") || strstr(tampung, "ln") || strstr(tampung, "arc") ||strstr(tampung, "sin") || strstr(tampung, "cos") || strstr(tampung, "tan") || strstr(tampung, "csc") || strstr(tampung, "sec") || strstr(tampung, "cot"))
+				else if( strstr(tampung, "log") || strstr(tampung, "exp") || strstr(tampung, "ln") || strstr(tampung, "arc") ||strstr(tampung, "sin") || strstr(tampung, "cos") || strstr(tampung, "tan") || strstr(tampung, "csc") || strstr(tampung, "sec") || strstr(tampung, "cot") )
 				{
-					P = Next(P);
+						P = Next(P);
 				}
 				else	/* Belum berada di akhir List */
 				{
@@ -469,17 +469,22 @@ int validasiFormat(char* teks)
 				}
 				else if ( isOperator(teks[i]) || teks[i]=='|')
 				{
-					if(!(isdigit(teks[i+1])))
+					if(strstr(teks, "mod"))
 					{
-						hasil = 1;
-					 	break;
+						i= i +3;
 					}
 					else
 					{
 						i++;
 					}
+					
+					if(!(isdigit(teks[i])))
+					{
+						hasil = 1;
+						break;
+					}
 				}
-				else if( strstr(teks, "log") || strstr(teks, "exp") || strstr(teks, "ln") || strstr(teks, "arc") ||strstr(teks, "sin") || strstr(teks, "cos") || strstr(teks, "tan") || strstr(teks, "csc") || strstr(teks, "sec") || strstr(teks, "cot"))
+				else if( strstr(teks, "log") || strstr(teks, "exp") || strstr(teks, "ln") || strstr(teks, "arc") ||strstr(teks, "sin") || strstr(teks, "cos") || strstr(teks, "tan") || strstr(teks, "csc") || strstr(teks, "sec") || strstr(teks, "cot") || strstr(teks, "mod"))
 				{
 					i++;
 				}

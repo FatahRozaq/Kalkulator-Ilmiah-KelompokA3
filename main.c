@@ -52,7 +52,7 @@ int main()
 			isValid = validasiFormat(x);
 			if (isValid == 1)
 	  		{
-	  			printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
+	  			printf("\n\n\t\t\t\t\t\t\t\t\tformta Ekspresi tidak valid\n");
 			}
 			else
 			{
@@ -60,7 +60,7 @@ int main()
 		  		isChar = validasiChar(front);
 		  		if (isChar == 1)
 		  		{
-		  			printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
+		  			printf("\n\n\t\t\t\t\t\t\t\t\tchar Ekspresi tidak valid\n");
 				}
 				else if(isChar == 0)
 				{
