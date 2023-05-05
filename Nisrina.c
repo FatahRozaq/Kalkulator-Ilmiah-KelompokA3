@@ -449,7 +449,7 @@ int validasiFormat(char* teks)
 	 /* Algoritma */
 	if (teks[i] == '\0')
 	{
-		 hasil =0;
+		 hasil =1;
 	}
 	else	/* List memiliki elemen */
 	{
