@@ -1,10 +1,7 @@
 #ifndef fatah_H
 #define fatah_H
 
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdbool.h>
+
 #define true 1
 #define false 0
 

@@ -6,11 +6,15 @@
 #include <string.h>
 #include <stdbool.h>
 #include <ctype.h>
+#include <conio.h>
+#include <ctype.h>
+#include <windows.h>
 #include "boolean.h"
 #include "Aurora.h"
 #include "fatah.h"
 #include "jojo.h"
 #include "gavrila.h"
+
 #define Nil NULL
 #define Prev(P) (P)->prev
 #define Info(P) (P)->info
@@ -41,6 +45,7 @@ typedef struct tempNum
     addressNum next;
 } TempNum;
 
+// struktur data linkedlist
 
 typedef struct tElmtList *address;
 typedef struct tElmtList {
@@ -49,7 +54,7 @@ typedef struct tElmtList {
 	 address  next;
 	 } ElmtList;
 
-//linked list
+// struktur data tree
 
 typedef struct tree *addressTree;
 typedef struct tree {
@@ -58,7 +63,9 @@ typedef struct tree {
 	 infotype info;
 	 addressTree  right;
 	 } Tree;
-	 
+
+// {membuat sendiri	 
+
 addressTree AlokasiTree(infotype X);
 
 address Alokasi(infotype X);
@@ -97,7 +104,6 @@ void InsVLastNum(addressNum *top, double X);
 
 void InsertLastNum (addressNum *top, addressNum P);
 
-/* {membuat sendiri */
 double Penjumlahan (double bil1, double bil2);
 
 double Pangkat(double bil1, double bil2);
@@ -113,15 +119,16 @@ void TampilHasilFloat(float hasil, char nama[]);
 void TampilHasilInt(int hasil, char nama[]);
 
 void CalStd();
-/*}*/
+// }
 
 
 /* {referensi github : https://github.com/MohamedFarid612/Calculator-infix-to-postfix-/blob/main/main.c 
 - melakukan modifikasi dengan menggunakan function yang sudah dibuat untuk operasi tambah, kali,bagi,kurang, pangkat 
--menambahkan algoritma untuk phi, e, eksponen, logaritma, logaritma natural, trigonometri dan lain-lain
--mengubah tipe data menjadi double dari yang sebelumnya float
+- menambahkan algoritma untuk phi, e, eksponen, logaritma, logaritma natural, trigonometri dan lain-lain
+- mengubah tipe data menjadi double dari yang sebelumnya float
+- mengubah struktur data karena mengubah dari array ke linkedlist
 dan lain-lain */
-//Stack* inisialisasi();
+
 
 int isEmpty(addressChar top);
 
@@ -160,9 +167,9 @@ void gantiNewLineJadiSpasi(char *s);
 int isNumber(char *token);
 
 double hitungPostfix(addressTree *root);
-/*}*/
+// }
 
-/* {membuat sendiri */
+// {membuat sendiri 
 int validasiChar(address front);
 
 int validasiFormat(char* teks);
@@ -226,6 +233,6 @@ void TataCara();
 void CaraCalStd();
 
 void Credit();
-/*}*/
+// }
 
 #endif

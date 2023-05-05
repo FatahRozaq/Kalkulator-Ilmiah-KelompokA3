@@ -7,24 +7,15 @@ Author			: Athalie Aurora Puspanegara
 
 /* ========== Header File ========== */
 
+#include "Nisrina.h"
 #include "Aurora.h"
 #include "jojo.h"
 #include "fatah.h"
 #include "gavrila.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <conio.h>
-#include <ctype.h>
-#include <windows.h>
+
 
 /* ======= End of Header File ====== */
-
-
-
-
-
 
 
 double Pembagian(double bil1, double bil2){

@@ -4,7 +4,6 @@
 #define Aurora_H
 #define MAX 100
 
-#include <stdio.h>
 
 
 void CalProg();

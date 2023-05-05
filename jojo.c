@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+
+#include "Nisrina.h"
 #include "jojo.h"
 
 void panggilModulus(){ // Panggil modul ini di main

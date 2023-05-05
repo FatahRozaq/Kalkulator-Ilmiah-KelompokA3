@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include "gavrila.h"
 #include "Nisrina.h"
+#include "gavrila.h"
 #define M_PI 3.14159265358979323846
 
 //operasi pengurangan

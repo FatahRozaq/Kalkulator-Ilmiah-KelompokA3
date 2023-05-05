@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+
 #include "Nisrina.h"
 #include "Aurora.h"
 #include "fatah.h"
