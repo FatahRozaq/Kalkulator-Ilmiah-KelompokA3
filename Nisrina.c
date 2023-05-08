@@ -1049,30 +1049,43 @@ double Cos(double value){
 	double res=0, term=1;
 	int k=0;
 	
-	if (value<0) value=-value;
+	if(value == 90){
+		res = 0;
+	}else{
+		if (value<0) value=-value;
 	
-	if (value > 360) {
-   		value -= (int)(value / 360) * 360;
+		if (value > 360) {
+	   		value -= (int)(value / 360) * 360;
+		}
+		
+		value*=3.14/180.0;
+		
+		while (res+term!=res){
+		
+			res+=term;
+			
+			k+=2;
+			
+			term*=-value*value/k/(k-1);
+		
+		}
 	}
 	
-	value*=3.14/180.0;
-	
-	while (res+term!=res){
-	
-	res+=term;
-	
-	k+=2;
-	
-	term*=-value*value/k/(k-1);
-	
-	}
 	
 	return res;
 
 }
 
 double Tan(double value) {
+	
     double res = Sin(value) / Cos(value);
+    
+    if(value == 90 || value == 270){
+		printf("\n\t\t\t\t\t\t\t\t\t\tUNDEFINED");
+		exit(0); 
+	}else if(value == 45){
+		res = 1;	
+	}
     
     return res;
 }
@@ -1096,6 +1109,11 @@ double TriCot(double value)
 {
 	double cos, sin;
 	
+	if(value == 0 || value == 180 || value == 360){
+		printf("\n\t\t\t\t\t\t\t\t\t\tUNDEFINED");
+		exit(0); 
+	}
+	
 	cos = TriCos(value);
 	sin = TriSin(value);
 	
@@ -1105,6 +1123,11 @@ double TriSec(double value)
 {
 	double cos;
 	
+	if(value == 90 || value == 270){
+		printf("\n\t\t\t\t\t\t\t\t\t\tUNDEFINED");
+		exit(0); 
+	}
+	
 	cos = TriCos(value);
 	
 	return (1/cos);
@@ -1113,6 +1136,11 @@ double TriSec(double value)
 double TriCsc(double value)
 {
 	double sin;
+	
+	if(value == 0 || value == 180 || value == 360){
+		printf("\n\t\t\t\t\t\t\t\t\t\tUNDEFINED");
+		exit(0); 
+	}
 	
 	sin = TriSin(value);
 	
