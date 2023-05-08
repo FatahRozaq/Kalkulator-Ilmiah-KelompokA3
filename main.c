@@ -62,7 +62,7 @@ int main()
 			}
 			else
 			{
-				infixToPostfix(x, &front, &rear);
+				infixToPostfix(frontIn, &front, &rear);
 		  		isChar = validasiChar(front);
 		  		if (isChar == 1)
 		  		{

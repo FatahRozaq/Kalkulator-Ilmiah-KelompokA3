@@ -19,8 +19,8 @@
 #define Prev(P) (P)->prev
 #define Info(P) (P)->info
 #define Next(P) (P)->next
-#define Left(P) (P)->left
-#define Right(P) (P)->right
+#define Left(P) (P)->leftSon
+#define Right(P) (P)->rightSon
 #define Parent(P) (P)->parent
 #define Char(P) (P)->cData
 #define Number(P) (P)->bData
@@ -58,10 +58,10 @@ typedef struct tElmtList {
 
 typedef struct tree *addressTree;
 typedef struct tree {
-	 addressTree  left;
+	 addressTree  leftSon;
 	 addressTree parent;
 	 infotype info;
-	 addressTree  right;
+	 addressTree  rightSon;
 	 } Tree;
 
 // {membuat sendiri	 
@@ -158,7 +158,7 @@ int isAfter(addressChar top);
 
 char * hapusSpasi(char * infix);
 
-void infixToPostfix(char *infix, address *front, address *rear);
+void infixToPostfix(address frontIn, address *front, address *rear);
 
 void treePostFix(addressTree *root, address rear);
 
