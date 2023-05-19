@@ -22,20 +22,12 @@
 #define Left(P) (P)->leftSon
 #define Right(P) (P)->rightSon
 #define Parent(P) (P)->parent
-#define Char(P) (P)->cData
 #define Number(P) (P)->bData
 #define string char*
 #define eksponen 2.718281828
 #define phi 3.14
 
 typedef string infotype;
-typedef struct tempChar *addressChar;
-typedef struct tempChar
-{
-	addressChar prev;
-    infotype  cData;
-    addressChar next;
-} TempChar;
 
 typedef struct tempNum *addressNum;
 typedef struct tempNum
@@ -76,27 +68,21 @@ void InsertLast (address *front,address *rear, address P);
 
 void PrintInfoASC (address data);
 
-void PrintInfoChar (addressChar data);
-
 void DelVFirst (address *front,address *rear );
 
 void DelAll (address *front,address *rear);
 
 void DeAlokasi (address P);
 
-void DelVLastChar (addressChar *top );
-
-void DeAlokasiChar (addressChar P);
+void DelVLastChar (address *top );
 
 void DelVLastNum (addressNum *top );
 
 void DeAlokasiNum (addressNum P);
 
-addressChar AlokasiChar(infotype X);
+void InsVLastChar(address *top, infotype X);
 
-void InsVLastChar(addressChar *top, infotype X);
-
-void InsertLastChar (addressChar *top, addressChar P);
+void InsertLastChar (address *top, address P);
 
 addressNum AlokasiNum(double X);
 
@@ -130,11 +116,11 @@ void CalStd();
 dan lain-lain */
 
 
-int isEmpty(addressChar top);
+int isEmpty(address top);
 
-infotype topPop(addressChar top);
+infotype topPop(address top);
 
-infotype pop(addressChar *top);
+infotype pop(address *top);
 
 double popNum(addressNum *top);
 
@@ -144,7 +130,7 @@ double popLeft(addressTree *parent);
 
 void push(double d, addressTree *parent);
 
-void pushChar(infotype c, addressChar *top);
+void pushChar(infotype c, address *top);
 
 int priority(char c);
 
@@ -154,9 +140,11 @@ int isOperator2(char c);
 
 int negatifInteger(char *infix,char c,int ptr);
 
-int isAfter(addressChar top);
+int isAfter(address top);
 
 char * hapusSpasi(char * infix);
+
+void infixLinkedList(char *infix, address *front, address *rear);
 
 void infixToPostfix(address frontIn, address *front, address *rear);
 

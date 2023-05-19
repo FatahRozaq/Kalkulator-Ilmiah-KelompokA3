@@ -58,25 +58,17 @@ int main()
 			isValid = validasiFormat(frontIn);
 			if (isValid == 1)
 	  		{
-	  			printf("\n\n\t\t\t\t\t\t\t\t\tformta Ekspresi tidak valid\n");
+	  			printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
 			}
 			else
 			{
 				infixToPostfix(frontIn, &front, &rear);
-		  		isChar = validasiChar(front);
-		  		if (isChar == 1)
-		  		{
-		  			printf("\n\n\t\t\t\t\t\t\t\t\tchar Ekspresi tidak valid\n");
-				}
-				else if(isChar == 0)
-				{
-					treePostFix(&root, rear);
+		  			treePostFix(&root, rear);
 					printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : ");
 					PrintInfoASC (front);
 					printf("\n");
 					hasil = hitungPostfix(&root);
-		        	printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);	
-				}
+		        	printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);
 			}
 			printf("\t 														 \n");
 			printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");

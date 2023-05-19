@@ -77,26 +77,10 @@ void InsertLast (address *front,address *rear, address P)
 	}
 }
 
-addressChar AlokasiChar(infotype X)
+void InsVLastChar(address *top, infotype X)
 {
-	 /* Kamus Lokal */
-	 addressChar P;
-	 
-	 /* Algoritma */
-	 P = (addressChar) malloc (sizeof (TempChar));
-	 if (P != Nil)		/* Alokasi berhasil */
-	 {
-	Prev(P) = Nil;
-	Char(P) = X;
-	Next(P) = Nil;
-	 }
-	 return (P);
-}
-
-void InsVLastChar(addressChar *top, infotype X)
-{
-	addressChar P;
-	P = AlokasiChar(X);
+	address P;
+	P = Alokasi(X);
 	if (P != Nil)
 	{	
 	InsertLastChar (top, P);
@@ -104,7 +88,7 @@ void InsVLastChar(addressChar *top, infotype X)
 			
 }
 
-void InsertLastChar (addressChar *top, addressChar P)
+void InsertLastChar (address *top, address P)
 {
 	
 	if(*top == Nil)
@@ -195,36 +179,6 @@ void PrintInfoASC (address data)
 	}
 }
 
-void PrintInfoChar (addressChar data)
-{
-	 /* Kamus Lokal */
-	addressChar P;
-	int i;
-	
-	 /* Algoritma */
-	if (data == Nil)
-	{
-		 printf ("List Kosong .... \a\n");
-	}
-	else	/* List memiliki elemen */
-	{
-		 P = data;
-		 for (;;)
-		 {
-			if (P == Nil)
-			{
-				 printf("\n");
-				 break;
-			}
-			else	/* Belum berada di akhir List */
-			{
-				 printf (" list %s ", Char(P));
-				 P = Prev(P);
-			}
-		 }
-	}
-}
-
 void PrintInfoNum (addressNum data)
 {
 	 /* Kamus Lokal */
@@ -298,26 +252,18 @@ void DeAlokasi (address P)
 	 }
 }
 
-void DelVLastChar (addressChar *top )
+void DelVLastChar (address *top )
 {
-	addressChar P;
+	address P;
 	
 	if (*top != Nil)
 	{
 		P = *top;
 		*top = Prev(P);
 		Prev(P) = Nil;
-		DeAlokasiChar (P);
+		DeAlokasi (P);
 	}
 	
-}
-
-void DeAlokasiChar (addressChar P)
-{
-	 if (P != Nil)
-	 {
-		free (P);
-	 }
 }
 
 void DelVLastNum (addressNum *top )
@@ -1161,13 +1107,13 @@ double TriCsc(double value)
 	return (1/sin);
 }
 
-int isEmpty(addressChar top)
+int isEmpty(address top)
 {
     return top == Nil;
 }
 
 
-infotype topPop(addressChar top)
+infotype topPop(address top)
 {
 	infotype data;
 	
@@ -1175,7 +1121,7 @@ infotype topPop(addressChar top)
 	
 	if(top != Nil)
 	{
-	data = Char(top);	
+	data = Info(top);	
 	}
 	else
 	{
@@ -1185,7 +1131,7 @@ infotype topPop(addressChar top)
     return data;
 }
 
-infotype pop(addressChar *top)
+infotype pop(address *top)
 {
 	infotype data;
 	
@@ -1198,7 +1144,7 @@ infotype pop(addressChar *top)
 	}
 	else
 	{
-			data = Char(*top);
+			data = Info(*top);
 	}
 
     DelVLastChar (top);
@@ -1255,7 +1201,7 @@ void push(double d, addressTree *parent)
 }
 
 
-void pushChar(infotype c, addressChar *top)
+void pushChar(infotype c, address *top)
 {
 	
     InsVLastChar(top, c);
@@ -1273,7 +1219,7 @@ int priority(char c)
 
 int isOperator2(char c)
 {
-	if(c== '|' || c== 's' || c== 'c' || c== 'a' || c== 't'  || c== 'n' || c== 'e' )
+	if(c== '|' || c== 's' || c== 'c' || c== 'a' || c== 't'  || c== 'l' || c== 'e' )
 	{
 		return 1;
 	}
@@ -1297,13 +1243,13 @@ int negatifInteger(char *infix,char c,int ptr)
 }
 
 
-int isAfter(addressChar top)
+int isAfter(address top)
 {
 	infotype data;
 	
 	data = (infotype)malloc(3*sizeof(char));
 	
-	data = Char(top);
+	data = Info(top);
     if(data == "(" ) return 1;
     else return 0;
 }
@@ -1331,12 +1277,11 @@ void infixLinkedList(char *infix, address *front, address *rear)
     int  ptr = 0;
     infotype temp;
     infotype Chartemp;
-    double trigono, lon, log, eksponensial;
     double value, basis;
     int mutlak;
     int compare;
     infotype tampungChar;
-    addressChar top;
+    address top;
     top = Nil;
     mutlak =0;
     
@@ -1344,9 +1289,7 @@ void infixLinkedList(char *infix, address *front, address *rear)
     {
         if(isOperator(infix[ptr]) && !negatifInteger(infix,infix[ptr],ptr))
         {
-        	if(isEmpty(top))
-            {
-            	Chartemp = (infotype ) malloc(2*sizeof(char));
+        		Chartemp = (infotype ) malloc(3*sizeof(char));
             	Chartemp[0] = infix[ptr];
 		    	Chartemp[1] = '\0';
 		    	InsVLast(front, rear, Chartemp);
@@ -1358,16 +1301,6 @@ void infixLinkedList(char *infix, address *front, address *rear)
 				{
 					ptr++;
 				}
-                
-            }
-            else
-            {
-                Chartemp = (infotype ) malloc(2*sizeof(char));
-            	Chartemp[0] = infix[ptr];
-		    	Chartemp[1] = '\0';
-                InsVLast(front, rear, Chartemp);
-                ptr++;
-            }
         }
         else if(infix[ptr]=='|' ||  infix[ptr]==')')
         {
@@ -1379,12 +1312,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
         }
         else
         {
-        	char temp3[256] = "";
-		    char temp4[256] = "";
-		    char *temp5;
 		    char *temp2;
 		    char *temp1;
-		    char tempChar3 = '-';
 		    int i,b;
 		    int panjang;
 		    
@@ -1403,7 +1332,7 @@ void infixLinkedList(char *infix, address *front, address *rear)
 				{
 					
 						InsVLast(front, rear, "0");
-						InsVLast(front, rear, "-");
+						InsVLast(front, rear, temp2);
 						ptr++;
 				}
                 else if(isdigit(temp[1]))
@@ -1426,7 +1355,7 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					else
 					{
 						InsVLast(front, rear, "0");
-						InsVLast(front, rear, "-");
+						InsVLast(front, rear, temp2);
 						InsVLast(front, rear,"log");
 						ptr = ptr + 3+1;
 					}
@@ -1435,7 +1364,7 @@ void infixLinkedList(char *infix, address *front, address *rear)
 				else if(strstr(temp,"sinh") || strstr(temp,"cosh") || strstr(temp,"tanh")|| strstr(temp,"sech") ||strstr(temp,"coth") || strstr(temp,"csch"))
 				{
 					InsVLast(front, rear, "0");
-					InsVLast(front, rear, "-");
+					InsVLast(front, rear, temp2);
 					for(i=0; i<4; i++)
 					{
 						temp1[i] = temp[i+1];
@@ -1455,7 +1384,7 @@ void infixLinkedList(char *infix, address *front, address *rear)
 				else if(strstr(temp,"arcsin") || strstr(temp,"arccos") || strstr(temp,"arctan")|| strstr(temp,"arcsec") ||strstr(temp,"arccot") || strstr(temp,"arccsc"))
 				{
 					InsVLast(front, rear, "0");
-					InsVLast(front, rear, "-");
+					InsVLast(front, rear, temp2);
 					for(i=0; i<6; i++)
 					{
 						temp1[i] = temp[i+1];
@@ -1475,7 +1404,7 @@ void infixLinkedList(char *infix, address *front, address *rear)
                 else if(strstr(temp,"sin") || strstr(temp,"cos") || strstr(temp,"tan")|| strstr(temp,"sec") ||strstr(temp,"cot") || strstr(temp,"csc"))
 				{
 					InsVLast(front, rear, "0");
-					InsVLast(front, rear, "-");
+					InsVLast(front, rear, temp2);
 					for(i=0; i<3; i++)
 					{
 						temp1[i] = temp[i+1];
@@ -1494,7 +1423,7 @@ void infixLinkedList(char *infix, address *front, address *rear)
 				else if(strstr(temp,"exp"))
 				{
 					InsVLast(front, rear, "0");
-					InsVLast(front, rear, "-");
+					InsVLast(front, rear, temp2);
 					InsVLast(front, rear, "exp");
 					ptr = ptr + 3 +1;
 					if (infix[ptr] != '(') 
@@ -1507,7 +1436,7 @@ void infixLinkedList(char *infix, address *front, address *rear)
 				else if(strstr(temp,"ln"))
 		        {
 		            InsVLast(front, rear, "0");
-					InsVLast(front, rear, "-");
+					InsVLast(front, rear, temp2);
 					InsVLast(front, rear, "ln");
 					ptr = ptr + 2 +1;
 					if (infix[ptr] != '(') 
@@ -1713,7 +1642,7 @@ void infixToPostfix(address frontIn, address *front, address *rear)
     int mutlak;
     int compare;
     infotype tampungChar;
-    addressChar top;
+    address top;
     top = Nil;
     mutlak =0;
     
@@ -1832,10 +1761,16 @@ void infixToPostfix(address frontIn, address *front, address *rear)
 			}
             P = Next(P);
         }
+        else if( strstr(temp, "log") || strstr(temp, "exp") || strstr(temp, "ln") || strstr(temp, "arc") ||strstr(temp, "sin") || strstr(temp, "cos") || strstr(temp, "tan") || strstr(temp, "csc") || strstr(temp, "sec") || strstr(temp, "cot") )
+        {
+        	Chartemp = (infotype ) malloc(2*sizeof(char));
+            Chartemp = Info(P);
+            pushChar(Chartemp, &top);
+            P = Next(P);
+		}
         else
         {
         	InsVLast(front, rear, temp);
-        	printf("hai %s", temp);
         	P = Next(P);
         }
     }
