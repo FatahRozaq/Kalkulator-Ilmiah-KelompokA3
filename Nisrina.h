@@ -58,42 +58,192 @@ typedef struct tree {
 
 // {membuat sendiri	 
 
+
+//membuat tree
+
+/* is : fungsi untuk membuat node pada binary tree
+	fs : menghasilkan node yang bertipe 'tree' 
+	referensi : pembuatan node pada mata kuliah SDA */
 addressTree AlokasiTree(infotype X);
 
+//node linkedlist info bertipe infotype
+
+/* is : fungsi untuk membuat node yang bertipe 'tElmtList' 
+	fs : menghasilkan node yang bertipe 'tElmtList' 
+	referensi : pembuatan node pada mata kuliah SDA */
 address Alokasi(infotype X);
 
+/* is : fungsi untuk membuat linkedlist dengan menambahkan node baru pada rear
+	fs : menghasilkan linkedlist dengan node yang bertipe 'tElmtList' 
+	referensi : pembuatan linkedlist pada mata kuliah SDA */
 void InsVLast(address *front,address *rear, infotype X);
 
 void InsertLast (address *front,address *rear, address P);
 
-void PrintInfoASC (address data);
+/* is : fungsi untuk membuat linkedlist dengan metode stack
+	fs : menghasilkan linkedlist stack dengan node yang bertipe 'tElmtList' 
+	referensi : pembuatan linkedlist stack pada mata kuliah SDA */
+void InsVLastChar(address *top, infotype X);
 
+void InsertLastChar (address *top, address P);
+
+/* is : fungsi untuk menghapus semua node bertipe 'tElmtList' pada linkedlist
+	fs : menghasilkan linkedlist kosong atau pointer front dan rear menunjuk NULL 
+	referensi : menghapus node linkedlist pada mata kuliah SDA */
 void DelVFirst (address *front,address *rear );
 
 void DelAll (address *front,address *rear);
 
 void DeAlokasi (address P);
 
+/* is : fungsi untuk menghapus node bertipe 'tElmtList' pada linkedlist dengan metode stack
+	fs : node yang diinginkan terhapus dengan node yang diinginkan terhapus
+	referensi : menghapus node linkedlist pada mata kuliah SDA */
 void DelVLastChar (address *top );
 
-void DelVLastNum (addressNum *top );
+/* is : fungsi untuk menampilkan nilai pada subvar info node bertipe 'tElmtList' pada linkedlist
+	fs : tampilan kumpulan nilai nilai pada subvar info
+	referensi : menampilkan nilai node linkedlist pada mata kuliah SDA */
+void PrintInfoData (address data);
 
-void DeAlokasiNum (addressNum P);
 
-void InsVLastChar(address *top, infotype X);
+//node linkedlist info bertipe double
 
-void InsertLastChar (address *top, address P);
-
+/* is : fungsi untuk membuat node yang bertipe 'tempNum'
+	fs : menghasilkan node yang bertipe 'tempNum'  
+	referensi : pembuatan node pada mata kuliah SDA */
 addressNum AlokasiNum(double X);
 
+/* is : fungsi untuk membuat linkedlist dengan menambahkan node baru pada rear
+	fs : menghasilkan linkedlist dengan node yang bertipe 'tempNum' 
+	referensi : pembuatan linkedlist pada mata kuliah SDA */
 void InsVLastNum(addressNum *top, double X);
 
 void InsertLastNum (addressNum *top, addressNum P);
 
+/* is : fungsi untuk menghapus node bertipe 'tempNum'  pada linkedlist
+	fs : menghasilkan linkedlist dengan node yang diinginkan terhapus
+	referensi : menghapus node linkedlist pada mata kuliah SDA */
+void DelVLastNum (addressNum *top );
+
+void DeAlokasiNum (addressNum P);
+
+// perhitungan
+
+/* is : fungsi untuk menghitung penjumlahan
+	fs : menghasilkan nilai bertipe double hasil dari penjumlahan 2 bilangan
+	referensi :- */
 double Penjumlahan (double bil1, double bil2);
 
+/* is : fungsi untuk menghitung perpangkatan
+	fs : menghasilkan nilai bertipe double hasil dari perpangkatan 2 bilangan dengan memanggil modul powku milik aurora
+	referensi :- */
 double Pangkat(double bil1, double bil2);
 
+// validasi format
+
+/* is : fungsi untuk melakukan pengecekan format dari expresi yang diinputkan
+	fs : menghasilkan nilai 1 untuk expresi tidak valid dan 0 untuk expresi valid
+	referensi :- */
+int validasiFormat(address front);
+
+
+/* {referensi github : https://github.com/MohamedFarid612/Calculator-infix-to-postfix-/blob/main/main.c 
+- melakukan modifikasi dengan menggunakan function yang sudah dibuat untuk operasi tambah, kali,bagi,kurang, pangkat 
+- menambahkan algoritma untuk phi, e, eksponen, logaritma, logaritma natural, trigonometri dan lain-lain
+- mengubah tipe data menjadi double dari yang sebelumnya float
+- mengubah struktur data karena mengubah dari array ke linkedlist
+dan lain-lain */
+
+/* is : fungsi untuk melakukan pengecekan apakah linkedlist kosong atau tidak
+	fs : menghasilkan nilai 1 jika kosong dan 0 jika tidak kosong */
+int isEmpty(address top);
+
+/* is : fungsi untuk mengembalikan nilai dari node bertipe 'tElmtList' yang paling atas dari linkedlist sebagai penyimpanan sementara operator
+	fs : mengembalikan operator yang paling atas pada linkedlist */
+infotype topPop(address top);
+
+/* is : fungsi untuk mengembalikan nilai dan menghapus node bertipe 'tElmtList' yang paling atas dari linkedlist sebagai penyimpanan sementara operator
+	fs : mengembalikan nilai operator yang paling atas pada linkedlist dan pointer menunjuk node sebelumnya */
+infotype pop(address *top);
+
+/* is : fungsi untuk mengembalikan nilai dan menghapus node bertipe 'tempNum' yang paling atas dari linkedlist sebagai penyimpanan sementara operand
+	fs : mengembalikan nilai operand yang paling atas pada linkedlist dan pointer menunjuk node sebelumnya  */
+double popNum(addressNum *top);
+
+/* is : fungsi untuk mengembalikan nilai dan menghapus node bertipe 'tree' yang merupakan anak kanan sebuah node pada binary tree
+	fs : mengembalikan nilai pada node tersebut dan pointer anak kanan dari parent node tersebut menunjuk null */
+double popRight(addressTree *parent);
+
+/* is : fungsi untuk mengembalikan nilai dan menghapus node bertipe 'tree' yang merupakan anak kiri sebuah node pada binary tree
+	fs : mengembalikan nilai pada node tersebut dan pointer anak kiri dari parent node tersebut menunjuk null */
+double popLeft(addressTree *parent);
+
+/* is : fungsi untuk mengganti nilai dari node yang dinginkan
+	fs : nilai dari node yang diinginkan (parent) sebelumnya berisi operator berubah menjadi hasil dari perhitungan anak kiri dan anak kanan*/
+void push(double d, addressTree *parent);
+
+/* is : fungsi untuk menambah node bertipe 'tElmtList' dari linkedlist dengan metode stack sebagai penyimpanan sementara operator
+	fs : linkedlist yang ditambah node tersebut dengan node tersebut ditunjuk oleh pointer top */
+void pushChar(infotype c, address *top);
+
+/* is : fungsi menentuka nilai prioritas dari suatu operator
+	fs : mengembalikan nilai yang merupakan urutan prioritas dari operator */
+int priority(char c);
+
+/* is : fungsi mengecek apakah termasuk kumpulan operator atau bukan
+	fs : mengembalikan nilai 1 jika merupakan operator */
+int isOperator(char c);
+
+/* is : fungsi mengecek apakah termasuk kumpulan operator2 atau bukan
+	fs : mengembalikan nilai 1 jika merupakan operator2 */
+int isOperator2(char c);
+
+/* is : fungsi mengecek apakah termasuk bilangan negatif atau bukan
+	fs : mengembalikan nilai 1 jika merupakan bilangan negatif */
+int negatifInteger(char *infix,char c,int ptr);
+
+/* is : fungsi mengecek apakah berada di dalam operasi tanda kurung
+	fs : mengembalikan nilai 1 jika top menunjuk node dengan nilai "(" */
+int isAfter(address top);
+
+/* is : fungsi menghapus spasi pada string yang berisi ekspresi perhitungan
+	fs : mengembalikan string atau kumpulan char berisi ekspresi perhitungan tanpa spasi */
+char * hapusSpasi(char * infix);
+
+/* is : membuat linkedlist dari ekspresi yang diinputkan
+	fs : linkedlist yang berisi node dengan nilai operator dan operand yang sudah terpisah */
+void infixLinkedList(char *infix, address *front, address *rear);
+
+/* is : membuat linkedlist dari ekspresi yang diinputkan dalam bentuk postfix
+	fs : linkedlist yang berisi node dengan nilai operator dan operand yang sudah terpisah dengan bentuk postfix */
+void infixToPostfix(address frontIn, address *front, address *rear);
+
+/* is : membuat binary tree dari linkedlist postfix
+	fs : binary tree dengan kumpulan operator dan operand
+	referensi : membuat sendiri */
+void treePostFix(addressTree *root, address rear);
+
+/* is : fungsi untuk menghapus node bertipe 'tree'  pada binary tree
+	fs : menghasilkan binarytree dengan node yang diinginkan terhapus
+	referensi : menghapus node pada mata kuliah SDA */
+void DeAlokasiTree (addressTree P);
+
+/* is : fungsi mengubah'\n' menjadi spasi dari string yang berisi ekspresi perhitungan
+	fs : mengembalikan string atau kumpulan char berisi ekspresi perhitungan tanpa \n */
+void gantiNewLineJadiSpasi(char *s);
+
+/* is : fungsi mengecek apakah termasuk bilangan(angka) atau bukan
+	fs : mengembalikan nilai 1 jika merupakan bilangan(angka) */
+int isNumber(char *token);
+
+/* is : fungsi menghitung ekspresi matematika dari binary tree
+	fs : mengembalikan nilai hasil dari perhitungan atau nilai pada root binarytree */
+double hitungPostfix(addressTree *root);
+
+// }
+
+// tambahan (digunakan untuk fitur lain-lain)
 void InputBilFloat(float *bil);
 
 void PilihMenu(int *pilih);
@@ -105,67 +255,6 @@ void TampilHasilFloat(float hasil, char nama[]);
 void TampilHasilInt(int hasil, char nama[]);
 
 void CalStd();
-// }
-
-
-/* {referensi github : https://github.com/MohamedFarid612/Calculator-infix-to-postfix-/blob/main/main.c 
-- melakukan modifikasi dengan menggunakan function yang sudah dibuat untuk operasi tambah, kali,bagi,kurang, pangkat 
-- menambahkan algoritma untuk phi, e, eksponen, logaritma, logaritma natural, trigonometri dan lain-lain
-- mengubah tipe data menjadi double dari yang sebelumnya float
-- mengubah struktur data karena mengubah dari array ke linkedlist
-dan lain-lain */
-
-
-int isEmpty(address top);
-
-infotype topPop(address top);
-
-infotype pop(address *top);
-
-double popNum(addressNum *top);
-
-double popRight(addressTree *parent);
-
-double popLeft(addressTree *parent);
-
-void push(double d, addressTree *parent);
-
-void pushChar(infotype c, address *top);
-
-int priority(char c);
-
-int isOperator(char c);
-
-int isOperator2(char c);
-
-int negatifInteger(char *infix,char c,int ptr);
-
-int isAfter(address top);
-
-char * hapusSpasi(char * infix);
-
-void infixLinkedList(char *infix, address *front, address *rear);
-
-void infixToPostfix(address frontIn, address *front, address *rear);
-
-void treePostFix(addressTree *root, address rear);
-
-void DeAlokasiTree (addressTree P);
-
-void gantiNewLineJadiSpasi(char *s);
-
-int isNumber(char *token);
-
-double hitungPostfix(addressTree *root);
-// }
-
-// {membuat sendiri 
-
-void PrintInfoData (address data);
-
-int validasiChar(address front);
-
-int validasiFormat(address front);
 
 void CalStfc();
 
@@ -226,6 +315,5 @@ void TataCara();
 void CaraCalStd();
 
 void Credit();
-// }
 
 #endif

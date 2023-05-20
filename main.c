@@ -25,9 +25,9 @@ int main()
 	
     do
     {	
-    	char *infixExpr;
+    	infotype infixExpr;
     	infixExpr=malloc(266*sizeof(char));
-        char*x;
+        infotype x;
         
         system("cls");
 		header();
@@ -65,7 +65,7 @@ int main()
 				infixToPostfix(frontIn, &front, &rear);
 		  			treePostFix(&root, rear);
 					printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : ");
-					PrintInfoASC (front);
+					PrintInfoData (front);
 					printf("\n");
 					hasil = hitungPostfix(&root);
 		        	printf("\n\n\t\t\t\t\t\t\t\t\tHasil perhitungan : %g\n\n", hasil);

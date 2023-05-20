@@ -149,18 +149,18 @@ void InsertLastNum (addressNum *top, addressNum P)
 	}
 }
 
-void PrintInfoASC (address data)
+/*void PrintInfoASC (address data)
 {
-	 /* Kamus Lokal */
+	 
 	address P;
 	int i;
 	
-	 /* Algoritma */
+	
 	if (data == Nil)
 	{
 		 printf ("List Kosong .... \a\n");
 	}
-	else	/* List memiliki elemen */
+	else	
 	{
 		 P = data;
 		 for (;;)
@@ -170,14 +170,14 @@ void PrintInfoASC (address data)
 				 printf("\n");
 				 break;
 			}
-			else	/* Belum berada di akhir List */
+			else
 			{
 				 printf (" %s ", Info(P));
 				 P = Next(P);
 			}
 		 }
 	}
-}
+}*/
 
 void PrintInfoNum (addressNum data)
 {
@@ -337,7 +337,7 @@ void TampilHasilInt(int hasil, char nama[])
 	printf("\n%s : %d", nama,hasil);
 }
 
-int validasiChar(address front)
+/*int validasiChar(address front)
 {
 
 	address P;
@@ -345,12 +345,11 @@ int validasiChar(address front)
 	int hasil=0;
 	int compare;
 	
-	 /* Algoritma */
 	if (front == Nil)
 	{
 		 hasil =0;
 	}
-	else	/* List memiliki elemen */
+	else
 	{
 		 P = front;
 		 for (;;)
@@ -370,7 +369,7 @@ int validasiChar(address front)
 				{
 						P = Next(P);
 				}
-				else	/* Belum berada di akhir List */
+				else
 				{
 					 hasil = 1;
 					 break;
@@ -380,7 +379,7 @@ int validasiChar(address front)
 	}
 	return hasil;
 	
-}
+}*/
 
 int validasiFormat(address front)
 {
@@ -2156,6 +2155,8 @@ double hitungPostfix(addressTree *root)
     result = atof(Info(*root));
     DeAlokasiTree (parent);
     *root = Nil;
+    parent = Nil;
+    Pcur = Nil;
     
     return result;
 }
