@@ -388,6 +388,7 @@ int validasiFormat(address front)
 	char* tampung;
 	int hasil=0;
 	int compare;
+	int i;
 	
 	 /* Algoritma */
 	if (front == Nil)
@@ -406,10 +407,32 @@ int validasiFormat(address front)
 			else
 			{
 				tampung = Info(P);
-				if (isdigit (*tampung) )
+				if (isNumber(tampung))
 				{
+					printf("hai");
+					i =0;
+					while(tampung[i] != '\0')
+					{
+						if( !(isOperator(tampung[i])) && !(isdigit(tampung[i])) )
+						{
+							
+							printf("nih %c", tampung[i]);
+							if(tampung[i] == '.' && isdigit(tampung[i-1]) && isdigit(tampung[i+1]))
+							{
+								i++;
+							}
+							else
+							{
+								hasil = 1;
+								break;
+							}
+						}
+						else
+						{
+							i++;
+						}
+					}
 					P = Next(P);
-					
 				}
 				else if ( isOperator(*tampung) || *tampung=='|' || *tampung==')')
 				{
@@ -464,7 +487,7 @@ int validasiFormat(address front)
 				{
 						P = Next(P);
 				}
-				else	/* Belum berada di akhir List */
+				else
 				{
 					 hasil = 1;
 					 break;
@@ -1286,11 +1309,11 @@ void infixLinkedList(char *infix, address *front, address *rear)
     
     while(infix[ptr] != '\0' )
     {
+    	Chartemp = (infotype ) malloc(3*sizeof(char));
+        Chartemp[0] = infix[ptr];
+		Chartemp[1] = '\0';
         if(isOperator(infix[ptr]) && !negatifInteger(infix,infix[ptr],ptr))
         {
-        		Chartemp = (infotype ) malloc(3*sizeof(char));
-            	Chartemp[0] = infix[ptr];
-		    	Chartemp[1] = '\0';
 		    	InsVLast(front, rear, Chartemp);
                 if(Chartemp[0]  == 'm')
                 {
@@ -1303,19 +1326,20 @@ void infixLinkedList(char *infix, address *front, address *rear)
         }
         else if(infix[ptr]=='|' ||  infix[ptr]==')')
         {
-        	Chartemp = (infotype ) malloc(2*sizeof(char));
-            Chartemp[0] = infix[ptr];
-		    Chartemp[1] = '\0';
             InsVLast(front, rear, Chartemp);
             ptr++;
         }
+        else if(!(isOperator(infix[ptr])) && !(isNumber(Chartemp)) && infix[ptr] != 'e' && ( infix[ptr] != 'p' && infix[ptr+1] != 'h' && infix[ptr+2] != 'i') )
+        {
+		    	InsVLast(front, rear, Chartemp);
+		    	ptr++;
+		}
         else
         {
 		    char *temp2;
 		    char *temp1;
 		    int i,b;
 		    int panjang;
-		    
 
 		    temp1 = (infotype ) malloc(10*sizeof(char));
 		    temp1[0]= '\0';
@@ -1448,13 +1472,13 @@ void infixLinkedList(char *infix, address *front, address *rear)
 				else
 				{
 					temp = strtok(tempInfix + ptr, " +*/^$!|");
-					if(strstr(temp,"e"))
+					if(temp[0] == 'e' && temp[1] == '\0')
 		            {
 		            	temp = strtok(temp, "+()-*/^%$!|");
 		            	ptr += strlen(temp) + 1;
 		            	sprintf(temp,"%lf",eksponen);
 					}
-					else if(strstr(temp,"phi"))
+					else if(temp[0] == 'p' && temp[1] == 'h' && temp[2] == 'i' && temp[3] == '\0')
 		            {
 		            	temp = strtok(temp, "+()-*/^%$!|");
 		            	ptr += strlen(temp) + 1;
@@ -1575,13 +1599,13 @@ void infixLinkedList(char *infix, address *front, address *rear)
 	            else
 				{
 	            	temp = strtok(tempInfix + ptr, "+-*/^%$!|");
-					if(strstr(temp,"e"))
+					if(temp[0] == 'e' && temp[1] == '\0')
 		            {
 		            	temp = strtok(temp, "+()-*/^%$!|");
 		            	ptr+=strlen(temp);
 		            	sprintf(temp,"%lf",eksponen);
 					}
-					else if(strstr(temp,"phi"))
+					else if(temp[0] == 'p' && temp[1] == 'h' && temp[2] == 'i' && temp[3] == '\0')
 		            {
 		            	temp = strtok(temp, "+()-*/^%$!|");
 		            	ptr+=strlen(temp);
