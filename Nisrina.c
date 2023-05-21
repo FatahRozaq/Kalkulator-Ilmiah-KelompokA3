@@ -395,6 +395,11 @@ int validasiFormat(address front)
 			else
 			{
 				tampung = Info(P);
+				if(isOperator(*(Info(front))) && *(Info(front)) != '-')
+				{
+					hasil =1;
+					break;
+				}
 				if (isNumber(tampung))
 				{
 					i =0;
@@ -1341,14 +1346,14 @@ void infixLinkedList(char *infix, address *front, address *rear)
                 else if(isdigit(temp[1]))
 				{
 					
-						temp = strtok(temp, "+()-*/^%$!|");
+						temp = strtok(temp, "+()-*/^$!|");
 		            	ptr+=strlen(temp) +1;
 		            	strcat(temp2, temp);
 				    	InsVLast(front, rear, temp2);
 				}
 				else if(strstr(temp,"log"))
 				{
-					temp = strtok(tempInfix + ptr, "+-*/^%$!|");
+					temp = strtok(tempInfix + ptr, "+-*/^$!|");
 					if (sscanf(temp,"log%lf(%lf)",&basis,&value) != 2) 
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
@@ -1493,7 +1498,7 @@ void infixLinkedList(char *infix, address *front, address *rear)
 				}
 				else if(strstr(temp,"log"))
 				{
-					temp = strtok(tempInfix + ptr, "+-*/^%$!|");
+					temp = strtok(tempInfix + ptr, "+-*/^$!|");
 					if (sscanf(temp,"log%lf(%lf)",&basis,&value) != 2) 
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
@@ -1588,16 +1593,16 @@ void infixLinkedList(char *infix, address *front, address *rear)
 				}
 	            else
 				{
-	            	temp = strtok(tempInfix + ptr, "+-*/^%$!|");
+	            	temp = strtok(tempInfix + ptr, "+-*/^$!|");
 					if(temp[0] == 'e' && temp[1] == '\0')
 		            {
-		            	temp = strtok(temp, "+()-*/^%$!|");
+		            	temp = strtok(temp, "+()-*/^$!|");
 		            	ptr+=strlen(temp);
 		            	sprintf(temp,"%lf",eksponen);
 					}
 					else if(temp[0] == 'p' && temp[1] == 'h' && temp[2] == 'i' && temp[3] == '\0')
 		            {
-		            	temp = strtok(temp, "+()-*/^%$!|");
+		            	temp = strtok(temp, "+()-*/^$!|");
 		            	ptr+=strlen(temp);
 		                sprintf(temp,"%lf",phi);
 					}
