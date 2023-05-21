@@ -13,107 +13,210 @@ Author			: Athalie Aurora Puspanegara
 #include "fatah.h"
 #include "gavrila.h"
 
-
-
 /* ======= End of Header File ====== */
 
-
-double Pembagian(double bil1, double bil2){
+/* ---------------------------------------- Pembagian
+I.S : Terdapat bil1 dan bil2 (terdefinisi)
+F.S : Menghasilkan nilai pembagian dari bil1 dan bil2 
+Ref : Membuat sendiri
+-------------------------------------------- */ 
+double Pembagian(double bil1, double bil2)
+{
+	// Mendeklarasikan variabel hasil
 	double hasil;
 	
+	// Melakukan pembagian bil1 dengan bil2
 	hasil = bil1/bil2;
+	
+	// Mengembalikan hasil pembagian
 	return hasil;
 } 
 
-double akar(double bil, double pangkat) {
-    double result = 1.0;
-    double precision = 0.0001;
-    double diff = 1.0;
-    while (diff > precision) {
+/* ----------------------------------------------------------- Akar
+I.S : Terdapat bil (terdefinisi) sebagai bilangan yang akan 
+      diakarkan dan pangkat (terdefinisi) sebagai pangkat akar
+F.S : Menghasilkan nilai akar pangkat dari bil 
+Ref : ChatGPT dan Jurnal ilmiah Makalah IF yang ditulis oleh Susanto 
+      dengan judul Pencarian Akar pada Polinom dengan Kombinasi Metode 
+	  Newton-Raphson dan Metode Horner. Tahun 2011.
+------------------------------------------------------------- */ 
+double akar(double bil, double pangkat) 
+{
+    double result = 1.0;			// hasil akar awal
+    double precision = 0.0001;		// batas presisi (menentukan seberapa dekat nilai akar pangkat yang dihasilkan dengan nilai sebenarnya)
+    double diff = 1.0;				// perbedaan hasil akar sekarang dengan hasil akar sebelumnya
+    
+    // Melakukan perhitungan hingga perbedaan kurang dari presisi yang ditentukan
+    while (diff > precision) 
+	{
+		// Menggunakan metode Newton-Raphson untuk mencari akar pangkat.
         result = ((pangkat - 1.0) * result + bil / Powku(result, pangkat - 1)) / pangkat;
+        
+        // Menghitung perbedaan antara hasil akar sekarang dengan hasil akar sebelumnya
         diff = result - (bil / Powku(result, pangkat - 1));
-        if (diff < 0) {
+        
+        // Jika perbedaan negatif, ubah menjadi nilai absolut
+        if (diff < 0) 
+		{
             diff = -diff;
         }
     }
-    return result;
     
+    // Mengembalikan hasil akar pangkat
+    return result;
 }
 
-double Powku(double base, double exponent) {
-    double result = 1.0;
 
+/* ------------------------------------------------------ Powku
+I.S : Terdapat base (terdefinisi) sebagai bilangan dasar 
+	  dan exponent (terdefinisi) sebagai pangkat 
+F.S : Menghasilkan nilai pangkat dari base ke exponent 
+Ref : ChatGPT dan bantuan dari Fatah
+------------------------------------------------------------- */ 
+double Powku(double base, double exponent) 
+{
+    double result = 1.0;	// hasil pangkat awal
+
+	// Jika exponent adalah 0, hasilnya adalah 1
     if (exponent == 0.0) {
         return 1.0;
     }
-
+    
+    // Jika base adalah 0, hasilnya adalah 0
     if (base == 0.0) {
         return 0.0;
     }
-
+	
+	// Jika exponent negatif, ubah base menjadi pembalikan dan exponent menjadi positif
     if (exponent < 0.0) {
         base = 1.0 / base;
         exponent = -exponent;
     }
-
-    while (exponent > 1.0) {
-        if (Modulus(exponent, 2.0) == 0.0) {
+	
+	// Melakukan perulangan hingga exponent lebih dari 1
+    while (exponent > 1.0) 
+	{
+		 // Jika exponent adalah bilangan genap, base dipangkatkan 2 dan exponent dibagi 2
+        if (Modulus(exponent, 2.0) == 0.0) 
+		{
             base *= base;
             exponent /= 2.0;
-        } else {
+        } 
+        // Jika exponent adalah bilangan ganjil, hasil dikalikan dengan base dan exponent dikurangi 1
+		else 
+		{
             result *= base;
             exponent -= 1.0;
         }
     }
 
+	// Jika exponent masih lebih dari 0, hasil dikalikan dengan eksponensial dari (exponent * hiLog(base))
     if (exponent > 0.0) {
         result *= eksponensial(exponent * hiLog(base));
     }
-
+	
+	// Mengembalikan hasil pangkat
     return result;
 }
 
 
-// Logaritma basis 10
-double HitungLog10(double angka)
+
+/* ------------------------------------------------------ header
+I.S : -
+F.S : Tampilan header kelompok A3
+Ref : https://www.asciiart.eu/art-and-design/borders 
+------------------------------------------------------------- */ 
+void header()
 {
-    double result = 0;
-    double numerator = angka;
-    double denominator = 10;
-
-    while (numerator >= denominator) {
-        result++;
-        numerator /= denominator;
-    }
-
-    return result;
+//	system("cls");
+ printf("\n\n\n\t\t\t\t\t\t\t\t   /$$$$$$            /$$                  /$$$$$$   /$$$$$$ 	\n");
+ printf("\t\t\t\t\t\t\t\t  /$$__  $$          | $$                 /$$__  $$ /$$__  $$	\n");
+ printf("\t\t\t\t\t\t\t\t | $$  \__/  /$$$$$$  | $$  /$$$$$$$      | $$  \ $$|__/  \ $$	\n");
+ printf("\t\t\t\t\t\t\t\t | $$       |____  $$| $$ /$$_____/      | $$$$$$$$   /$$$$$/	\n");
+ printf("\t\t\t\t\t\t\t\t | $$        /$$$$$$$| $$| $$            | $$__  $$  |___  $$	\n");
+ printf("\t\t\t\t\t\t\t\t | $$    $$ /$$__  $$| $$| $$            | $$  | $$ /$$  \ $$	\n");
+ printf("\t\t\t\t\t\t\t\t |  $$$$$$/|  $$$$$$$| $$|  $$$$$$$      | $$  | $$|  $$$$$$/	\n");
+ printf("\t\t\t\t\t\t\t\t  \______/  \_______/|__/ \_______/         |__/  |__/ \______/ 	\n");
+	
 }
 
 
-double Fabs(double x) {
-    if (x < 0.0) {
-        return -x;
-    } else {
-        return x;
-    }
+/* ------------------------------------------------------ Fullmode
+I.S : -
+F.S : Tampilan menjadi Full
+Ref : https://stackoverflow.com/questions/12572718/how-to-change-text-color-of-cmd-with-windows-batch-script-every-1-second
+------------------------------------------------------------- */ 
+void Fullmode()
+{
+	
+	system("color 0b");
+		
+	/*Color attributes are specified by TWO hex digits -- the first
+	corresponds to the background; the second the foreground.
+
+    0 = Black       8 = Gray
+    1 = Blue        9 = Light Blue
+    2 = Green       A = Light Green
+    3 = Aqua        B = Light Aqua
+    4 = Red         C = Light Red
+    5 = Purple      D = Light Purple
+    6 = Yellow      E = Light Yellow
+    7 = White       F = Bright White */
+    
+	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED); 	// Screen mode full
 }
 
-double floor(double x) {
-    int xi = (int)x;
-    if (x < 0.0 && xi != x) {
-        xi--;
-    }
-    return (double)xi;
+
+
+
+/* ------------------------------------------------------ Calculator
+I.S : -
+F.S : Tampilan Calculator
+Ref : https://texteditor.com/ascii-art/
+------------------------------------------------------------- */ 
+void Calculator()
+{
+printf("\n\n\n\t\t\t\t\t\t\t\t\t __________________________________________________");	
+printf("\n\t\t\t\t\t\t\t\t\t|  _____________________________________________   |");
+printf("\n\t\t\t\t\t\t\t\t\t| |                                             |  |");
+printf("\n\t\t\t\t\t\t\t\t\t| |_____________________________________________|  |");
+printf("\n\t\t\t\t\t\t\t\t\t| |_____________________________________________|  |");
+printf("\n\t\t\t\t\t\t\t\t\t|                                                  |");
+printf("\n\t\t\t\t\t\t\t\t\t| |________   ________ ________ _______            |");
+printf("\n\t\t\t\t\t\t\t\t\t| | arccsc | | arcsin |	 sinh  | sech  |           |");
+printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______|  	   |");
+printf("\n\t\t\t\t\t\t\t\t\t| | arcsec | | arccos |  cosh  |  csch |	   |");
+printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______|	   |");
+printf("\n\t\t\t\t\t\t\t\t\t| | arctan | | arctan |	 tanh  |  coth |           |");
+printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______|  	   |");
+printf("\n\t\t\t\t\t\t\t\t\t|  ________   ________ ________ _______   _______  |");
+printf("\n\t\t\t\t\t\t\t\t\t| |   e    | |   sec  |  csc   |  cot  | |  <<   | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
+printf("\n\t\t\t\t\t\t\t\t\t| |   phi  | |   sin  |   cos  |   tan | |  mod  | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
+printf("\n\t\t\t\t\t\t\t\t\t| |   exp  | |    (   |    )   |   !n  | |   /   | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
+printf("\n\t\t\t\t\t\t\t\t\t| |    $   | |    7   |    8   |    9  | |   *   | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
+printf("\n\t\t\t\t\t\t\t\t\t| |    ^   | |    4   |    5   |    6  | |   _   | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
+printf("\n\t\t\t\t\t\t\t\t\t| |   log  | |    1   |    2   |    3  | |   +   | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
+printf("\n\t\t\t\t\t\t\t\t\t| |   ln   | |    .   |    0   |   .   | |   =   | |");
+printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
+printf("\n\t\t\t\t\t\t\t\t\t|_________________________________________________|");
+	
 }
 
-double fmod(double x, double y) {
-    return x - y * floor(x / y);
-}
 
 
 
 
-void deretAritmatika() {
+// ====================================================================================================================================================
+
+
+void deretAritmatika() 
+{
     int sukuPertama, beda, jumlahSuku, i;
     int hasil = 0;
 
@@ -135,7 +238,8 @@ void deretAritmatika() {
 }
 
 
-void konvertvolume() {
+void konvertvolume() 
+{
 	
 	int menu;
     double value, result;
@@ -218,25 +322,40 @@ double hitungVolume(double value, int menu)
 }
 
 
-void header()
+// Logaritma basis 10
+double HitungLog10(double angka)
 {
-//	system("cls");
- printf("\n\n\n\t\t\t\t\t\t\t   /$$$$$$            /$$                  /$$$$$$   /$$$$$$ 	\n");
- printf("\t\t\t\t\t\t\t  /$$__  $$          | $$                 /$$__  $$ /$$__  $$	\n");
- printf("\t\t\t\t\t\t\t | $$  \__/  /$$$$$$  | $$  /$$$$$$$      | $$  \ $$|__/  \ $$	\n");
- printf("\t\t\t\t\t\t\t | $$       |____  $$| $$ /$$_____/      | $$$$$$$$   /$$$$$/	\n");
- printf("\t\t\t\t\t\t\t | $$        /$$$$$$$| $$| $$            | $$__  $$  |___  $$	\n");
- printf("\t\t\t\t\t\t\t | $$    $$ /$$__  $$| $$| $$            | $$  | $$ /$$  \ $$	\n");
- printf("\t\t\t\t\t\t\t |  $$$$$$/|  $$$$$$$| $$|  $$$$$$$      | $$  | $$|  $$$$$$/	\n");
- printf("\t\t\t\t\t\t\t  \______/  \_______/|__/ \_______/         |__/  |__/ \______/ 	\n");
-	
+    double result = 0;
+    double numerator = angka;
+    double denominator = 10;
+
+    while (numerator >= denominator) {
+        result++;
+        numerator /= denominator;
+    }
+
+    return result;
 }
 
 
+double Fabs(double x) {
+    if (x < 0.0) {
+        return -x;
+    } else {
+        return x;
+    }
+}
 
-void athalie()
-{
-	printf("\t\t\t\t\t\t\t\t @ a t h a l i e \t\t\t\t");
+double floor(double x) {
+    int xi = (int)x;
+    if (x < 0.0 && xi != x) {
+        xi--;
+    }
+    return (double)xi;
+}
+
+double fmod(double x, double y) {
+    return x - y * floor(x / y);
 }
 
 
@@ -296,60 +415,796 @@ void BacktoMain()
 
 
 
-void Fullmode()
-{
-	
-	//system("color 0e");
-		
-	/*Color attributes are specified by TWO hex digits -- the first
-	corresponds to the background; the second the foreground.
-
-    0 = Black       8 = Gray
-    1 = Blue        9 = Light Blue
-    2 = Green       A = Light Green
-    3 = Aqua        B = Light Aqua
-    4 = Red         C = Light Red
-    5 = Purple      D = Light Purple
-    6 = Yellow      E = Light Yellow
-    7 = White       F = Bright White */
-    
-	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED); 	// Screen mode full
-}
 
 
-void Calculator()
-{
-printf("\n\n\n\t\t\t\t\t\t\t\t\t __________________________________________________");	
-printf("\n\t\t\t\t\t\t\t\t\t|  _____________________________________________   |");
-printf("\n\t\t\t\t\t\t\t\t\t| |                                             |  |");
-printf("\n\t\t\t\t\t\t\t\t\t| |_____________________________________________|  |");
-printf("\n\t\t\t\t\t\t\t\t\t| |_____________________________________________|  |");
-printf("\n\t\t\t\t\t\t\t\t\t|                                                  |");
-printf("\n\t\t\t\t\t\t\t\t\t| |________   ________ ________ _______            |");
-printf("\n\t\t\t\t\t\t\t\t\t| | arccsc | | arcsin |	 sinh  | sech  |           |");
-printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______|  	   |");
-printf("\n\t\t\t\t\t\t\t\t\t| | arcsec | | arccos |  cosh  |  csch |	   |");
-printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______|	   |");
-printf("\n\t\t\t\t\t\t\t\t\t| | arctan | | arctan |	 tanh  |  coth |           |");
-printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______|  	   |");
-printf("\n\t\t\t\t\t\t\t\t\t|  ________   ________ ________ _______   _______  |");
-printf("\n\t\t\t\t\t\t\t\t\t| |   e    | |   sec  |  csc   |  cot  | |  <<   | |");
-printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
-printf("\n\t\t\t\t\t\t\t\t\t| |   phi  | |   sin  |   cos  |   tan | |   %%%'  | |");
-printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
-printf("\n\t\t\t\t\t\t\t\t\t| |   exp  | |    (   |    )   |   !n  | |   /   | |");
-printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
-printf("\n\t\t\t\t\t\t\t\t\t| |    $   | |    7   |    8   |    9  | |   *   | |");
-printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
-printf("\n\t\t\t\t\t\t\t\t\t| |    ^   | |    4   |    5   |    6  | |   _   | |");
-printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
-printf("\n\t\t\t\t\t\t\t\t\t| |   log  | |    1   |    2   |    3  | |   +   | |");
-printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
-printf("\n\t\t\t\t\t\t\t\t\t| |   ln   | |    .   |    0   |   .   | |   =   | |");
-printf("\n\t\t\t\t\t\t\t\t\t| |________| |________|________|_______| |_______| |");
-printf("\n\t\t\t\t\t\t\t\t\t|_________________________________________________|");
-	
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -414,9 +1269,37 @@ void headcalprog()
  printf("\t\t\t\t\t\t\t  \______/  \_______/|__/ \_______/        |__/     |__/       \______/   \____ $$		\n");
  printf("\t\t\t\t\t\t\t                                                                      /$$  \$$		\n");
  printf("\t\t\t\t\t\t\t                                                                    | $$$$$$/		\n");
- printf("\t\t\t\t\t\t\t\t\t\t @ f l a u u r a l i x \t                        \______/ 		\n");
+ printf("\t\t\t\t\t\t\t\t\t\t\t                        \______/ 		\n");
 	
 }
+
+#define MAX 100
+
+typedef struct {
+	char tanggal[20];
+	char waktu[12];
+	
+	char desimal[MAX];
+	char biner[MAX];
+	char okta[MAX];
+	char hexa[MAX];
+	char convert;
+}Histori;
+
+void Desimal();
+void DesBin(int des, char* hist);
+void DesOkt(int des, char* hist);
+void DesHex(int dec, char* hist);
+
+void Biner();
+int BinDes(char* hist);
+
+void Okta();
+int OktDes(char* hist);
+
+void Hexa();
+int HexDes(char* hist);
+
 
 void menu()
 {
