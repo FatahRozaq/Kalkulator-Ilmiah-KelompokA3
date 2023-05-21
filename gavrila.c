@@ -385,6 +385,7 @@ double hitungarccos(double x){
 
 double hitungarctan(double x){
 	double rad, hasil;
+	
 	rad = atan(x); //menghitung nilai inverse dalam radian
     hasil = rad * 180 / M_PI; //mengonversi ke derajat
     return hasil;
@@ -392,6 +393,7 @@ double hitungarctan(double x){
 
 double hitungarccsc(double x){
 	double rad, hasil;
+	
 	rad = asin(1/x); //menghitung nilai inverse dalam radian
     hasil = rad * 180 / M_PI; //mengonversi ke derajat
     return hasil;
@@ -399,6 +401,7 @@ double hitungarccsc(double x){
 
 double hitungarcsec(double x){
 	double rad, hasil;
+	
 	rad = acos(1/x); //menghitung nilai inverse dalam radian
     hasil = rad * 180 / M_PI; //mengonversi ke derajat
     return hasil;
@@ -406,6 +409,7 @@ double hitungarcsec(double x){
 
 double hitungarccot(double x){
 	double rad, hasil;
+	
 	rad = atan(1/x); //menghitung nilai inverse sinus dalam radian
     hasil = rad * 180 / M_PI; //mengonversi ke derajat
     return hasil;
@@ -416,25 +420,28 @@ double toRadians(double degree) {
 }
 
 double hitungsinh(double x){
-	
 	double result;
-	x = toRadians(x);
-	result = (1 - pow(e, -2 * x)) / (2 * pow(e, -x));
 	
-	return result;
-	
+//	x = toRadians(x);
+	result = x;
+	x = (1 - pow(e, -2 * x)) / (2 * pow(e, -x));
+	return x;
 }
 
 double hitungcosh(double x){
 	double result;
-	x = toRadians(x);
+	
+//	x = toRadians(x);
+	result = x;
 	result = (1 + pow(e, -2 * x)) / (2 * pow(e, -x));
 	return result;
 }
 
 double hitungtanh(double x){
 	double result;
-	x = toRadians(x);
+	
+//	x = toRadians(x);
+	result = x;
 	result = (pow(e, 2 * x)-1) / (pow(e, 2*x)+1);
 	return result;
 }
@@ -442,7 +449,8 @@ double hitungtanh(double x){
 double hitungsech(double x){
 	double result;
 	
-	x = toRadians(x);
+//	x = toRadians(x);
+	result = x;
 	result = (2*pow(e, x)) / (pow(e, 2*x)+1);
 	return result;
 }
@@ -450,7 +458,8 @@ double hitungsech(double x){
 double hitungcsch(double x){
 	double result;
 	
-	x = toRadians(x);
+//	x = toRadians(x);
+	result = x;
 	result = (2*pow(e, x)) / (pow(e, 2*x)-1);
 	return result;
 }
@@ -458,7 +467,8 @@ double hitungcsch(double x){
 double hitungcoth(double x){
 	double result;
 	
-	x = toRadians(x);
+//	x = toRadians(x);
+	result = x;
 	result = (pow(e, 2 * x)+1) / (pow(e, 2*x)-1);
 	return result;
 }
