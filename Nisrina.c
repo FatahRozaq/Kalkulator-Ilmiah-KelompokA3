@@ -10,10 +10,6 @@
 //linked list
 
 addressTree AlokasiTree(infotype X)
-/* Mengirimkan address hasil alokasi sebuah elemen */
-/* Jika alokasi berhasil, maka address != Nil, 	   */
-/*	dan misalnya menghasilkan P, maka Info(P) = X, Next(P) = Nil */
-/* Jika alokasi gagal, mengirimkan Nil */
 {
 	 /* Kamus Lokal */
 	 addressTree P;
@@ -31,10 +27,6 @@ addressTree AlokasiTree(infotype X)
 }
 
 address Alokasi(infotype X)
-/* Mengirimkan address hasil alokasi sebuah elemen */
-/* Jika alokasi berhasil, maka address != Nil, 	   */
-/*	dan misalnya menghasilkan P, maka Info(P) = X, Next(P) = Nil */
-/* Jika alokasi gagal, mengirimkan Nil */
 {
 	 /* Kamus Lokal */
 	 address P;
@@ -103,18 +95,14 @@ void InsertLastChar (address *top, address P)
 	}
 }
 
+/*
 addressNum AlokasiNum(double X)
-/* Mengirimkan address hasil alokasi sebuah elemen */
-/* Jika alokasi berhasil, maka address != Nil, 	   */
-/*	dan misalnya menghasilkan P, maka Info(P) = X, Next(P) = Nil */
-/* Jika alokasi gagal, mengirimkan Nil */
 {
-	 /* Kamus Lokal */
+	 
 	 addressNum P;
 	 
-	 /* Algoritma */
 	 P = (addressNum) malloc (sizeof (TempNum));
-	 if (P != Nil)		/* Alokasi berhasil */
+	 if (P != Nil)		
 	 {
 	Prev(P) = Nil;
 	Number(P) = X;
@@ -147,7 +135,7 @@ void InsertLastNum (addressNum *top, addressNum P)
 		Prev(P) = *top;
 		*top = P;
 	}
-}
+}*/
 
 /*void PrintInfoASC (address data)
 {
@@ -179,18 +167,17 @@ void InsertLastNum (addressNum *top, addressNum P)
 	}
 }*/
 
-void PrintInfoNum (addressNum data)
+/*void PrintInfoNum (addressNum data)
 {
-	 /* Kamus Lokal */
+	 
 	addressNum P;
 	int i;
 	
-	 /* Algoritma */
 	if (data == Nil)
 	{
 		 printf ("List Kosong .... \a\n");
 	}
-	else	/* List memiliki elemen */
+	else	
 	{
 		 P = data;
 		 for (;;)
@@ -200,14 +187,15 @@ void PrintInfoNum (addressNum data)
 				 printf("\n");
 				 break;
 			}
-			else	/* Belum berada di akhir List */
+			else
 			{
 				 printf (" %lf ", Number(P));
 				 P = Prev(P);
 			}
 		 }
 	}
-}
+}*/
+
 void DelVFirst (address *front,address *rear )
 {
 	address P;
@@ -266,7 +254,7 @@ void DelVLastChar (address *top )
 	
 }
 
-void DelVLastNum (addressNum *top )
+/*void DelVLastNum (addressNum *top )
 {
 	addressNum P;
 	
@@ -282,15 +270,15 @@ void DelVLastNum (addressNum *top )
 		printf("tidak ada yang dihapus\n");
 		}
 	
-}
+}*/
 
-void DeAlokasiNum (addressNum P)
+/*void DeAlokasiNum (addressNum P)
 {
 	 if (P != Nil)
 	 {
 		free (P);
 	 }
-}
+}*/
 double Penjumlahan (double bil1, double bil2)
 {
 	double hasil;
@@ -409,14 +397,11 @@ int validasiFormat(address front)
 				tampung = Info(P);
 				if (isNumber(tampung))
 				{
-					printf("hai");
 					i =0;
 					while(tampung[i] != '\0')
 					{
 						if( !(isOperator(tampung[i])) && !(isdigit(tampung[i])) )
 						{
-							
-							printf("nih %c", tampung[i]);
 							if(tampung[i] == '.' && isdigit(tampung[i-1]) && isdigit(tampung[i+1]))
 							{
 								i++;
@@ -1174,7 +1159,7 @@ infotype pop(address *top)
     return data;
 }
 
-double popNum(addressNum *top)
+/*double popNum(addressNum *top)
 {
 	double data;
 	
@@ -1182,7 +1167,7 @@ double popNum(addressNum *top)
     DelVLastNum (top);
     
     return data;
-}
+}*/
 
 double popRight(addressTree *parent)
 {
@@ -1368,7 +1353,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan logaritma yang benar adalah log10(100)\n");
-						exit(0);
+						getche();
+						main();
 					}
 					else
 					{
@@ -1395,7 +1381,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan trigonometri yang benar adalah %s (100)\n", temp1);
-						exit(0);
+						getche();
+						main();
 					}
 				}
 				
@@ -1415,7 +1402,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan trigonometri yang benar adalah %s(1)\n", temp1);
-						exit(0);
+						getche();
+						main();
 					}
 				}
 				
@@ -1435,7 +1423,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan trigonometri yang benar adalah %s (100)\n", temp1);
-						exit(0);
+						getche();
+						main();
 					}
 				}
 				else if(strstr(temp,"exp"))
@@ -1448,7 +1437,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan!\n");
 						printf("\nContoh penulisan eksponensial yang benar adalah exp(100)\n");
-						exit(0);
+						getche();
+						main();
 					}
 				}
 				else if(strstr(temp,"ln"))
@@ -1461,7 +1451,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan logaritma natural yang benar adalah ln(100)\n");
-						exit(0);
+						getche();
+						main();
 					}
 				}
 				else
@@ -1507,7 +1498,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan logaritma yang benar adalah log10(100)\n");
-						exit(0);
+						getche();
+						main();
 					}
 					else
 					{
@@ -1529,7 +1521,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan trigonometri yang benar adalah %s(1)\n", temp1);
-						exit(0);
+						getche();
+						main();
 					}
 				}
 				else if(strstr(temp,"sinh") || strstr(temp,"cosh") || strstr(temp,"tanh")|| strstr(temp,"sech") ||strstr(temp,"coth") || strstr(temp,"csch"))
@@ -1546,7 +1539,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan trigonometri yang benar adalah %s (100)\n", temp1);
-						exit(0);
+						getche();
+						main();
 					}
 				}
 				
@@ -1564,7 +1558,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan trigonometri yang benar adalah %s (100)\n", temp1);
-						exit(0);
+						getche();
+						main();
 					}
 				}
 				else if(strstr(temp,"exp"))
@@ -1575,7 +1570,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan!\n");
 						printf("\nContoh penulisan eksponensial yang benar adalah exp(100)\n");
-						exit(0);
+						getche();
+						main();
 					}
 				}
 				else if(strstr(temp,"ln"))
@@ -1586,7 +1582,8 @@ void infixLinkedList(char *infix, address *front, address *rear)
 					{
 						printf("\nInput tidak sesuai dengan format yang diharapkan,!\n");
 						printf("\nContoh penulisan logaritma natural yang benar adalah ln(100)\n");
-						exit(0);
+						getche();
+						main();
 					}
 				}
 	            else
@@ -1754,7 +1751,8 @@ void infixToPostfix(address frontIn, address *front, address *rear)
 		    	if(*(tampungChar) == 'p')
 		    	{
 		    		printf("\n\n\t\t\t\t\t\t\t\t\tEkspresi tidak valid\n");
-		    		exit(0);
+		    		getche();
+					main();
 				}
 				else
 				{
@@ -1794,7 +1792,8 @@ void infixToPostfix(address frontIn, address *front, address *rear)
     if(mutlak == 1)
     {
     	printf("Penulisan operasi mutlak tidak valid");
-    	exit(0);
+    	getche();
+		main();
 	}
     
     while(!isEmpty(top))
@@ -2027,7 +2026,8 @@ double hitungPostfix(addressTree *root)
             	if(a == 0)
             	{
             		printf("pembagian 0 tidak terdefinisi");
-            		exit(1);
+            		getche();
+            		main();
 				}
             	else
             	{
