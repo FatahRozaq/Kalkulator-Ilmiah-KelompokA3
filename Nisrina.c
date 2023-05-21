@@ -1329,11 +1329,6 @@ void infixLinkedList(char *infix, address *front, address *rear)
             InsVLast(front, rear, Chartemp);
             ptr++;
         }
-        else if(!(isOperator(infix[ptr])) && !(isNumber(Chartemp)) && infix[ptr] != 'e' && ( infix[ptr] != 'p' && infix[ptr+1] != 'h' && infix[ptr+2] != 'i') )
-        {
-		    	InsVLast(front, rear, Chartemp);
-		    	ptr++;
-		}
         else
         {
 		    char *temp2;
@@ -1520,7 +1515,6 @@ void infixLinkedList(char *infix, address *front, address *rear)
 						ptr = ptr + 3;
 					}
 				}
-				
 				else if(strstr(temp,"arcsin") || strstr(temp,"arccos") || strstr(temp,"arctan")|| strstr(temp,"arcsec") ||strstr(temp,"arccot") || strstr(temp,"arccsc"))
 				{
 					for(i=0; i<6; i++)
@@ -1538,7 +1532,6 @@ void infixLinkedList(char *infix, address *front, address *rear)
 						exit(0);
 					}
 				}
-				
 				else if(strstr(temp,"sinh") || strstr(temp,"cosh") || strstr(temp,"tanh")|| strstr(temp,"sech") ||strstr(temp,"coth") || strstr(temp,"csch"))
 				{
 					for(i=0; i<4; i++)
