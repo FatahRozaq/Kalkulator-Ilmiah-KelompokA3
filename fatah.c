@@ -1,7 +1,7 @@
 #include "Nisrina.h"
 #include "fatah.h"
 
-
+#define PI 3.14159265
 
 //========================================================
 //						Modul
@@ -515,6 +515,35 @@ double eksponensial(double x) {
     return sum;
 }
 
+double power(double base, int exponent) {
+    double result = 1.0;
+    int i;
+    
+    for (i = 0; i < exponent; i++) {
+        result *= base;
+    }
+    
+    return result;
+}
+
+double factorial(int n) {
+    double result = 1.0;
+    int i;
+    
+    for (i = 1; i <= n; i++) {
+        result *= i;
+    }
+    
+    return result;
+}
+
+void undefinedMode(){
+	printf("\n\t\t\t\t\t\t\t\t\t\tUNDEFINED\n");
+	printf("\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
+	printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan lagi? (Y/N) ");
+	getche();
+	main();
+}
 //========================================================
 //						Modul
 //					  Lowercase
@@ -525,6 +554,8 @@ void lowerCase(char *str) {
         (str)++;
     }
 }
+
+
 
 //========================================================
 //						Modul

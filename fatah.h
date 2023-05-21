@@ -4,6 +4,7 @@
 
 #define true 1
 #define false 0
+#define PI 3.14159265
 
 // Modul Perkalian
 double Perkalian (double bil1, double bil2);
@@ -40,6 +41,9 @@ double eksponensial(double x);
 
 // Modul Lowercase
 void lowerCase(char *str);
+
+double factorial(int n);
+double power(double base, int exponent);
 
 // Modul Help
 void help();
