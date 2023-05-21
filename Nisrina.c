@@ -395,12 +395,12 @@ int validasiFormat(address front)
 			else
 			{
 				tampung = Info(P);
-				if(isOperator(*(Info(front))) && *(Info(front)) != '-')
+				if(isOperator(*(Info(front))) && *(Info(front)) != '-' && *(Info(front)) !='(')
 				{
 					hasil =1;
 					break;
 				}
-				if (isNumber(tampung))
+				else if (isNumber(tampung))
 				{
 					i =0;
 					while(tampung[i] != '\0')

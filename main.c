@@ -82,45 +82,6 @@ int main()
         DelAll (&front,&rear);
     	
 	}while(pilih == 'y' || pilih == 'Y');
-	/*header();
-	BarmenuUtama();
-	
-	
-//	printf("\n\n\t\t\t\t\t\t\t======================= SCIENTIFIC CALCULATOR =========================");
-	printf("\n \n");
-	printf("\t\t\t\t\t\t\t\t [1]. Kalkulator Scientific    \n\n");
-	printf("\t\t\t\t\t\t\t\t [2]. Extra Fitur \n\n");
-	printf("\t\t\t\t\t\t\t\t [3]. Tata Cara Penggunaan  \n\n");
-	printf("\t\t\t\t\t\t\t\t [4]. Credit   		   \n\n");	
-	printf("\t\t\t\t\t\t\t\t [0]. Keluar                \n");
-	printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
-	
-	PilihMenu(&pilih);
-	getchar();
-	switch (pilih)
-	{
-		case 1:
-			CalStfc();
-			break;
-		
-		case 2:
-			CalStd();
-			break;
-			
-		case 3:
-			TataCara();
-			break;
-			
-		case 4:
-			Credit();
-			break;
-		case 5:
-			exit(0);
-			break;
-		default:
-			printf("Inputan tidak valid");
-	}
-	*/
 	
 	return 0;
 }
