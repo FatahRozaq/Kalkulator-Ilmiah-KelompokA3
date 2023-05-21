@@ -579,9 +579,9 @@ void help(){
 	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");
 	printf("\n\t\t\t\t\t\t\t\t|\t 8. Format penulisan konstanta"); printf("\t\t\t\t    |");
 	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
-	printf("\n\t\t\t\t\t\t\t\t|\t|  e  |       (angka)e"); printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t|  e  | "); printf("\t\t\t\t\t\t    |");
 	printf("\n\t\t\t\t\t\t\t\t|\t|_____| "); printf("\t\t\t\t\t\t    |");
-	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : (4)e ");	printf("\t\t\t\t\t    |");
+	printf("\n\t\t\t\t\t\t\t\t|\t>> Contoh : e ");	printf("\t\t\t\t\t\t    |");
 	printf("\n\t\t\t\t\t\t\t\t|\t"); printf("\t\t\t\t\t\t\t    |");
 	printf("\n\t\t\t\t\t\t\t\t|\t 9. Format penulisan phi"); printf("\t\t\t\t    |");
 	printf("\n\t\t\t\t\t\t\t\t|\t _____  "); printf("\t\t\t\t\t\t    |");
