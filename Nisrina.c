@@ -980,86 +980,37 @@ double DerajatTrigono(char *input)
 }
 
 double Sin(double value){
-
-	double sign=1, res=0, term;
-	int k =1;
+	double radian = value * PI / 180.0, result = 0.0;
+	int i;
 	
-	if (value<0){
-	
-		sign=-1.0;
-		
-		value=-value;
-	
+	for(i = 0; i <10; i++){
+		double term = power(-1, i) * power(radian, 2 * i + 1) / factorial(2 * i + 1);;
+		result += term;
 	}
-	
-	if (value > 360) {
-   		value -= (int)(value / 360) * 360;
-	}
-	
-	value*=3.14/180.0;
-	
-	term=value;
-	
-	while (res+term!=res){
-	
-		res+=term;
-		
-		k+=2;
-		
-		term*=-value*value/k/(k-1);
-	
-	}
-	
-	res = sign*res;
-	
-	return res;
+	return result;
 
 }
 
 double Cos(double value){
-
-	double res=0, term=1;
-	int k=0;
 	
-	if(value == 90){
-		res = 0;
-	}else{
-		if (value<0) value=-value;
+	double radian = value * PI / 180.0, result = 0.0;
+	int i;
 	
-		if (value > 360) {
-	   		value -= (int)(value / 360) * 360;
-		}
-		
-		value*=3.14/180.0;
-		
-		while (res+term!=res){
-		
-			res+=term;
-			
-			k+=2;
-			
-			term*=-value*value/k/(k-1);
-		
-		}
-	}
-	
-	
-	return res;
-
+	 for (i = 0; i < 10; i++) {
+        double term = power(-1, i) * power(radian, 2 * i) / factorial(2 * i);
+        result += term;
+    }
+    
+    return result;
 }
 
 double Tan(double value) {
-	
-    double res = Sin(value) / Cos(value);
     
     if(value == 90 || value == 270){
-		printf("\n\t\t\t\t\t\t\t\t\t\tUNDEFINED");
-		exit(0); 
-	}else if(value == 45){
-		res = 1;	
+    	undefinedMode(); 
 	}
     
-    return res;
+    return Sin(value) / Cos(value);
 }
 
 double TriSin(double value)
@@ -1077,46 +1028,38 @@ double TriTan(double value)
 	
 	return Tan(value);
 }
+
+double TanCot(double value) {
+    return Sin(value) / Cos(value);
+}
+
 double TriCot(double value)
 {
-	double cos, sin;
 	
 	if(value == 0 || value == 180 || value == 360){
-		printf("\n\t\t\t\t\t\t\t\t\t\tUNDEFINED");
-		exit(0); 
+		undefinedMode();
 	}
 	
-	cos = TriCos(value);
-	sin = TriSin(value);
-	
-	return (cos/sin);
+	return 1.0 / TanCot(value);
 }
 double TriSec(double value)
 {
-	double cos;
 	
 	if(value == 90 || value == 270){
-		printf("\n\t\t\t\t\t\t\t\t\t\tUNDEFINED");
-		exit(0); 
+		undefinedMode();
 	}
 	
-	cos = TriCos(value);
-	
-	return (1/cos);
+	return 1.0 / Cos(value);
 }
 
 double TriCsc(double value)
 {
-	double sin;
 	
 	if(value == 0 || value == 180 || value == 360){
-		printf("\n\t\t\t\t\t\t\t\t\t\tUNDEFINED");
-		exit(0); 
+		undefinedMode(); 
 	}
 	
-	sin = TriSin(value);
-	
-	return (1/sin);
+	return 1.0 / Sin(value);
 }
 
 int isEmpty(address top)
