@@ -7,6 +7,9 @@
 #define PI 3.14159265
 
 // Modul Perkalian
+/* is : fungsi untuk mencari hasil perkalian dari dua buah bilangan
+	fs : menghasilkan nilai perkalian dari dua buah bilangan yang berasal dari parameter
+	referensi : ChatGPT */
 double Perkalian (double bil1, double bil2);
 
 // Modul Konvert Panjang
@@ -34,20 +37,40 @@ void integral(); // panggil modul ini ke main
 float luasIntegral(float a, float b, float p, float q, float c, float bawah, float atas);
 
 // Modul Eksponensial
+/* is : fungsi untuk mencari nilai exp 
+	fs : menghasilkan nilai exp dari data yang dikirimkan melalui parameter
+	referensi : Kalkulator Google */
 double Eksponensial(char *input);
 double powerEksponensial(double base, int exponent);
 double factorialEksponensial(int n);
 double eksponensial(double x);
 
 // Modul Lowercase
+/* is : fungsi untuk mengubah semua karakter string menjadi lowercase
+	fs : menghasilkan string dimana semua karakternya sudah dalam bentuk lowercase 
+	referensi : ChatGPT */
 void lowerCase(char *str);
 
+// Modul pembantu trigonometri
 double factorial(int n);
 double power(double base, int exponent);
 
 // Modul Help
+/* is : Prosedur untuk menampilkan tampilan help pada kalkulator
+	fs : menghasilkan tampilan help yang dibantu oleh Aurora untuk memperindah tampilan
+	referensi : membuat sendiri */
 void help();
+
+/* is : Fungsi untuk mengembalikan nilai boolean
+	fs : menghasilkan nilai boolean dari kondisi yang didapatkan
+	referensi : membuat sendiri */
 bool cekHelp(char *str);
+
+// Modul Undefined
+/* is : Prosedur untuk menampilkan tampilan apabila terdapat hasil trigonometri yang tidak terdefinisi
+	fs : akan menanyakan user untuk kembali masuk ke tampilan input kalkulator atau keluar dari program
+	referensi : membuat sendiri */
+void undefinedMode();
 
 #endif
 
