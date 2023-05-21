@@ -52,9 +52,10 @@ int main()
 		}else{
 			printf("\n\n\t\t\t\t\t\t\t \xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd\xcd");
 			//printf("\n\t=============================================================== \n");
+			printf("\n\n\t\t\t\t\t\t\t\t\tInputan 	: %s\n",infixExpr );
 			infixLinkedList(x, &frontIn, &rearIn);	
-			PrintInfoData (frontIn);
-			getche();
+			//PrintInfoData (frontIn);
+			//getche();
 			isValid = validasiFormat(frontIn);
 			if (isValid == 1)
 	  		{
@@ -62,7 +63,7 @@ int main()
 			}
 			else
 			{
-				infixToPostfix(frontIn, &front, &rear);
+					infixToPostfix(frontIn, &front, &rear);
 		  			treePostFix(&root, rear);
 					printf("\n\n\t\t\t\t\t\t\t\t\tPosfix 		 : ");
 					PrintInfoData (front);
