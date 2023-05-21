@@ -199,6 +199,10 @@ int isOperator(char c);
 	fs : mengembalikan nilai 1 jika merupakan operator2 */
 int isOperator2(char c);
 
+/* is : fungsi mengecek apakah termasuk bilangan(angka) atau bukan
+	fs : mengembalikan nilai 1 jika merupakan bilangan(angka) */
+int isNumber(char *token);
+
 /* is : fungsi mengecek apakah termasuk bilangan negatif atau bukan
 	fs : mengembalikan nilai 1 jika merupakan bilangan negatif */
 int negatifInteger(char *infix,char c,int ptr);
@@ -232,10 +236,6 @@ void DeAlokasiTree (addressTree P);
 /* is : fungsi mengubah'\n' menjadi spasi dari string yang berisi ekspresi perhitungan
 	fs : mengembalikan string atau kumpulan char berisi ekspresi perhitungan tanpa \n */
 void gantiNewLineJadiSpasi(char *s);
-
-/* is : fungsi mengecek apakah termasuk bilangan(angka) atau bukan
-	fs : mengembalikan nilai 1 jika merupakan bilangan(angka) */
-int isNumber(char *token);
 
 /* is : fungsi menghitung ekspresi matematika dari binary tree
 	fs : mengembalikan nilai hasil dari perhitungan atau nilai pada root binarytree */

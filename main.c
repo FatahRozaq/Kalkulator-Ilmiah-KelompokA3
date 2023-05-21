@@ -77,6 +77,7 @@ int main()
 		
 		printf("\n\n\t\t\t\t\t\t\t\t\tMasukkan inputan lagi? (Y/N) ");
         pilih = getche();
+        DelAll (&frontIn,&rearIn);
         DelAll (&front,&rear);
     	
 	}while(pilih == 'y' || pilih == 'Y');
